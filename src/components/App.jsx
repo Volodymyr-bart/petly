@@ -1,14 +1,15 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { SharedLayout } from './SharedLayout';
+import { SharedLayout } from './SharedLayout/SharedLayout';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
+import NoticesCategoryList from './NoticesCategoryList/NoticesCategoryList';
 
-const HomePage = lazy(() => import('../pages/Home'));
-const NewsPage = lazy(() => import('../pages/News'));
+// const HomePage = lazy(() => import('../pages/Home'));
+const NewsPage = lazy(() => import('../pages/News/News'));
 const NoticesPage = lazy(() => import('../pages/Notices'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriends'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -28,9 +29,14 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route index element={<HomePage />} />
+        {/* <Route index element={<HomePage />} /> */}
         <Route path="/news" element={<NewsPage />} />
-        <Route path="/notices" element={<NoticesPage />} />
+        <Route path="/notices" element={<NoticesPage />}>
+          <Route path="sell" element={<NoticesCategoryList />} />
+          <Route path="lost-found" element={<NoticesCategoryList />} />
+          <Route path="for-free" element={<NoticesCategoryList />} />
+        </Route>
+        <Route path="/notices/:categoryName" element={<NoticesPage />} />
         <Route path="/friends" element={<OurFriendsPage />} />
         <Route
           path="/register"
