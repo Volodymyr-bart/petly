@@ -1,30 +1,39 @@
 import { getnews } from 'fakeApi';
 // import { Link } from 'react-router-dom';
-import { NewsItem, NewsItemTitle, NewsList } from './News.styled';
+import {
+  Line,
+  NewsBottom,
+  NewsItem,
+  NewsItemTitle,
+  NewsList,
+  NewsTitle,
+  NewsWrapper,
+  Search,
+} from './News.styled';
 
 const News = () => {
   const news = getnews();
   return (
-    <>
-      <h1>News</h1>
-      <input type="text" placeholder="Search" />
+    <NewsWrapper>
+      <NewsTitle>News</NewsTitle>
+      <Search type="text" placeholder="Search" />
       <NewsList>
         {news.map(item => (
           <NewsItem key={item.title}>
+            <Line />
             <NewsItemTitle>{item.title}</NewsItemTitle>
             <p>{item.text}</p>
-
-            <div>
+            <NewsBottom>
               <p>{item.date}</p>
               <button>Read More</button>
               {/* <a href="" target="_blank">
                 Read More
               </a> */}
-            </div>
+            </NewsBottom>
           </NewsItem>
         ))}
       </NewsList>
-    </>
+    </NewsWrapper>
   );
 };
 
