@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/petly/static/css/main.f55492a8.css",
+    "main.js": "/petly/static/js/main.671f4995.js",
+    "static/js/292.3a2c1174.chunk.js": "/petly/static/js/292.3a2c1174.chunk.js",
+    "static/js/211.7db92992.chunk.js": "/petly/static/js/211.7db92992.chunk.js",
+    "static/js/957.970d02a4.chunk.js": "/petly/static/js/957.970d02a4.chunk.js",
+    "static/css/26.d710a763.chunk.css": "/petly/static/css/26.d710a763.chunk.css",
+    "static/js/26.04df490d.chunk.js": "/petly/static/js/26.04df490d.chunk.js",
+    "static/css/465.48647cbf.chunk.css": "/petly/static/css/465.48647cbf.chunk.css",
+    "static/js/465.0c2dadd8.chunk.js": "/petly/static/js/465.0c2dadd8.chunk.js",
+    "static/css/407.32d60463.chunk.css": "/petly/static/css/407.32d60463.chunk.css",
+    "static/js/407.81b98e4a.chunk.js": "/petly/static/js/407.81b98e4a.chunk.js",
+    "static/js/270.dc9e8005.chunk.js": "/petly/static/js/270.dc9e8005.chunk.js",
+    "index.html": "/petly/index.html",
+    "main.f55492a8.css.map": "/petly/static/css/main.f55492a8.css.map",
+    "main.671f4995.js.map": "/petly/static/js/main.671f4995.js.map",
+    "292.3a2c1174.chunk.js.map": "/petly/static/js/292.3a2c1174.chunk.js.map",
+    "211.7db92992.chunk.js.map": "/petly/static/js/211.7db92992.chunk.js.map",
+    "957.970d02a4.chunk.js.map": "/petly/static/js/957.970d02a4.chunk.js.map",
+    "26.d710a763.chunk.css.map": "/petly/static/css/26.d710a763.chunk.css.map",
+    "26.04df490d.chunk.js.map": "/petly/static/js/26.04df490d.chunk.js.map",
+    "465.48647cbf.chunk.css.map": "/petly/static/css/465.48647cbf.chunk.css.map",
+    "465.0c2dadd8.chunk.js.map": "/petly/static/js/465.0c2dadd8.chunk.js.map",
+    "407.32d60463.chunk.css.map": "/petly/static/css/407.32d60463.chunk.css.map",
+    "407.81b98e4a.chunk.js.map": "/petly/static/js/407.81b98e4a.chunk.js.map",
+    "270.dc9e8005.chunk.js.map": "/petly/static/js/270.dc9e8005.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f55492a8.css",
+    "static/js/main.671f4995.js"
+  ]
+}
