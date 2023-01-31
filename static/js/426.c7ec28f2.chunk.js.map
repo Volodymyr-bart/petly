@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/426.c7ec28f2.chunk.js","mappings":"2JAIA,UAJmB,WACjB,OAAO,gDACR,C","sources":["pages/OurFriends/OurFriends.jsx"],"sourcesContent":["const OurFriends = () => {\n  return <>OurFriendsPage</>;\n};\n\nexport default OurFriends;\n"],"names":[],"sourceRoot":""}
