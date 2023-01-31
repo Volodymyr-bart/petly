@@ -10,11 +10,12 @@ import NoticesCategoryList from './NoticesCategoryList/NoticesCategoryList';
 
 // const HomePage = lazy(() => import('../pages/Home'));
 const NewsPage = lazy(() => import('../pages/News/News'));
-const NoticesPage = lazy(() => import('../pages/Notices'));
-const OurFriendsPage = lazy(() => import('../pages/OurFriends'));
-const RegisterPage = lazy(() => import('../pages/Register'));
-const LoginPage = lazy(() => import('../pages/Login'));
-const TasksPage = lazy(() => import('../pages/Tasks'));
+const NoticesPage = lazy(() => import('../pages/Notices/Notices'));
+const OurFriendsPage = lazy(() => import('../pages/OurFriends/OurFriends'));
+const RegisterPage = lazy(() => import('../pages/Register/Register'));
+const LoginPage = lazy(() => import('../pages/Login/Login'));
+const TasksPage = lazy(() => import('../pages/Tasks/Tasks'));
+const NotFoundPage = lazy(() => import('../pages/NotFound/NotFound'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ export const App = () => {
           <Route path="lost-found" element={<NoticesCategoryList />} />
           <Route path="for-free" element={<NoticesCategoryList />} />
         </Route>
-        <Route path="/notices/:categoryName" element={<NoticesPage />} />
+
         <Route path="/friends" element={<OurFriendsPage />} />
         <Route
           path="/register"
@@ -57,6 +58,7 @@ export const App = () => {
             <PrivateRoute redirectTo="/login" component={<TasksPage />} />
           }
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );
