@@ -8,7 +8,7 @@ import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 import NoticesCategoryList from './NoticesCategoryList/NoticesCategoryList';
 
-// const HomePage = lazy(() => import('../pages/Home'));
+const HomePage = lazy(() => import('../pages/Home/Home'));
 const NewsPage = lazy(() => import('../pages/News/News'));
 const NoticesPage = lazy(() => import('../pages/Notices/Notices'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriends/OurFriends'));
@@ -30,7 +30,7 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        {/* <Route index element={<HomePage />} /> */}
+        <Route index element={<HomePage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/notices" element={<NoticesPage />}>
           <Route path="sell" element={<NoticesCategoryList />} />
