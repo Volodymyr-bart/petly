@@ -1,19 +1,25 @@
-import { Link } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
+import { AiOutlinePlus } from "react-icons/ai";
+import { NavLinkContainerStyled, NoticesCategoryNavStyled, NavLinkStyled, AddPetStyled } from './NoticesCategoryNav.styled';
+
 const NotiesCategoryNav = () => {
-  return (
-    <>
-      <ul>
+  return (    
+    <NavLinkContainerStyled>
+      <NoticesCategoryNavStyled>
         <li>
-          <Link to="sell">sell</Link>
+          <NavLinkStyled to="sell">sell</NavLinkStyled>
         </li>
         <li>
-          <Link to="lost-found">lost-found</Link>
+          <NavLinkStyled to="lost-found">lost-found</NavLinkStyled>
         </li>
         <li>
-          <Link to="for-free">for-free</Link>
+          <NavLinkStyled to="for-free">for-free</NavLinkStyled>
         </li>
-      </ul>
-    </>
+      </ NoticesCategoryNavStyled>
+      <AddPetStyled><div><AiOutlinePlus size={32} /></div> <span>Add pet</span></AddPetStyled>
+    </ NavLinkContainerStyled>
+    
+    
   );
 };
 
