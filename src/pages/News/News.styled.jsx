@@ -7,6 +7,10 @@ export const NewsWrapper = styled.div`
 
 export const NewsTitle = styled.h1`
   margin: 42px auto 28px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 66px;
   @media (min-width: 768px) {
     margin: 70px auto 40px;
   }
