@@ -40,7 +40,7 @@ export const Line = styled.div`
     width: 280px;
   }
   @media (min-width: 1280px) {
-    width: 280px;
+    width: 340px;
   }
 `;
 
