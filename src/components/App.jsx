@@ -16,6 +16,7 @@ const RegisterPage = lazy(() => import('../pages/Register/Register'));
 const LoginPage = lazy(() => import('../pages/Login/Login'));
 const TasksPage = lazy(() => import('../pages/Tasks/Tasks'));
 const NotFoundPage = lazy(() => import('../pages/NotFound/NotFound'));
+const UserPage = lazy(() => import('../pages/UserPage/UserPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -59,6 +60,7 @@ export const App = () => {
           }
         />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/user" element={<UserPage />} />
       </Route>
     </Routes>
   );
