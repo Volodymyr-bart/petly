@@ -12,7 +12,7 @@ const NotiesCategoryNav = () => {
     <NavLinkContainerStyled>
       <NoticesCategoryNavStyled>
         <li>
-          <NavLinkStyled to="sell">sell</NavLinkStyled>
+          <NavLinkStyled to="" end>sell</NavLinkStyled>
         </li>
         <li>
           <NavLinkStyled to="lost-found">lost/found</NavLinkStyled>
