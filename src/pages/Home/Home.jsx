@@ -1,12 +1,15 @@
-import { Container, HomeTitle } from "./Home.styled";
+import { Container, HomeTitle, HomeImage, Background } from "./Home.styled";
 
 
 export default function Home() {
   return (
     <Container>
-      <HomeTitle>
+      <Background>
+        <HomeTitle>
         Take good care of your small pets
-      </HomeTitle>
+        </HomeTitle>
+      <HomeImage></HomeImage>
+      </Background>
     </Container>
   );
 }
