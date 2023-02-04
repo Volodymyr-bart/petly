@@ -1,38 +1,25 @@
-import { getnews } from 'fakeApi';
-// import { Link } from 'react-router-dom';
-import {
-  Line,
-  NewsBottom,
-  NewsItem,
-  NewsItemTitle,
-  NewsList,
-  NewsTitle,
-  NewsWrapper,
-  Search,
-} from './News.styled';
+import NewsList from 'components/NewsList/NewsList';
+import { useEffect } from 'react';
+// import { Helmet } from 'react-helmet';
+import { useDispatch } from 'react-redux';
+import { getNews } from 'redux/news/operations';
+// import { selectIsLoadingNews } from 'redux/news/selectors';
+import { NewsTitle, NewsWrapper, Search } from './News.styled';
 
 const News = () => {
-  const news = getnews();
+  const dispatch = useDispatch();
+  // const isLoading = useSelector(selectIsLoadingNews);
+
+  useEffect(() => {
+    dispatch(getNews());
+  }, [dispatch]);
+
   return (
     <NewsWrapper>
       <NewsTitle>News</NewsTitle>
+
       <Search type="text" placeholder="Search" />
-      <NewsList>
-        {news.map(item => (
-          <NewsItem key={item.title}>
-            <Line />
-            <NewsItemTitle>{item.title}</NewsItemTitle>
-            <p>{item.text}</p>
-            <NewsBottom>
-              <p>{item.date}</p>
-              <button>Read More</button>
-              {/* <a href="" target="_blank">
-                Read More
-              </a> */}
-            </NewsBottom>
-          </NewsItem>
-        ))}
-      </NewsList>
+      <NewsList />
     </NewsWrapper>
   );
 };
