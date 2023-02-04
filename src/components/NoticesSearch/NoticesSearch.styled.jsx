@@ -19,10 +19,14 @@ const NoticesSearchStyled = styled.div`
         color: #535353;
     }
 
-    div {
+    button {
         position: absolute;
         top: 10px;
         right: 12px;
+
+        padding: 0;
+        background-color: #ffffff;
+        border: none;
     }
 
     @media (min-width: 768px) {
@@ -41,14 +45,14 @@ const NoticesSearchStyled = styled.div`
             font-size: 20px;
         }
         
-        div {           
+        button {           
             top: 8px;
             right: 60px;
         }
     }
 
     @media (min-width: 1280px) {        
-        div {             
+        button {             
             right: 330px;
         }
     }
