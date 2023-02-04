@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getServices } from './operations';
 
 const handlePending = state => {
-  state.isLoadingNews = true;
+  state.isLoadingServices = true;
 };
 
 const handleRejected = (state, action) => {
-  state.isLoadingNews = false;
+  state.isLoadingServices = false;
   state.errorNews = action.payload;
 };
 
@@ -14,7 +14,7 @@ const servicesSlice = createSlice({
   name: 'services',
   initialState: {
     services: [],
-    isLoadingNews: false,
+    isLoadingServices: false,
     errorNews: null,
   },
   extraReducers: {
@@ -23,7 +23,7 @@ const servicesSlice = createSlice({
     [getServices.fulfilled](state, action) {
       state.isLoadingServices = false;
       state.errorServices = null;
-      state.Services = action.payload;
+      state.services = action.payload;
     },
   },
 });
