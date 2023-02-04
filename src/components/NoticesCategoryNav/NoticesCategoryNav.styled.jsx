@@ -113,7 +113,7 @@ export const AddPetStyled = styled.button`
 
         div {
             margin-left: 12px;
-            /* padding: 10px; */
+            height: 32px;
             background-color: #f06b19;
             border-radius: 50%;
             

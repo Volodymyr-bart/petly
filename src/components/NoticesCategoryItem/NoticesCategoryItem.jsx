@@ -1,7 +1,7 @@
 import { AiFillDelete, AiOutlineHeart } from "react-icons/ai";
 import { AddToFavoriteStyled, ButtonStyled, CategoryStyled, NoticesCategoryItemStyled } from "./NoticesCategoryItem.styled";
 
-const NoticesCategoryItem = () => {
+const NoticesCategoryItem = ({category}) => {
 
 
   return (
@@ -13,7 +13,7 @@ const NoticesCategoryItem = () => {
         height={288}
       />
 
-      <CategoryStyled>In good hands</CategoryStyled>
+      <CategoryStyled>{category}</CategoryStyled>
       <AddToFavoriteStyled><AiOutlineHeart size={28} color={'#F59256'} stroke={'black'} /></AddToFavoriteStyled>
       {/* <AddPetStyled><div>+</div> Add pet</AddPetStyled> */}
 
