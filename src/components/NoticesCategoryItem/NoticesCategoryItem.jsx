@@ -8,7 +8,7 @@ const NoticesCategoryItem = ({category}) => {
     <NoticesCategoryItemStyled>
       <img
         src="https://oir.mobi/uploads/posts/2021-04/1619814925_21-oir_mobi-p-mordochka-kotenka-zhivotnie-krasivo-foto-25.jpg"
-        alt="pat"
+        alt="pet"
         width={280}
         height={288}
       />

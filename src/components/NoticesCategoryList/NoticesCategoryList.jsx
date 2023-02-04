@@ -1,17 +1,19 @@
 import NoticesCategoryItem from 'components/NoticesCategoryItem/NoticesCategoryItem';
+import { useParams } from 'react-router';
 import NoticesCategoryListStyled from './NoticesCategoryList.styled';
 
-const NoticesCategoriesList = ({category = ''}) => {
- 
+const NoticesCategoriesList = () => {
+  
+  const { categoryName } = useParams()
 
-  // console.log(category);
+  // console.log(categoryName);
 
 
   return (
     <NoticesCategoryListStyled>
       
       {
-        [0, 1, 2, 3, 4, 5].map((item, i) => <NoticesCategoryItem key={i} category={category} />)
+        [0, 1, 2, 3, 4, 5].map((item, i) => <NoticesCategoryItem key={i} category={categoryName} />)
       }
 
      
