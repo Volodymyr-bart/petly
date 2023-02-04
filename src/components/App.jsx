@@ -32,22 +32,8 @@ export const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/news" element={<NewsPage />} />
-          <Route path="/notices" element={<NoticesPage />}>            
-            <Route path="" element={<NoticesCategoryList category='sell' />} />
-            <Route path="lost-found" element={<NoticesCategoryList category='lost/found' />} />
-            <Route path="for-free" element={<NoticesCategoryList category='forFree' />} />
-            <Route
-              path="favorite"
-              element={
-                <PrivateRoute redirectTo="/notices" component={<NoticesCategoryList category='favorite' />} />
-              }
-                />
-            <Route
-              path="own"
-              element={
-                <PrivateRoute redirectTo="/notices" component={<NoticesCategoryList category='own' />} />
-              }
-            />
+          <Route path="/notices" element={<NoticesPage />}>
+            <Route path=":categoryName" element={<NoticesCategoryList />} />            
         </Route>
 
         <Route path="/friends" element={<OurFriendsPage />} />

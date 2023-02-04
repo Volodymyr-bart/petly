@@ -44,6 +44,7 @@ export const NavLinkStyled = styled(NavLink)`
     &.active {
         background-color: #F59256;
         color: #ffffff;
+        pointer-events: none;
     }
 
     @media (min-width: 768px) {
