@@ -1,8 +1,10 @@
+import Modal from "components/Modal/Modal";
+import { useToggle } from "hooks";
 import { AiFillDelete, AiOutlineHeart } from "react-icons/ai";
 import { AddToFavoriteStyled, ButtonStyled, CategoryStyled, NoticesCategoryItemStyled } from "./NoticesCategoryItem.styled";
 
 const NoticesCategoryItem = ({category}) => {
-
+const { isOpen, open, close } = useToggle()
 
   return (
     <NoticesCategoryItemStyled>
@@ -24,7 +26,8 @@ const NoticesCategoryItem = ({category}) => {
         <li><p>Age:</p><p>one year old</p></li>
       </ul>
 
-      <ButtonStyled type="button" onClick={() => console.log('v')}>Learn more</ButtonStyled>
+      <ButtonStyled type="button" onClick={open}>Learn more</ButtonStyled>
+      <Modal isOpen={isOpen} onClose={close}><div>Text</div></Modal>
       <ButtonStyled type="button"><span>Delete</span> <AiFillDelete size={20} color={'#FF6101'} /></ButtonStyled>
 
     </ NoticesCategoryItemStyled>    
