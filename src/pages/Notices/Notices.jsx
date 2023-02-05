@@ -1,6 +1,6 @@
 
 
-import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
+import Search from 'components/Search/Search';
 import NoticesCategoryNav from 'components/NoticesCategoryNav/NoticesCategoryNav';
 
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
@@ -30,7 +30,7 @@ const Notices = () => {
     <NoticesStyled>
       <h1>Find your favorite pet</h1>
       
-      <NoticesSearch />
+      <Search />
       
       <NoticesCategoryNav />
 
