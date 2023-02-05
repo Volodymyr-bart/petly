@@ -5,6 +5,8 @@ import { OurFriendsListUl } from './OurFriendsList.styled';
 
 const OurFriendsList = () => {
 
+      
+
     const friends = useSelector(selectAllServices);
 
     // console.log(friends);

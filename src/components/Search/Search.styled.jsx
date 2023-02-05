@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const NoticesSearchStyled = styled.div`
+export const SearchStyled = styled.div`
     position: relative;
 
     input {
@@ -21,12 +21,16 @@ const NoticesSearchStyled = styled.div`
 
     button {
         position: absolute;
-        top: 10px;
+        top: 6px;
         right: 12px;
 
+        height: 28px;
         padding: 0;
+        
         background-color: #ffffff;
         border: none;
+
+        cursor: pointer;
     }
 
     @media (min-width: 768px) {
@@ -57,5 +61,3 @@ const NoticesSearchStyled = styled.div`
         }
     }
 `;
-
-export default NoticesSearchStyled;

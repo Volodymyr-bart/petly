@@ -1,10 +1,15 @@
+
+import { LogoLink, LogoBlack, LogoAccent } from './Logo.styled';
+
 const Logo = () => {
   return (
-    <>
-      <span>
-        pe<span>t</span>ly
-      </span>
-    </>
+    <LogoLink aria-current="page" to="/">
+      <LogoBlack>
+        pe
+        <LogoAccent>t</LogoAccent>
+        ly
+      </LogoBlack>
+    </LogoLink>
   );
 };
 

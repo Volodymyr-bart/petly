@@ -1,16 +1,13 @@
+import Logo from 'components/Logo/Logo';
 import { Navigation } from '../Navigation/Navigation';
-import { UserMenu } from '../UserMenu/UserMenu';
-import { AuthNav } from '../AuthNav/AuthNav';
-import { useAuth } from 'hooks';
-import css from './Header.module.css';
+import { HeaderStyled } from './Header.styled';
 
 export const Header = () => {
-  const { isLoggedIn } = useAuth();
 
   return (
-    <header className={css.header}>
+    <HeaderStyled>
+      <Logo/>
       <Navigation />
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    </header>
+    </HeaderStyled>
   );
 };

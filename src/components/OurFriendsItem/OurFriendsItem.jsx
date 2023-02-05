@@ -4,11 +4,17 @@ import {
     FriendsStyledDiv, 
     FriendsStyledImage, 
     FriendsStyledUL,
+    StyledLink,
+    StyledNoInfo,
+    FriendsInfoStyledLi,
+    FriendsInfoStyledP,
 } from "./OurFriendsItem.styled";
 
-const OurFriendsItem = ({friend}) => {
-    const { title, url, address, imageUrl, workDays, phone, email } = friend;
 
+const noInfo = '-------------------'
+
+const OurFriendsItem = ({friend}) => {
+    const { title, url, address, addressUrl, imageUrl, workDays, phone, email } = friend;
     return (
         <FriendsStyledLi>
         <FriendsStyledA href={url} target="_blank" rel="noreferrer">
@@ -23,36 +29,56 @@ const OurFriendsItem = ({friend}) => {
             )}
 
             <FriendsStyledUL>
-            <li>
-                <p>Time</p>
+            <FriendsInfoStyledLi>
+                <FriendsInfoStyledP>Time</FriendsInfoStyledP>
+                {/* {checkField("time", workDays)} */}
                 {workDays ? (`${workDays.from} - ${workDays.to}`) : (
-                    <div>--------</div>
+                    <StyledNoInfo>{noInfo}</StyledNoInfo>
                 )}
-                {/* <OurFriendsTimeList
-                workDays={workDays}
-                dayOfTheWeek={DAY_OF_THE_WEEK}
-                >
-                <Box>
-                    <Typography>Time:</Typography>
-                    {checkField("time", workDays)}
-                </Box>
-                </OurFriendsTimeList> */}
-            </li>
+            </FriendsInfoStyledLi>
 
-            <li>
-                <p>Address:</p>
-                {address}
-            </li>
+            <FriendsInfoStyledLi>
+                <FriendsInfoStyledP>Address:</FriendsInfoStyledP>
+                {addressUrl ? (
+              <StyledLink href={addressUrl} target="_blank" rel="noreferrer">
+                {address || noInfo}
+              </StyledLink>
+            ) : (
+              <StyledNoInfo>{address || noInfo}</StyledNoInfo>
+            )}
+            </FriendsInfoStyledLi>
 
-            <li>
-                <p>Email:</p>
+            <FriendsInfoStyledLi>
+                <FriendsInfoStyledP>Email:</FriendsInfoStyledP>
+                {email ? (
+              <StyledLink
+                isNotDecorated={true}
+                href={`mailto:${email}`}
+                target="blank"
+                rel="noreferrer"
+              >
                 {email}
-            </li>
+              </StyledLink>
+            ) : (
+                <StyledNoInfo>{noInfo}</StyledNoInfo>
+            )}
+            </FriendsInfoStyledLi>
 
-            <li>
-                <p>Phone:</p>
+            <FriendsInfoStyledLi>
+                <FriendsInfoStyledP>Phone:</FriendsInfoStyledP>
+                {phone ? (
+              <StyledLink
+                isNotDecorated={true}
+                href={`tel:${phone}`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {phone}
-            </li>
+              </StyledLink>
+            ) : (
+                <StyledNoInfo>{noInfo}</StyledNoInfo>
+            )}
+            </FriendsInfoStyledLi>
             </FriendsStyledUL>
         </FriendsStyledDiv>
         </FriendsStyledLi>
