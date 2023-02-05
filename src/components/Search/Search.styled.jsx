@@ -29,6 +29,8 @@ export const SearchStyled = styled.div`
         
         background-color: #ffffff;
         border: none;
+
+        cursor: pointer;
     }
 
     @media (min-width: 768px) {

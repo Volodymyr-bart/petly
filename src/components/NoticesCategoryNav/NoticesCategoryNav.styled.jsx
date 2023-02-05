@@ -38,7 +38,7 @@ export const NavLinkStyled = styled(NavLink)`
 
     :hover,
     :focus {
-        background-color: #dcd1d1;
+        background-color: rgb(245, 146, 86, 0.5);
     }
 
     &.active {
@@ -86,7 +86,7 @@ export const AddPetStyled = styled.button`
 
     :hover,
     :focus {
-        background-color: #f06b19;
+        background-color: rgb(245, 146, 86, 0.5);
     }
 
     @media (min-width: 768px) {

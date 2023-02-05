@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+import FullHeart from "../../noticesImage/fullheart.png"
+import EmptyHeart from "../../noticesImage/emptyheart.png"
+import FullBucket from "../../noticesImage/fullbucket.png"
+import EmptyBucket from "../../noticesImage/emptybucket.png"
+
 export const NoticesCategoryItemStyled = styled.li`
 
     position: relative;
@@ -12,6 +17,13 @@ export const NoticesCategoryItemStyled = styled.li`
 
     box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
     border-radius: 0px 0px 20px 20px;
+
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    :hover,
+    :focus {
+        transform: scale(1.04);        
+    }
 
 
     h2 {
@@ -38,19 +50,20 @@ export const NoticesCategoryItemStyled = styled.li`
     }
 
     li {
+        height: 22px;
        
         font-weight: 500;
         font-size: 16px;
         line-height: 1.4;
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        /* text-align: center; */
+        display: flex;        
+        overflow: hidden;
 
-      
+        color: #111111;        
+    }    
 
-        color: #111111;
+    p {
+        text-align: left;        
     }
 
     span {
@@ -113,27 +126,30 @@ export const ButtonThumbStyled = styled.div`
 export const ButtonStyled = styled.button`
     display: inline-flex;
     align-items: center;
-    justify-content: center;   
-    width: calc(100% - 40px);
-    /* margin-bottom: 12px; */
-    padding-top: 8px;
-    padding-bottom: 8px;    
+    justify-content: start;   
+    width: 248px;    
+    padding: 8px 80px;   
     border: 2px solid #F59256;
     border-radius: 40px;
+
     background-color: #FFFFFF;
+    background-image: url(${EmptyBucket});
+    background-size: 16px;
+    background-position: 147px;
+    background-repeat: no-repeat;
+    color: #F59256;
+
     cursor: pointer;
 
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
                 
 
     :hover,
     :focus {
-        background-color: #dcd1d1;
-    }
-
-    @media (min-width: 768px) {
-        width: 248px;
-    }
+        border-color: #FF6101;
+        color: #FF6101;
+        background-image: url(${FullBucket});
+    } 
 `;
 
 
@@ -170,11 +186,11 @@ export const AddToFavoriteStyled = styled.button`
     border-radius: 50%;
     border: none;
     background-color: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(2px);
-    /* background-image: url('../../noticesImage/empty-heart.png');
-    background-size: contain;
+    backdrop-filter: blur(2px);    
+    background-image: url(${p => p.isFavorite ? FullHeart : EmptyHeart});
+    background-size: 24px;
     background-position: center;
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
     cursor: pointer;
 
 `;
