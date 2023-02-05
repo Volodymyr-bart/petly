@@ -10,9 +10,19 @@ export const ServiceTitle = styled.h1`
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 700;
-  font-size: 48px;
-  line-height: 66px;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
+  
   @media (min-width: 768px) {
     margin: 70px auto 40px;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 66px;
+  };
+
+  @media (min-width: 1280px) {
+    margin: 61px auto 60px;
   }
+
 `;
