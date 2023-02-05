@@ -43,6 +43,7 @@ export const NavLink = styled(Link)`
     font-size: 20px;
   }
   &.active {
+    pointer-events: none;
     color: #F59256;
     text-decoration-line: underline;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
