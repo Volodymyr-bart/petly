@@ -26,7 +26,7 @@ export const NavLink = styled(Link)`
   flex-direction: column;
   cursor: pointer;
   font-size: 32px;
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Manroe';
   color: #181C27;
   letter-spacing: 0.04em;
   margin-left: auto;
@@ -49,7 +49,7 @@ export const NavLink = styled(Link)`
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
-export const NavigationMenu = styled.div`
+export const NavMenu = styled.div`
   display: flex;
   flex-direction: column;
   @media (min-width: 1280px) {
@@ -86,11 +86,11 @@ padding: 0;
   div {
     width: 2rem;
     height: 0.25rem;
-    background: #111111;
+    background: ${({ open }) => (open ? '#0D0C1D' : '#111111')};
     border-radius: 10px;
-    /* transition: all 0.3s linear; */
+    transition: all 0.3s linear;
     position: relative;
-    /* transform-origin: 1px;
+    transform-origin: 1px;
     :first-child {
       transform: ${({ open }) => (open ? 'rotate(45deg)' : 'rotate(0)')};
     }
@@ -100,6 +100,6 @@ padding: 0;
     }
     :nth-child(3) {
       transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
-    } */
+    }
   }
 `;

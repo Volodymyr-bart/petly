@@ -1,12 +1,15 @@
-import { NavLink } from 'react-router-dom';
+
+import { LogoLink, LogoBlack, LogoAccent } from './Logo.styled';
 
 const Logo = () => {
   return (
-    <NavLink to="/">
-      <span>
-        pe<span>t</span>ly
-      </span>
-    </NavLink>
+    <LogoLink aria-current="page" to="/">
+      <LogoBlack>
+        pe
+        <LogoAccent>t</LogoAccent>
+        ly
+      </LogoBlack>
+    </LogoLink>
   );
 };
 

@@ -1,62 +1,60 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
+import React, { useState } from 'react';
+import { PrimaryNav, SecondaryNav, NavLink, NavMenu, AuthMenu, MobileContainer, TabletContainer, StyledBurger } from "./Navigation.styled";
+import {AuthNav} from 'components/AuthNav/AuthNav';
 import { useAuth } from 'hooks';
-import { AuthNav } from 'components/AuthNav/AuthNav';
-import { Modal} from "components/ModalMenu/Modal";
-import Logo from 'components/Logo/Logo';
-import { NavigationMenu, AuthMenu, MobileContainer, SecondaryNav, PrimaryNav, TabletContainer, StyledBurger } from './Navigation.styled';
+import { useMediaQuery } from 'react-responsive';
+import { Modal } from "components/ModalMenu/Modal";
 import { UserMenu } from './../UserMenu/UserMenu';
 
 export const Navigation = () => {
-  const { isLoggedIn } = useAuth();
 
-  const isMobScreen = useMediaQuery({ maxWidth: 767 });
-  const isTabScreen = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
-  const isDeskScreen = useMediaQuery({ minWidth: 1280 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+  const isDesktop = useMediaQuery({ minWidth: 1280 });
+
+  const { isLoggedIn } = useAuth();
 
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      {isDeskScreen && <>
-        <Logo />
-      <NavigationMenu>
-        <NavLink  to="/news">
-          News
-        </NavLink>
-        <NavLink  to="/notices">
-          Find pet
-        </NavLink>
-        <NavLink  to="/friends">
-          Our friends
-        </NavLink>
-        </NavigationMenu>
+      {
+        isDesktop &&
+    <>
+        <PrimaryNav>
+        <NavMenu>
+          <NavLink to="/news">News</NavLink>
+          <NavLink to="/notices">Find pet</NavLink>
+          <NavLink to="/friends">Our friends</NavLink>
+        </NavMenu>
+      </PrimaryNav>
+      <SecondaryNav>
         {isLoggedIn ? <UserMenu /> : <AuthMenu> <AuthNav /> </AuthMenu>}
-      </>
+      </SecondaryNav>
+        </>
       }
-      {isMobScreen && showModal && <Modal onClose={setShowModal}>
+      
+      {isMobile && showModal && <Modal onClose={setShowModal}>
         <MobileContainer>
           <SecondaryNav>{isLoggedIn ? <UserMenu /> : <AuthMenu> <AuthNav /> </AuthMenu>}</SecondaryNav>
           <PrimaryNav>
-            <NavigationMenu>
+            <NavMenu>
               <NavLink to="/news">News</NavLink>
               <NavLink to="/notices">Find pet</NavLink>
               <NavLink to="/friends">Our friends</NavLink>
-            </NavigationMenu>
+            </NavMenu>
           </PrimaryNav>
         </MobileContainer>
       </Modal>}
 
-      {isTabScreen &&
-        <SecondaryNav><Logo />{isLoggedIn ? <UserMenu /> : <AuthMenu> <AuthNav /> </AuthMenu>}</SecondaryNav>}
-      {isTabScreen && showModal && <Modal onClose={setShowModal}>
+      {isTablet && <SecondaryNav>{isLoggedIn ? <UserMenu /> : <AuthMenu> <AuthNav /> </AuthMenu>}</SecondaryNav>}
+      {isTablet && showModal && <Modal onClose={setShowModal}>
         <TabletContainer>
-          <NavigationMenu>
+          <NavMenu>
             <NavLink to="/news">News</NavLink>
             <NavLink to="/notices">Find pet</NavLink>
             <NavLink to="/friends">Our friends</NavLink>
-          </NavigationMenu>
+          </NavMenu>
         </TabletContainer>
       </Modal>}
       
