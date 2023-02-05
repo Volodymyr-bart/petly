@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://petly-mmyb.onrender.com';
+axios.defaults.baseURL = 'https://petly-mmyb.onrender.com/api';
 
 export const getServices = createAsyncThunk(
   'services/getServices',
