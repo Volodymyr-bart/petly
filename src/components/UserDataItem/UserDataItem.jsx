@@ -1,15 +1,45 @@
-import { Item, Name, Info, EditInfo } from './UserDataItem.styled';
+import {
+  Item,
+  Name,
+  Info,
+  EditInfo,
+  SendInfo,
+  DataInput,
+} from './UserDataItem.styled';
 import { FaPen } from 'react-icons/fa';
+import { MdOutlineDone } from 'react-icons/md';
 
-const UserDataItem = ({ dataType, data }) => {
-  console.log(data);
+const UserDataItem = ({
+  dataType,
+  data,
+  handleEdit,
+  itemInProcess,
+  handleChange,
+  handleSubmit,
+}) => {
   return (
     <Item>
       <Name>{dataType}:</Name>
-      <Info>{data}</Info>
-      <EditInfo>
-        <FaPen />
-      </EditInfo>
+      {itemInProcess !== dataType && (
+        <>
+          <Info>{data}</Info>
+          <EditInfo
+            itemInProcess={itemInProcess}
+            type="button"
+            onClick={() => handleEdit(dataType)}
+          >
+            <FaPen />
+          </EditInfo>
+        </>
+      )}
+      {itemInProcess === dataType && (
+        <>
+          <DataInput onChange={handleChange} />
+          <SendInfo type="button" onClick={() => handleSubmit(dataType)}>
+            <MdOutlineDone />
+          </SendInfo>
+        </>
+      )}
     </Item>
   );
 };

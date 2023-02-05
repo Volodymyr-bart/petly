@@ -33,7 +33,7 @@ const petsData = [
   },
 ];
 
-const PetsList = () => {
+const PetsList = ({ handleDeletePet }) => {
   return (
     <PetsListStyled>
       {petsData.map(item => {
@@ -43,7 +43,7 @@ const PetsList = () => {
             <DataList>
               <DataItem>
                 Pet Name: <RegularText>{item.name}</RegularText>
-                <Delete>
+                <Delete onClick={handleDeletePet}>
                   <RiDeleteBin6Fill />
                 </Delete>
               </DataItem>
