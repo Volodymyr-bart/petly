@@ -1,20 +1,30 @@
 import styled from "styled-components";
 
+import FullHeart from "../../noticesImage/fullheart.png"
+import EmptyHeart from "../../noticesImage/emptyheart.png"
+import FullBucket from "../../noticesImage/fullbucket.png"
+import EmptyBucket from "../../noticesImage/emptybucket.png"
+
 export const NoticesCategoryItemStyled = styled.li`
 
     position: relative;
 
+    height: 606px;
     margin-bottom: 32px;
 
-    background: #FFFFFF;
+    background-color: #FFFFFF;
     text-align: center;
 
     box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
-    border-radius: 0px 0px 20px 20px;    
+    border-radius: 0px 0px 20px 20px;
 
-    img {
-        margin-bottom: 20px;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    :hover,
+    :focus {
+        transform: scale(1.04);        
     }
+
 
     h2 {
         text-align: left;
@@ -40,19 +50,20 @@ export const NoticesCategoryItemStyled = styled.li`
     }
 
     li {
+        height: 22px;
        
         font-weight: 500;
         font-size: 16px;
         line-height: 1.4;
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        /* text-align: center; */
+        display: flex;        
+        overflow: hidden;
 
-      
+        color: #111111;        
+    }    
 
-        color: #111111;
+    p {
+        text-align: left;        
     }
 
     span {
@@ -78,31 +89,67 @@ export const NoticesCategoryItemStyled = styled.li`
     }
 `;
 
+export const ImageThumbStyled = styled.div`
+    height: 288px;
+    width: 100%;
+    margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+        width: 336px;       
+    }
+
+    @media (min-width: 1280px) {
+        width: 288px;        
+    }
+`;
+
+export const ButtonThumbStyled = styled.div`
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+
+        height: 78px;
+
+    @media (min-width: 768px) {
+               
+    }
+
+    @media (min-width: 1280px) {
+                
+    }
+`;
+
 
 export const ButtonStyled = styled.button`
     display: inline-flex;
     align-items: center;
-    justify-content: center;   
-    width: calc(100% - 40px);
-    margin-bottom: 12px;
-    padding-top: 8px;
-    padding-bottom: 8px;    
+    justify-content: start;   
+    width: 248px;    
+    padding: 8px 80px;   
     border: 2px solid #F59256;
     border-radius: 40px;
-    background: #FFFFFF;
+
+    background-color: #FFFFFF;
+    background-image: url(${EmptyBucket});
+    background-size: 16px;
+    background-position: 147px;
+    background-repeat: no-repeat;
+    color: #F59256;
+
     cursor: pointer;
 
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
                 
 
     :hover,
     :focus {
-        background-color: #dcd1d1;
-    }
-
-    @media (min-width: 768px) {
-        width: 248px;
-    }
+        border-color: #FF6101;
+        color: #FF6101;
+        background-image: url(${FullBucket});
+    } 
 `;
 
 
@@ -123,7 +170,7 @@ export const CategoryStyled = styled.div`
     line-height: 1.25;    
     letter-spacing: 0.04em;
     color: #111111;
-    background: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(2px);
 
 `;
@@ -138,8 +185,12 @@ export const AddToFavoriteStyled = styled.button`
     padding: 8px;
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(2px);    
+    background-image: url(${p => p.isFavorite ? FullHeart : EmptyHeart});
+    background-size: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
     cursor: pointer;
 
 `;
