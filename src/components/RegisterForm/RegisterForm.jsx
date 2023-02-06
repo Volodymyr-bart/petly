@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-import { Formik, FormikValues, FormikConfig } from 'formik';
+import { Formik } from 'formik';
 import { RegisterFirstStep } from './RegisterFirstStep';
 import React, { useState } from 'react';
 import { RegisterSecondStep } from './RegisterSecondStep';

@@ -1,7 +1,4 @@
-
-import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Button, FormStyled, FieldStyled,  ErrorMessageStyled, TextStyled, InputContainer, ButtonBox, ButtonBack} from './RegisterForm.styled';
+import { FieldStyled,  ErrorMessageStyled, InputContainer } from './RegisterForm.styled';
 
 export const RegisterSecondStep = () => {
   
