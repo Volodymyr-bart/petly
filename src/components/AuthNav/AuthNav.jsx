@@ -4,12 +4,12 @@ export const AuthNav = () => {
   return (
     <>
       <AuthNavItem>
-        <NavBtnLink  to="/register">
+        <NavBtnLink  to="/login">
         Log In
         </NavBtnLink>
       </AuthNavItem>
       <AuthNavItem>
-        <NavBtnLink  to="/login">
+        <NavBtnLink  to="/register">
         Register
       </NavBtnLink>
       </AuthNavItem>
