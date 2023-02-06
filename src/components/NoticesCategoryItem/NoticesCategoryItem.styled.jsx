@@ -4,6 +4,7 @@ import FullHeart from "../../noticesImage/fullheart.png"
 import EmptyHeart from "../../noticesImage/emptyheart.png"
 import FullBucket from "../../noticesImage/fullbucket.png"
 import EmptyBucket from "../../noticesImage/emptybucket.png"
+import ImgPlaceholder from "../../noticesImage/cat-placeholder.png"
 
 export const NoticesCategoryItemStyled = styled.li`
 
@@ -22,7 +23,7 @@ export const NoticesCategoryItemStyled = styled.li`
 
     :hover,
     :focus {
-        transform: scale(1.04);        
+        transform: scale(1.01);        
     }
 
 
@@ -93,6 +94,12 @@ export const ImageThumbStyled = styled.div`
     height: 288px;
     width: 100%;
     margin-bottom: 20px;
+
+    background-color: #FFFFFF;
+    background-image: url(${ImgPlaceholder});
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 
     @media (min-width: 768px) {
         width: 336px;       
@@ -192,5 +199,12 @@ export const AddToFavoriteStyled = styled.button`
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+
+    transition: background-image 250ms cubic-bezier(0.4, 0, 0.2, 1);                
+
+    :hover,
+    :focus {        
+        background-image: url(${FullHeart});
+    }
 
 `;

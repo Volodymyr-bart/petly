@@ -7,6 +7,7 @@ import { searchNoticesSet } from 'redux/notices/searchSlice';
 
 import Search from 'components/Search/Search';
 import NoticesCategoryNav from 'components/NoticesCategoryNav/NoticesCategoryNav';
+import { Categories } from 'utils/noticesCatList';
 
 
 const Notices = () => {
@@ -16,9 +17,11 @@ const Notices = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-   if (!isLoggedIn && (categoryName === 'favorite' || categoryName === 'own')) navigate('sell');
+    if (!isLoggedIn &&
+      (categoryName === Categories.FAVORITE_ADS || categoryName === Categories.MY_ADS))
+      navigate(Categories.SELL);    
 
-    if (!['sell', 'lost-found', 'for-free', 'favorite', 'own'].includes(categoryName)) navigate('sell');
+    if (!Object.values(Categories).includes(categoryName)) navigate(Categories.SELL);
    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryName, isLoggedIn]);
