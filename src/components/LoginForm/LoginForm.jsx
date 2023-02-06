@@ -1,33 +1,51 @@
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { logIn } from 'redux/auth/operations';
-import css from './LoginForm.module.css';
+import { Formik } from 'formik';
+import { Button, FormStyled, FieldStyled,  ErrorMessageStyled, TextStyled, InputContainer} from './LoginForm.styled';
+const Joi = require("joi");
+
+const emailRegexp = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+const passRegexp = /^\S+$/;
+
+const initialValues = {
+  email: '',
+  password: ''
+}
 
 export const LoginForm = () => {
+
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  const handleSubmit = (values, {resetForm}) => {
+    console.log(values)
     dispatch(
       logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        email: values.email,
+        password: values.password,
       })
     );
-    form.reset();
+    resetForm();   
   };
 
+  const loginSchema = Joi.object({
+    email: Joi.string().regex(emailRegexp).required(),
+    password: Joi.string().regex(passRegexp).min(7).max(32).required(),
+  });
+
   return (
-    <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <label className={css.label}>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label className={css.label}>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={loginSchema}>
+          <FormStyled>
+            <InputContainer>
+              <FieldStyled type="email" name="email" placeholder='Email'/>
+              <ErrorMessageStyled name="email" component="span"/>
+              <FieldStyled type="password" name="password" placeholder='Password'/>
+              < ErrorMessageStyled name="password" component="span"/>
+              </InputContainer>
+            <Button type="submit">Log in</Button>
+            <TextStyled>Don't have an account? <NavLink to="/register">Register</NavLink></TextStyled>
+          </FormStyled>
+        </Formik>
   );
 };
