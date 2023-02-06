@@ -18,16 +18,16 @@ const NotiesCategoryNav = () => {
           <NavLinkStyled to="lost-found">lost/found</NavLinkStyled>
         </li>
         <li>
-          <NavLinkStyled to="for-free">in good hands</NavLinkStyled>
+          <NavLinkStyled to="in-good-hands">in good hands</NavLinkStyled>
         </li>
         {
           isLoggedIn && 
           <>
             <li>
-              <NavLinkStyled to="favorite">favorite ads</NavLinkStyled>
+              <NavLinkStyled to="favorite-ads">favorite ads</NavLinkStyled>
             </li>
             <li>
-              <NavLinkStyled to="own">my ads</NavLinkStyled>
+              <NavLinkStyled to="my-ads">my ads</NavLinkStyled>
             </li>
           </>            
         }
