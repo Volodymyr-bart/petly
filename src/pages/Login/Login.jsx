@@ -1,15 +1,14 @@
-import { Helmet } from 'react-helmet';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { AuthContainerStyled } from 'components/AuthContainer/AuthContainer.styled';
-import { TitleStyled, Container } from './Login.styled'
+import { TitleStyled, Container } from './Login.styled';
 
 export default function Login() {
   return (
     <Container>
-    <AuthContainerStyled>
+      <AuthContainerStyled>
         <TitleStyled>Login</TitleStyled>
-      <LoginForm />
-    </AuthContainerStyled>
+        <LoginForm />
+      </AuthContainerStyled>
     </Container>
   );
 }
