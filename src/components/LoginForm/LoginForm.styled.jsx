@@ -50,7 +50,6 @@ padding: 10px 28px;
 background: #F59256;
 border-radius: 40px;
 border: none;
-// font-family: 'Manrope';
 font-weight: 500;
 font-size: 20px;
 line-height: 1.35;

@@ -1,12 +1,11 @@
-// import { useDispatch } from 'react-redux';
-// import { register } from 'redux/auth/operations';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/operations';
 import { Formik, FormikValues, FormikConfig } from 'formik';
 import { RegisterFirstStep } from './RegisterFirstStep';
 import React, { useState } from 'react';
 import { RegisterSecondStep } from './RegisterSecondStep';
 import * as yup from 'yup';
 import "yup-phone";
-// import { Button, FormStyled, FieldStyled,  ErrorMessageStyled, TextStyled, InputContainer, ButtonBox} from './RegisterForm.styled';
 import { NavLink } from 'react-router-dom';
 import { Button, FormStyled, TextStyled, ButtonBox, ButtonBack} from './RegisterForm.styled';
 
@@ -41,22 +40,20 @@ const schema = yup.object({
 
 export const RegisterForm = () => {
   const [isLastStep, setisLastStep] = useState(false);
- 
-  
-  // const dispatch = useDispatch();
+
+  const dispatch = useDispatch();
   
   const handleSubmit = (values, {resetForm}) => {
-    console.log(values)
-    // dispatch(
-    //   register({
-    //     email: values.email,
-    //     password: values.password,
-    //     name: values.name,
-    //     address: values.address,
-    //     phone: values.phone
-    //   })
-    // );
-    // resetForm();   
+    dispatch(
+      register({
+        email: values.email,
+        password: values.password,
+        name: values.name,
+        address: values.address,
+        phone: values.phone
+      })
+    );
+    resetForm();   
   };
 
  
@@ -68,7 +65,8 @@ export const RegisterForm = () => {
 
    >
     {({handleChange, values, errors, touched, setFieldTouched}) => {
-  
+    
+
       const handleClickButton = () => {
 
         if ((values.email === '' && values.password === '' && values.confirmPassword === '') && !(touched.email && touched.password && touched.confirm)) {
@@ -82,12 +80,18 @@ export const RegisterForm = () => {
 
         setisLastStep(true)  
       }
+
+
+
+
      return (<FormStyled autoComplete='off' >
         {!isLastStep ?  <RegisterFirstStep /> : <RegisterSecondStep setFieldTouched={setFieldTouched}/>}
        
         <ButtonBox>
+
             {isLastStep ? (<><Button type="submit">Register</Button>
-            <ButtonBack type="button" onClick={() => setisLastStep(false)}>Back</ButtonBack></>) : <Button type="button" onClick={() => handleClickButton()}>Next</Button>}
+            <ButtonBack type="button" onClick={() => setisLastStep(false)}>Back</ButtonBack></>) : <Button type="button" onClick={handleClickButton}>Next</Button>}
+
         </ButtonBox>
         <TextStyled>Already have an account? <NavLink to="/login">login</NavLink></TextStyled>
       </FormStyled>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const AuthContainerStyled = styled.div`
-   
+   margin: 0;
   @media screen and (min-width: 768px) {
     width: 608px;
     padding: 60px 80px 40px 80px;
