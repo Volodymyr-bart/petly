@@ -29,7 +29,7 @@ export const ModalContent = styled.div`
   border-radius: 40px;
   background-color: #FFFFFF;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
-  height: 400px;
+  min-height: 540px;
   width: 704px;
 `;
 
