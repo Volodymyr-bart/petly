@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
+import { createPortal } from "react-dom";
 import { HiX } from "react-icons/hi";
 import { ModalBackdrop, ModalBtn, ModalContent } from './Modal.styled';
 
-const Modal = ({ children, onClose, isOpen }) => {
+const modalRoot = document.getElementById('modal-univers');
+
+export const Modal = ({ children, onClose, isOpen }) => {
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   });
 
@@ -22,14 +25,14 @@ const Modal = ({ children, onClose, isOpen }) => {
       onClose();
     }
   };
-  return (
-    <ModalBackdrop className={isOpen ? "modal active" : "modal"} onClick={handleBackdropClick}>
+
+  return createPortal(
+    <ModalBackdrop  className={isOpen ? "modal active" : "modal"} onClick={handleBackdropClick}>
       <ModalContent>
         <ModalBtn type="ModalBtn" onClick={onClose}><HiX color='black' width={20}/></ModalBtn>
         {children}
       </ModalContent>
-    </ModalBackdrop>
-  );
+    </ModalBackdrop>,
+    modalRoot);
 };
 
-export default Modal;
