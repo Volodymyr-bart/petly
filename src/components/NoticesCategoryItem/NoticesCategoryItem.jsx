@@ -1,5 +1,7 @@
 import { Modal } from 'components/Modal/Modal';
 import { useToggle } from 'hooks';
+import { useAuth } from 'hooks';
+
 import {
   AddToFavoriteStyled,
   ButtonStyled,
@@ -10,7 +12,21 @@ import {
 } from './NoticesCategoryItem.styled';
 
 const NoticesCategoryItem = ({ category }) => {
+
   const { isOpen, open, close } = useToggle();
+  const { isLoggedIn } = useAuth();
+
+  const addToFavoriteMethod = () => {
+    const fav = false;
+    // const isLoggedIn = true;
+    if (!isLoggedIn) {
+      console.log('You have to be loggedIn');
+    } else if (!fav) {
+      console.log('now it must be added to your favorites');
+    } else {
+      console.log('remove from favorites');
+    }
+  }
 
   return (
     <NoticesCategoryItemStyled>
@@ -24,7 +40,10 @@ const NoticesCategoryItem = ({ category }) => {
       </ImageThumbStyled>
 
       <CategoryStyled>{category}</CategoryStyled>
-      <AddToFavoriteStyled isFavorite={false} />
+      <AddToFavoriteStyled
+        isFavorite={false}
+        onClick={addToFavoriteMethod}
+      />
 
       <h2>Cute cat looking for a home</h2>
       <ul>
