@@ -17,15 +17,24 @@ const newsSlice = createSlice({
     isLoadingNews: false,
     errorNews: null,
   },
-  extraReducers: {
-    [getNews.pending]: handlePending,
-    [getNews.rejected]: handleRejected,
-    [getNews.fulfilled](state, action) {
-      state.isLoadingNews = false;
-      state.errorNews = null;
-      state.news = action.payload;
-    },
-  },
+  extraReducers: builder =>
+    builder
+      .addCase(getNews.pending, handlePending)
+      .addCase(getNews.rejected, handleRejected)
+      .addCase(getNews.fulfilled, (state, action) => {
+        state.isLoadingNews = false;
+        state.errorNews = null;
+        state.news = action.payload;
+      }),
+  // extraReducers: {
+  //   [getNews.pending]: handlePending,
+  //   [getNews.rejected]: handleRejected,
+  //   [getNews.fulfilled](state, action) {
+  //     state.isLoadingNews = false;
+  //     state.errorNews = null;
+  //     state.news = action.payload;
+  //   },
+  // },
 });
 
 export const newsReducer = newsSlice.reducer;
