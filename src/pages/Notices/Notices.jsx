@@ -19,7 +19,7 @@ const Notices = () => {
   useEffect(() => {
     if (!isLoggedIn &&
       (categoryName === Categories.FAVORITE_ADS || categoryName === Categories.MY_ADS))
-      navigate(Categories.SELL);    
+      navigate('/login');    
 
     if (!Object.values(Categories).includes(categoryName)) navigate(Categories.SELL);
    
