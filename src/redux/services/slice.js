@@ -17,15 +17,24 @@ const servicesSlice = createSlice({
     isLoadingServices: false,
     errorNews: null,
   },
-  extraReducers: {
-    [getServices.pending]: handlePending,
-    [getServices.rejected]: handleRejected,
-    [getServices.fulfilled](state, action) {
-      state.isLoadingServices = false;
-      state.errorServices = null;
-      state.services = action.payload;
-    },
-  },
+  extraReducers: builder =>
+    builder
+      .addCase(getServices.pending, handlePending)
+      .addCase(getServices.rejected, handleRejected)
+      .addCase(getServices.fulfilled, (state, action) => {
+        state.isLoadingServices = false;
+        state.errorServices = null;
+        state.services = action.payload;
+      }),
+  // extraReducers: {
+  //   [getServices.pending]: handlePending,
+  //   [getServices.rejected]: handleRejected,
+  //   [getServices.fulfilled](state, action) {
+  //     state.isLoadingServices = false;
+  //     state.errorServices = null;
+  //     state.services = action.payload;
+  //   },
+  // },
 });
 
 export const servicesReducer = servicesSlice.reducer;
