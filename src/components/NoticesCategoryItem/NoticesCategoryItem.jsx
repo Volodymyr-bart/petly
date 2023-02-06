@@ -1,7 +1,7 @@
-// import Modal from 'components/Modal/Modal';
-// import { useToggle } from 'hooks';
-// import { AiFillDelete } from 'react-icons/ai';
+import { Modal } from 'components/Modal/Modal';
+import { useToggle } from 'hooks';
 import { useAuth } from 'hooks';
+
 import {
   AddToFavoriteStyled,
   ButtonStyled,
@@ -12,7 +12,8 @@ import {
 } from './NoticesCategoryItem.styled';
 
 const NoticesCategoryItem = ({ category }) => {
-  // const { isOpen, open, close } = useToggle();
+
+  const { isOpen, open, close } = useToggle();
   const { isLoggedIn } = useAuth();
 
   const addToFavoriteMethod = () => {
@@ -59,23 +60,18 @@ const NoticesCategoryItem = ({ category }) => {
           <p>One year</p>
         </li>
       </ul>
-      {/* <ButtonStyled type="button" onClick={open}>
-        Learn more
-      </ButtonStyled>
-      <Modal isOpen={isOpen} onClose={close}>
-        <div>Text</div>
-      </Modal>
-      <ButtonStyled type="button">
-        <span>Delete</span> <AiFillDelete size={20} color={'#FF6101'} />
-      </ButtonStyled> */}
+      
       <ButtonThumbStyled>
         <ButtonStyled
           type="button"
-          onClick={() => console.log('v')}
+          onClick={open}
           style={{ backgroundImage: 'none' }}
         >
           Learn more
         </ButtonStyled>
+        <Modal isOpen={isOpen} onClose={close}>
+          <div>Text</div>
+        </Modal>
         <ButtonStyled type="button">
           <div>Delete</div>
         </ButtonStyled>
