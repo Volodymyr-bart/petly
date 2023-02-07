@@ -34,7 +34,7 @@ export const FilterBox = styled.div`
 `;
 
 export const FilterText = styled.p`
-  margin: 6px auto;
+  margin: 6px 0 6px 20px;
 
   font-style: normal;
   font-weight: 500;
@@ -89,16 +89,18 @@ export const BtnBox = styled.div`
   margin-top: 32px;
   margin-right: 20px;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  justify-content: flex-end;
   gap: 12px;
 `;
 
 export const ButtonStyled = styled.button`
   display: inline-flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   width: 160px;
-  padding: 8px 80px;
+  height: 40px;
+  padding: 12px auto;
   border: 2px solid #f59256;
   border-radius: 40px;
 
@@ -112,9 +114,14 @@ export const ButtonStyled = styled.button`
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  :hover,
-  :focus {
-    border-color: #ff6101;
-    color: #ff6101;
+  &:hover,
+  &:focus {
+    /* border-color: #ff6101; */
+    background-color: #f59256;
+    color: #ffffff;
   }
+`;
+
+export const Icon = styled.div`
+  margin-left: 8px;
 `;

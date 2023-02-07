@@ -5,6 +5,7 @@ import {
   Comment,
   FilterBox,
   FilterText,
+  Icon,
   ImgContainer,
   Item,
   ModalContainer,
@@ -12,6 +13,7 @@ import {
   ModalList,
   ModalTitle,
 } from './NoticeModal.styled';
+import { HiHeart } from 'react-icons/hi2';
 
 const NoticeModal = ({ category }) => {
   return (
@@ -45,11 +47,17 @@ const NoticeModal = ({ category }) => {
           </div>
         </BoxUpPart>
         <Comment>
-          Comments: Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor
-          sit amet, consectetur Lorem ipsum dolor sit amet, consectetur Lorem
+          <b>Comments:</b> Lorem ipsum dolor sit amet, consectetur Lorem ipsum
+          dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur
+          Lorem
         </Comment>
         <BtnBox>
-          <ButtonStyled type="button">Add to </ButtonStyled>
+          <ButtonStyled type="button">
+            Add to{' '}
+            <Icon>
+              <HiHeart width={16} height={16} />
+            </Icon>
+          </ButtonStyled>
           <ButtonStyled type="button">Contact</ButtonStyled>
         </BtnBox>
       </ModalContainer>
