@@ -68,6 +68,7 @@ export const FriendsStyledImage = styled.img`
   width: 110px;
   height: auto;
   padding: 4px;
+  // background-image: url(./OurFriendsItem/placeholder.png);
   // margin-top: 40px;
 
   @media screen and (min-width: 768px) {
