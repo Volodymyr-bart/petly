@@ -40,7 +40,7 @@ export const App = () => {
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />} />
+            <RestrictedRoute redirectTo="/user" component={<RegisterPage />} />
           }
         />
         <Route
