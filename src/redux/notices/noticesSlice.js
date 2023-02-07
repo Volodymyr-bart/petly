@@ -23,7 +23,7 @@ const noticesSlice = createSlice({
       .addCase(getNoticesByCategory.fulfilled, (state, action) => {
         state.isLoadingNotices = false;
         state.errorNotices = null;
-        state.notices = action.payload.noticesByCategory;
+        state.notices = action.payload.result;
       })
       .addCase(getNoticesByCategory.rejected, handleRejected)
   }

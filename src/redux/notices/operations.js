@@ -7,6 +7,7 @@ export const getNoticesByCategory = createAsyncThunk(
   'notices/getNotices',
   async (categoryName, thunkAPI) => {
     try {
+      console.log(categoryName);
       const response = await axios.get(`/notices/category/${categoryName}`);
       return response.data;
     } catch (e) {

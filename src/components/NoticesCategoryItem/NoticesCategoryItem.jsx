@@ -2,6 +2,7 @@ import { Modal } from 'components/Modal/Modal';
 import NoticeModal from 'components/NoticeModal/NoticeModal';
 import { useToggle } from 'hooks';
 import { useAuth } from 'hooks';
+import { ageCount } from 'utils/ageCount';
 
 import {
   AddToFavoriteStyled,
@@ -12,7 +13,7 @@ import {
   NoticesCategoryItemStyled,
 } from './NoticesCategoryItem.styled';
 
-const NoticesCategoryItem = ({ category }) => {
+const NoticesCategoryItem = ({ category, notice }) => {
 
   const { isOpen, open, close } = useToggle();
   const { isLoggedIn } = useAuth();
@@ -40,26 +41,33 @@ const NoticesCategoryItem = ({ category }) => {
         />
       </ImageThumbStyled>
 
-      <CategoryStyled>{category}</CategoryStyled>
+      <CategoryStyled>{notice.category.includes('lost') ? 'lost/found' : notice.category.split('-').join(' ')}</CategoryStyled>
       <AddToFavoriteStyled
         isFavorite={false}
         onClick={addToFavoriteMethod}
       />
 
-      <h2>Cute cat looking for a home</h2>
+      <h2>{ notice.title }</h2>
       <ul>
         <li>
-          <p style={{ marginRight: '37px' }}>Breed:</p>
-          <p>Wild cat</p>
+          <p style={{ width: '88px' }}>Breed:</p>
+          <p>{ notice.breed }</p>
         </li>
         <li>
-          <p style={{ marginRight: '40px' }}>Place:</p>
-          <p>Lviv</p>
+          <p style={{ width: '88px' }}>Place:</p>
+          <p>{ notice.location }</p>
         </li>
         <li>
-          <p style={{ marginRight: '50px' }}>Age:</p>
-          <p>One year</p>
+          <p style={{ width: '88px' }}>Age:</p>
+          <p>{ ageCount(notice.birthday) }</p>
         </li>
+        {
+          category === 'sell' && 
+          <li>
+            <p style={{ width: '88px' }}>Price:</p>
+            <p>{ notice?.price }</p>
+          </li>
+        }
       </ul>
       
       <ButtonThumbStyled>
@@ -82,3 +90,5 @@ const NoticesCategoryItem = ({ category }) => {
 };
 
 export default NoticesCategoryItem;
+
+
