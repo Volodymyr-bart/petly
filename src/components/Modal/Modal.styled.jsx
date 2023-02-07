@@ -30,7 +30,7 @@ export const ModalContent = styled.div`
   background-color: #FFFFFF;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   min-height: 540px;
-  width: 704px;
+  width: auto;
 `;
 
 export const ModalBtn = styled.button`
