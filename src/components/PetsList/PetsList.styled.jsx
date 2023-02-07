@@ -49,9 +49,9 @@ export const PetImage = styled.img`
   }
 `;
 
-export const DataList = styled.p``;
+export const DataList = styled.ul``;
 
-export const DataItem = styled.p`
+export const DataItem = styled.li`
   font-weight: 500;
   font-size: 14px;
   line-height: 19px;
