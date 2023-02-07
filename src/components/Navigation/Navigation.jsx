@@ -103,7 +103,11 @@ export const Navigation = () => {
           setShowModal(current => !current);
           setShowModal(!showModal);
         }}
-      ></StyledBurger>
+      >
+        <div></div>
+        <div></div>
+        <div></div>
+        </StyledBurger>
     </>
   );
 };
