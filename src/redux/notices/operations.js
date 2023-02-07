@@ -14,3 +14,12 @@ export const getNoticesByCategory = createAsyncThunk(
     }
   }
 );
+
+export const getOneNoticeById = async (noticeId) => {
+  try {
+    const response = await axios.get(`/notices/${noticeId}`);
+    return response.data;
+  } catch (e) {
+    return console.error(e.message);
+  }
+};
