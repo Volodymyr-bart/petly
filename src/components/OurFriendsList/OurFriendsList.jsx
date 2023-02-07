@@ -3,6 +3,7 @@ import { selectAllServices } from 'redux/services/selectors';
 import OurFriendsItem from 'components/OurFriendsItem/OurFriendsItem';
 import { OurFriendsListUl } from './OurFriendsList.styled';
 
+
 const OurFriendsList = () => {
 
       

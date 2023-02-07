@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { HiX } from "react-icons/hi";
 import { ModalBackdrop, ModalBtn, ModalContent } from './Modal.styled';
 
-const modalRoot = document.getElementById('modal-univers');
+const modalEl = document.getElementById('modal-univers');
 
 export const Modal = ({ children, onClose, isOpen }) => {
   useEffect(() => {
@@ -33,6 +33,6 @@ export const Modal = ({ children, onClose, isOpen }) => {
         {children}
       </ModalContent>
     </ModalBackdrop>,
-    modalRoot);
+    modalEl);
 };
 
