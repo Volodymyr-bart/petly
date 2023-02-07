@@ -8,6 +8,7 @@ import * as yup from 'yup';
 import "yup-phone";
 import { NavLink } from 'react-router-dom';
 import { Button, FormStyled, TextStyled, ButtonBox, ButtonBack} from './RegisterForm.styled';
+import { checkEmail } from 'utils/checkEmail';
 
 const nameRegexp = /^[a-z ,.'-]+$/i;
 
@@ -40,6 +41,7 @@ const schema = yup.object({
 
 export const RegisterForm = () => {
   const [isLastStep, setisLastStep] = useState(false);
+  console.log(isLastStep)
 
   const dispatch = useDispatch();
   
@@ -56,6 +58,8 @@ export const RegisterForm = () => {
     resetForm();   
   };
 
+  
+
  
   return (
     <Formik 
@@ -64,21 +68,24 @@ export const RegisterForm = () => {
       onSubmit={handleSubmit}
 
    >
-    {({handleChange, values, errors, touched, setFieldTouched}) => {
-    
-
+    {({handleChange, values, errors, touched, setFieldTouched, formikHelpers, setFieldError}) => {
       const handleClickButton = () => {
-
+        
         if ((values.email === '' && values.password === '' && values.confirmPassword === '') && !(touched.email && touched.password && touched.confirm)) {
           setFieldTouched("email");
           setFieldTouched("password");
           setFieldTouched("confirm");
           return;
         }
-
+        
         if (errors.email || errors.password || errors.confirmPassword) return
 
-        setisLastStep(true)  
+        checkEmail(values.email).then((res) => setisLastStep(true)).catch(error => {
+          setFieldError('email', "The email is already in use")
+        })
+        
+
+
       }
 
 
