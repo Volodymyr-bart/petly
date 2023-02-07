@@ -4,7 +4,9 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getNews } from 'redux/news/operations';
 // import { selectIsLoadingNews } from 'redux/news/selectors';
-import { NewsTitle, NewsWrapper, Search } from './News.styled';
+import {NewsWrapper} from './News.styled';
+import Search from 'components/Search/Search';
+import { searchNoticesSet } from 'redux/notices/searchSlice';
 
 const News = () => {
   const dispatch = useDispatch();
@@ -14,11 +16,13 @@ const News = () => {
     dispatch(getNews());
   }, [dispatch]);
 
+  const getInputValue = value => dispatch(searchNoticesSet(value));
+  
   return (
     <NewsWrapper>
-      <NewsTitle>News</NewsTitle>
+      <h1>News</h1>
 
-      <Search type="text" placeholder="Search" />
+      <Search getValueMethod={getInputValue} />
       <NewsList />
     </NewsWrapper>
   );

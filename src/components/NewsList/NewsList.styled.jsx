@@ -71,3 +71,12 @@ export const NewsBottom = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
+
+export const NewsLink = styled.a`
+color: #F59256;
+text-decoration: underline;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+&:hover, &:focus {
+  color: #000000;
+}
+`
