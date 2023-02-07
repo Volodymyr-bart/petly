@@ -24,24 +24,23 @@ const initialValues = {
   phone: ''
 }
 const schema = yup.object({
-  email: yup.string().email("Invalid email addres").required("The email is required"),
+  email: yup.string().email("Invalid email addres").required("Email is required"),
   password: yup.string()
-    .matches(passRegexp, "The password cannot contain spaces")
-    .min(7)
-    .max(32)
-    .required("The password is required"),
-  confirmPassword: yup.string().label('confirm password').required().oneOf([yup.ref('password'), null], 'Passwords must match'),
+    .matches(passRegexp, "Ppassword cannot contain spaces")
+    .min(7, "Password must be at least 7 characters")
+    .max(32, "Password must be at most 32 characters")
+    .required("Password is required"),
+  confirmPassword: yup.string().label('Confirm password').required().oneOf([yup.ref('password'), null], 'Passwords must match'),
   name: yup.string()
-    .matches(nameRegexp, "The name must contain only English letters")
-    .required("The name is required"),
-  address: yup.string().required(),
+    .matches(nameRegexp, "Name must contain only English letters")
+    .required("Name is required"),
+  address: yup.string().required("Address is required"),
   phone: yup.string().phone("UA", true, "Phone number must be in format '+380XXXXXXXXX'").required(),
 });   
 
 
 export const RegisterForm = () => {
   const [isLastStep, setisLastStep] = useState(false);
-  console.log(isLastStep)
 
   const dispatch = useDispatch();
   
