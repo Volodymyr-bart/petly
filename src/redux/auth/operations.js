@@ -43,10 +43,10 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      console.log(credentials);
+      // console.log(credentials);
       const res = await axios.post('/auth/login', credentials);
       // After successful login, add the token to the HTTP header
-      console.log(res.data);
+      // console.log(res.data);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
@@ -79,6 +79,7 @@ export const refreshUser = createAsyncThunk(
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
+    console.log(persistedToken);
 
     if (persistedToken === null) {
       // If there is no token, exit without performing any request
