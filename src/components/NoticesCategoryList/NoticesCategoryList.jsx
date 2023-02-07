@@ -3,13 +3,16 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { getNoticesByCategory } from 'redux/notices/operations';
-import { selectIsLoadingNotices, selectNotices } from 'redux/notices/selectors';
+import {
+  selectIsLoadingNotices,
+  // selectNotices
+} from 'redux/notices/selectors';
 import NoticesCategoryListStyled from './NoticesCategoryList.styled';
 
 const NoticesCategoriesList = () => {
   const { categoryName } = useParams()
   const dispatch = useDispatch();
-  const notices = useSelector(selectNotices);
+  // const notices = useSelector(selectNotices);
   const isloadingNotices = useSelector(selectIsLoadingNotices);
 
   useEffect(() => {
@@ -17,7 +20,7 @@ const NoticesCategoriesList = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryName])
 
-  console.log(notices);
+  // console.log(notices);
 
 
   return (
