@@ -1,4 +1,5 @@
 import { Modal } from 'components/Modal/Modal';
+import NoticeModal from 'components/NoticeModal/NoticeModal';
 import { useToggle } from 'hooks';
 import { useAuth } from 'hooks';
 
@@ -70,7 +71,7 @@ const NoticesCategoryItem = ({ category }) => {
           Learn more
         </ButtonStyled>
         <Modal isOpen={isOpen} onClose={close}>
-          <div>Text</div>
+          <NoticeModal category={category}/>
         </Modal>
         <ButtonStyled type="button">
           <div>Delete</div>
