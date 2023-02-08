@@ -7,10 +7,11 @@ import {
   NewsItemDescription,
   NewsLink,
   NewsListStyled,
+  TextStyled,
 } from './NewsList.styled';
 
 import React from 'react';
-import EllipsisText from 'react-ellipsis-text';
+// import EllipsisText from 'react-ellipsis-text';
 
 //allow react dev tools work
 window.React = React;
@@ -24,14 +25,12 @@ const NewsList = () => {
         news.map(item => (
           <NewsItem key={item.url}>
             <Line />
-            <EllipsisText text={item.title} length={'5'} />
-            {/* <NewsItemTitle>{item.title}</NewsItemTitle> */}
+            <TextStyled text={item.title} length={'40'} />
             <NewsItemDescription>{item.description}</NewsItemDescription>
             <NewsBottom>
               <p>{item.date}</p>
-              {/* <a href="{{item.url}}">{item.url}</a> */}
               <NewsLink
-                href="{item.url}"
+                href={`${item.url}`}
                 target="_blank"
                 rel="noreferrer noopener"
               >
