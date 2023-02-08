@@ -99,7 +99,7 @@ export const ImageThumbStyled = styled.div`
 
     background-color: #FFFFFF;
     background-image: url(${ImgPlaceholder});
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
