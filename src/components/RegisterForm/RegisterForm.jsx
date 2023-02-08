@@ -56,9 +56,6 @@ export const RegisterForm = () => {
     );
     resetForm();   
   };
-
-  
-
  
   return (
     <Formik 
@@ -68,6 +65,10 @@ export const RegisterForm = () => {
 
    >
     {({handleChange, values, errors, touched, setFieldTouched, formikHelpers, setFieldError}) => {
+      const saveAddress = (value) => {
+        values.address = value;
+      }
+
       const handleClickButton = () => {
         
         if ((values.email === '' && values.password === '' && values.confirmPassword === '') && !(touched.email && touched.password && touched.confirm)) {
@@ -91,7 +92,7 @@ export const RegisterForm = () => {
 
 
      return (<FormStyled autoComplete='off' >
-        {!isLastStep ?  <RegisterFirstStep /> : <RegisterSecondStep setFieldTouched={setFieldTouched}/>}
+        {!isLastStep ?  <RegisterFirstStep /> : <RegisterSecondStep saveAddress={saveAddress}/>}
        
         <ButtonBox>
 
