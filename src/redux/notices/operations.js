@@ -93,3 +93,14 @@ export const getAllOwnNoticesWithoutR = async () => {
     return console.error(e.message);
   }
 };
+
+
+export const addNotice = async (params) => {
+  try {
+    const response = await axios.post("/notices", params); 
+    console.log('response: ', response.data);
+    return response.data;
+  } catch (e) {
+    return console.error("adding error: ", e.message);
+  }
+};

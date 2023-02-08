@@ -4,7 +4,7 @@ import FullHeart from "../../noticesImage/fullheart.png"
 import EmptyHeart from "../../noticesImage/emptyheart.png"
 import FullBucket from "../../noticesImage/fullbucket.png"
 import EmptyBucket from "../../noticesImage/emptybucket.png"
-import ImgPlaceholder from "../../noticesImage/cat-placeholder.png"
+import ImgPlaceholder from "../../noticesImage/ph.png"
 
 export const NoticesCategoryItemStyled = styled.li`
 

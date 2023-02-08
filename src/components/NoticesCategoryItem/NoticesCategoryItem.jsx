@@ -74,12 +74,13 @@ const NoticesCategoryItem = ({ notice, getFavoriteId }) => {
   return (
     <NoticesCategoryItemStyled>
       <ImageThumbStyled>
+        {notice.petAvatar &&
         <img
-          src="https://oir.mobi/uploads/posts/2021-04/1619814925_21-oir_mobi-p-mordochka-kotenka-zhivotnie-krasivo-foto-25.jpg"
+          src={notice.petAvatar}
           alt="pet"
           width={280}
           height={288}
-        />
+        />}
       </ImageThumbStyled>
 
       <CategoryStyled>{notice.category.includes('lost') ? 'lost/found' : notice.category.split('-').join(' ')}</CategoryStyled>
