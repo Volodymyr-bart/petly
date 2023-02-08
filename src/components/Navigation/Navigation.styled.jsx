@@ -6,6 +6,7 @@ export const PrimaryNav = styled.nav`
   align-items: center;
   text-align: center;
   justify-content: center;
+
   @media (min-width: 1280px) {
     flex-direction: row;
     justify-content: space-around;
@@ -18,6 +19,10 @@ export const SecondaryNav = styled.div`
     justify-content: space-around;
     margin-bottom: 0;
   }
+  @media (min-width: 768px) and (max-width: 1280px) {
+    margin-left: auto;
+    margin-right: 25px;
+  }
 `;
 export const NavLink = styled(Link)`
   display: flex;
@@ -27,7 +32,7 @@ export const NavLink = styled(Link)`
   cursor: pointer;
   font-size: 32px;
   font-family: 'Manroe';
-  color: #181C27;
+  color: #181c27;
   letter-spacing: 0.04em;
   margin-left: auto;
   margin-right: auto;
@@ -44,7 +49,7 @@ export const NavLink = styled(Link)`
   }
   &.active {
     pointer-events: none;
-    color: #F59256;
+    color: #f59256;
     text-decoration-line: underline;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -69,15 +74,16 @@ export const MobileContainer = styled.div`
 `;
 export const TabletContainer = styled.div``;
 export const StyledBurger = styled.button`
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-width: 2rem;
-height: 2rem;
-background: transparent;
-border: none;
-cursor: pointer;
-padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: ${({ open }) => open && 'auto'};
   @media (min-width: 1280px) {
     display: none;
   }
