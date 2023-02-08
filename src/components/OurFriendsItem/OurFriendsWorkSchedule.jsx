@@ -1,36 +1,38 @@
 // import { nanoid } from "nanoid";
-// import { Div } from "./OurFriendsWorkSchedule.styled";
+import { StyledTimeDiv, WorkDayStyledLi, WorkDayStyledSpan } from "./OurFriendsWorkSchedule.styled";
 
 
-const currentDayOfWeekName = new Date().toLocaleString( 'en-US', {weekday: 'short'});
-console.log(currentDayOfWeekName);
-
+// const currentDayOfWeekName = new Date().toLocaleString( 'en-US', {weekday: 'short'});
+// console.log(currentDayOfWeekName);
 
 
 const WorkingDays = ({workDays}) => {
-    // const WEEK_DAY_NAMES = ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'];
-//     console.log(workDays);
-//   return (
-//     <Div id="demo" className="collapse">
-//       <span>
-//         <ul>
-//       {workDays.forEach(workDay => {
-//         return (
-//             <li>
-//               {workDay.isOpen ? (
-//                 <p> 
-//                   {workDay.from} - {workDay.to}
-//                 </p>
-//               ) : (
-//                 <p>Closed</p>
-//               )}
-//             </li>)
-        
-//       })}
-//         </ul>
-//       </span>
-//       </Div>
-//   );
+    const WEEK_DAY_NAMES = ['MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
+//     const currentDayOfWeekName = new Date().getDay();
+// console.log(currentDayOfWeekName);
+    // console.log(workDays);
+  return (
+    <StyledTimeDiv>
+        <div>
+        <ul>
+      {workDays.map((workDay, index) => {
+        return (
+            <WorkDayStyledLi key={index}>
+                {`${WEEK_DAY_NAMES[index]}`}
+              {workDay.isOpen ? (
+                <WorkDayStyledSpan> 
+                  {workDay.from} - {workDay.to}
+                </WorkDayStyledSpan>
+              ) : (
+                <WorkDayStyledSpan>Closed</WorkDayStyledSpan>
+              )}
+            </WorkDayStyledLi>)
+      })}
+        </ul>
+        </div>
+    
+        </StyledTimeDiv>
+  );
 };
 
 export default WorkingDays;

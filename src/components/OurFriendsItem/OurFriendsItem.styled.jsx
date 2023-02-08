@@ -1,5 +1,24 @@
 import styled from "styled-components";
 
+export const StyledDivBox = styled.div`
+
+display: flex;
+flex-direction: column;
+text-align: start;
+height: 16px;
+overflow: hidden;
+margin-top: 4px;
+font-size: 12px;
+line-height: 16px;
+&:nth-child(1) {
+  margin-top: 0px;
+  text-align: start;
+}
+:hover {
+  color: #f59256;
+}
+`;
+
 export const FriendsStyledLi = styled.li`
   width: 280px;
   padding: 14px 4px 12px 4px;
@@ -16,9 +35,13 @@ export const FriendsStyledLi = styled.li`
   }
 
   @media screen and (min-width: 768px) {
-    width: 100%;
+    width: 336px;
 
     border-radius: 40px;
+  }
+
+  @media screen and (min-width: 1280px) {
+  width: 394px;
   }
 `;
 
@@ -27,8 +50,9 @@ export const FriendsStyledA = styled.a`
   text-align: center;
   flex-grow: 1;
   width: 100%;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  // margin-top: 12px;
+  // margin-bottom: 12px;
+  margin: 12px 0;
   padding: 2px;
 
   font-weight: 700;
@@ -125,8 +149,32 @@ align-items: center;
 }
 
 @media screen and (min-width: 1280px) {
-  font-size: $16px;
+  font-size: 16px;
   line-height: 22px;
+}
+
+`;
+
+export const FriendsInfoStyledTime = styled.p`
+position: relative;
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+display: flex;
+align-items: center;
+
+@media screen and (min-width: 768px) {
+  font-size: 14px;
+  line-height: 19px;
+  // position: relative;
+}
+
+@media screen and (min-width: 1280px) {
+  font-size: 16px;
+  line-height: 22px;
+  // position: relative;
 }
 
 `;
@@ -177,19 +225,3 @@ color: #000000;
     line-height: 22px;
   }
 `
-
-// export const FriendsStyledInfoTime = styled.li`
-//   cursor: ${(props) => (props.shouldHighlight ? "pointer" : "inherit")};
-//   :hover {
-//     color: ${(props) =>
-//       props.shouldHighlight ? props.theme.colors.accent : "inherit"};
-//   }
-// `;
-
-// export const FriendsInfoItemLink = styled.a`
-//   color: ${(p) => p.theme.colors.text.primary};
-
-//   :hover {
-//     color: ${(p) => p.theme.colors.accent};
-//   }
-// `;
