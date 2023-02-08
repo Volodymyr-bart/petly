@@ -1,10 +1,11 @@
 import { useDispatch } from 'react-redux';
+import {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import { logIn } from 'redux/auth/operations';
 import { Formik } from 'formik';
-import { Button, FormStyled, FieldStyled,  ErrorMessageStyled, TextStyled, InputContainer} from './LoginForm.styled';
+import { Button, FormStyled, FieldStyled,  ErrorMessageStyled, TextStyled, InputContainer, ShowPassword} from './LoginForm.styled';
 import * as yup from 'yup';
-
+import { RxEyeClosed, RxEyeOpen} from 'react-icons/rx'
 const passRegexp = /^\S+$/;
 
 const initialValues = {
@@ -13,16 +14,17 @@ const initialValues = {
 }
 
 const schema = yup.object({
-  email: yup.string().email("Invalid email addres").required("The email is required"),
+  email: yup.string().email("Invalid email addres").required("Email is required"),
   password: yup.string()
-    .matches(passRegexp, "The password cannot contain spaces")
-    .min(7)
-    .max(32)
-    .required("The password is required"),
+    .matches(passRegexp, "Password cannot contain spaces")
+    .min(7, "Password must be at least 7 characters")
+    .max(32, "Password must be at most 32 characters")
+    .required("Password is required"),
 });   
 
 
 export const LoginForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -35,7 +37,7 @@ export const LoginForm = () => {
       }));
     resetForm();   
   };
-
+  console.log(showPassword)
 
 
   return (
@@ -45,7 +47,10 @@ export const LoginForm = () => {
             <InputContainer>
               <FieldStyled type="email" name="email" placeholder='Email'/>
               <ErrorMessageStyled name="email" component="span"/>
-              <FieldStyled type="password" name="password" placeholder='Password'/>
+              <div style={{position: 'relative'}}>
+              <FieldStyled type={showPassword ? "text" : "password"} name="password" placeholder='Password'/>
+              <ShowPassword onClick={() => setShowPassword(!showPassword)}>{showPassword ? <RxEyeOpen size={18} /> : <RxEyeClosed size={18}/> }</ShowPassword>
+              </div>
               < ErrorMessageStyled name="password" component="span"/>
               </InputContainer>
             <Button type="submit">Log in</Button>

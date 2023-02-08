@@ -26,7 +26,7 @@ export const InputContainer = styled.div`
 
 export const FieldStyled = styled(Field)`
     width: 100%;
-    padding: 11px 14px;
+    padding: 11px 45px 11px 14px;
     line-height: 1.35;
     letter-spacing: 0.04em;
     background: #FDF7F2;
@@ -35,11 +35,17 @@ export const FieldStyled = styled(Field)`
         :hover,
         :focus {
         cursor: pointer;
-        }
-    
-
-        
+        outline: 2px solid #F59256;
+        }     
 `;
+
+export const ShowPassword = styled.div`
+    position: absolute;
+    bottom: 10px;
+    right: 5%;
+
+`;
+
 
 export const ErrorMessageStyled = styled(ErrorMessage)`
     font-size: 18px;
