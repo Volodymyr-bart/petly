@@ -69,10 +69,10 @@ export const removeFromFavorite = async (noticeId) => {
 
 export const removeFromOwn = async (noticeId) => {
   try {
-    const response = await axios.patch(`/notices/${noticeId}`);
+    const response = await axios.delete(`/notices/${noticeId}`);
     return response.data;
   } catch (e) {
-    return console.error(e.message);
+    return console.error('removing from own err: ', e.message);
   }
 };
 
@@ -93,3 +93,26 @@ export const getAllOwnNoticesWithoutR = async () => {
     return console.error(e.message);
   }
 };
+
+
+// export const addNotice = async () => {
+//   try {
+//     console.log("adding");
+//     const response = await axios.post("/notices",
+//       {          
+//         category: "in-good-hands",
+//         title: "nice kitten",
+//         name: "some name",
+//         birthday: "01.01.2022",
+//         breed: "common home",
+//         theSex: "male",
+//         location: "New York",
+//         price: "25",    
+//         comments: "no comments jnijnibuvrbgn" 
+//       }); 
+//     console.log('response: ', response.data);
+//     return response.data;
+//   } catch (e) {
+//     return console.error("adding error: ", e.message);
+//   }
+// };
