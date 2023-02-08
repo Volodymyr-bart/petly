@@ -44,6 +44,7 @@ export const NoticesCategoryItemStyled = styled.li`
     }
 
     ul {
+        height: 88px;
         margin: 0;
         padding: 0 20px 0 20px;
         list-style: none;
@@ -201,10 +202,10 @@ export const AddToFavoriteStyled = styled.button`
     background-repeat: no-repeat;
     cursor: pointer;
 
-    transition: background-image 250ms cubic-bezier(0.4, 0, 0.2, 1);                
+    /* transition: background-image 250ms cubic-bezier(0.4, 0, 0.2, 1);                
 
     :hover {        
         background-image: url(${FullHeart});
-    }
+    } */
 
 `;

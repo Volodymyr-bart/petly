@@ -1,9 +1,17 @@
+import { useState, useEffect } from 'react';
+import {
+  addToFavorite,
+  getAllFavoriteNoticesWithoutR,
+  getAllOwnNoticesWithoutR,
+  removeFromFavorite,
+  removeFromOwn,
+} from 'redux/notices/operations';
+import toast from 'react-hot-toast';
+
 import { Modal } from 'components/Modal/Modal';
 import NoticeModal from 'components/NoticeModal/NoticeModal';
-import { useToggle } from 'hooks';
-import { useAuth } from 'hooks';
+import { useToggle, useAuth } from 'hooks';
 import { ageCount } from 'utils/ageCount';
-
 import {
   AddToFavoriteStyled,
   ButtonStyled,
@@ -13,20 +21,53 @@ import {
   NoticesCategoryItemStyled,
 } from './NoticesCategoryItem.styled';
 
-const NoticesCategoryItem = ({ category, notice }) => {
-
+const NoticesCategoryItem = ({ notice, getFavoriteId }) => {
+  const [favorite, setFavorite] = useState(false);
+  const [own, setOwn] = useState(false);
   const { isOpen, open, close } = useToggle();
   const { isLoggedIn } = useAuth();
 
-  const addToFavoriteMethod = () => {
-    const fav = false;
-    // const isLoggedIn = true;
-    if (!isLoggedIn) {
-      console.log('You have to be loggedIn');
-    } else if (!fav) {
-      console.log('now it must be added to your favorites');
-    } else {
-      console.log('remove from favorites');
+  useEffect(() => {
+    if (isLoggedIn) {
+      const getFavorites = async () => {
+        const res = await getAllFavoriteNoticesWithoutR();
+        setFavorite(res?.result.some(({ _id }) => _id === notice._id));      
+      }
+
+      const getOwn = async () => {
+        const res = await getAllOwnNoticesWithoutR();
+        setOwn(res?.result.some(({ _id }) => _id === notice._id));     
+      }
+
+      getOwn();
+      getFavorites();
+    }
+        
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const toggleFavoriteMethod = () => { 
+    if (isLoggedIn && !favorite) {
+      addToFavorite(notice._id);
+      setFavorite(true);      
+      toast.success('added to your favorites');
+      
+    } else if (isLoggedIn && favorite) {      
+      removeFromFavorite(notice._id);
+      setFavorite(false);
+      getFavoriteId(notice._id)
+      toast.success('remove from favorites');
+
+    } else { 
+      toast.error('You have to be loggedIn');
+    }    
+  }
+
+  const removeFromOwnMethod = () => {
+    if (isLoggedIn && own) {
+      removeFromOwn(notice._id);
+      setOwn(false);
+      toast.success('notice removed');      
     }
   }
 
@@ -43,8 +84,8 @@ const NoticesCategoryItem = ({ category, notice }) => {
 
       <CategoryStyled>{notice.category.includes('lost') ? 'lost/found' : notice.category.split('-').join(' ')}</CategoryStyled>
       <AddToFavoriteStyled
-        isFavorite={false}
-        onClick={addToFavoriteMethod}
+        isFavorite={favorite}
+        onClick={toggleFavoriteMethod}
       />
 
       <h2>{ notice.title }</h2>
@@ -62,7 +103,7 @@ const NoticesCategoryItem = ({ category, notice }) => {
           <p>{ ageCount(notice.birthday) }</p>
         </li>
         {
-          category === 'sell' && 
+          notice.category === 'sell' && 
           <li>
             <p style={{ width: '88px' }}>Price:</p>
             <p>{ notice?.price }</p>
@@ -79,11 +120,11 @@ const NoticesCategoryItem = ({ category, notice }) => {
           Learn more
         </ButtonStyled>
         <Modal isOpen={isOpen} onClose={close}>
-          <NoticeModal category={category}/>
+          <NoticeModal category={notice.category}/>
         </Modal>
-        <ButtonStyled type="button">
+        {own && <ButtonStyled type="button" onClick={removeFromOwnMethod}>
           <div>Delete</div>
-        </ButtonStyled>
+        </ButtonStyled>}
       </ButtonThumbStyled>
     </NoticesCategoryItemStyled>
   );
