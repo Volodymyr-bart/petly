@@ -39,6 +39,52 @@ export const FieldStyled = styled(Field)`
         }     
 `;
 
+export const ListStyled = styled.ul`
+  position: absolute;
+  left: 23px;
+  background: #FDF7F2;
+  list-style: none;
+  width: 234px;
+  padding: 0;
+  margin: 0;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+
+  
+
+  @media screen and (min-width: 768px) {
+    width: 402px;  
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 412px; 
+  }
+
+`;
+
+export const ItemStyled = styled.li`
+  padding: 11px 14px;
+  background: #FDF7F2;
+  :last-child {
+  border-radius: 40px;
+  };
+ 
+  :hover {
+    background: #F59256;
+      cursor: pointer;
+      color: #FDF7F2;
+    }    
+
+`;
+
+export const CityStyled = styled.p`
+
+`;
+
+export const RegionStyled = styled.span`
+
+`;
+
 export const ShowPassword = styled.div`
     position: absolute;
     bottom: 10px;
