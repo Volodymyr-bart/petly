@@ -72,7 +72,7 @@ export const Navigation = () => {
         </Modal>
       )}
 
-      {isTablet && (
+      {isTablet && !showModal && (
         <SecondaryNav>
           {isLoggedIn ? (
             <UserMenu />
@@ -107,7 +107,7 @@ export const Navigation = () => {
         <div></div>
         <div></div>
         <div></div>
-        </StyledBurger>
+      </StyledBurger>
     </>
   );
 };

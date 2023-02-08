@@ -6,6 +6,7 @@ export const PrimaryNav = styled.nav`
   align-items: center;
   text-align: center;
   justify-content: center;
+
   @media (min-width: 1280px) {
     flex-direction: row;
     justify-content: space-around;
@@ -82,6 +83,7 @@ export const StyledBurger = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
+  margin-left: ${({ open }) => open && 'auto'};
   @media (min-width: 1280px) {
     display: none;
   }

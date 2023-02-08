@@ -10,10 +10,10 @@
 }
 
 @media (min-width: 768px) {
-  .link {
-    /* margin-right: 25px;
-    margin-left: auto; */
-  }
+  /* .link {
+    margin-right: 25px;
+    margin-left: auto;
+  } */
 }
 @media (min-width: 1280px) {
   .link {
