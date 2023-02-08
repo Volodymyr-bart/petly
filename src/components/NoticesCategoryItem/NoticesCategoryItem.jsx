@@ -66,7 +66,7 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
       }
       setFavorite(false);
       categoryName === Categories.FAVORITE_ADS && getFilterId(notice._id)
-      toast.success('remove from favorites');
+      toast.success('removed from favorites');
 
     } else { 
       toast.error('You have to be loggedIn');
