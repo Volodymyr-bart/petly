@@ -12,6 +12,7 @@ export const NoticesCategoryItemStyled = styled.li`
 
     height: 606px;
     margin-bottom: 32px;
+    padding-bottom: 12px;
 
     background-color: #FFFFFF;
     text-align: center;
@@ -43,6 +44,7 @@ export const NoticesCategoryItemStyled = styled.li`
     }
 
     ul {
+        height: 88px;
         margin: 0;
         padding: 0 20px 0 20px;
         list-style: none;
@@ -118,15 +120,15 @@ export const ButtonThumbStyled = styled.div`
         justify-content: center;
         gap: 12px;
 
-        height: 78px;
+        height: 88px;
 
-    @media (min-width: 768px) {
+    /* @media (min-width: 768px) {
                
     }
 
     @media (min-width: 1280px) {
                 
-    }
+    } */
 `;
 
 
@@ -195,16 +197,15 @@ export const AddToFavoriteStyled = styled.button`
     background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(2px);    
     background-image: url(${p => p.isFavorite ? FullHeart : EmptyHeart});
-    background-size: 24px;
+    background-size: 28px;
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
 
-    transition: background-image 250ms cubic-bezier(0.4, 0, 0.2, 1);                
+    /* transition: background-image 250ms cubic-bezier(0.4, 0, 0.2, 1);                
 
-    :hover,
-    :focus {        
+    :hover {        
         background-image: url(${FullHeart});
-    }
+    } */
 
 `;

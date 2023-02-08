@@ -94,8 +94,9 @@ export const AddPetStyled = styled.button`
         z-index: 0;
 
         flex-direction: row-reverse;
+        flex-wrap: nowrap;
 
-        margin-left: 101px;
+        margin-left: auto;
         width: 129px;
         height: 44px;
         padding: 0;
@@ -106,6 +107,8 @@ export const AddPetStyled = styled.button`
         
 
         span {
+            display: block;
+            width: 73px;
             font-weight: 500;
             font-size: 20px;
             line-height: 1.35;
