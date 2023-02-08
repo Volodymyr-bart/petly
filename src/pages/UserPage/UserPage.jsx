@@ -4,18 +4,13 @@ import PetsData from '../../components/PetsData/PetsData';
 import { UserCard, Profile, Header, UserPageStyled } from './UserPage.styled';
 
 const UserPage = () => {
-  const handleLogout = () => {
-    console.log('logout');
-    // Тут написати запит на logout користувача
-  };
-
   return (
     <UserPageStyled>
       <Profile>
         <Header>My information:</Header>
         <UserCard>
           <UserData />
-          <Logout handleLogout={handleLogout} />
+          <Logout />
         </UserCard>
       </Profile>
       <PetsData />
