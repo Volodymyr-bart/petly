@@ -7,6 +7,7 @@ import {
   removeFromOwn,
 } from 'redux/notices/operations';
 import toast from 'react-hot-toast';
+import { useParams } from 'react-router';
 
 import { Modal } from 'components/Modal/Modal';
 import NoticeModal from 'components/NoticeModal/NoticeModal';
@@ -20,12 +21,15 @@ import {
   ImageThumbStyled,
   NoticesCategoryItemStyled,
 } from './NoticesCategoryItem.styled';
+import { Categories } from 'utils/noticesCatList';
 
-const NoticesCategoryItem = ({ notice, getFavoriteId }) => {
+
+const NoticesCategoryItem = ({ notice, getFilterId }) => {
   const [favorite, setFavorite] = useState(false);
   const [own, setOwn] = useState(false);
   const { isOpen, open, close } = useToggle();
   const { isLoggedIn } = useAuth();
+  const { categoryName } = useParams()
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -46,16 +50,22 @@ const NoticesCategoryItem = ({ notice, getFavoriteId }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const toggleFavoriteMethod = () => { 
+  const toggleFavoriteMethod = async () => { 
     if (isLoggedIn && !favorite) {
-      addToFavorite(notice._id);
+      const res = await addToFavorite(notice._id);      
+      if (!res) {
+        return toast.error("can't add notice");
+      }
       setFavorite(true);      
       toast.success('added to your favorites');
       
     } else if (isLoggedIn && favorite) {      
-      removeFromFavorite(notice._id);
+      const res = await removeFromFavorite(notice._id);      
+      if (!res) {
+        return toast.error("can't remove notice");
+      }
       setFavorite(false);
-      getFavoriteId(notice._id)
+      categoryName === Categories.FAVORITE_ADS && getFilterId(notice._id)
       toast.success('remove from favorites');
 
     } else { 
@@ -63,11 +73,16 @@ const NoticesCategoryItem = ({ notice, getFavoriteId }) => {
     }    
   }
 
-  const removeFromOwnMethod = () => {
-    if (isLoggedIn && own) {
-      removeFromOwn(notice._id);
+  const removeFromOwnMethod = async () => {    
+    let isConfirm = window.confirm("You really want to delete this notice?");
+    if (isLoggedIn && own && isConfirm) {
+      const res = await removeFromOwn(notice._id);      
+      if (!res) {
+        return toast.error("can't remove");
+      }   
+      getFilterId(notice._id);
       setOwn(false);
-      toast.success('notice removed');      
+      toast.success('notice removed');          
     }
   }
 
