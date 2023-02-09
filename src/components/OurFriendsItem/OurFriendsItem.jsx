@@ -8,20 +8,29 @@ import {
     StyledNoInfo,
     FriendsInfoStyledLi,
     FriendsInfoStyledP,
+    StyledDivBox,
+    FriendsInfoStyledTime
+
 } from "./OurFriendsItem.styled";
 import image from "../../img/placeholder.png";
-// import WorkingDays from "./OurFriendsWorkSchedule";
+import WorkingDays from "./OurFriendsWorkSchedule";
+
 
 
 // const curretyDayOfWeekName = new Date().toLocaleString( 'en-US', {weekday: 'short'});
 
-const currentDayOfWeekName = new Date().getDay();
-console.log(currentDayOfWeekName);
+// const currentDayOfWeekName = new Date().getDay();
+// console.log(currentDayOfWeekName);
+
+
+
 const noInfo = '-------------------';
 
 
 const OurFriendsItem = ({friend}) => {
     const { title, url, address, addressUrl, imageUrl, workDays, phone, email,  } = friend;
+    const onWorkDays = workDays && workDays.length > 0;
+
     return (
         <FriendsStyledLi>
         <FriendsStyledA href={url} target="_blank" rel="noreferrer">
@@ -33,16 +42,16 @@ const OurFriendsItem = ({friend}) => {
             <FriendsStyledImage src={imageUrl} alt={title} />
              ) : ( 
              <FriendsStyledImage src={image} alt={title} /> 
-            // <div>no image</div> 
             )}
 
             <FriendsStyledUL>
             <FriendsInfoStyledLi>
-                <FriendsInfoStyledP>Time</FriendsInfoStyledP>
-                {/* {checkField("time", workDays)} */}
-                {workDays ? (<div>`${workDays.from} ${workDays.to}`</div>) : (
+                <FriendsInfoStyledTime>Time</FriendsInfoStyledTime>
+                <StyledDivBox>
+                {onWorkDays ? ( <WorkingDays workDays={workDays}/> ) : (
                     <StyledNoInfo>{noInfo}</StyledNoInfo>
                 )}
+                </StyledDivBox>
             </FriendsInfoStyledLi>
 
             <FriendsInfoStyledLi>
