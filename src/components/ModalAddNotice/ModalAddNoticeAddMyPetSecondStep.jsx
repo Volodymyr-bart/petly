@@ -1,4 +1,4 @@
-import { Field, Formik } from 'formik';
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { addNotice } from 'redux/notices/operations';
 import {
@@ -6,18 +6,16 @@ import {
   CancelBack,
   Container,
   ContainerButton,
-  ContainerSex,
-  ContainerSexVariant,
   FormContainer,
-  Icon,
-  LabelField,
-  Sex,
+  LabelFieldMyPetComment,
+  LabelFieldMyPetPhoto,
   TitleInput,
+  TitleInputMyPet,
   TitleModal,
 } from './ModalAddNotice.styled';
 import { validationSecondStep } from './ModalAddNoticeValidation';
 
-export const ModalAddNoticeSecondStep = ({
+export const ModalAddNoticeAddMySecondStep = ({
   setStepIndex,
   formData,
   onClose,
@@ -73,64 +71,13 @@ export const ModalAddNoticeSecondStep = ({
         }) => (
           <FormContainer onSubmit={handleSubmit}>
             <TitleModal>Add pet</TitleModal>
-            <ContainerSex>
-              <TitleInput>
-                The sex<span>*</span>:
-              </TitleInput>
-              <ContainerSexVariant>
-                <label className={values.sex === 'male' ? 'active' : ''}>
-                  <Field type="radio" name="sex" value="male" />
-                  <Icon>icon</Icon>
-                  <Sex>Male</Sex>
-                </label>
-                <label className={values.sex === 'female' ? 'active' : ''}>
-                  <Field type="radio" name="sex" value="female" />
-                  <Icon>icon</Icon>
-                  <Sex>Female</Sex>
-                </label>
-              </ContainerSexVariant>
-              {/* <div>{errors.sex}</div> */}
-            </ContainerSex>
             <Container>
-              <div>
-                <LabelField>
-                  <TitleInput>
-                    Location<span>*</span>:
-                  </TitleInput>
-                  <Field
-                    name="location"
-                    type="text"
-                    placeholder="City, Region"
-                    value={values.location}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                </LabelField>
-                <div>{errors.location}</div>
-              </div>
-              {formData.category === 'sell' && (
-                <div>
-                  <LabelField>
-                    <TitleInput>
-                      Price<span>*</span>:
-                    </TitleInput>
-                    <Field
-                      name="price"
-                      type="text"
-                      value={values.price}
-                      placeholder="Type price"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </LabelField>
-                  <div>{errors.price}</div>
-                </div>
-              )}
               {/* Load file */}
-
               <div>
-                <LabelField>
-                  <TitleInput>Load the pet’s image:</TitleInput>
+                <LabelFieldMyPetPhoto>
+                  <TitleInputMyPet>
+                    Add photo and some comments:
+                  </TitleInputMyPet>
                   <input
                     type="file"
                     name="image"
@@ -138,13 +85,13 @@ export const ModalAddNoticeSecondStep = ({
                       setFieldValue('upload', event.currentTarget.files);
                     }}
                   />
-                </LabelField>
+                </LabelFieldMyPetPhoto>
                 <div>{errors.image}</div>
               </div>
 
               {/* Comment */}
               <div>
-                <LabelField>
+                <LabelFieldMyPetComment>
                   <TitleInput>Comments</TitleInput>
                   <textarea
                     type="text"
@@ -154,8 +101,8 @@ export const ModalAddNoticeSecondStep = ({
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                </LabelField>
-                <div>{errors.comments}</div>
+                </LabelFieldMyPetComment>
+                {/* <div>{errors.comments}</div> */}
               </div>
             </Container>
             <ContainerButton>

@@ -88,6 +88,18 @@ export const LabelField = styled.label`
   flex-direction: column;
   gap: 12px;
 `;
+export const LabelFieldMyPetPhoto = styled.label`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+`;
+export const LabelFieldMyPetComment = styled.label`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+`;
 export const LabelFieldTitle = styled.div`
   font-weight: 500;
   font-size: 24px;
@@ -145,6 +157,16 @@ export const ContainerSex = styled.div`
   gap: 28px;
 `;
 export const TitleInput = styled.div`
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.08;
+  color: #000000;
+  span {
+    color: #f59256;
+  }
+`;
+export const TitleInputMyPet = styled.div`
+  text-align: center;
   font-weight: 500;
   font-size: 24px;
   line-height: 1.08;
