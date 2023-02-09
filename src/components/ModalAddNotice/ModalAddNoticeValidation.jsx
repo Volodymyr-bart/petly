@@ -43,8 +43,8 @@ export const validationSecondStep = yup.object().shape({
     .max(120, 'Too long!')
     .required('Comments is required'),
   price: yup.number().min(1, 'Price has to be more than 0'),
-  sex: yup.string().required('Choose sex'),
-  image: yup
+  theSex: yup.string().required('Choose sex'),
+  petAvatar: yup
     .mixed()
     .test(
       'FILE_SIZE',

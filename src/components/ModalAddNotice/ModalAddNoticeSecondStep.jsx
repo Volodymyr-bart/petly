@@ -24,61 +24,42 @@ export const ModalAddNoticeSecondStep = ({
   onClose,
 }) => {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     
     
     const submitAddNoticeForm = async (data) => {
-
-        const formData = new FormData();
-        formData.append('image', data.image);
-        console.log(formData)
-        console.log(data)
-        console.log(data.image)
-    try {
-      await addNotice({ formData })
-    } catch (error) {
-      console.log(error);
+         dispatch(
+            addNotice(
+                data
+                // {
+                // title: values.title,
+                // name: values.name,
+                // birthday: values.birthday,
+                // breed: values.breed,
+                // sex: values.sex,
+                // location: values.location,
+                // price: values.price,
+                // image: values.image,
+                // comments:values.comments,
+                // }
+            )
+        );
     }
-    
-  };
-
-//   const submitAddNoticeForm = data => {
-//     console.log(data);
-//     dispatch(
-//       addNotice(
-//         { data }
-//         // {
-//         // title: values.title,
-//         // name: values.name,
-//         // birthday: values.birthday,
-//         // breed: values.breed,
-//         // sex: values.sex,
-//         // location: values.location,
-//         // price: values.price,
-//         // image: values.image,
-//         // comments:values.comments,
-//         // }
-//       )
-//       );
-//       onClose()
-//   };
-  return (
-    <div>
-      <Formik
-        initialValues={{
-          sex: '',
-          location: '',
-          price: '',
-          image: null,
-          comments: '',
-        }}
-        validationSchema={validationSecondStep}
-        onSubmit={values => {
-          const data = { ...formData, ...values };
-          submitAddNoticeForm(data);
-
-          // console.log(values);
+    return (
+        <div>
+            <Formik
+                initialValues={{
+                theSex: '',
+                location: '',
+                price: '1',
+                petAvatar: null,
+                comments: '',
+                }}
+                validationSchema={validationSecondStep}
+                onSubmit={values => {
+                const data = { ...formData, ...values };
+                submitAddNoticeForm(data);
         }}
       >
         {({
@@ -153,16 +134,16 @@ export const ModalAddNoticeSecondStep = ({
                   <TitleInput>Load the pet’s image:</TitleInput>
                   <input
                     type="file"
-                    name="image"
+                    name="petAvatar"
                     onChange={event => {
-                      setFieldValue('upload', console.log(event.target.files));
+                      setFieldValue('petAvatar', event.currentTarget.files[0]);
                     }}
                   />
                   <div>
-                    {values.image && <UploadImage image={values.image} />}
+                    {values.petAvatar && <UploadImage image={values.petAvatar} />}
                   </div>
                 </LabelField>
-                <div>{errors.image}</div>
+                <div>{errors.petAvatar}</div>
               </div>
 
               {/* Comment */}

@@ -118,7 +118,7 @@ export const ModalAddNoticeFistStep = ({
                 <FieldStyled
                   name="birthday"
                   type="text"
-                  placeholder="Type date of birth"
+                  placeholder="Type date of birth XX.XX.XXXX"
                   value={values.birthday}
                   onChange={handleChange}
                   onBlur={handleBlur}

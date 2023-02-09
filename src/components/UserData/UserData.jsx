@@ -7,15 +7,15 @@ import { useState } from 'react';
 import userImage from './avatar.jpg';
 
 // Тимчасові дані. Замінити на дані з ендпоінта
-const dataArray = {
-  name: 'user_one',
-  email: 'user_1@gmail.com',
-  birthday: '01.01.01',
-  phone: '099-00-00-000',
-  city: 'Kyiv',
-};
+// const userData = {
+//   name: 'user_one',
+//   email: 'user_1@gmail.com',
+//   birthday: '01.01.01',
+//   phone: '099-00-00-000',
+//   city: 'Kyiv',
+// };
 
-const UserData = () => {
+const UserData = ({ userData }) => {
   const [itemInProcess, setItemInProcess] = useState(null);
   const [inputData, setInputData] = useState(null);
 
@@ -52,7 +52,7 @@ const UserData = () => {
       <List>
         <UserDataItem
           dataType="Name"
-          data={dataArray.name}
+          data={userData.name}
           handleEdit={handleEdit}
           itemInProcess={itemInProcess}
           handleChange={handleChange}
@@ -60,7 +60,7 @@ const UserData = () => {
         />
         <UserDataItem
           dataType="Email"
-          data={dataArray.email}
+          data={userData.email}
           handleEdit={handleEdit}
           itemInProcess={itemInProcess}
           handleChange={handleChange}
@@ -68,7 +68,7 @@ const UserData = () => {
         />
         <UserDataItem
           dataType="Birthday"
-          data={dataArray.birthday}
+          data={userData.birthday}
           handleEdit={handleEdit}
           itemInProcess={itemInProcess}
           handleChange={handleChange}
@@ -76,7 +76,7 @@ const UserData = () => {
         />
         <UserDataItem
           dataType="Phone"
-          data={dataArray.phone}
+          data={userData.phone}
           handleEdit={handleEdit}
           itemInProcess={itemInProcess}
           handleChange={handleChange}
@@ -84,7 +84,7 @@ const UserData = () => {
         />
         <UserDataItem
           dataType="City"
-          data={dataArray.city}
+          data={userData.address}
           handleEdit={handleEdit}
           itemInProcess={itemInProcess}
           handleChange={handleChange}
