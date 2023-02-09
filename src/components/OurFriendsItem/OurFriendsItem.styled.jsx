@@ -5,7 +5,7 @@ export const StyledDivBox = styled.div`
 display: flex;
 flex-direction: column;
 text-align: start;
-height: 16px;
+height: 22px;
 overflow: hidden;
 margin-top: 4px;
 font-size: 12px;
@@ -131,6 +131,7 @@ export const FriendsStyledUL = styled.ul`
 
 export const FriendsInfoStyledLi = styled.li`
 margin-bottom: 4px;
+hight: 20px;
 
 `;
 

@@ -6,14 +6,10 @@ export const StyledTimeDiv = styled.div`
 
 // visibility: hidden;
 // position: absolute;
+
   left: 0;
   bottom: 0;
-  // transform: translate(0, 100%);
   background-color: #ffffff;
-  // border: 1px solid #f59256;
-//   border-radius: 8px;
-//   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
-//   padding: 12px;
 ul,
 li {
   margin-left: 0;
@@ -28,9 +24,11 @@ li {
     // left: 0px;
     // bottom: 0;
     // top: 25%;
-    width: 140px;
-    display: inline-block;
+    width: 120px;
+    display: block;
+    justify-content: space-between;
     padding: 12px 12px 12px 12px;
+    // padding: 0;
     border: 1px solid #f59256;
     cursor: pointer;
     font-size: 12px;
@@ -51,19 +49,30 @@ li {
   }
 `;
 
-export const WorkDayStyledLi = styled.li`
+export const StyledTable = styled.table`
+align: left;
+// padding: 12px;
+// cellspacing: 10px;
+width: 120px;
+// border: 2px solid #999;
 
-  font-family: #f59256;
-  // display: inline-block;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.33;
-  &:not(:last-child) {
-    margin-bottom: 4px;
-  }
 `;
 
-export const WorkDayStyledSpan = styled.span`
-  margin-left: 12px;
-  align-items: flex-end;
+export const WorkDayStyledTr = styled.tr`
+
+font-family: 'Manrope';
+color: #000000;
+justify-content: space-between;
+// display: inline-block;
+font-size: 12px;
+font-weight: 500;
+line-height: 1.33;
+&:not(:last-child) {
+  margin-bottom: 4px;
+  // margin-right: 5px;
+}
+// &:child {
+  
+// }
 `;
+
