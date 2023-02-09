@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import { selectAllNews } from 'redux/news/selectors';
 import {
+  DescriptionStyled,
   Line,
   NewsBottom,
   NewsItem,
-  NewsItemDescription,
   NewsLink,
   NewsListStyled,
   TextStyled,
@@ -25,8 +25,9 @@ const NewsList = () => {
         news.map(item => (
           <NewsItem key={item.url}>
             <Line />
-            <TextStyled text={item.title} length={'40'} />
-            <NewsItemDescription>{item.description}</NewsItemDescription>
+            <TextStyled text={item.title} length={40} />
+            
+            <DescriptionStyled text={item.description} length={215} />
             <NewsBottom>
               <p>{item.date}</p>
               <NewsLink
