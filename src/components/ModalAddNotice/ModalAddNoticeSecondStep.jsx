@@ -117,7 +117,9 @@ export const ModalAddNoticeSecondStep = ({ setStepIndex, formData, onClose }) =>
                         type="file"
                         name="petAvatar"
                         onChange={event => {
-                            setFieldValue('upload', event.currentTarget.files);
+                            setFieldValue('upload', event.currentTarget.files[0]);
+                            
+                            console.log(event.currentTarget.files[0]);
                         }}
                         />
                     </label>
