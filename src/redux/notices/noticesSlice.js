@@ -51,7 +51,7 @@ const noticesSlice = createSlice({
       // add notices
       .addCase(addNotice.pending, handlePending)
       .addCase(addNotice.fulfilled, (state, action) => {
-        state.notices.push(action.payload.result);
+        state.notices.push(action.payload);
       })
       .addCase(addNotice.rejected, handleRejected);
   },

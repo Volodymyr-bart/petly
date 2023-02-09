@@ -7,12 +7,10 @@ export const ModalAddNoticeSecondStep = ({ setStepIndex, formData, onClose }) =>
     const dispatch = useDispatch();
     
     const submitAddNoticeForm = (data) => {
-        const { image, ...values } = data;
-        const payload = new FormData();
-        payload.append('image', image);
+        console.log(data)
         dispatch(
             addNotice(
-                {payload}
+                {data}
                 // {
                 // title: values.title,
                 // name: values.name,
@@ -42,7 +40,7 @@ export const ModalAddNoticeSecondStep = ({ setStepIndex, formData, onClose }) =>
                 const data = { ...formData, ...values };
                 submitAddNoticeForm(data);
 
-                console.log(values);
+                // console.log(values);
                 }}
             >
             {({
