@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   padding: 40px 80px;
@@ -41,6 +41,9 @@ export const RadioBtnBox = styled.ul`
   gap: 10px;
   list-style: none;
 `;
+
+
+
 export const ContainerInputs = styled.div`
   display: flex;
   flex-direction: column;

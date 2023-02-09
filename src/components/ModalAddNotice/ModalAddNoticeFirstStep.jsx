@@ -16,10 +16,9 @@ import {
 import { validationFistStep } from './ModalAddNoticeValidation';
 
 const categories = [
-  { name: 'lost', value: 'lost', id: '1' },
-  { name: 'found', value: 'found', id: '2' },
-  { name: 'In good hands', value: 'for-free', id: '3' },
-  { name: 'sell', value: 'sell', id: '4' },
+  { name: 'lost/found', value: 'lost/found', id: '1' },
+  { name: 'In good hands', value: 'for-free', id: '2' },
+  { name: 'sell', value: 'sell', id: '3' },
 ];
 
 export const ModalAddNoticeFistStep = ({
@@ -115,7 +114,7 @@ export const ModalAddNoticeFistStep = ({
               <LabelField>
                 <LabelFieldTitle>Date of birth</LabelFieldTitle>
                 <FieldStyled
-                  name="date"
+                  name="birthday"
                   type="text"
                   placeholder="Type date of birth"
                   value={values.birthday}
