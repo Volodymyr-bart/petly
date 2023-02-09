@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { ModalAddNoticeAddMyPetFirstStep } from './ModalAddNoticeAddMyPetFirstStep';
+import { ModalAddNoticeAddMySecondStep } from './ModalAddNoticeAddMyPetSecondStep';
 import { ModalAddNoticeFistStep } from './ModalAddNoticeFirstStep';
 import { ModalAddNoticeSecondStep } from './ModalAddNoticeSecondStep';
 // import { useDispatch } from "react-redux";
 
 export const ModalAddNotice = ({ onClose }) => {
-  const [activeStepIndex, setActiveStepIndex] = useState(1);
+  const [activeStepIndex, setActiveStepIndex] = useState(4);
   const [formData, setFormData] = useState({});
 
   return (
@@ -19,6 +21,20 @@ export const ModalAddNotice = ({ onClose }) => {
       )}
       {activeStepIndex === 1 && (
         <ModalAddNoticeSecondStep
+          setStepIndex={setActiveStepIndex}
+          formData={formData}
+          onClose={onClose}
+        />
+      )}
+      {activeStepIndex === 3 && (
+        <ModalAddNoticeAddMyPetFirstStep
+          setStepIndex={setActiveStepIndex}
+          formData={formData}
+          onClose={onClose}
+        />
+      )}
+      {activeStepIndex === 4 && (
+        <ModalAddNoticeAddMySecondStep
           setStepIndex={setActiveStepIndex}
           formData={formData}
           onClose={onClose}

@@ -6,7 +6,6 @@ import {
   CancelBack,
   Container,
   ContainerButton,
-  // ContainerInputs,
   ContainerSex,
   ContainerSexVariant,
   FormContainer,
