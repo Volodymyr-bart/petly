@@ -15,7 +15,7 @@ export const ServiceTitle = styled.h1`
   text-align: center;
   
   @media (min-width: 768px) {
-    margin: 70px auto 40px;
+    margin: 88px auto 40px;
     font-weight: 700;
     font-size: 48px;
     line-height: 66px;
