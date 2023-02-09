@@ -89,7 +89,7 @@ export const ModalAddNoticeFistStep = ({
           <div>
             <label>
               <div>Date of birth</div>
-              <Field
+              <input
                 name="date"
                 type="text"
                 placeholder="Type date of birth"

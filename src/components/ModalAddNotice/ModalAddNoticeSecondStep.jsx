@@ -1,34 +1,30 @@
 import { Field, Formik } from "formik";
+import { useDispatch } from "react-redux";
+import { addNotice } from "redux/notices/operations";
 import { validationSecondStep } from "./ModalAddNoticeValidation";
 
-export const ModalAddNoticeSecondStep = ({ setStepIndex, formData, addNotice, onClose }) => {
-    const submitAddNoticeForm = async (data) => {
-
-    const { image, ...values } = data;
-
-    if (!values.name) {
-      values.name = 'No name';
-    }
-    if (!values.birthday) {
-      values.birthday = '0000';
-    }
-    if (!values.breed) {
-      values.breed = 'outbreed';
-    }
-    if (!values.price) {
-      values.price = 0;
-    }
-        
-    const payload = new FormData();
-    payload.append('image', image);
-    onClose();
-    try {
-        await addNotice({ payload });
-    } catch (error) {
-      console.log(error);
-    }
-    };
+export const ModalAddNoticeSecondStep = ({ setStepIndex, formData, onClose }) => {
+    const dispatch = useDispatch();
     
+    const submitAddNoticeForm = (data) => {
+        console.log(data)
+        dispatch(
+            addNotice(
+                {data}
+                // {
+                // title: values.title,
+                // name: values.name,
+                // birthday: values.birthday,
+                // breed: values.breed,
+                // sex: values.sex,
+                // location: values.location,
+                // price: values.price,
+                // image: values.image,
+                // comments:values.comments,
+                // }
+            )
+        );
+    }
     return (
         <div>
             <Formik

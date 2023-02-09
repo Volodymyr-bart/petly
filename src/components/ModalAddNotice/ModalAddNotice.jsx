@@ -22,7 +22,6 @@ export const ModalAddNotice = ({ onClose }) => {
                 <ModalAddNoticeSecondStep
                     setStepIndex={setActiveStepIndex}
                     formData={formData}
-                    // addNotice={addNotice}  post to DB
                     onClose={onClose}
                 />
             )}

@@ -31,7 +31,7 @@ export const getAllOwnNotices = createAsyncThunk(
 export const getAllFavoriteNotices = createAsyncThunk(
   'notices/getFavoriteNotices',
   async (_, thunkAPI) => {
-    try {      
+    try {
       const response = await axios.get(`/notices/ads/favorite`);
       return response.data;
     } catch (e) {
@@ -40,7 +40,7 @@ export const getAllFavoriteNotices = createAsyncThunk(
   }
 );
 
-export const getOneNoticeById = async (noticeId) => {
+export const getOneNoticeById = async noticeId => {
   try {
     const response = await axios.get(`/notices/${noticeId}`);
     return response.data;
@@ -49,16 +49,16 @@ export const getOneNoticeById = async (noticeId) => {
   }
 };
 
-export const addToFavorite = async (noticeId) => {
+export const addToFavorite = async noticeId => {
   try {
-    const response = await axios.patch(`/notices/${noticeId}/favorite-add`);    
+    const response = await axios.patch(`/notices/${noticeId}/favorite-add`);
     return response.data;
   } catch (e) {
     return console.error(e.message);
   }
 };
 
-export const removeFromFavorite = async (noticeId) => {
+export const removeFromFavorite = async noticeId => {
   try {
     const response = await axios.patch(`/notices/${noticeId}/favorite-remove`);
     return response.data;
@@ -67,7 +67,7 @@ export const removeFromFavorite = async (noticeId) => {
   }
 };
 
-export const removeFromOwn = async (noticeId) => {
+export const removeFromOwn = async noticeId => {
   try {
     const response = await axios.delete(`/notices/${noticeId}`);
     return response.data;
@@ -94,12 +94,34 @@ export const getAllOwnNoticesWithoutR = async () => {
   }
 };
 
+export const addNotice = createAsyncThunk(
+  '/notices',
+  async (newNotice, thunkAPI) => {
+    try {
+      const res = await axios.post('/notices', {
+        title: newNotice.title,
+        name: newNotice.name,
+        birthday: newNotice.birthday,
+        breed: newNotice.breed,
+        sex: newNotice.sex,
+        location: newNotice.location,
+        price: newNotice.price,
+        image: newNotice.image,
+        comments: newNotice.comments,
+      });
+      console.log('redux', res.data);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 // export const addNotice = async () => {
 //   try {
 //     console.log("adding");
 //     const response = await axios.post("/notices",
-//       {          
+//       {
 //         category: "in-good-hands",
 //         title: "nice kitten",
 //         name: "some name",
@@ -107,9 +129,9 @@ export const getAllOwnNoticesWithoutR = async () => {
 //         breed: "common home",
 //         theSex: "male",
 //         location: "New York",
-//         price: "25",    
-//         comments: "no comments jnijnibuvrbgn" 
-//       }); 
+//         price: "25",
+//         comments: "no comments jnijnibuvrbgn"
+//       });
 //     console.log('response: ', response.data);
 //     return response.data;
 //   } catch (e) {
