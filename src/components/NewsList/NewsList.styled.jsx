@@ -55,7 +55,7 @@ export const Line = styled.div`
   }
 `;
 
-export const NewsItemDescription = styled.h3`
+export const DescriptionStyled = styled(EllipsisText)`
   height: 154px;
   overflow: hidden;
   font-weight: 400;
