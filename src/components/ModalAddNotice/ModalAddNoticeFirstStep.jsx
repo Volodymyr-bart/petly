@@ -11,6 +11,8 @@ import {
   LabelField,
   LabelFieldTitle,
   RadioBtnBox,
+  RadioBtnCategory,
+  RadioInput,
   TitleModal,
 } from './ModalAddNotice.styled';
 import { validationFistStep } from './ModalAddNoticeValidation';
@@ -64,18 +66,18 @@ export const ModalAddNoticeFistStep = ({
             <RadioBtnBox>
               {categories.map(category => (
                 <li key={category.id}>
-                  <label
+                  <RadioBtnCategory
                     className={
                       values.category === category.value ? 'active' : ''
                     }
                   >
                     {category.name}
-                    <Field
+                    <RadioInput
                       type="radio"
                       name="category"
                       value={category.value}
                     />
-                  </label>
+                  </RadioBtnCategory>
                 </li>
               ))}
               {/* <div>{errors.category}</div> */}

@@ -35,6 +35,7 @@ export const Description = styled.p`
 
 export const RadioBtnBox = styled.ul`
   margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -42,7 +43,22 @@ export const RadioBtnBox = styled.ul`
   list-style: none;
 `;
 
+export const RadioItems = styled.li`
+  margin: 0;
+`
 
+export const RadioInput = styled(Field)`
+  display: none;
+  &hidden {
+    opacity: 0;
+    height: 0;
+    width:0;
+    line-height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+`
 
 export const ContainerInputs = styled.div`
   display: flex;
@@ -51,10 +67,12 @@ export const ContainerInputs = styled.div`
   gap: 28px;
 `;
 
-export const RadioBtn = styled.label`
+export const RadioBtnCategory = styled.label`
   display: block;
   border: 2px solid #f59256;
   border-radius: 40px;
+  padding: 10px 28px;
+
 
   font-style: normal;
   font-weight: 500;
@@ -64,8 +82,9 @@ export const RadioBtn = styled.label`
 
   color: #000000;
 
-  &active {
+  &.active {
     background-color: #f59256;
+    color: #FFFFFF;
   }
 `;
 
