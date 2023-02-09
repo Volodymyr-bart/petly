@@ -10,11 +10,11 @@ export const StyledTimeDiv = styled.div`
   left: 0;
   bottom: 0;
   background-color: #ffffff;
-ul,
-li {
-  margin-left: 0;
-  padding-left: 0px;
-}
+// ul,
+// li {
+//   margin-left: 0;
+//   padding-left: 0px;
+// }
   :hover div {
     list-style: none;
     position: absolute;
@@ -24,7 +24,7 @@ li {
     // left: 0px;
     // bottom: 0;
     // top: 25%;
-    width: 120px;
+    width: 130px;
     display: block;
     justify-content: space-between;
     padding: 12px 12px 12px 12px;
