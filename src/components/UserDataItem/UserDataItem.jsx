@@ -22,7 +22,7 @@ const UserDataItem = ({
       <Name>{dataType}:</Name>
       {itemInProcess !== dataType && (
         <>
-          <Info>{data}</Info>
+          <Info>{data || '-'}</Info>
           <EditInfo
             itemInProcess={itemInProcess}
             type="button"
