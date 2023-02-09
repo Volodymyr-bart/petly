@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-axios.defaults.baseURL = 'https://petly-mmyb.onrender.com';
 
 export const getUserData = createAsyncThunk(
   'userData/getUserData',
