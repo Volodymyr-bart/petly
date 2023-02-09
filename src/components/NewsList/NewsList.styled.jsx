@@ -1,4 +1,15 @@
 import styled from 'styled-components';
+import EllipsisText from 'react-ellipsis-text';
+
+export const TextStyled = styled(EllipsisText)`
+ margin-bottom: 16px;
+  height: 66px;
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: -0.01em;
+`
 
 export const NewsListStyled = styled.ul`
   display: grid;
@@ -44,15 +55,6 @@ export const Line = styled.div`
   }
 `;
 
-export const NewsItemTitle = styled.h3`
-  margin-bottom: 16px;
-  height: 66px;
-  overflow: hidden;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 33px;
-  letter-spacing: -0.01em;
-`;
 export const NewsItemDescription = styled.h3`
   height: 154px;
   overflow: hidden;
@@ -71,3 +73,12 @@ export const NewsBottom = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
+
+export const NewsLink = styled.a`
+color: #F59256;
+text-decoration: underline;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+&:hover, &:focus {
+  color: #000000;
+}
+`

@@ -10,10 +10,12 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { tasksReducer } from './tasks/slice';
+
 import { authReducer } from './auth/slice';
 import { newsReducer } from './news/slice';
 import { servicesReducer } from './services/slice';
+import { noticesReducer } from './notices/noticesSlice';
+import { searchNoticesReducer } from './notices/searchSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -33,9 +35,10 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    tasks: tasksReducer,
     news: newsReducer,
     services: servicesReducer,
+    notices: noticesReducer,
+    searchNotices: searchNoticesReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

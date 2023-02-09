@@ -1,9 +1,42 @@
-.wrapper {
+.link {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 12px;
+  width: 164px;
+  height: 44px;
+  background: #f59256;
+  border-radius: 40px;
+  color: #ffffff;
 }
 
-.username {
-  font-weight: 700;
+@media (min-width: 768px) {
+  /* .link {
+    margin-right: 25px;
+    margin-left: auto;
+  } */
+}
+@media (min-width: 1280px) {
+  .link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 164px;
+    height: 44px;
+    background: #f59256;
+    border-radius: 40px;
+    color: #ffffff;
+  }
+}
+
+.link > svg {
+  width: 26px;
+  height: 26px;
+}
+
+.paragraph {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  margin-left: 15px;
 }

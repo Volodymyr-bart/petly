@@ -14,8 +14,8 @@ const NoticesPage = lazy(() => import('../pages/Notices/Notices'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriends/OurFriends'));
 const RegisterPage = lazy(() => import('../pages/Register/Register'));
 const LoginPage = lazy(() => import('../pages/Login/Login'));
-const TasksPage = lazy(() => import('../pages/Tasks/Tasks'));
 const NotFoundPage = lazy(() => import('../pages/NotFound/NotFound'));
+const UserPage = lazy(() => import('../pages/UserPage/UserPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -32,45 +32,32 @@ export const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/news" element={<NewsPage />} />
-          <Route path="/notices" element={<NoticesPage />}>            
-            <Route path="" element={<NoticesCategoryList category='sell' />} />
-            <Route path="lost-found" element={<NoticesCategoryList category='lost/found' />} />
-            <Route path="for-free" element={<NoticesCategoryList category='forFree' />} />
-            <Route
-              path="favorite"
-              element={
-                <PrivateRoute redirectTo="/notices" component={<NoticesCategoryList category='favorite' />} />
-              }
-                />
-            <Route
-              path="own"
-              element={
-                <PrivateRoute redirectTo="/notices" component={<NoticesCategoryList category='own' />} />
-              }
-            />
+        <Route path="/notices" element={<NoticesPage />}>
+          <Route path=":categoryName" element={<NoticesCategoryList />} />
         </Route>
 
         <Route path="/friends" element={<OurFriendsPage />} />
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />} />
+            <RestrictedRoute redirectTo="/user" component={<RegisterPage />} />
           }
         />
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
+            <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
           }
         />
         <Route
           // path="/user"
-          path="/tasks"
+          path="/user"
           element={
-            <PrivateRoute redirectTo="/login" component={<TasksPage />} />
+            <PrivateRoute redirectTo="/login" component={<UserPage />} />
           }
         />
         <Route path="*" element={<NotFoundPage />} />
+        {/* <Route path="/user" element={<UserPage />} /> */}
       </Route>
     </Routes>
   );

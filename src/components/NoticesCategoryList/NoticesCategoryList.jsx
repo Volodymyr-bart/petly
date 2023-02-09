@@ -1,22 +1,82 @@
+
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
+
 import NoticesCategoryItem from 'components/NoticesCategoryItem/NoticesCategoryItem';
+import {
+  getAllFavoriteNotices,
+  getAllOwnNotices,
+  getNoticesByCategory,
+  // addNotice
+} from 'redux/notices/operations';
+import {
+  selectIsLoadingNotices,
+  selectFilteredNotices,
+} from 'redux/notices/selectors';
+import { Categories } from 'utils/noticesCatList';
 import NoticesCategoryListStyled from './NoticesCategoryList.styled';
 
-const NoticesCategoriesList = ({category = ''}) => {
- 
+const NoticesCategoriesList = () => {
+  const [filterId, setFilterId] = useState([]);
+  const { categoryName } = useParams()
+  const dispatch = useDispatch();
+  const notices = useSelector(selectFilteredNotices);  
+  const isloadingNotices = useSelector(selectIsLoadingNotices);
+  
 
-  // console.log(category);
+  useEffect(() => {
+    if (categoryName === Categories.FAVORITE_ADS) {
+      dispatch(getAllFavoriteNotices());
+    } else if (categoryName === Categories.MY_ADS) {
+      dispatch(getAllOwnNotices());
+    } else {
+      dispatch(getNoticesByCategory(categoryName));
+    }
 
+    // const postNotice = async () => {
+    //   const res = await addNotice();
+    //     console.log(res);     
+    // }
+    
+    // postNotice();
 
+    setFilterId([]);
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categoryName])
+
+  const getFilterId = (id) => {
+    setFilterId(prev => [...prev, id]);
+  }
+
+  // console.log(notices);
+
+  const isEmpty = notices.length === 0;
   return (
-    <NoticesCategoryListStyled>
-      
+    <>
       {
-        [0, 1, 2, 3, 4, 5].map((item, i) => <NoticesCategoryItem key={i} category={category} />)
+        isEmpty ? "There are no notices in this category... You can add something and mayby this world will be better!" :
+          <NoticesCategoryListStyled>
+        {
+          isloadingNotices ?
+            'Noticeces are loading...' :
+                notices
+                  .filter(item => !filterId.includes(item._id))
+                  .map((item) =>
+                  <NoticesCategoryItem
+                    key={item._id}
+                    // category={categoryName}
+                    notice={item}
+                    getFilterId={getFilterId}
+                  />)
+        }
+        </ NoticesCategoryListStyled>        
       }
-
-     
-      
-    </ NoticesCategoryListStyled>
+    </>
+  
+    
+    
   );
 };
 
