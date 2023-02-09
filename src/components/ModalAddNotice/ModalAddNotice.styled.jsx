@@ -8,6 +8,14 @@ export const FormContainer = styled.div`
   width: 608px;
 `;
 
+export const Container = styled.div`
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+`;
+
 export const TitleModal = styled.h1`
   margin: 0 auto;
   font-weight: 600;
@@ -17,7 +25,12 @@ export const TitleModal = styled.h1`
 `;
 
 export const Description = styled.p`
-  margin: 20px auto 0;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #000000;
 `;
 
 export const RadioBtnBox = styled.ul`
@@ -25,7 +38,6 @@ export const RadioBtnBox = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  margin-top: 28px;
   gap: 10px;
   list-style: none;
 `;
@@ -34,7 +46,6 @@ export const ContainerInputs = styled.div`
   flex-direction: column;
   margin-top: 28px;
   gap: 28px;
-  /* background-color: #3924a5; */
 `;
 
 export const RadioBtn = styled.label`
@@ -92,7 +103,8 @@ export const ErrorText = styled.div`
   color: red;
 `;
 export const ContainerButton = styled.div`
-  margin: 40px auto 0;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   gap: 20px;
 `;
@@ -121,4 +133,40 @@ export const CancelBack = styled.button`
   line-height: 1.35;
   letter-spacing: 0.04em;
   color: #000000;
+`;
+
+// Step 2
+
+export const ContainerSex = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  gap: 28px;
+`;
+export const TitleInput = styled.div`
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.08;
+  color: #000000;
+  span {
+    color: #f59256;
+  }
+`;
+export const ContainerSexVariant = styled.div`
+  display: flex;
+  gap: 95px;
+`;
+export const Icon = styled.div`
+  display: block;
+  width: 60px;
+  height: 60px;
+`;
+export const Sex = styled.span`
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  :hover {
+    color: #f59256;
+  }
 `;

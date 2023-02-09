@@ -2,8 +2,8 @@ import { Field, Formik } from 'formik';
 import {
   Button,
   CancelBack,
+  Container,
   ContainerButton,
-  ContainerInputs,
   Description,
   ErrorText,
   FieldStyled,
@@ -57,24 +57,30 @@ export const ModalAddNoticeFistStep = ({
       }) => (
         <FormContainer onSubmit={handleSubmit}>
           <TitleModal>Add pet</TitleModal>
-          <Description>
-            Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet,
-            consectetur
-          </Description>
-          <RadioBtnBox>
-            {categories.map(category => (
-              <li key={category.id}>
-                <label
-                  className={values.category === category.value ? 'active' : ''}
-                >
-                  {category.name}
-                  <Field type="radio" name="category" value={category.value} />
-                </label>
-              </li>
-            ))}
-          </RadioBtnBox>
-          {/* <div>{errors.category}</div> */}
-          <ContainerInputs>
+          <Container>
+            <Description>
+              Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit
+              amet, consectetur
+            </Description>
+            <RadioBtnBox>
+              {categories.map(category => (
+                <li key={category.id}>
+                  <label
+                    className={
+                      values.category === category.value ? 'active' : ''
+                    }
+                  >
+                    {category.name}
+                    <Field
+                      type="radio"
+                      name="category"
+                      value={category.value}
+                    />
+                  </label>
+                </li>
+              ))}
+              {/* <div>{errors.category}</div> */}
+            </RadioBtnBox>
             <div>
               <LabelField>
                 <LabelFieldTitle>
@@ -132,8 +138,7 @@ export const ModalAddNoticeFistStep = ({
               </LabelField>
               <ErrorText>{errors.breed && touched.breed}</ErrorText>
             </div>
-          </ContainerInputs>
-
+          </Container>
           <ContainerButton>
             <CancelBack type="button" onClick={onClose}>
               Cancel
