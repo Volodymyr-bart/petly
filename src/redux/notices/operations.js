@@ -96,10 +96,20 @@ export const getAllOwnNoticesWithoutR = async () => {
 
 export const addNotice = createAsyncThunk(
   '/notices',
-  async (credentials, thunkAPI) => {
+  async (newNotice, thunkAPI) => {
     try {
-      const res = await axios.post('/notices', credentials);
-      console.log(res.data);
+      const res = await axios.post('/notices', {
+        title: newNotice.title,
+        name: newNotice.name,
+        birthday: newNotice.birthday,
+        breed: newNotice.breed,
+        sex: newNotice.sex,
+        location: newNotice.location,
+        price: newNotice.price,
+        image: newNotice.image,
+        comments: newNotice.comments,
+      });
+      console.log('redux', res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

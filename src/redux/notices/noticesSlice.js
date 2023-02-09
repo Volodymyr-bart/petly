@@ -51,10 +51,7 @@ const noticesSlice = createSlice({
       // add notices
       .addCase(addNotice.pending, handlePending)
       .addCase(addNotice.fulfilled, (state, action) => {
-        state.user.name = action.payload.name;
-        state.user.email = action.payload.email;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
+        state.notices.push(action.payload.result);
       })
       .addCase(addNotice.rejected, handleRejected);
   },

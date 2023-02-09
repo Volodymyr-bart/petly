@@ -6,19 +6,25 @@ import { validationSecondStep } from "./ModalAddNoticeValidation";
 export const ModalAddNoticeSecondStep = ({ setStepIndex, formData, onClose }) => {
     const dispatch = useDispatch();
     
-    const submitAddNoticeForm = (values) => {
+    const submitAddNoticeForm = (data) => {
+        const { image, ...values } = data;
+        const payload = new FormData();
+        payload.append('image', image);
         dispatch(
-            addNotice({
-                title: values.title,
-                name: values.name,
-                birthday: values.birthday,
-                breed: values.breed,
-                sex: values.sex,
-                location: values.location,
-                price: values.price,
-                image: values.image,
-                comments:values.comments,
-            })
+            addNotice(
+                {payload}
+                // {
+                // title: values.title,
+                // name: values.name,
+                // birthday: values.birthday,
+                // breed: values.breed,
+                // sex: values.sex,
+                // location: values.location,
+                // price: values.price,
+                // image: values.image,
+                // comments:values.comments,
+                // }
+            )
         );
     }
     return (
