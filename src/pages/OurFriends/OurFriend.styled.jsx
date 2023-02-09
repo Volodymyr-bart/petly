@@ -6,7 +6,7 @@ export const ServiceWrapper = styled.div`
 `;
 
 export const ServiceTitle = styled.h1`
-  margin: 53px auto 28px;
+  margin: 42px auto 28px;
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 700;
