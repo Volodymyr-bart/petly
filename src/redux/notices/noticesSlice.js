@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllFavoriteNotices, getAllOwnNotices, getNoticesByCategory } from './operations';
+import {
+  addNotice,
+  getAllFavoriteNotices,
+  getAllOwnNotices,
+  getNoticesByCategory,
+} from './operations';
 
 const handlePending = state => {
   state.isLoadingNotices = true;
@@ -17,7 +22,7 @@ const noticesSlice = createSlice({
     isLoadingNotices: false,
     errorNotices: null,
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       // Category
       .addCase(getNoticesByCategory.pending, handlePending)
@@ -30,20 +35,26 @@ const noticesSlice = createSlice({
       // Own notices
       .addCase(getAllOwnNotices.pending, handlePending)
       .addCase(getAllOwnNotices.fulfilled, (state, action) => {
-      state.isLoadingNotices = false;
-      state.errorNotices = null;
-      state.notices = action.payload.result;
+        state.isLoadingNotices = false;
+        state.errorNotices = null;
+        state.notices = action.payload.result;
       })
       .addCase(getAllOwnNotices.rejected, handleRejected)
       // Favorite notices
       .addCase(getAllFavoriteNotices.pending, handlePending)
       .addCase(getAllFavoriteNotices.fulfilled, (state, action) => {
-      state.isLoadingNotices = false;
-      state.errorNotices = null;
-      state.notices = action.payload.result;
+        state.isLoadingNotices = false;
+        state.errorNotices = null;
+        state.notices = action.payload.result;
       })
       .addCase(getAllFavoriteNotices.rejected, handleRejected)
-  }
+      // add notices
+      .addCase(addNotice.pending, handlePending)
+      .addCase(addNotice.fulfilled, (state, action) => {
+        state.notices.push(action.payload);
+      })
+      .addCase(addNotice.rejected, handleRejected);
+  },
   // extraReducers: {
   //   [getNoticesByCategory.pending]: handlePending,
   //   [getNoticesByCategory.rejected]: handleRejected,

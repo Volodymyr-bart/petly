@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ModalContainer = styled.div`
   padding: 32px 20px;
+  width: 704px;
 `;
 
 export const BoxUpPart = styled.div`
