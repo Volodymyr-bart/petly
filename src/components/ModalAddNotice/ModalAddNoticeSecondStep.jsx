@@ -10,7 +10,7 @@ export const ModalAddNoticeSecondStep = ({ setStepIndex, formData, onClose }) =>
         console.log(data)
         dispatch(
             addNotice(
-                {data}
+                data
                 // {
                 // title: values.title,
                 // name: values.name,
@@ -29,10 +29,10 @@ export const ModalAddNoticeSecondStep = ({ setStepIndex, formData, onClose }) =>
         <div>
             <Formik
                 initialValues={{
-                sex: '',
+                theSex: '',
                 location: '',
-                price: '',
-                image: null,
+                price: '1',
+                petAvatar: null,
                 comments: '',
                 }}
                 validationSchema={validationSecondStep}
@@ -59,22 +59,22 @@ export const ModalAddNoticeSecondStep = ({ setStepIndex, formData, onClose }) =>
                     The sex<span>*</span>:
                 </label>
                 <div>
-                    <label className={values.sex === 'male' ? 'active' : ''}>
-                    <Field type="radio" name="sex" value="male" />
+                    <label className={values.theSex === 'male' ? 'active' : ''}>
+                    <Field type="radio" name="theSex" value="male" />
                     <div>
                         icon
                     </div>
                     <span>Male</span>
                     </label>
-                    <label className={values.sex === 'female' ? 'active' : ''}>
-                    <Field type="radio" name="sex" value="female" />
+                    <label className={values.theSex === 'female' ? 'active' : ''}>
+                    <Field type="radio" name="theSex" value="female" />
                     <div>
                         icon
                     </div>
                     <span>Female</span>
                     </label>
                 </div>
-                <div>{errors.sex}</div>
+                <div>{errors.theSex}</div>
                 <div>
                     <label>
                     <div>
@@ -115,14 +115,14 @@ export const ModalAddNoticeSecondStep = ({ setStepIndex, formData, onClose }) =>
                     <label>
                         <input
                         type="file"
-                        name="image"
+                        name="petAvatar"
                         onChange={event => {
                             setFieldValue('upload', event.currentTarget.files);
                         }}
                         />
                     </label>
                     </div>
-                    <div>{errors.image}</div>
+                    <div>{errors.petAvatar}</div>
                 </div>
                 <label>
                     <div>

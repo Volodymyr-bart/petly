@@ -95,20 +95,28 @@ export const getAllOwnNoticesWithoutR = async () => {
 };
 
 export const addNotice = createAsyncThunk(
-  '/notices',
+  'notices/addNotice',
   async (newNotice, thunkAPI) => {
+    // if (newNotice.upload) {
+    //     newNotice.petAvatar = newNotice.upload;
+    //     delete newNotice['upload'];
+    //   }
+    if (!newNotice.petAvatar) delete newNotice['petAvatar'];
+    console.log('newNotice', newNotice);
     try {
-      const res = await axios.post('/notices', {
-        title: newNotice.title,
-        name: newNotice.name,
-        birthday: newNotice.birthday,
-        breed: newNotice.breed,
-        sex: newNotice.sex,
-        location: newNotice.location,
-        price: newNotice.price,
-        image: newNotice.image,
-        comments: newNotice.comments,
-      });
+      const res = await axios.post('/notices', newNotice
+        // {
+        // title: newNotice.title,
+        // name: newNotice.name,
+        // birthday: newNotice.birthday,
+        // breed: newNotice.breed,
+        // sex: newNotice.sex,
+        // location: newNotice.location,
+        // price: newNotice.price,
+        // image: newNotice.image,
+        // comments: newNotice.comments,
+        // }
+      );
       console.log('redux', res.data);
       return res.data;
     } catch (error) {

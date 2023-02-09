@@ -2,9 +2,9 @@ import { Field, Formik } from 'formik';
 import { validationFistStep } from './ModalAddNoticeValidation';
 
 const categories = [
-  { name: 'lost', value: 'lost', id: '1' },
+  { name: 'lost', value: 'lost-found', id: '1' },
   { name: 'found', value: 'found', id: '2' },
-  { name: 'In good hands', value: 'for-free', id: '3' },
+  { name: 'In good hands', value: 'in-good-hands', id: '3' },
   { name: 'sell', value: 'sell', id: '4' },
 ];
 
@@ -90,9 +90,9 @@ export const ModalAddNoticeFistStep = ({
             <label>
               <div>Date of birth</div>
               <input
-                name="date"
+                name="birthday"
                 type="text"
-                placeholder="Type date of birth"
+                placeholder="Type date of birth XX.XX.XXXX"
                 value={values.birthday}
                 onChange={handleChange}
                 onBlur={handleBlur}
