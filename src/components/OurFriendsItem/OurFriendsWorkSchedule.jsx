@@ -8,8 +8,8 @@ import { StyledTimeDiv, WorkDayStyledTr,  StyledTable } from "./OurFriendsWorkSc
 
 const WorkingDays = ({workDays}) => {
     const WEEK_DAY_NAMES = ['MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
-//     const currentDayOfWeekName = new Date().getDay();
-// console.log(currentDayOfWeekName);
+    const currentDayOfWeekName = new Date().getDay();
+// console.log(currentDayOfWeekName - 1);
     // console.log(workDays);
   return (
     <StyledTimeDiv>
@@ -18,7 +18,7 @@ const WorkingDays = ({workDays}) => {
         <tbody>
       {workDays.map((workDay, index) => {
         return (
-            <WorkDayStyledTr key={index}>
+            <WorkDayStyledTr key={index}  style={{ color: index === currentDayOfWeekName - 1 ? '#f59256' : '#000000'}}>
               {/* <div> */}
               <td>
               {`${WEEK_DAY_NAMES[index]}`}
