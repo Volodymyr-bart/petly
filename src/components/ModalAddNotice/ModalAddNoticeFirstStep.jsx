@@ -1,4 +1,18 @@
 import { Field, Formik } from 'formik';
+import {
+  Button,
+  CancelBack,
+  ContainerButton,
+  ContainerInputs,
+  Description,
+  ErrorText,
+  FieldStyled,
+  FormContainer,
+  LabelField,
+  LabelFieldTitle,
+  RadioBtnBox,
+  TitleModal,
+} from './ModalAddNotice.styled';
 import { validationFistStep } from './ModalAddNoticeValidation';
 
 const categories = [
@@ -41,9 +55,13 @@ export const ModalAddNoticeFistStep = ({
         isValid,
         dirty,
       }) => (
-        <form onSubmit={handleSubmit}>
-          <h1>Add pet</h1>
-          <ul>
+        <FormContainer onSubmit={handleSubmit}>
+          <TitleModal>Add pet</TitleModal>
+          <Description>
+            Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet,
+            consectetur
+          </Description>
+          <RadioBtnBox>
             {categories.map(category => (
               <li key={category.id}>
                 <label
@@ -54,83 +72,83 @@ export const ModalAddNoticeFistStep = ({
                 </label>
               </li>
             ))}
-          </ul>
-          <div>{errors.category}</div>
-          <div>
-            <label>
-              <div>
-                Tittle of ad<span>*</span>
-              </div>
-              <Field
-                name="title"
-                type="text"
-                placeholder="Type name"
-                value={values.title}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </label>
-            <div>{errors.title}</div>
-          </div>
-          <div>
-            <label>
-              <div>Name pet</div>
-              <Field
-                name="name"
-                type="text"
-                placeholder="Type name pet"
-                value={values.name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </label>
-            <div>{errors.name}</div>
-          </div>
-          <div>
-            <label>
-              <div>Date of birth</div>
-              <input
-                name="date"
-                type="text"
-                placeholder="Type date of birth"
-                value={values.birthday}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </label>
-          </div>
-          <div className="label">
-            <label>
-              <div>Breed</div>
-              <Field
-                name="breed"
-                type="text"
-                placeholder="Type breed"
-                value={values.breed}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </label>
-            <div>{errors.breed && touched.breed}</div>
-          </div>
-          <div>
-            <button
-             type="button"
-              onClick={onClose}
-            >
+          </RadioBtnBox>
+          {/* <div>{errors.category}</div> */}
+          <ContainerInputs>
+            <div>
+              <LabelField>
+                <LabelFieldTitle>
+                  Tittle of ad <span>*</span>
+                </LabelFieldTitle>
+                <FieldStyled
+                  name="title"
+                  type="text"
+                  placeholder="Type name"
+                  value={values.title}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </LabelField>
+              <ErrorText>{errors.title}</ErrorText>
+            </div>
+            <div>
+              <LabelField>
+                <LabelFieldTitle>Name pet</LabelFieldTitle>
+                <FieldStyled
+                  name="name"
+                  type="text"
+                  placeholder="Type name pet"
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </LabelField>
+              <ErrorText>{errors.name}</ErrorText>
+            </div>
+            <div>
+              <LabelField>
+                <LabelFieldTitle>Date of birth</LabelFieldTitle>
+                <FieldStyled
+                  name="date"
+                  type="text"
+                  placeholder="Type date of birth"
+                  value={values.birthday}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </LabelField>
+            </div>
+            <div>
+              <LabelField>
+                <LabelFieldTitle>Breed</LabelFieldTitle>
+                <FieldStyled
+                  name="breed"
+                  type="text"
+                  placeholder="Type breed"
+                  value={values.breed}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </LabelField>
+              <ErrorText>{errors.breed && touched.breed}</ErrorText>
+            </div>
+          </ContainerInputs>
+
+          <ContainerButton>
+            <CancelBack type="button" onClick={onClose}>
               Cancel
-            </button>
+            </CancelBack>
             {dirty && isValid ? (
-              <button className="activeNext" type="submit">
+              <Button className="activeNext" type="submit">
                 Next
-              </button>
+              </Button>
             ) : (
-              <button className="inactiveNext" disabled={true}>
+              <Button className="inactiveNext" disabled={true}>
                 Next
-              </button>
+              </Button>
             )}
-          </div>
-        </form>
+          </ContainerButton>
+        </FormContainer>
       )}
     </Formik>
   );
