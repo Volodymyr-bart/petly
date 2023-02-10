@@ -1,29 +1,26 @@
-import { Field, Formik } from 'formik';
+import { Formik } from 'formik';
 import {
   Button,
   CancelBack,
   Container,
   ContainerButton,
-  Description,
   ErrorText,
   FieldStyled,
   FormContainer,
   LabelField,
   LabelFieldTitle,
-  RadioBtnBox,
-  RadioBtnCategory,
-  RadioInput,
   TitleModal,
 } from './ModalAddNotice.styled';
 import { validationFistStep } from './ModalAddNoticeValidation';
 
-const categories = [
-  { name: 'lost/found', value: 'lost/found', id: '1' },
-  { name: 'In good hands', value: 'for-free', id: '2' },
-  { name: 'sell', value: 'sell', id: '3' },
-];
+// const categories = [
+//   { name: 'lost', value: 'lost', id: '1' },
+//   { name: 'found', value: 'found', id: '2' },
+//   { name: 'In good hands', value: 'for-free', id: '3' },
+//   { name: 'sell', value: 'sell', id: '4' },
+// ];
 
-export const ModalAddNoticeFistStep = ({
+export const ModalAddNoticeAddMyPetFirstStep = ({
   onClose,
   setStepIndex,
   setFormData,
@@ -59,45 +56,6 @@ export const ModalAddNoticeFistStep = ({
         <FormContainer onSubmit={handleSubmit}>
           <TitleModal>Add pet</TitleModal>
           <Container>
-            <Description>
-              Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit
-              amet, consectetur
-            </Description>
-            <RadioBtnBox>
-              {categories.map(category => (
-                <li key={category.id}>
-                  <RadioBtnCategory
-                    className={
-                      values.category === category.value ? 'active' : ''
-                    }
-                  >
-                    {category.name}
-                    <RadioInput
-                      type="radio"
-                      name="category"
-                      value={category.value}
-                    />
-                  </RadioBtnCategory>
-                </li>
-              ))}
-              {/* <div>{errors.category}</div> */}
-            </RadioBtnBox>
-            <div>
-              <LabelField>
-                <LabelFieldTitle>
-                  Tittle of ad <span>*</span>
-                </LabelFieldTitle>
-                <FieldStyled
-                  name="title"
-                  type="text"
-                  placeholder="Type name"
-                  value={values.title}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </LabelField>
-              <ErrorText>{errors.title}</ErrorText>
-            </div>
             <div>
               <LabelField>
                 <LabelFieldTitle>Name pet</LabelFieldTitle>
@@ -116,9 +74,9 @@ export const ModalAddNoticeFistStep = ({
               <LabelField>
                 <LabelFieldTitle>Date of birth</LabelFieldTitle>
                 <FieldStyled
-                  name="birthday"
+                  name="date"
                   type="text"
-                  placeholder="Type date of birth XX.XX.XXXX"
+                  placeholder="Type date of birth"
                   value={values.birthday}
                   onChange={handleChange}
                   onBlur={handleBlur}
