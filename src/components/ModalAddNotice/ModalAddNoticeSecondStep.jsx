@@ -1,78 +1,33 @@
-import { Field, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { addNotice } from 'redux/notices/operations';
+import { Field } from 'formik';
 import {
-  Button,
-  CancelBack,
   Container,
-  ContainerButton,
   ContainerSex,
   ContainerSexVariant,
-  FormContainer,
   Icon,
   LabelField,
   Sex,
   TitleInput,
   TitleModal,
 } from './ModalAddNotice.styled';
-import { validationSecondStep } from './ModalAddNoticeValidation';
 import { UploadImage } from './UploadImage/UploadImage';
 
 export const ModalAddNoticeSecondStep = ({
-  setStepIndex,
+  setisLastStep,
   formData,
-  onClose,
+  handleChange,
+  handleBlur,
+  values,
+  errors,
+  setFieldValue,
+  dirty,
+  isValid
 }) => {
-
-    const dispatch = useDispatch();
-
+ 
+   
     
-    
-    const submitAddNoticeForm = async (data) => {
-         dispatch(
-            addNotice(
-                data
-                // {
-                // title: values.title,
-                // name: values.name,
-                // birthday: values.birthday,
-                // breed: values.breed,
-                // sex: values.sex,
-                // location: values.location,
-                // price: values.price,
-                // image: values.image,
-                // comments:values.comments,
-                // }
-            )
-        );
-    }
     return (
-        <div>
-            <Formik
-                initialValues={{
-                theSex: '',
-                location: '',
-                price: '1',
-                petAvatar: null,
-                comments: '',
-                }}
-                validationSchema={validationSecondStep}
-                onSubmit={values => {
-                const data = { ...formData, ...values };
-                submitAddNoticeForm(data);
-        }}
-      >
-        {({
-          values,
-          errors,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          setFieldValue,
-          isValid,
-          dirty,
-        }) => (
-          <FormContainer onSubmit={handleSubmit}>
+       
+<>
             <TitleModal>Add pet</TitleModal>
             <ContainerSex>
               <TitleInput>
@@ -135,9 +90,9 @@ export const ModalAddNoticeSecondStep = ({
                   <input
                     type="file"
                     name="petAvatar"
-                    onChange={event => {
-                      setFieldValue('petAvatar', event.currentTarget.files[0]);
-                    }}
+                    // onChange={event => {
+                    //   setFieldValue('petAvatar', event.currentTarget.files[0]);
+                    // }}
                   />
                   <div>
                     {values.petAvatar && <UploadImage image={values.petAvatar} />}
@@ -162,28 +117,7 @@ export const ModalAddNoticeSecondStep = ({
                 <div>{errors.comments}</div>
               </div>
             </Container>
-            <ContainerButton>
-              <CancelBack
-                type="button"
-                onClick={() => {
-                  setStepIndex(0);
-                }}
-              >
-                Back
-              </CancelBack>
-              {dirty && isValid ? (
-                <Button className="activeDone" type="submit">
-                  Done
-                </Button>
-              ) : (
-                <Button className="inactiveDone" disabled={true}>
-                  Done
-                </Button>
-              )}
-            </ContainerButton>
-          </FormContainer>
-        )}
-      </Formik>
-    </div>
+     </>
+        
   );
 };

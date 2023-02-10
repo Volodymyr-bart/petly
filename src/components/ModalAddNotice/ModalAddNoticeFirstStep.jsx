@@ -1,13 +1,8 @@
-import { Formik } from 'formik';
 import {
-  Button,
-  CancelBack,
   Container,
-  ContainerButton,
   Description,
   ErrorText,
   FieldStyled,
-  FormContainer,
   LabelField,
   LabelFieldTitle,
   RadioBtnBox,
@@ -15,7 +10,6 @@ import {
   RadioInput,
   TitleModal,
 } from './ModalAddNotice.styled';
-import { validationFistStep } from './ModalAddNoticeValidation';
 
 // Categories;
 const categories = [
@@ -25,39 +19,18 @@ const categories = [
 ];
 
 export const ModalAddNoticeFistStep = ({
-  onClose,
-  setStepIndex,
-  setFormData,
   formData,
+  handleChange,
+  handleBlur,
+  values,
+  errors,
+  setFieldValue,
+  dirty,
+  isValid,
+  onClose,
+  touched
 }) => {
-  return (
-    <Formik
-      initialValues={{
-        title: '',
-        name: '',
-        birthday: '',
-        breed: '',
-        category: '',
-      }}
-      validationSchema={validationFistStep}
-      onSubmit={values => {
-        const data = { ...formData, ...values };
-        setFormData(data);
-        setStepIndex(1);
-      }}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleSubmit,
-        // setFieldValue,
-        handleBlur,
-        isValid,
-        dirty,
-      }) => (
-        <FormContainer onSubmit={handleSubmit}>
+  return (<>
           <TitleModal>Add pet</TitleModal>
           <Container>
             <Description>
@@ -138,25 +111,9 @@ export const ModalAddNoticeFistStep = ({
                   onBlur={handleBlur}
                 />
               </LabelField>
-              <ErrorText>{errors.breed && touched.breed}</ErrorText>
+              {/* <ErrorText>{errors.breed && touched.breed}</ErrorText> */}
             </div>
           </Container>
-          <ContainerButton>
-            <CancelBack type="button" onClick={onClose}>
-              Cancel
-            </CancelBack>
-            {dirty && isValid ? (
-              <Button className="activeNext" type="submit">
-                Next
-              </Button>
-            ) : (
-              <Button className="inactiveNext" disabled={true}>
-                Next
-              </Button>
-            )}
-          </ContainerButton>
-        </FormContainer>
-      )}
-    </Formik>
+          </>
   );
 };
