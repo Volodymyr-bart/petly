@@ -5,7 +5,7 @@ export const StyledDivBox = styled.div`
 display: flex;
 flex-direction: column;
 text-align: start;
-height: 22px;
+height: auto;
 overflow: hidden;
 margin-top: 4px;
 font-size: 12px;
@@ -16,6 +16,17 @@ line-height: 16px;
 }
 :hover {
   color: #f59256;
+}
+@media screen and (min-width: 768px) {
+  font-size: 14px;
+line-height: 19px;
+  // height: 35px;
+}
+
+@media screen and (min-width: 1280px) {
+  // height: auto;
+  font-size: 16px;
+  line-height: 22px;
 }
 `;
 
@@ -36,6 +47,7 @@ export const FriendsStyledLi = styled.li`
 
   @media screen and (min-width: 768px) {
     width: 336px;
+    padding: 16px 4px 16px 4px;
 
     border-radius: 40px;
   }
@@ -51,8 +63,8 @@ export const FriendsStyledA = styled.a`
   flex-grow: 1;
   width: 100%;
   // margin-top: 12px;
-  // margin-bottom: 12px;
-  margin: 12px 0;
+  margin-bottom: 12px;
+  // margin: 12px 0;
   padding: 2px;
 
   font-weight: 700;
@@ -132,6 +144,12 @@ export const FriendsStyledUL = styled.ul`
 export const FriendsInfoStyledLi = styled.li`
 margin-bottom: 4px;
 hight: 20px;
+@media screen and (min-width: 768px) {
+  margin-bottom: 8px;
+};
+@media screen and (min-width: 1280px) {
+  margin-bottom: 12px;
+} ;
 
 `;
 
@@ -202,7 +220,7 @@ export const StyledLink = styled.a`
   }
 
   @media screen and (min-width: 1280px) {
-    font-size: $16px;
+    font-size: 16px;
     line-height: 22px;
   }
 ` ;
@@ -215,14 +233,19 @@ line-height: 16px;
 align-items: center;
 text-decoration: none;
 color: #000000;
+width: 116px;
+margin: 0;
+// height: 3px;
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 19px;
+    width: 141px;
   }
 
   @media screen and (min-width: 1280px) {
     font-size: 16px;
     line-height: 22px;
+    width: 161px;
   }
 `
