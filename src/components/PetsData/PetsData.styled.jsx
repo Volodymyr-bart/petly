@@ -6,6 +6,7 @@ export const UserPageStyled = styled.div`
   }
   @media (min-width: 1280px) {
     /* margin-bottom: 22px; */
+    width: 100%;
   }
 `;
 

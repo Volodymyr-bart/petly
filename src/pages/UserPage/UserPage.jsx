@@ -5,15 +5,17 @@ import Logout from '../../components/Logout/Logout';
 import PetsData from '../../components/PetsData/PetsData';
 import { UserCard, Profile, Header, UserPageStyled } from './UserPage.styled';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getUserData } from 'redux/account/operations';
 
 const UserPage = () => {
   const dispatch = useDispatch();
 
+  const [petsDeleted, setPetsDeleted] = useState();
+
   useEffect(() => {
     dispatch(getUserData());
-  }, [dispatch]);
+  }, [dispatch, petsDeleted]);
 
   const userData = useSelector(selectAllUserData);
   console.log(1234, userData);
@@ -27,7 +29,10 @@ const UserPage = () => {
           <Logout />
         </UserCard>
       </Profile>
-      <PetsData />
+      <PetsData
+        setPetsDeleted={setPetsDeleted}
+        petsData={userData.userPetsList}
+      />
     </UserPageStyled>
   );
 };

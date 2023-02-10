@@ -2,22 +2,17 @@ import { List, UserImage, Image, EditImage, EditText } from './UserData.styled';
 import UserDataItem from '../../components/UserDataItem/UserDataItem';
 import { TiCamera } from 'react-icons/ti';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { changeUserData } from 'redux/account/operations';
 
 // Тимчасові дані. Замінити на дані з ендпоінта
 import userImage from './avatar.jpg';
 
-// Тимчасові дані. Замінити на дані з ендпоінта
-// const userData = {
-//   name: 'user_one',
-//   email: 'user_1@gmail.com',
-//   birthday: '01.01.01',
-//   phone: '099-00-00-000',
-//   city: 'Kyiv',
-// };
-
 const UserData = ({ userData }) => {
   const [itemInProcess, setItemInProcess] = useState(null);
   const [inputData, setInputData] = useState(null);
+
+  const dispatch = useDispatch();
 
   const handleEdit = dataType => {
     setItemInProcess(dataType);
@@ -28,9 +23,32 @@ const UserData = ({ userData }) => {
     setInputData(data);
   };
 
-  const handleSubmit = () => {
-    console.log(inputData);
-    // Тут написати запит на відправлення inputData з інпуту на сервер
+  const handleSubmit = dataType => {
+    console.log(inputData, dataType);
+    console.log(userData);
+
+    // Вставити маршурти замість "path"
+    switch (dataType) {
+      case 'Name':
+        dispatch(changeUserData({ inputData, path: 'path' }));
+        break;
+      case 'Email':
+        dispatch(changeUserData({ inputData, path: 'path' }));
+        break;
+      case 'Birthday':
+        dispatch(changeUserData({ inputData, path: 'path' }));
+        break;
+      case 'Phone':
+        dispatch(changeUserData({ inputData, path: 'path' }));
+        break;
+      case 'City':
+        dispatch(changeUserData({ inputData, path: 'path' }));
+        break;
+      default:
+        console.log('');
+    }
+
+    // dispatch(changeUserData('tratata'));
 
     setItemInProcess(null);
   };
