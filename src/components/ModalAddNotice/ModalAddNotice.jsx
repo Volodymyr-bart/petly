@@ -6,7 +6,7 @@ import { ModalAddNoticeSecondStep } from './ModalAddNoticeSecondStep';
 // import { useDispatch } from "react-redux";
 
 export const ModalAddNotice = ({ onClose }) => {
-  const [activeStepIndex, setActiveStepIndex] = useState(4);
+  const [activeStepIndex, setActiveStepIndex] = useState(0);
   const [formData, setFormData] = useState({});
 
   return (

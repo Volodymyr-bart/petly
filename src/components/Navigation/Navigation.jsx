@@ -40,8 +40,7 @@ export const Navigation = () => {
               <UserMenu />
             ) : (
               <AuthMenu>
-                {' '}
-                <AuthNav />{' '}
+                <AuthNav />
               </AuthMenu>
             )}
           </SecondaryNav>
@@ -56,8 +55,7 @@ export const Navigation = () => {
                 <UserMenu />
               ) : (
                 <AuthMenu>
-                  {' '}
-                  <AuthNav />{' '}
+                  <AuthNav />
                 </AuthMenu>
               )}
             </SecondaryNav>
@@ -78,8 +76,7 @@ export const Navigation = () => {
             <UserMenu />
           ) : (
             <AuthMenu>
-              {' '}
-              <AuthNav />{' '}
+              <AuthNav />
             </AuthMenu>
           )}
         </SecondaryNav>

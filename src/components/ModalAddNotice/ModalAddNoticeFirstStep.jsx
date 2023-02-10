@@ -17,6 +17,7 @@ import {
 } from './ModalAddNotice.styled';
 import { validationFistStep } from './ModalAddNoticeValidation';
 
+// Categories;
 const categories = [
   { name: 'lost/found', value: 'lost/found', id: '1' },
   { name: 'In good hands', value: 'for-free', id: '2' },
