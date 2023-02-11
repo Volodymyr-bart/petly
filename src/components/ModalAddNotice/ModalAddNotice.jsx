@@ -22,6 +22,8 @@ const initialValues ={
   price: '1',
   petAvatar: null,
   comments: '',
+  // eslint-disable-next-line no-dupe-keys
+  category: ''
 }
 
 
@@ -43,7 +45,8 @@ export const ModalAddNotice = ({ onClose }) => {
       location: values.location,
       price: values.price,
       petAvatar: values.petAvatar,
-      comments:values.comments,
+      comments: values.comments,
+      category: values.category,
     }))
     resetForm()
     onClose()
@@ -56,16 +59,16 @@ export const ModalAddNotice = ({ onClose }) => {
       initialValues={initialValues}
       onSubmit={onhandleSubmit}
     >
-      {({ values, errors, setFieldValue, dirty, touched, isValid }) => { 
+      {({ values, errors, setFieldValue, dirty, touched, isValid, handleChange}) => { 
           console.log(errors);
         return (<FormContainer autoComplete='off'>
           {isLastStep ? <ModalAddNoticeSecondStep
           setisLastStep={setisLastStep}
           onClose={onClose}
           values={values}
-          errors={errors}
+          // errors={errors}
           dirty={dirty}
-          touched={touched}
+          handleChange={handleChange}
           setFieldValue={setFieldValue}
           /> : <ModalAddNoticeFistStep
               values={values}
