@@ -110,19 +110,7 @@ export const addNotice = createAsyncThunk(
 
     // console.log('newNotice', newNotice);
     try {
-      const res = await axios.post('/notices', formImageData
-        // {
-        // title: newNotice.title,
-        // name: newNotice.name,
-        // birthday: newNotice.birthday,
-        // breed: newNotice.breed,
-        // sex: newNotice.sex,
-        // location: newNotice.location,
-        // price: newNotice.price,
-        // image: newNotice.image,
-        // comments: newNotice.comments,
-        // }
-      );
+      const res = await axios.post('/notices', formImageData);
       console.log('redux', res.data);
       return res.data;
     } catch (error) {

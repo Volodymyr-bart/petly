@@ -1,3 +1,4 @@
+import { Categories } from 'utils/noticesCatList';
 import {
   Container,
   Description,
@@ -13,9 +14,9 @@ import {
 
 // Categories;
 const categories = [
-  { name: 'lost/found', value: 'lost/found', id: '1' },
-  { name: 'In good hands', value: 'for-free', id: '2' },
-  { name: 'sell', value: 'sell', id: '3' },
+  { name: 'lost/found', value: Categories.LOST_FOUND, id: '1' },
+  { name: 'In good hands', value: Categories.IN_GOOD_HANDS, id: '2' },
+  { name: 'sell', value: Categories.SELL, id: '3' },
 ];
 
 export const ModalAddNoticeFistStep = ({values,errors}) => {
