@@ -10,8 +10,8 @@ import {
   LabelField,
   LabelFieldTitle,
   TitleModal,
-} from './ModalAddNotice.styled';
-import { validationFistStep } from './ModalAddNoticeValidation';
+} from '../ModalAddNotice.styled';
+import { validationFistStep } from '../ModalAddNoticeValidation';
 
 // const categories = [
 //   { name: 'lost', value: 'lost', id: '1' },

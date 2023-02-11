@@ -1,45 +1,89 @@
+import { Formik } from 'formik';
 import { useState } from 'react';
-import { ModalAddNoticeAddMyPetFirstStep } from './ModalAddNoticeAddMyPetFirstStep';
-import { ModalAddNoticeAddMySecondStep } from './ModalAddNoticeAddMyPetSecondStep';
+import { useDispatch } from 'react-redux';
+import {
+  Button,
+  CancelBack,
+  ContainerButton
+} from './ModalAddNotice.styled';
+import { addNotice } from 'redux/notices/operations';
+import { FormContainer } from './ModalAddNotice.styled';
 import { ModalAddNoticeFistStep } from './ModalAddNoticeFirstStep';
 import { ModalAddNoticeSecondStep } from './ModalAddNoticeSecondStep';
-// import { useDispatch } from "react-redux";
+import { validationSchemaNotices } from './ModalAddNoticeValidation';
+const initialValues ={
+  title: '',
+  name: '',
+  birthday: '',
+  breed: '',
+  category: '',
+  theSex: '',
+  location: '',
+  price: '1',
+  petAvatar: null,
+  comments: '',
+}
+
 
 export const ModalAddNotice = ({ onClose }) => {
-  const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const [formData, setFormData] = useState({});
+  const [isLastStep, setisLastStep] = useState(false);
 
+  const dispatch = useDispatch();
+  
+  const onhandleSubmit = (values, {resetForm}) => {
+    console.log(values);
+    
+    dispatch(addNotice({
+      title: values.title,
+      name: values.name,
+      birthday: values.birthday,
+      category: values.category,
+      breed: values.breed,
+      theSex: values.theSex,
+      location: values.location,
+      price: values.price,
+      petAvatar: values.petAvatar,
+      comments:values.comments,
+    }))
+    resetForm()
+    onClose()
+  };
+  
   return (
-    <div>
-      {activeStepIndex === 0 && (
-        <ModalAddNoticeFistStep
+ 
+    <Formik 
+      validationSchema={validationSchemaNotices}
+      initialValues={initialValues}
+      onSubmit={onhandleSubmit}
+    >
+      {({ values, errors, setFieldValue, dirty, touched, isValid }) => { 
+          console.log(errors);
+        return (<FormContainer autoComplete='off'>
+          {isLastStep ? <ModalAddNoticeSecondStep
+          setisLastStep={setisLastStep}
           onClose={onClose}
-          setStepIndex={setActiveStepIndex}
-          formData={formData}
-          setFormData={setFormData}
-        />
-      )}
-      {activeStepIndex === 1 && (
-        <ModalAddNoticeSecondStep
-          setStepIndex={setActiveStepIndex}
-          formData={formData}
-          onClose={onClose}
-        />
-      )}
-      {activeStepIndex === 3 && (
-        <ModalAddNoticeAddMyPetFirstStep
-          setStepIndex={setActiveStepIndex}
-          formData={formData}
-          onClose={onClose}
-        />
-      )}
-      {activeStepIndex === 4 && (
-        <ModalAddNoticeAddMySecondStep
-          setStepIndex={setActiveStepIndex}
-          formData={formData}
-          onClose={onClose}
-        />
-      )}
-    </div>
-  );
+          values={values}
+          errors={errors}
+          dirty={dirty}
+          touched={touched}
+          setFieldValue={setFieldValue}
+          /> : <ModalAddNoticeFistStep
+              values={values}
+              errors={errors}
+          />}
+
+          <ContainerButton>
+          {isLastStep ? ( <><CancelBack type="button" onClick={() => setisLastStep(false)}>Back</CancelBack>
+                {isValid ? (<Button type="submit">Done</Button>) : (<Button disabled={true} className="disabled" >Done</Button>)}</>) : (<><CancelBack type="button" onClick={onClose}>
+              Cancel
+            </CancelBack>
+                <Button type="button" onClick={() => setisLastStep(true)}>
+                  Next
+                </Button>
+              </>)}
+            
+          </ContainerButton>
+      </FormContainer>)}}
+
+    </Formik>)
 };

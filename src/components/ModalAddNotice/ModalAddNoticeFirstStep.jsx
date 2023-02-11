@@ -1,13 +1,8 @@
-import { Formik } from 'formik';
 import {
-  Button,
-  CancelBack,
   Container,
-  ContainerButton,
   Description,
   ErrorText,
   FieldStyled,
-  FormContainer,
   LabelField,
   LabelFieldTitle,
   RadioBtnBox,
@@ -15,7 +10,6 @@ import {
   RadioInput,
   TitleModal,
 } from './ModalAddNotice.styled';
-import { validationFistStep } from './ModalAddNoticeValidation';
 
 // Categories;
 const categories = [
@@ -24,40 +18,8 @@ const categories = [
   { name: 'sell', value: 'sell', id: '3' },
 ];
 
-export const ModalAddNoticeFistStep = ({
-  onClose,
-  setStepIndex,
-  setFormData,
-  formData,
-}) => {
-  return (
-    <Formik
-      initialValues={{
-        title: '',
-        name: '',
-        birthday: '',
-        breed: '',
-        category: '',
-      }}
-      validationSchema={validationFistStep}
-      onSubmit={values => {
-        const data = { ...formData, ...values };
-        setFormData(data);
-        setStepIndex(1);
-      }}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleSubmit,
-        // setFieldValue,
-        handleBlur,
-        isValid,
-        dirty,
-      }) => (
-        <FormContainer onSubmit={handleSubmit}>
+export const ModalAddNoticeFistStep = ({values,errors}) => {
+  return (<>
           <TitleModal>Add pet</TitleModal>
           <Container>
             <Description>
@@ -92,12 +54,11 @@ export const ModalAddNoticeFistStep = ({
                   name="title"
                   type="text"
                   placeholder="Type name"
-                  value={values.title}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  // value={values.title}
+                  // onChange={handleChange}
                 />
               </LabelField>
-              <ErrorText>{errors.title}</ErrorText>
+              {errors.title && <ErrorText>{errors.title}</ErrorText>}
             </div>
             <div>
               <LabelField>
@@ -106,12 +67,11 @@ export const ModalAddNoticeFistStep = ({
                   name="name"
                   type="text"
                   placeholder="Type name pet"
-                  value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  // value={values.name}
+                  // onChange={handleChange}
                 />
               </LabelField>
-              <ErrorText>{errors.name}</ErrorText>
+              {errors.name && <ErrorText>{errors.name}</ErrorText>}
             </div>
             <div>
               <LabelField>
@@ -120,11 +80,11 @@ export const ModalAddNoticeFistStep = ({
                   name="birthday"
                   type="text"
                   placeholder="Type date of birth XX.XX.XXXX"
-                  value={values.birthday}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  // value={values.birthday}
+                  // onChange={handleChange}
                 />
               </LabelField>
+              {errors.birthday && <ErrorText>{errors.birthday}</ErrorText>}
             </div>
             <div>
               <LabelField>
@@ -133,30 +93,14 @@ export const ModalAddNoticeFistStep = ({
                   name="breed"
                   type="text"
                   placeholder="Type breed"
-                  value={values.breed}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  // value={values.breed}
+                  // onChange={handleChange}
+
                 />
               </LabelField>
-              <ErrorText>{errors.breed && touched.breed}</ErrorText>
+              {errors.breed && <ErrorText>{errors.breed}</ErrorText>}
             </div>
           </Container>
-          <ContainerButton>
-            <CancelBack type="button" onClick={onClose}>
-              Cancel
-            </CancelBack>
-            {dirty && isValid ? (
-              <Button className="activeNext" type="submit">
-                Next
-              </Button>
-            ) : (
-              <Button className="inactiveNext" disabled={true}>
-                Next
-              </Button>
-            )}
-          </ContainerButton>
-        </FormContainer>
-      )}
-    </Formik>
+          </>
   );
 };

@@ -12,8 +12,8 @@ import {
   TitleInput,
   TitleInputMyPet,
   TitleModal,
-} from './ModalAddNotice.styled';
-import { validationSecondStep } from './ModalAddNoticeValidation';
+} from '../ModalAddNotice.styled';
+import { validationSecondStep } from '../ModalAddNoticeValidation';
 
 export const ModalAddNoticeAddMySecondStep = ({
   setStepIndex,

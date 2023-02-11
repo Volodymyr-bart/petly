@@ -1,189 +1,126 @@
-import { Field, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { addNotice } from 'redux/notices/operations';
+import { ErrorMessage, Field } from 'formik';
+import {ReactComponent as Male} from '../../noticesImage/male.svg'
+import {ReactComponent as Female} from '../../noticesImage/female.svg'
+import {ReactComponent as DefaultImg} from '../../noticesImage/loadimg.svg'
+
 import {
-  Button,
-  CancelBack,
+  CommentField,
   Container,
-  ContainerButton,
   ContainerSex,
   ContainerSexVariant,
-  FormContainer,
+  DefaultLoadImg,
+  ErrorText,
+  FieldStyled,
   Icon,
   LabelField,
+  LabelFieldTitle,
+  LoadImg,
   Sex,
+  SexLabel,
+  SexRadioInput,
   TitleInput,
   TitleModal,
 } from './ModalAddNotice.styled';
-import { validationSecondStep } from './ModalAddNoticeValidation';
 import { UploadImage } from './UploadImage/UploadImage';
+import { useRef } from 'react';
 
 export const ModalAddNoticeSecondStep = ({
-  setStepIndex,
-  formData,
-  onClose,
+  values,
+  setFieldValue,
+  errors,
+  dirty,
+  touched
 }) => {
+  const filePicker = useRef(null);
 
-    const dispatch = useDispatch();
-
+  const handlePick = () => {
+    filePicker.current.click()
+  }   
     
-    
-    const submitAddNoticeForm = async (data) => {
-         dispatch(
-            addNotice(
-                data
-                // {
-                // title: values.title,
-                // name: values.name,
-                // birthday: values.birthday,
-                // breed: values.breed,
-                // sex: values.sex,
-                // location: values.location,
-                // price: values.price,
-                // image: values.image,
-                // comments:values.comments,
-                // }
-            )
-        );
-    }
     return (
-        <div>
-            <Formik
-                initialValues={{
-                theSex: '',
-                location: '',
-                price: '1',
-                petAvatar: null,
-                comments: '',
-                }}
-                validationSchema={validationSecondStep}
-                onSubmit={values => {
-                const data = { ...formData, ...values };
-                submitAddNoticeForm(data);
-        }}
-      >
-        {({
-          values,
-          errors,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          setFieldValue,
-          isValid,
-          dirty,
-        }) => (
-          <FormContainer onSubmit={handleSubmit}>
+          <>
             <TitleModal>Add pet</TitleModal>
             <ContainerSex>
               <TitleInput>
                 The sex<span>*</span>:
               </TitleInput>
               <ContainerSexVariant>
-                <label className={values.sex === 'male' ? 'active' : ''}>
-                  <Field type="radio" name="sex" value="male" />
-                  <Icon>icon</Icon>
+                <SexLabel className={values.theSex === 'male' ? 'active' : ''}>
+                  <SexRadioInput type="radio" name="theSex" value="male" />
+                  <Icon><Male box-shadow='inset -1px 2px 3px rgba(255, 255, 255, 0.57), inset 0px -3px 4px rgba(0, 0, 0, 0.25)' /></Icon>
                   <Sex>Male</Sex>
-                </label>
-                <label className={values.sex === 'female' ? 'active' : ''}>
-                  <Field type="radio" name="sex" value="female" />
-                  <Icon>icon</Icon>
+                </SexLabel>
+                <SexLabel className={values.theSex === 'female' ? 'active' : ''}>
+                  <SexRadioInput type="radio" name="theSex" value="female" />
+                  <Icon><Female box-shadow='inset -1px 2px 3px rgba(255, 255, 255, 0.57), inset 0px -3px 4px rgba(0, 0, 0, 0.25)' /></Icon>
                   <Sex>Female</Sex>
-                </label>
+                </SexLabel>
               </ContainerSexVariant>
-              {/* <div>{errors.sex}</div> */}
+              {!touched && <ErrorText component="span" name="theSex" />}
             </ContainerSex>
             <Container>
               <div>
                 <LabelField>
-                  <TitleInput>
+                  <LabelFieldTitle>
                     Location<span>*</span>:
-                  </TitleInput>
-                  <Field
+                  </LabelFieldTitle>
+                  <FieldStyled
                     name="location"
                     type="text"
                     placeholder="City, Region"
-                    value={values.location}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
                   />
                 </LabelField>
-                <div>{errors.location}</div>
+                {/* <ErrorMessage name="location" component="span"/> */}
               </div>
-              {formData.category === 'sell' && (
+              {values.category === 'sell' && (
                 <div>
                   <LabelField>
-                    <TitleInput>
+                    <LabelFieldTitle>
                       Price<span>*</span>:
-                    </TitleInput>
-                    <Field
+                    </LabelFieldTitle>
+                    <FieldStyled
                       name="price"
                       type="text"
-                      value={values.price}
                       placeholder="Type price"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
                     />
                   </LabelField>
-                  <div>{errors.price}</div>
+                  {/* <ErrorMessage name="price" component="span"/> */}
                 </div>
-              )}
-              {/* Load file */}
-
+              )} 
               <div>
                 <LabelField>
-                  <TitleInput>Load the pet’s image:</TitleInput>
-                  <input
+                  <LabelFieldTitle>Load the pet’s image:</LabelFieldTitle>
+                  <DefaultLoadImg
+                    className='hidden'
+                    ref={filePicker}
                     type="file"
                     name="petAvatar"
                     onChange={event => {
                       setFieldValue('petAvatar', event.currentTarget.files[0]);
                     }}
                   />
+                  
                   <div>
-                    {values.petAvatar && <UploadImage image={values.petAvatar} />}
+                    {values.petAvatar ? (<UploadImage image={values.petAvatar} />) : (<LoadImg onClick={handlePick}><DefaultImg /></LoadImg>)}
                   </div>
                 </LabelField>
-                <div>{errors.petAvatar}</div>
+                <ErrorMessage name="petAvatar" component="span"/>
               </div>
 
               {/* Comment */}
               <div>
                 <LabelField>
-                  <TitleInput>Comments</TitleInput>
-                  <textarea
+                  <LabelFieldTitle>Comments</LabelFieldTitle>
+                  <CommentField
                     type="text"
                     name="comments"
                     placeholder="Type comment"
-                    defaultValue={values.comments}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
                   />
                 </LabelField>
-                <div>{errors.comments}</div>
+                {/* <ErrorMessage name="comments" component="span"/> */}
               </div>
             </Container>
-            <ContainerButton>
-              <CancelBack
-                type="button"
-                onClick={() => {
-                  setStepIndex(0);
-                }}
-              >
-                Back
-              </CancelBack>
-              {dirty && isValid ? (
-                <Button className="activeDone" type="submit">
-                  Done
-                </Button>
-              ) : (
-                <Button className="inactiveDone" disabled={true}>
-                  Done
-                </Button>
-              )}
-            </ContainerButton>
-          </FormContainer>
-        )}
-      </Formik>
-    </div>
+     </>
+        
   );
 };
