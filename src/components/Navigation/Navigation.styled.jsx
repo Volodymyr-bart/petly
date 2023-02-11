@@ -31,7 +31,6 @@ export const NavLink = styled(Link)`
   flex-direction: column;
   cursor: pointer;
   font-size: 32px;
-  font-family: 'Manroe';
   color: #181c27;
   letter-spacing: 0.04em;
   margin-left: auto;
@@ -60,6 +59,7 @@ export const NavMenu = styled.div`
   flex-direction: column;
   @media (min-width: 1280px) {
     flex-direction: row;
+    margin-right: 354px;
   }
 `;
 export const AuthMenu = styled.ul`
