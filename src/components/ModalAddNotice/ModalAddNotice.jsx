@@ -20,11 +20,11 @@ const initialValues ={
   category: '',
   theSex: '',
   location: '',
-  price: '1',
+  price: '0',
   petAvatar: null,
   comments: '',
   // eslint-disable-next-line no-dupe-keys
-  category: ''
+//   category: ''
 }
 
 
@@ -46,7 +46,7 @@ export const ModalAddNotice = ({ onClose }) => {
       price: values.price,
       petAvatar: values.petAvatar,
       comments: values.comments,
-      category: values.category,
+    //   category: values.category,
     }))
     resetForm()
     onClose()

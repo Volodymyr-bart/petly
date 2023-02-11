@@ -97,33 +97,15 @@ export const getAllOwnNoticesWithoutR = async () => {
 export const addNotice = createAsyncThunk(
   'notices/addNotice',
   async (newNotice, thunkAPI) => {   
-    // if (!newNotice.petAvatar) delete newNotice['petAvatar'];
-    let formImageData = new FormData();
+    if (!newNotice.petAvatar) delete newNotice['petAvatar'];
+    let formImageData = new FormData();    
     
-    for (const key in newNotice) {     
+    for (const key in newNotice) {
       formImageData.append(key, newNotice[key]);
     }
-    // formImageData.append('petAvatar', newNotice.petAvatar);
-    // console.log("formdata", formImageData.get('petAvatar'));
-
-    // newNotice.petAvatar = formImageData;   
-
-    // console.log('newNotice', newNotice);
+   
     try {
-      const res = await axios.post('/notices', formImageData
-        // {
-        // title: newNotice.title,
-        // name: newNotice.name,
-        // birthday: newNotice.birthday,
-        // breed: newNotice.breed,
-        // sex: newNotice.sex,
-        // location: newNotice.location,
-        // price: newNotice.price,
-        // image: newNotice.image,
-        // comments: newNotice.comments,
-        // }
-      );
-      console.log('redux', res.data);
+      const res = await axios.post('/notices', formImageData);      
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

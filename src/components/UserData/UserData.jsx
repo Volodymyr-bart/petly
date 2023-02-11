@@ -24,11 +24,12 @@ const UserData = ({ userData, setChangedData }) => {
   };
 
   const handleSubmit = dataType => {
+    console.log(1, userData);
     let newData = { ...userData };
     newData[dataType === 'City' ? 'address' : dataType.toLowerCase()] =
       inputData;
     delete newData.userPetsList;
-
+    console.log(2, newData);
     changeUserData(newData);
     setChangedData(dispatch(getUserData()));
     setItemInProcess(null);
