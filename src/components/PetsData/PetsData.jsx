@@ -10,8 +10,8 @@ import { BsPlusLg } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { getUserData, deletePetData } from 'redux/account/operations';
 import { useToggle } from '../../hooks';
-import { ModalAddNotice } from 'components/ModalAddNotice/ModalAddNotice';
 import { Modal } from 'components/Modal/Modal';
+import { AddMyPetModal } from 'components/ModalAddNotice/AddMyPetModal/AddMyPetModal';
 
 const UserPage = ({ setChangedData, petsData }) => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const UserPage = ({ setChangedData, petsData }) => {
 
       <PetsList handleDeletePet={handleDeletePet} />
       <Modal isOpen={isOpen} onClose={close}>
-        <ModalAddNotice onClose={close}/>
+        <AddMyPetModal onClose={close}/>
       </Modal>
 
     </UserPageStyled>
