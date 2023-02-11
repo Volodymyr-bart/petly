@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectAllNews } from 'redux/news/selectors';
+import { selectFilteredNews } from 'redux/news/selectors';
 import {
   DescriptionStyled,
   Line,
@@ -10,28 +10,27 @@ import {
   TextStyled,
 } from './NewsList.styled';
 
-import React from 'react';
+// import React from 'react';
 // import EllipsisText from 'react-ellipsis-text';
 
 //allow react dev tools work
-window.React = React;
+// window.React = React;
 
 const NewsList = () => {
-  const news = useSelector(selectAllNews);
+  const news = useSelector(selectFilteredNews);
 
   return (
     <NewsListStyled>
       {news &&
-        news.map(item => (
-          <NewsItem key={item.url}>
+        news.map(({ url, title, description, date }) => (
+          <NewsItem key={url}>
             <Line />
-            <TextStyled text={item.title} length={40} />
-            
-            <DescriptionStyled text={item.description} length={215} />
+            <TextStyled text={title} length={40} />
+            <DescriptionStyled text={description} length={230} />
             <NewsBottom>
-              <p>{item.date}</p>
+              <p>{date}</p>
               <NewsLink
-                href={`${item.url}`}
+                href={`${url}`}
                 target="_blank"
                 rel="noreferrer noopener"
               >
