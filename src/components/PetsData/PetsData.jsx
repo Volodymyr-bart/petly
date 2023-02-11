@@ -32,11 +32,10 @@ const UserPage = ({ setChangedData, petsData }) => {
         </AddPet>
       </PetsDataHeader>
 
-      <PetsList handleDeletePet={handleDeletePet} />
+      <PetsList handleDeletePet={handleDeletePet} petsData={petsData} />
       <Modal isOpen={isOpen} onClose={close}>
-        <AddMyPetModal onClose={close}/>
+        <AddMyPetModal onClose={close} />
       </Modal>
-
     </UserPageStyled>
   );
 };
