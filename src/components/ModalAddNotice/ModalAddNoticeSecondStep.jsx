@@ -29,6 +29,7 @@ export const ModalAddNoticeSecondStep = ({
   setFieldValue,
   errors,
   dirty,
+  handleChange,
   touched,
 }) => {
   const filePicker = useRef(null);
@@ -117,10 +118,11 @@ export const ModalAddNoticeSecondStep = ({
         <div>
           <LabelField>
             <LabelFieldTitle>Comments</LabelFieldTitle>
-            <CommentField
+            <CommentField as='textarea'
               type="text"
               name="comments"
               placeholder="Type comment"
+              onChange={handleChange}
             />
           </LabelField>
           {/* <ErrorMessage name="comments" component="span"/> */}
