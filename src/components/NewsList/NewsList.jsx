@@ -13,6 +13,8 @@ import {
 // import React from 'react';
 // import EllipsisText from 'react-ellipsis-text';
 
+
+
 //allow react dev tools work
 // window.React = React;
 
@@ -26,7 +28,13 @@ const NewsList = () => {
           <NewsItem key={url}>
             <Line />
             <TextStyled text={title} length={40} />
-            <DescriptionStyled text={description} length={230} />
+            <DescriptionStyled
+              text={description}
+              maxLine={6}
+              trimRight
+              basedOn='words'
+            />
+            {/* <DescriptionStyled text={description} length={230} tailClassName={'myTail'}/> */}
             <NewsBottom>
               <p>{date}</p>
               <NewsLink

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import EllipsisText from 'react-ellipsis-text';
+import LinesEllipsis from 'react-lines-ellipsis'
 
 export const TextStyled = styled(EllipsisText)`
  margin-bottom: 16px;
@@ -55,7 +56,7 @@ export const Line = styled.div`
   }
 `;
 
-export const DescriptionStyled = styled(EllipsisText)`
+export const DescriptionStyled = styled(LinesEllipsis)`
   height: 154px;
   overflow: hidden;
   font-weight: 400;
