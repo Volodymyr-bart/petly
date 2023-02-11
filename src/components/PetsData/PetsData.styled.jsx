@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
 export const UserPageStyled = styled.div`
-  @media (min-width: 768px) {
-    /* margin-bottom: 22px; */
-  }
   @media (min-width: 1280px) {
-    /* margin-bottom: 22px; */
+    width: 100%;
   }
 `;
 
@@ -47,10 +44,6 @@ export const AddPet = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (min-width: 768px) {
-  }
-  @media (min-width: 1280px) {
-  }
 `;
 
 export const AddPetText = styled.p`
@@ -60,16 +53,4 @@ export const AddPetText = styled.p`
   color: #111111;
   margin-right: 15px;
   margin-left: auto;
-  @media (min-width: 768px) {
-  }
-  @media (min-width: 1280px) {
-  }
-`;
-
-export const PetsList = styled.ul`
-  list-style: none;
-  @media (min-width: 768px) {
-  }
-  @media (min-width: 1280px) {
-  }
 `;
