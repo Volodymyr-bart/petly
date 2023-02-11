@@ -1,19 +1,5 @@
 import styled from 'styled-components';
 
-export const List = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin-bottom: 42px;
-  @media (min-width: 768px) {
-    margin-bottom: 0;
-    margin-right: auto;
-  }
-  @media (min-width: 1280px) {
-    margin-bottom: 24px;
-    margin-right: auto;
-  }
-`;
-
 export const UserImage = styled.div`
   margin-bottom: 34px;
   @media (min-width: 768px) {
@@ -35,9 +21,6 @@ export const Image = styled.img`
   @media (min-width: 768px) {
     margin-bottom: 8px;
   }
-  @media (min-width: 1280px) {
-    /* margin-bottom: 8px; */
-  }
 `;
 
 export const EditImage = styled.button`
@@ -58,7 +41,6 @@ export const EditImage = styled.button`
   }
   @media (min-width: 1280px) {
     position: absolute;
-    /* top: 233px; */
     bottom: 0;
     right: 0;
   }
@@ -72,5 +54,19 @@ export const EditText = styled.p`
   @media (min-width: 768px) {
   }
   @media (min-width: 1280px) {
+  }
+`;
+
+export const List = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin-bottom: 42px;
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+    margin-right: auto;
+  }
+  @media (min-width: 1280px) {
+    margin-bottom: 24px;
+    margin-right: auto;
   }
 `;

@@ -23,8 +23,4 @@ export const LogoutText = styled.p`
   letter-spacing: 0.04em;
   color: rgba(17, 17, 17, 0.6);
   margin-left: 8px;
-  @media (min-width: 768px) {
-  }
-  @media (min-width: 1280px) {
-  }
 `;

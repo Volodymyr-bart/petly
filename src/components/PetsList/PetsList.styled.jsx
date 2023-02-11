@@ -4,19 +4,16 @@ export const PetsListStyled = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  @media (min-width: 768px) {
-  }
-  @media (min-width: 1280px) {
-  }
 `;
 
 export const PetsItem = styled.li`
-  width: 280px;
+  min-width: 100%;
   background: #ffffff;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 20px;
   padding: 16px 20px 40px 20px;
   margin-bottom: 20px;
+  margin-right: 0;
   position: relative;
   &:last-child {
     margin-bottom: 0;
@@ -45,11 +42,10 @@ export const PetImage = styled.img`
     margin-bottom: 0;
     margin-right: 32px;
   }
-  @media (min-width: 1280px) {
-  }
 `;
-
-export const DataList = styled.ul``;
+export const DataList = styled.ul`
+  padding-left: 0;
+`;
 
 export const DataItem = styled.li`
   font-weight: 500;
@@ -58,17 +54,13 @@ export const DataItem = styled.li`
   letter-spacing: 0.04em;
   color: #000000;
   margin-bottom: 12px;
+
   &:last-child {
     margin-bottom: 0;
-  }
-  &:first-child {
-    display: flex;
   }
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: 22px;
-  }
-  @media (min-width: 1280px) {
   }
 `;
 
@@ -80,6 +72,9 @@ export const Delete = styled.button`
   color: rgba(17, 17, 17, 0.6);
   width: 18px;
   height: 18px;
+  position: absolute;
+  right: 20px;
+  top: 274px;
   @media (min-width: 768px) {
     background-color: #fdf7f2;
     border-radius: 50%;
@@ -88,34 +83,14 @@ export const Delete = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    right: 20px;
+    top: 20px;
     & > svg {
       width: 21px;
       height: 21px;
     }
   }
-  @media (min-width: 1280px) {
-    /* background-color: #fdf7f2;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 52px;
-    & > svg {
-      width: 21px;
-      height: 21px;
-    } */
-  }
 `;
 
 export const RegularText = styled.span`
   font-weight: 400;
-  @media (min-width: 768px) {
-  }
-  @media (min-width: 1280px) {
-  }
 `;

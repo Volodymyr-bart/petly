@@ -7,11 +7,15 @@ import {
 } from './PetsData.styled';
 import PetsList from '../../components/PetsList/PetsList';
 import { BsPlusLg } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import { getUserData, deletePetData } from 'redux/account/operations';
 
-const UserPage = () => {
-  const handleDeletePet = () => {
-    console.log('delete pet');
-    // Тут написати запит на видалення даних тварини
+const UserPage = ({ setChangedData, petsData }) => {
+  const dispatch = useDispatch();
+
+  const handleDeletePet = id => {
+    deletePetData(id);
+    setChangedData(dispatch(getUserData()));
   };
 
   return (
@@ -23,7 +27,7 @@ const UserPage = () => {
           <BsPlusLg color="#fff" fontSize="16px" />
         </AddPet>
       </PetsDataHeader>
-      <PetsList handleDeletePet={handleDeletePet} />
+      <PetsList handleDeletePet={handleDeletePet} petsData={petsData} />
     </UserPageStyled>
   );
 };
