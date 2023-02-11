@@ -20,7 +20,7 @@ const initialValues ={
   category: '',
   theSex: '',
   location: '',
-  price: '1',
+  price: '0',
   petAvatar: null,
   comments: '',
   // eslint-disable-next-line no-dupe-keys
