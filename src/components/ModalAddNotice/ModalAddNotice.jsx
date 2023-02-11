@@ -31,7 +31,7 @@ export const ModalAddNotice = ({ onClose }) => {
 
   // const dispatch = useDispatch();
   
-  const handleSubmit = (values, {resetForm}) => {
+  const onhandleSubmit = (values, {resetForm}) => {
    console.log(values);
    
     // dispatch(
@@ -70,11 +70,11 @@ export const ModalAddNotice = ({ onClose }) => {
     <Formik 
       validationSchema={validationSchemaNotices}
       initialValues={initialValues}
-      onSubmit={handleSubmit}
+      onSubmit={onhandleSubmit}
     >
-      {({ values, errors, setFieldValue, touched}) => { 
-          // console.log(values);
-        return (<FormContainer autoComplete='off' >
+      {({ values, errors, setFieldValue, touched }) => { 
+          console.log(errors);
+        return (<FormContainer autoComplete='off'>
           {isLastStep ? <ModalAddNoticeSecondStep
           setisLastStep={setisLastStep}
           onClose={onClose}
