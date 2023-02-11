@@ -1,6 +1,8 @@
+import { ErrorMessage } from 'formik';
 import {
   Container,
   Description,
+  ErrorMessageStyled,
   ErrorText,
   FieldStyled,
   LabelField,
@@ -8,6 +10,7 @@ import {
   RadioBtnBox,
   RadioBtnCategory,
   RadioInput,
+  TitleInput,
   TitleModal,
 } from './ModalAddNotice.styled';
 
@@ -26,9 +29,12 @@ export const ModalAddNoticeFistStep = ({values,errors}) => {
               Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit
               amet, consectetur
             </Description>
-            <RadioBtnBox>
+            <div>
+           <TitleInput>Choose category<span>*</span>:
+        </TitleInput>
+            <RadioBtnBox> 
               {categories.map(category => (
-                <li key={category.id}>
+                 <li key={category.id}>
                   <RadioBtnCategory
                     className={
                       values.category === category.value ? 'active' : ''
@@ -41,10 +47,11 @@ export const ModalAddNoticeFistStep = ({values,errors}) => {
                       value={category.value}
                     />
                   </RadioBtnCategory>
-                </li>
+                  </li>
               ))}
-              {/* <div>{errors.category}</div> */}
+              <ErrorMessageStyled name='category' component="span"/>
             </RadioBtnBox>
+            </div>
             <div>
               <LabelField>
                 <LabelFieldTitle>
@@ -58,7 +65,7 @@ export const ModalAddNoticeFistStep = ({values,errors}) => {
                   // onChange={handleChange}
                 />
               </LabelField>
-              {errors.title && <ErrorText>{errors.title}</ErrorText>}
+              <ErrorMessageStyled name='title' component="span"/>
             </div>
             <div>
               <LabelField>
@@ -71,7 +78,7 @@ export const ModalAddNoticeFistStep = ({values,errors}) => {
                   // onChange={handleChange}
                 />
               </LabelField>
-              {errors.name && <ErrorText>{errors.name}</ErrorText>}
+              <ErrorMessageStyled name='name' component="span"/>
             </div>
             <div>
               <LabelField>
@@ -84,7 +91,7 @@ export const ModalAddNoticeFistStep = ({values,errors}) => {
                   // onChange={handleChange}
                 />
               </LabelField>
-              {errors.birthday && <ErrorText>{errors.birthday}</ErrorText>}
+              <ErrorMessageStyled name='birthday' component="span"/>
             </div>
             <div>
               <LabelField>
@@ -98,7 +105,7 @@ export const ModalAddNoticeFistStep = ({values,errors}) => {
 
                 />
               </LabelField>
-              {errors.breed && <ErrorText>{errors.breed}</ErrorText>}
+              <ErrorMessageStyled name='breed' component="span"/>
             </div>
           </Container>
           </>

@@ -34,7 +34,6 @@ export const ModalAddNotice = ({ onClose }) => {
   const dispatch = useDispatch();
   
   const onhandleSubmit = (values, {resetForm}) => {
-    console.log(values);
     
     dispatch(addNotice({
       title: values.title,
@@ -61,7 +60,10 @@ export const ModalAddNotice = ({ onClose }) => {
       onSubmit={onhandleSubmit}
     >
       {({ values, errors, setFieldValue, dirty, touched, isValid, handleChange}) => { 
-          console.log(errors);
+        console.log(errors);
+
+        const isDisabled = values.category === '' || values.title === '' || errors.category || errors.title 
+
         return (<FormContainer autoComplete='off'>
           {isLastStep ? <ModalAddNoticeSecondStep
           setisLastStep={setisLastStep}
@@ -81,9 +83,9 @@ export const ModalAddNotice = ({ onClose }) => {
                 {isValid ? (<Button type="submit">Done</Button>) : (<Button disabled={true} className="disabled" >Done</Button>)}</>) : (<><CancelBack type="button" onClick={onClose}>
               Cancel
             </CancelBack>
-                <Button type="button" onClick={() => setisLastStep(true)}>
+            {isDisabled ? (<Button disabled={isDisabled} className="disabled" >Next</Button>) : <Button type="button" onClick={() => setisLastStep(true)}>
                   Next
-                </Button>
+                </Button>}
               </>)}
             
           </ContainerButton>

@@ -1,4 +1,3 @@
-import { ErrorMessage } from 'formik';
 import { ReactComponent as Male } from '../../noticesImage/male.svg';
 import { ReactComponent as Female } from '../../noticesImage/female.svg';
 import { ReactComponent as DefaultImg } from '../../noticesImage/loadimg.svg';
@@ -9,6 +8,7 @@ import {
   ContainerSex,
   ContainerSexVariant,
   DefaultLoadImg,
+  ErrorMessageStyled,
   ErrorText,
   FieldStyled,
   Icon,
@@ -61,7 +61,7 @@ export const ModalAddNoticeSecondStep = ({
             <Sex>Female</Sex>
           </SexLabel>
         </ContainerSexVariant>
-        {!touched && <ErrorText component="span" name="theSex" />}
+        <ErrorMessageStyled name='theSex' component="span"/>
       </ContainerSex>
       <Container>
         <div>
@@ -75,7 +75,7 @@ export const ModalAddNoticeSecondStep = ({
               placeholder="City, Region"
             />
           </LabelField>
-          {/* <ErrorMessage name="location" component="span"/> */}
+          <ErrorMessageStyled name="location" component="span"/>
         </div>
         {values.category === 'sell' && (
           <div>
@@ -85,7 +85,7 @@ export const ModalAddNoticeSecondStep = ({
               </LabelFieldTitle>
               <FieldStyled name="price" type="text" placeholder="Type price" />
             </LabelField>
-            {/* <ErrorMessage name="price" component="span"/> */}
+            <ErrorMessageStyled name="price" component="span"/>
           </div>
         )}
         <div>
@@ -111,21 +111,22 @@ export const ModalAddNoticeSecondStep = ({
               )}
             </div>
           </LabelField>
-          <ErrorMessage name="petAvatar" component="span" />
+          <ErrorMessageStyled name="petAvatar" component="span" />
         </div>
 
         {/* Comment */}
         <div>
           <LabelField>
-            <LabelFieldTitle>Comments</LabelFieldTitle>
+            <LabelFieldTitle>Comments<span>*</span></LabelFieldTitle>
             <CommentField as='textarea'
               type="text"
               name="comments"
               placeholder="Type comment"
               onChange={handleChange}
+              value={values.comments}
             />
           </LabelField>
-          {/* <ErrorMessage name="comments" component="span"/> */}
+          <ErrorMessageStyled name="comments" component="span"/>
         </div>
       </Container>
     </>

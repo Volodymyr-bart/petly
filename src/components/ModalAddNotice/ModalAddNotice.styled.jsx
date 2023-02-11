@@ -34,7 +34,7 @@ export const Description = styled.p`
 `;
 
 export const RadioBtnBox = styled.ul`
-  margin: 0;
+  margin-top: 12px;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -274,3 +274,9 @@ export const CommentField = styled(Field)`
     cursor: pointer;
     outline: 2px solid #f59256;
   }`
+
+export const ErrorMessageStyled = styled(ErrorMessage)`
+    font-size: 18px;
+    color: #9d3158;
+    margin-top: 10px;
+`
