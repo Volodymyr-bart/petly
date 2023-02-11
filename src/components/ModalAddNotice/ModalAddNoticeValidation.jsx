@@ -4,7 +4,6 @@ const locationRegexp = /[A-Z][a-z]*,\s[A-Z][a-z]*/;
 const titleRegexp = /^[a-zA-Z\s]*$/;
 
 export const validationSchemaNotices = yup.object().shape({
-  categoty: yup.string().required('Please, choose category'),
   title: yup
     .string()
     .trim(true)
@@ -60,20 +59,17 @@ export const validationSchemaAddMyPet = yup.object().shape({
     .trim(true)
     .min(2, 'Too short!')
     .max(16, 'Too long!')
-    .matches(titleRegexp, 'Must contain only letters and spaces'),
-    // .required('Name is required'),
+    .matches(titleRegexp, 'Must contain only letters and spaces').required("Name is required"),
   breed: yup
     .string()
     .trim()
     .min(2, 'Too short!')
     .max(24, 'Too long!')
     .matches(titleRegexp, 'Must contain only letters and spaces'),
-    // .required('Breed is required'),
   comments: yup
     .string()
     .min(8, 'Too short!')
-    .max(120, 'Too long!')
-    .required('Comments is required'),
+    .max(120, 'Too long!').required("Comments is required"),
   petAvatar: yup
     .mixed()
     .test(

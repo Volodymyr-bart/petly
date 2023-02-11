@@ -19,7 +19,7 @@ const PetsList = ({ handleDeletePet, petsData }) => {
           const petBirthday = new Date(item.birthday).toLocaleDateString();
           return (
             <PetsItem key={nanoid(10)}>
-              <PetImage src={item.image} />
+              <PetImage src={item.photo.url} />
               <DataList>
                 <DataItem>
                   Pet Name: <RegularText>{item.name}</RegularText>

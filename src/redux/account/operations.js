@@ -32,6 +32,18 @@ export const deletePetData = async id => {
   }
 };
 
+
+export const getAllOwnNoticesWithoutR = async () => {
+  try {
+    const response = await axios.get(`/notices/ads/my`);
+    return response.data;
+  } catch (e) {
+    return console.error(e.message);
+  }
+};
+
+
+
 // Послання нащадкам: "Тарілку після гречки мийте відразу"
 
 // export const changeUserData = createAsyncThunk(

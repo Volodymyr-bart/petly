@@ -49,6 +49,7 @@ export const ModalAddNotice = ({ onClose }) => {
     //   category: values.category,
     }))
     resetForm()
+    setisLastStep(false)
     onClose()
   };
   
