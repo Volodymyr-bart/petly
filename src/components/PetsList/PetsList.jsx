@@ -11,6 +11,7 @@ import { nanoid } from 'nanoid';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 
 const PetsList = ({ handleDeletePet, petsData }) => {
+  console.log('petsData', petsData);
   return (
     <PetsListStyled>
       {petsData &&
