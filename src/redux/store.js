@@ -17,6 +17,7 @@ import { newsReducer } from './news/slice';
 import { servicesReducer } from './services/slice';
 import { noticesReducer } from './notices/noticesSlice';
 import { searchNoticesReducer } from './notices/searchSlice';
+import { searchNewsReducer } from './news/searchNews';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -38,6 +39,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     userData: userDataReducer,
     news: newsReducer,
+    searchNews: searchNewsReducer,
     services: servicesReducer,
     notices: noticesReducer,
     searchNotices: searchNoticesReducer,
