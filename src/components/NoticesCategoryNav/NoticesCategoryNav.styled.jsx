@@ -100,6 +100,8 @@ export const AddPetStyled = styled.button`
         width: 129px;
         height: 44px;
         padding: 0;
+        padding-left: 6px;
+        padding-right: 6px;
         border-radius: 40px;
         background-color: #FDF7F2;
         box-shadow: none;

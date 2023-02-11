@@ -50,7 +50,7 @@ const NoticesCategoriesList = () => {
     setFilterId(prev => [...prev, id]);
   }
 
-  // console.log(notices);
+  console.log(notices);
 
   const isEmpty = notices.length === 0;
   return (
@@ -60,7 +60,7 @@ const NoticesCategoriesList = () => {
           <NoticesCategoryListStyled>
         {
           isloadingNotices ?
-            'Noticeces are loading...' :
+            'Notices are loading...' :
                 notices
                   .filter(item => !filterId.includes(item._id))
                   .map((item) =>
