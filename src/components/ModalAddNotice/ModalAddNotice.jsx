@@ -11,7 +11,6 @@ import { FormContainer } from './ModalAddNotice.styled';
 import { ModalAddNoticeFistStep } from './ModalAddNoticeFirstStep';
 import { ModalAddNoticeSecondStep } from './ModalAddNoticeSecondStep';
 import { validationSchemaNotices } from './ModalAddNoticeValidation';
-// import { useDispatch } from "react-redux";
 const initialValues ={
   title: '',
   name: '',
@@ -29,41 +28,26 @@ const initialValues ={
 export const ModalAddNotice = ({ onClose }) => {
   const [isLastStep, setisLastStep] = useState(false);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   
   const onhandleSubmit = (values, {resetForm}) => {
-   console.log(values);
-   
-    // dispatch(
-    //   register({
-    //     email: values.email,
-    //     password: values.password,
-    //     name: values.name,
-    //     address: values.address,
-    //     phone: values.phone
-    //   })
-    // );
-    // resetForm();   
+    console.log(values);
+    
+    dispatch(addNotice({
+      title: values.title,
+      name: values.name,
+      birthday: values.birthday,
+      category: values.category,
+      breed: values.breed,
+      theSex: values.theSex,
+      location: values.location,
+      price: values.price,
+      petAvatar: values.petAvatar,
+      comments:values.comments,
+    }))
+    resetForm()
+    onClose()
   };
-
-  // const submitAddNoticeForm = async (data) => {
-  //   dispatch(
-  //      addNotice(
-  //          data
-  //          // {
-  //          // title: values.title,
-  //          // name: values.name,
-  //          // birthday: values.birthday,
-  //          // breed: values.breed,
-  //          // sex: values.sex,
-  //          // location: values.location,
-  //          // price: values.price,
-  //          // image: values.image,
-  //          // comments:values.comments,
-  //          // }
-  //      )
-  //  );}
-
   
   return (
  
@@ -72,7 +56,7 @@ export const ModalAddNotice = ({ onClose }) => {
       initialValues={initialValues}
       onSubmit={onhandleSubmit}
     >
-      {({ values, errors, setFieldValue, touched }) => { 
+      {({ values, errors, setFieldValue, dirty, touched, isValid }) => { 
           console.log(errors);
         return (<FormContainer autoComplete='off'>
           {isLastStep ? <ModalAddNoticeSecondStep
@@ -80,19 +64,23 @@ export const ModalAddNotice = ({ onClose }) => {
           onClose={onClose}
           values={values}
           errors={errors}
+          dirty={dirty}
+          touched={touched}
           setFieldValue={setFieldValue}
           /> : <ModalAddNoticeFistStep
-          values={values}
+              values={values}
+              errors={errors}
           />}
 
           <ContainerButton>
           {isLastStep ? ( <><CancelBack type="button" onClick={() => setisLastStep(false)}>Back</CancelBack>
-                <Button type="submit">Done</Button></>) : (<><CancelBack type="button" onClick={onClose}>
+                {isValid ? (<Button type="submit">Done</Button>) : (<Button disabled={true} className="disabled" >Done</Button>)}</>) : (<><CancelBack type="button" onClick={onClose}>
               Cancel
             </CancelBack>
-              <Button type="button" onClick={() => setisLastStep(true)}>
-                Next
-              </Button></>)}
+                <Button type="button" onClick={() => setisLastStep(true)}>
+                  Next
+                </Button>
+              </>)}
             
           </ContainerButton>
       </FormContainer>)}}

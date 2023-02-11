@@ -23,8 +23,8 @@ export const validationSchemaNotices = yup.object().shape({
     .trim()
     .min(2, 'Too short!')
     .max(24, 'Too long!')
-    .matches(titleRegexp, 'Must contain only letters and spaces')
-    .required('Breed is required'),
+    .matches(titleRegexp, 'Must contain only letters and spaces'),
+    // .required('Breed is required'),
     location: yup
     .string()
     .trim()

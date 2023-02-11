@@ -1,107 +1,123 @@
 import { ErrorMessage, Field } from 'formik';
+import {ReactComponent as Male} from '../../noticesImage/male.svg'
+import {ReactComponent as Female} from '../../noticesImage/female.svg'
+import {ReactComponent as DefaultImg} from '../../noticesImage/loadimg.svg'
+
 import {
+  CommentField,
   Container,
   ContainerSex,
   ContainerSexVariant,
+  DefaultLoadImg,
+  ErrorText,
+  FieldStyled,
   Icon,
   LabelField,
+  LabelFieldTitle,
+  LoadImg,
   Sex,
+  SexLabel,
+  SexRadioInput,
   TitleInput,
   TitleModal,
 } from './ModalAddNotice.styled';
 import { UploadImage } from './UploadImage/UploadImage';
+import { useRef } from 'react';
 
 export const ModalAddNoticeSecondStep = ({
   values,
-  errors,
   setFieldValue,
+  errors,
+  dirty,
+  touched
 }) => {
- 
-   
+  const filePicker = useRef(null);
+
+  const handlePick = () => {
+    filePicker.current.click()
+  }   
     
     return (
-       
-<>
+          <>
             <TitleModal>Add pet</TitleModal>
             <ContainerSex>
               <TitleInput>
                 The sex<span>*</span>:
               </TitleInput>
               <ContainerSexVariant>
-                <label className={values.theSex === 'male' ? 'active' : ''}>
-                  <Field type="radio" name="theSex" value="male" />
-                  <Icon>icon</Icon>
+                <SexLabel className={values.theSex === 'male' ? 'active' : ''}>
+                  <SexRadioInput type="radio" name="theSex" value="male" />
+                  <Icon><Male box-shadow='inset -1px 2px 3px rgba(255, 255, 255, 0.57), inset 0px -3px 4px rgba(0, 0, 0, 0.25)' /></Icon>
                   <Sex>Male</Sex>
-                </label>
-                <label className={values.theSex === 'female' ? 'active' : ''}>
-                  <Field type="radio" name="theSex" value="female" />
-                  <Icon>icon</Icon>
+                </SexLabel>
+                <SexLabel className={values.theSex === 'female' ? 'active' : ''}>
+                  <SexRadioInput type="radio" name="theSex" value="female" />
+                  <Icon><Female box-shadow='inset -1px 2px 3px rgba(255, 255, 255, 0.57), inset 0px -3px 4px rgba(0, 0, 0, 0.25)' /></Icon>
                   <Sex>Female</Sex>
-                </label>
+                </SexLabel>
               </ContainerSexVariant>
-              {/* <div>{errors.sex}</div> */}
+              {!touched && <ErrorText component="span" name="theSex" />}
             </ContainerSex>
             <Container>
               <div>
                 <LabelField>
-                  <TitleInput>
+                  <LabelFieldTitle>
                     Location<span>*</span>:
-                  </TitleInput>
-                  <Field
+                  </LabelFieldTitle>
+                  <FieldStyled
                     name="location"
                     type="text"
                     placeholder="City, Region"
                   />
                 </LabelField>
-                <ErrorMessage name="location" component="span"/>
+                {/* <ErrorMessage name="location" component="span"/> */}
               </div>
               {values.category === 'sell' && (
                 <div>
                   <LabelField>
-                    <TitleInput>
+                    <LabelFieldTitle>
                       Price<span>*</span>:
-                    </TitleInput>
-                    <Field
+                    </LabelFieldTitle>
+                    <FieldStyled
                       name="price"
                       type="text"
-                      // value={values.price}
                       placeholder="Type price"
-                      // onChange={handleChange}
                     />
                   </LabelField>
-                  <div>{errors.price}</div>
+                  {/* <ErrorMessage name="price" component="span"/> */}
                 </div>
               )} 
-              {/* Load file */}
-
               <div>
                 <LabelField>
-                  <TitleInput>Load the pet’s image:</TitleInput>
-                  <input
+                  <LabelFieldTitle>Load the pet’s image:</LabelFieldTitle>
+                  <DefaultLoadImg
+                    className='hidden'
+                    ref={filePicker}
                     type="file"
                     name="petAvatar"
                     onChange={event => {
                       setFieldValue('petAvatar', event.currentTarget.files[0]);
                     }}
                   />
+                  
                   <div>
-                    {values.petAvatar && <UploadImage image={values.petAvatar} />}
+                    {values.petAvatar ? (<UploadImage image={values.petAvatar} />) : (<LoadImg onClick={handlePick}><DefaultImg /></LoadImg>)}
                   </div>
                 </LabelField>
-                <div>{errors.petAvatar}</div>
+                <ErrorMessage name="petAvatar" component="span"/>
               </div>
 
               {/* Comment */}
               <div>
                 <LabelField>
-                  <TitleInput>Comments</TitleInput>
-                  <Field as="textarea"
+                  <LabelFieldTitle>Comments</LabelFieldTitle>
+                  <CommentField
                     type="text"
                     name="comments"
                     placeholder="Type comment"
                   />
                 </LabelField>
-                <ErrorMessage name="comments" component="span"/>
+                {/* <ErrorMessage name="comments" component="span"/> */}
               </div>
             </Container>
      </>

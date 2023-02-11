@@ -1,7 +1,7 @@
-import { ErrorMessage } from 'formik';
 import {
   Container,
   Description,
+  ErrorText,
   FieldStyled,
   LabelField,
   LabelFieldTitle,
@@ -18,7 +18,7 @@ const categories = [
   { name: 'sell', value: 'sell', id: '3' },
 ];
 
-export const ModalAddNoticeFistStep = ({values}) => {
+export const ModalAddNoticeFistStep = ({values,errors}) => {
   return (<>
           <TitleModal>Add pet</TitleModal>
           <Container>
@@ -58,7 +58,7 @@ export const ModalAddNoticeFistStep = ({values}) => {
                   // onChange={handleChange}
                 />
               </LabelField>
-              <ErrorMessage name="title" component="span"/>
+              {errors.title && <ErrorText>{errors.title}</ErrorText>}
             </div>
             <div>
               <LabelField>
@@ -71,7 +71,7 @@ export const ModalAddNoticeFistStep = ({values}) => {
                   // onChange={handleChange}
                 />
               </LabelField>
-              <ErrorMessage name="name" component="span"/>
+              {errors.name && <ErrorText>{errors.name}</ErrorText>}
             </div>
             <div>
               <LabelField>
@@ -84,6 +84,7 @@ export const ModalAddNoticeFistStep = ({values}) => {
                   // onChange={handleChange}
                 />
               </LabelField>
+              {errors.birthday && <ErrorText>{errors.birthday}</ErrorText>}
             </div>
             <div>
               <LabelField>
@@ -97,7 +98,7 @@ export const ModalAddNoticeFistStep = ({values}) => {
 
                 />
               </LabelField>
-              <ErrorMessage name="breed" component="span"/>
+              {errors.breed && <ErrorText>{errors.breed}</ErrorText>}
             </div>
           </Container>
           </>

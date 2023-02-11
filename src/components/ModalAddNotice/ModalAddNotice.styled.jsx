@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Field, Form } from 'formik';
+import { ErrorMessage, Field, Form } from 'formik';
 
 export const FormContainer = styled(Form)`
   display: flex;
@@ -49,7 +49,7 @@ export const RadioItems = styled.li`
 
 export const RadioInput = styled(Field)`
   display: none;
-  &hidden {
+  &.hidden {
     opacity: 0;
     height: 0;
     width:0;
@@ -131,7 +131,7 @@ export const LabelFieldTitle = styled.p`
     color: #f59256;
   }
 `;
-export const ErrorText = styled.div`
+export const ErrorText = styled(ErrorMessage)`
   display: block;
   margin-top: 10px;
   color: red;
@@ -144,7 +144,7 @@ export const ContainerButton = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 100%;
+  width: 180px;
   padding: 10px 28px;
   background: #f59256;
   border-radius: 40px;
@@ -154,10 +154,14 @@ export const Button = styled.button`
   line-height: 1.35;
   letter-spacing: 0.04em;
   color: #ffffff;
+
+  &.disabled{
+    background-color: #dca481;
+  }
 `;
 
 export const CancelBack = styled.button`
-  width: 100%;
+  width: 180px;
   padding: 10px 28px;
   background: #ffffff;
   border-radius: 40px;
@@ -175,7 +179,7 @@ export const ContainerSex = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   gap: 28px;
 `;
 export const TitleInput = styled.div`
@@ -205,7 +209,21 @@ export const Icon = styled.div`
   display: block;
   width: 60px;
   height: 60px;
+
+  margin-bottom: 20px;
+  
 `;
+export const SexLabel= styled.label`
+  &.active{
+        color: #f59256;
+
+  }
+`
+
+export const SexRadioInput = styled(Field)`
+  display: none;
+`
+
 export const Sex = styled.span`
   font-weight: 500;
   font-size: 20px;
@@ -214,3 +232,45 @@ export const Sex = styled.span`
     color: #f59256;
   }
 `;
+
+export const DefaultLoadImg = styled.input`
+  /* display: none; */
+  &.hidden {
+    opacity: 0;
+    height: 0;
+    width:0;
+    line-height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+`
+
+export const LoadImg = styled.button`
+  width: 140px;
+  height: 140px;
+
+  background: #FDF7F2;
+  border-radius: 20px;
+  border: transparent;
+`
+
+export const CommentField = styled(Field)`
+  width: 448px;
+  min-height: 113px;
+  padding: 16px 18px;
+  resize: none;
+  margin: 0;
+
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  background: #fdf7f2;
+  color: rgba(17, 17, 17, 0.6);
+  border: 1px solid rgba(245, 146, 86, 0.5);
+  border-radius: 20px;
+  :hover,
+  :focus {
+    cursor: pointer;
+    outline: 2px solid #f59256;
+  }`
