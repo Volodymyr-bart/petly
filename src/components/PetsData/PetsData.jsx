@@ -7,15 +7,19 @@ import {
 } from './PetsData.styled';
 import PetsList from '../../components/PetsList/PetsList';
 import { BsPlusLg } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import { getUserData, deletePetData } from 'redux/account/operations';
 import { useToggle } from '../../hooks';
 import { ModalAddNotice } from 'components/ModalAddNotice/ModalAddNotice';
 import { Modal } from 'components/Modal/Modal';
 
-const UserPage = () => {
+const UserPage = ({ setChangedData, petsData }) => {
+  const dispatch = useDispatch();
   const { isOpen, open, close } = useToggle();
-  const handleDeletePet = () => {
-    console.log('delete pet');
-    // Тут написати запит на видалення даних тварини
+
+  const handleDeletePet = id => {
+    deletePetData(id);
+    setChangedData(dispatch(getUserData()));
   };
 
   return (
@@ -27,10 +31,12 @@ const UserPage = () => {
           <BsPlusLg color="#fff" fontSize="16px" />
         </AddPet>
       </PetsDataHeader>
+
       <PetsList handleDeletePet={handleDeletePet} />
       <Modal isOpen={isOpen} onClose={close}>
         <ModalAddNotice onClose={close}/>
       </Modal>
+
     </UserPageStyled>
   );
 };

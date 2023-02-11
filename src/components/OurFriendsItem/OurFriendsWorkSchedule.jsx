@@ -1,5 +1,6 @@
 // import { nanoid } from "nanoid";
-import { StyledTimeDiv, WorkDayStyledTr,  StyledTable } from "./OurFriendsWorkSchedule.styled";
+import { StyledTimeDiv, WorkDayStyledTr,  StyledTable, StyledTimeUl, StyledTimeSpan } from "./OurFriendsWorkSchedule.styled";
+import { FriendsInfoStyledTime } from "./OurFriendsItem.styled";
 
 
 // const currentDayOfWeekName = new Date().toLocaleString( 'en-US', {weekday: 'short'});
@@ -14,7 +15,30 @@ const WorkingDays = ({workDays}) => {
 //     console.log(dayIndex);
   return (
     <StyledTimeDiv>
+        
+        <FriendsInfoStyledTime>Time:</FriendsInfoStyledTime>
+        <StyledTimeUl>
+        {workDays.map((workDay, index) => {
+          if(index === dayIndex){
+            return (
+              <li key={index}>
+              <StyledTimeSpan>
+              {`${WEEK_DAY_NAMES[index]}`}
+              </StyledTimeSpan>
+                {workDay.isOpen ? (
+                  <span> 
+                    {workDay.from} - {workDay.to} 
+                  </span>
+                ) : (
+                  <span>Closed</span>
+                )}
+              </li>)
+          }
+          return null;
+        })}
+        </StyledTimeUl>
         <div>
+        
         <StyledTable>
         <tbody>
       {workDays.map((workDay, index) => {

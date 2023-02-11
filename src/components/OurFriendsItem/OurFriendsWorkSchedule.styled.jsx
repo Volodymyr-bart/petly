@@ -15,7 +15,7 @@ export const StyledTimeDiv = styled.div`
 //   margin-left: 0;
 //   padding-left: 0px;
 // }
-  :hover div {
+  :hover table {
     list-style: none;
     position: absolute;
     margin-top: 3px;
@@ -24,7 +24,7 @@ export const StyledTimeDiv = styled.div`
     // left: 0px;
     // bottom: 0;
     // top: 25%;
-    width: 130px;
+    width: 135px;
     display: block;
     justify-content: space-between;
     padding: 12px 12px 12px 12px;
@@ -49,11 +49,45 @@ export const StyledTimeDiv = styled.div`
   }
 `;
 
+export const StyledTimeUl = styled.ul`
+margin-top: 1px;
+// visibility: visible;
+// position: absolute;
+// overflow: visible;
+align: left;
+padding-left: 0;
+`;
+
+export const StyledTimeli = styled.li`
+
+`;
+
+export const StyledTimeSpan = styled.span`
+  // gap: 4px;
+  margin-right: 12px;
+  font-size: 12px;
+line-height: 16px;
+
+@media screen and (min-width: 768px) {
+  font-size: 14px;
+line-height: 19px;
+}
+
+@media screen and (min-width: 1280px) {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+`;
+
+
 export const StyledTable = styled.table`
 align: left;
 // padding: 12px;
 // cellspacing: 10px;
 width: 120px;
+overflow: hidden;
+visibility: collapse;
 // border: 2px solid #999;
 
 `;
@@ -69,7 +103,6 @@ font-weight: 500;
 line-height: 1.33;
 &:not(:last-child) {
   margin-bottom: 4px;
-  // margin-right: 5px;
 }
 // &:child {
   

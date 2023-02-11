@@ -11,7 +11,19 @@ export const UserPageStyled = styled.div`
   }
 `;
 
-export const Header = styled.div`
+export const Profile = styled.div`
+  margin-bottom: 40px;
+  @media (min-width: 768px) {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+  @media (min-width: 1280px) {
+    margin-bottom: 0;
+    padding: 0;
+  }
+`;
+
+export const Header = styled.h1`
   font-weight: 500;
   font-size: 20px;
   line-height: 27px;
@@ -26,18 +38,6 @@ export const Header = styled.div`
     font-size: 28px;
     line-height: 38px;
     margin-bottom: 24px;
-  }
-`;
-
-export const Profile = styled.div`
-  margin-bottom: 40px;
-  @media (min-width: 768px) {
-    margin-bottom: 20px;
-    padding: 0;
-  }
-  @media (min-width: 1280px) {
-    margin-bottom: 0;
-    padding: 0;
   }
 `;
 

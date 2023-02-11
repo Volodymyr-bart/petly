@@ -24,7 +24,7 @@ import WorkingDays from "./OurFriendsWorkSchedule";
 
 
 
-const noInfo = '-------------------';
+const noInfo = '-----------------------------------';
 
 
 const OurFriendsItem = ({friend}) => {
@@ -46,9 +46,10 @@ const OurFriendsItem = ({friend}) => {
 
             <FriendsStyledUL>
             <FriendsInfoStyledLi>
-                <FriendsInfoStyledTime>Time</FriendsInfoStyledTime>
+                { !onWorkDays && <FriendsInfoStyledTime>Time:</FriendsInfoStyledTime>}
                 <StyledDivBox>
-                {onWorkDays ? ( <WorkingDays workDays={workDays}/> ) : (
+                {onWorkDays ? ( 
+                <WorkingDays workDays={workDays}/> ) : (
                     <StyledNoInfo>{noInfo}</StyledNoInfo>
                 )}
                 </StyledDivBox>

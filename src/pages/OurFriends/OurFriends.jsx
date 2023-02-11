@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 // import { Helmet } from 'react-helmet';
 import { useDispatch } from 'react-redux';
 import { getServices } from 'redux/services/operations';
-import { ServiceTitle, ServiceWrapper } from './OurFriend.styled';
+import { ServiceWrapper } from './OurFriend.styled';
 import OurFriendsList from 'components/OurFriendsList/OurFriendsList';
 
 const OurFriends = () => {
@@ -15,13 +15,11 @@ const OurFriends = () => {
 
   return (
     <ServiceWrapper>
-      <ServiceTitle>Our Friends</ServiceTitle>
+      <h1>Our Friends</h1>
 
       <OurFriendsList />
     </ServiceWrapper>
   );
 };
-
-
 
 export default OurFriends;
