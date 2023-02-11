@@ -10,16 +10,12 @@ import { BsPlusLg } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { getUserData, deletePetData } from 'redux/account/operations';
 
-const UserPage = ({ setPetsDeleted, petsData }) => {
+const UserPage = ({ setChangedData, petsData }) => {
   const dispatch = useDispatch();
 
   const handleDeletePet = id => {
-    console.log(id);
-    // dispatch(deletePetData(id));
     deletePetData(id);
-    setPetsDeleted(dispatch(getUserData()));
-    // dispatch(getUserData());
-    // Тут написати запит на видалення даних тварини
+    setChangedData(dispatch(getUserData()));
   };
 
   return (

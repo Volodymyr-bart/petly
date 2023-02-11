@@ -15,18 +15,16 @@ const PetsList = ({ handleDeletePet, petsData }) => {
     <PetsListStyled>
       {petsData &&
         petsData.map(item => {
+          const petBirthday = new Date(item.birthday).toLocaleDateString();
           return (
             <PetsItem key={nanoid(10)}>
               <PetImage src={item.image} />
               <DataList>
                 <DataItem>
                   Pet Name: <RegularText>{item.name}</RegularText>
-                  <Delete onClick={() => handleDeletePet(item._id)}>
-                    <RiDeleteBin6Fill />
-                  </Delete>
                 </DataItem>
                 <DataItem>
-                  Date of birth: <RegularText>{item.birthday}</RegularText>
+                  Date of birth: <RegularText>{petBirthday}</RegularText>
                 </DataItem>
                 <DataItem>
                   Breed: <RegularText>{item.breed}</RegularText>
@@ -35,6 +33,9 @@ const PetsList = ({ handleDeletePet, petsData }) => {
                   Comments: <RegularText>{item.comments}</RegularText>
                 </DataItem>
               </DataList>
+              <Delete onClick={() => handleDeletePet(item._id)}>
+                <RiDeleteBin6Fill />
+              </Delete>
             </PetsItem>
           );
         })}

@@ -14,8 +14,6 @@ export const Item = styled.li`
     margin-bottom: 8px;
     height: 32px;
   }
-  @media (min-width: 1280px) {
-  }
 `;
 
 export const Name = styled.p`
@@ -30,9 +28,6 @@ export const Name = styled.p`
     line-height: 25px;
     width: 83px;
   }
-  @media (min-width: 1280px) {
-    /* width: 83px; */
-  }
 `;
 
 export const Info = styled.p`
@@ -45,9 +40,6 @@ export const Info = styled.p`
     margin-left: 36px;
     font-size: 18px;
     line-height: 25px;
-  }
-  @media (min-width: 1280px) {
-    /* margin-left: 36px; */
   }
 `;
 
@@ -73,8 +65,6 @@ export const DataInput = styled.input`
     font-size: 18px;
     line-height: 25px;
     letter-spacing: 0.04em;
-  }
-  @media (min-width: 1280px) {
   }
 `;
 
@@ -104,8 +94,6 @@ export const EditInfo = styled.button`
       height: 16px;
     }
   }
-  @media (min-width: 1280px) {
-  }
 `;
 
 export const SendInfo = styled.button`
@@ -133,7 +121,5 @@ export const SendInfo = styled.button`
       width: 26px;
       height: 26px;
     }
-  }
-  @media (min-width: 1280px) {
   }
 `;

@@ -11,26 +11,25 @@ import { getUserData } from 'redux/account/operations';
 const UserPage = () => {
   const dispatch = useDispatch();
 
-  const [petsDeleted, setPetsDeleted] = useState();
+  const [changedData, setChangedData] = useState();
 
   useEffect(() => {
     dispatch(getUserData());
-  }, [dispatch, petsDeleted]);
+  }, [dispatch, changedData]);
 
   const userData = useSelector(selectAllUserData);
-  console.log(1234, userData);
-
+  console.log(userData);
   return (
     <UserPageStyled>
       <Profile>
         <Header>My information:</Header>
         <UserCard>
-          <UserData userData={userData} />
+          <UserData userData={userData} setChangedData={setChangedData} />
           <Logout />
         </UserCard>
       </Profile>
       <PetsData
-        setPetsDeleted={setPetsDeleted}
+        setChangedData={setChangedData}
         petsData={userData.userPetsList}
       />
     </UserPageStyled>
