@@ -1,37 +1,33 @@
 /* eslint-disable no-dupe-keys */
-import { Formik } from 'formik';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {
-  Button,
-  CancelBack,
-  ContainerButton
-} from './ModalAddNotice.styled';
-import { addNotice } from 'redux/notices/operations';
-import { FormContainer } from './ModalAddNotice.styled';
-import { ModalAddNoticeFistStep } from './ModalAddNoticeFirstStep';
-import { ModalAddNoticeSecondStep } from './ModalAddNoticeSecondStep';
-import { validationSchemaNotices } from './ModalAddNoticeValidation';
-const initialValues ={
-  title: '',
-  name: '',
-  birthday: '',
-  breed: '',
-  category: '',
-  theSex: '',
-  location: '',
-  price: '0',
+import { Formik } from "formik";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Button, CancelBack, ContainerButton } from "./ModalAddNotice.styled";
+import { addNotice } from "redux/notices/operations";
+import { FormContainer } from "./ModalAddNotice.styled";
+import { ModalAddNoticeFistStep } from "./ModalAddNoticeFirstStep";
+import { ModalAddNoticeSecondStep } from "./ModalAddNoticeSecondStep";
+import { validationSchemaNotices } from "./ModalAddNoticeValidation";
+const initialValues = {
+  title: "",
+  name: "",
+  birthday: "",
+  breed: "",
+  category: "",
+  theSex: "",
+  location: "",
+  price: "1",
   petAvatar: null,
-  comments: '',
+  comments: "",
   // eslint-disable-next-line no-dupe-keys
-//   category: ''
-}
-
+  //   category: ''
+};
 
 export const ModalAddNotice = ({ onClose }) => {
   const [isLastStep, setisLastStep] = useState(false);
 
   const dispatch = useDispatch();
+
   
   const onhandleSubmit = (values, {resetForm}) => {
     
@@ -52,10 +48,9 @@ export const ModalAddNotice = ({ onClose }) => {
     setisLastStep(false)
     onClose()
   };
-  
+
   return (
- 
-    <Formik 
+    <Formik
       validationSchema={validationSchemaNotices}
       initialValues={initialValues}
       onSubmit={onhandleSubmit}
@@ -92,5 +87,35 @@ export const ModalAddNotice = ({ onClose }) => {
           </ContainerButton>
       </FormContainer>)}}
 
-    </Formik>)
+
+            <ContainerButton>
+              {isLastStep ? (
+                <>
+                  <CancelBack type="button" onClick={() => setisLastStep(false)}>
+                    Back
+                  </CancelBack>
+                  {isValid ? (
+                    <Button type="submit">Done</Button>
+                  ) : (
+                    <Button disabled={true} className="disabled">
+                      Done
+                    </Button>
+                  )}
+                </>
+              ) : (
+                <>
+                  <CancelBack type="button" onClick={onClose}>
+                    Cancel
+                  </CancelBack>
+                  <Button type="button" onClick={() => setisLastStep(true)}>
+                    Next
+                  </Button>
+                </>
+              )}
+            </ContainerButton>
+          </FormContainer>
+        );
+      }}
+    </Formik>
+  );
 };
