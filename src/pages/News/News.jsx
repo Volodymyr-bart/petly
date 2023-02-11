@@ -6,7 +6,7 @@ import { getNews } from 'redux/news/operations';
 // import { selectIsLoadingNews } from 'redux/news/selectors';
 import { NewsWrapper } from './News.styled';
 import Search from 'components/Search/Search';
-import { searchNoticesSet } from 'redux/notices/searchSlice';
+import { searchNewsSet } from 'redux/news/searchNews';
 
 const News = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const News = () => {
     dispatch(getNews());
   }, [dispatch]);
 
-  const getInputValue = value => dispatch(searchNoticesSet(value));
+  const getInputValue = value => dispatch(searchNewsSet(value));
 
   return (
     <NewsWrapper>
