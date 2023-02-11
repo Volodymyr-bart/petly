@@ -1,7 +1,7 @@
+import { ErrorMessage } from 'formik';
 import {
   Container,
   Description,
-  ErrorText,
   FieldStyled,
   LabelField,
   LabelFieldTitle,
@@ -18,18 +18,7 @@ const categories = [
   { name: 'sell', value: 'sell', id: '3' },
 ];
 
-export const ModalAddNoticeFistStep = ({
-  formData,
-  handleChange,
-  handleBlur,
-  values,
-  errors,
-  setFieldValue,
-  dirty,
-  isValid,
-  onClose,
-  touched
-}) => {
+export const ModalAddNoticeFistStep = ({values}) => {
   return (<>
           <TitleModal>Add pet</TitleModal>
           <Container>
@@ -65,12 +54,11 @@ export const ModalAddNoticeFistStep = ({
                   name="title"
                   type="text"
                   placeholder="Type name"
-                  value={values.title}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  // value={values.title}
+                  // onChange={handleChange}
                 />
               </LabelField>
-              <ErrorText>{errors.title}</ErrorText>
+              <ErrorMessage name="title" component="span"/>
             </div>
             <div>
               <LabelField>
@@ -79,12 +67,11 @@ export const ModalAddNoticeFistStep = ({
                   name="name"
                   type="text"
                   placeholder="Type name pet"
-                  value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  // value={values.name}
+                  // onChange={handleChange}
                 />
               </LabelField>
-              <ErrorText>{errors.name}</ErrorText>
+              <ErrorMessage name="name" component="span"/>
             </div>
             <div>
               <LabelField>
@@ -93,9 +80,8 @@ export const ModalAddNoticeFistStep = ({
                   name="birthday"
                   type="text"
                   placeholder="Type date of birth XX.XX.XXXX"
-                  value={values.birthday}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  // value={values.birthday}
+                  // onChange={handleChange}
                 />
               </LabelField>
             </div>
@@ -106,12 +92,12 @@ export const ModalAddNoticeFistStep = ({
                   name="breed"
                   type="text"
                   placeholder="Type breed"
-                  value={values.breed}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  // value={values.breed}
+                  // onChange={handleChange}
+
                 />
               </LabelField>
-              {/* <ErrorText>{errors.breed && touched.breed}</ErrorText> */}
+              <ErrorMessage name="breed" component="span"/>
             </div>
           </Container>
           </>

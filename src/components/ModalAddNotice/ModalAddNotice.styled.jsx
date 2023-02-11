@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Field } from 'formik';
+import { Field, Form } from 'formik';
 
-export const FormContainer = styled.form`
+export const FormContainer = styled(Form)`
   display: flex;
   flex-direction: column;
   padding: 40px 80px;
@@ -122,7 +122,7 @@ export const LabelFieldMyPetComment = styled.label`
   gap: 12px;
   align-items: center;
 `;
-export const LabelFieldTitle = styled.div`
+export const LabelFieldTitle = styled.p`
   font-weight: 500;
   font-size: 24px;
   line-height: 1.08;

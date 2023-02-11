@@ -28,9 +28,8 @@ const initialValues ={
 
 export const ModalAddNotice = ({ onClose }) => {
   const [isLastStep, setisLastStep] = useState(false);
-  const [formData, setFormData] = useState({});
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
   const handleSubmit = (values, {resetForm}) => {
    console.log(values);
@@ -68,55 +67,27 @@ export const ModalAddNotice = ({ onClose }) => {
   
   return (
  
-      <Formik 
+    <Formik 
       validationSchema={validationSchemaNotices}
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      >
-        {({
-          values,
-          errors,
-          handleChange,
-          handleBlur,
-          setFieldValue,
-          isValid,
-          dirty, touched}) => { 
-            return (<FormContainer onSubmit={handleSubmit}>
-            {isLastStep ? <ModalAddNoticeSecondStep
-        setisLastStep={setisLastStep}
-          formData={formData}
-          onClose={onClose}
-          handleChange={handleChange}
-          handleBlur={handleBlur}
-          values={values}
-          errors={errors}
-        /> : <ModalAddNoticeFistStep
-          onClose={onClose}
+    >
+      {({ values, errors, setFieldValue, touched}) => { 
+          // console.log(values);
+        return (<FormContainer autoComplete='off' >
+          {isLastStep ? <ModalAddNoticeSecondStep
           setisLastStep={setisLastStep}
-          formData={formData}
-          setFormData={setFormData}
-          handleChange={handleChange}
-          handleBlur={handleBlur}
+          onClose={onClose}
           values={values}
           errors={errors}
           setFieldValue={setFieldValue}
-          dirty={dirty}
-          isValid={isValid}
-          close={onClose}
-          toudhed={touched}
-        />}
-         <ContainerButton>
-          {isLastStep ? ( <><CancelBack
-                type="button"
-                onClick={() => {
-                  setisLastStep(false);
-                }}>
-                Back
-              </CancelBack>
-  
-                <Button type="submit">
-                  Done
-                </Button></>) : (<><CancelBack type="button" onClick={onClose}>
+          /> : <ModalAddNoticeFistStep
+          values={values}
+          />}
+
+          <ContainerButton>
+          {isLastStep ? ( <><CancelBack type="button" onClick={() => setisLastStep(false)}>Back</CancelBack>
+                <Button type="submit">Done</Button></>) : (<><CancelBack type="button" onClick={onClose}>
               Cancel
             </CancelBack>
               <Button type="button" onClick={() => setisLastStep(true)}>
@@ -124,8 +95,7 @@ export const ModalAddNotice = ({ onClose }) => {
               </Button></>)}
             
           </ContainerButton>
-             </FormContainer>)
-             }}
+      </FormContainer>)}}
 
-      </Formik>)
+    </Formik>)
 };

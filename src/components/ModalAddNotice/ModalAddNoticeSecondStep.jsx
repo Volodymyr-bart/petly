@@ -1,4 +1,4 @@
-import { Field } from 'formik';
+import { ErrorMessage, Field } from 'formik';
 import {
   Container,
   ContainerSex,
@@ -12,15 +12,9 @@ import {
 import { UploadImage } from './UploadImage/UploadImage';
 
 export const ModalAddNoticeSecondStep = ({
-  setisLastStep,
-  formData,
-  handleChange,
-  handleBlur,
   values,
   errors,
   setFieldValue,
-  dirty,
-  isValid
 }) => {
  
    
@@ -34,13 +28,13 @@ export const ModalAddNoticeSecondStep = ({
                 The sex<span>*</span>:
               </TitleInput>
               <ContainerSexVariant>
-                <label className={values.sex === 'male' ? 'active' : ''}>
-                  <Field type="radio" name="sex" value="male" />
+                <label className={values.theSex === 'male' ? 'active' : ''}>
+                  <Field type="radio" name="theSex" value="male" />
                   <Icon>icon</Icon>
                   <Sex>Male</Sex>
                 </label>
-                <label className={values.sex === 'female' ? 'active' : ''}>
-                  <Field type="radio" name="sex" value="female" />
+                <label className={values.theSex === 'female' ? 'active' : ''}>
+                  <Field type="radio" name="theSex" value="female" />
                   <Icon>icon</Icon>
                   <Sex>Female</Sex>
                 </label>
@@ -57,14 +51,11 @@ export const ModalAddNoticeSecondStep = ({
                     name="location"
                     type="text"
                     placeholder="City, Region"
-                    value={values.location}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
                   />
                 </LabelField>
-                <div>{errors.location}</div>
+                <ErrorMessage name="location" component="span"/>
               </div>
-              {formData.category === 'sell' && (
+              {values.category === 'sell' && (
                 <div>
                   <LabelField>
                     <TitleInput>
@@ -73,15 +64,14 @@ export const ModalAddNoticeSecondStep = ({
                     <Field
                       name="price"
                       type="text"
-                      value={values.price}
+                      // value={values.price}
                       placeholder="Type price"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
+                      // onChange={handleChange}
                     />
                   </LabelField>
                   <div>{errors.price}</div>
                 </div>
-              )}
+              )} 
               {/* Load file */}
 
               <div>
@@ -90,9 +80,9 @@ export const ModalAddNoticeSecondStep = ({
                   <input
                     type="file"
                     name="petAvatar"
-                    // onChange={event => {
-                    //   setFieldValue('petAvatar', event.currentTarget.files[0]);
-                    // }}
+                    onChange={event => {
+                      setFieldValue('petAvatar', event.currentTarget.files[0]);
+                    }}
                   />
                   <div>
                     {values.petAvatar && <UploadImage image={values.petAvatar} />}
@@ -105,16 +95,13 @@ export const ModalAddNoticeSecondStep = ({
               <div>
                 <LabelField>
                   <TitleInput>Comments</TitleInput>
-                  <textarea
+                  <Field as="textarea"
                     type="text"
                     name="comments"
                     placeholder="Type comment"
-                    defaultValue={values.comments}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
                   />
                 </LabelField>
-                <div>{errors.comments}</div>
+                <ErrorMessage name="comments" component="span"/>
               </div>
             </Container>
      </>
