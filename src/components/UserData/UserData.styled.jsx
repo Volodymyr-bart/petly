@@ -15,6 +15,7 @@ export const UserImage = styled.div`
 
 export const Image = styled.img`
   width: 233px;
+  height: 233px;
   border-radius: 50%;
   margin-bottom: 12px;
   filter: drop-shadow(0px 4px 14px rgba(0, 0, 0, 0.11));

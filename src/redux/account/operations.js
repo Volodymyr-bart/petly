@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 export const getUserData = createAsyncThunk(
   'userData/getUserData',
   async (_, thunkAPI) => {
     try {
       const result = await axios.get('/users/current');
-      console.log(123456, result.data);
       return result.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -26,10 +26,11 @@ export const changeUserData = async newData => {
     resultData.append(key, newData[key]);
   }
   try {
+    console.log('Result for request', newData, ...resultData);
     const result = await axios.patch('/users/update', resultData);
     return result.data;
   } catch (error) {
-    console.log('Error');
+    toast.error('Invalid format');
   }
 };
 

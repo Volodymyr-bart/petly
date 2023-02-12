@@ -17,12 +17,10 @@ const UserDataItem = ({
   handleChange,
   handleSubmit,
 }) => {
-  console.log(data);
   data =
     dataType === 'Birthday' && data
       ? new Date(data).toLocaleDateString()
       : data;
-  console.log(data);
   return (
     <Item>
       <Name>{dataType}:</Name>
@@ -40,8 +38,8 @@ const UserDataItem = ({
       )}
       {itemInProcess === dataType && (
         <>
-          <DataInput onChange={handleChange} />
-          <SendInfo type="button" onClick={() => handleSubmit(dataType)}>
+          <DataInput onChange={handleChange} data-type={dataType} />
+          <SendInfo type="submit">
             <MdOutlineDone />
           </SendInfo>
         </>
