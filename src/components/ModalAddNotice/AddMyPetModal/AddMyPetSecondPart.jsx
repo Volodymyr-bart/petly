@@ -23,7 +23,6 @@ export const AddMyPetSecondPart = ({
   const filePicker = useRef(null);
 
   const handlePick = () => {
-    console.log(filePicker);
     filePicker.current.click();
   };
 
