@@ -89,9 +89,9 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
   return (
     <NoticesCategoryItemStyled>
       <ImageThumbStyled>
-        {notice.petAvatar.url &&
+        {notice.petAvatar?.url &&
         <img
-          src={notice.petAvatar.url}
+          src={notice.petAvatar?.url}
           alt="pet"
           width={280}
           height={288}
