@@ -84,8 +84,6 @@ export const RegisterForm = () => {
           setFieldError('email', "The email is already in use")
         })
         
-
-
       }
 
 

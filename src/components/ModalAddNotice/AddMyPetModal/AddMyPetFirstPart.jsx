@@ -1,6 +1,6 @@
 import {
   Container,
-  ErrorText,
+  ErrorMessageStyled,
   FieldStyled,
   LabelField,
   LabelFieldTitle,
@@ -14,14 +14,14 @@ export const AddMyPetFirstPart = ({values,errors}) => {
           <Container>
             <div>
               <LabelField>
-                <LabelFieldTitle>Name pet</LabelFieldTitle>
+                <LabelFieldTitle>Name pet<span>*</span></LabelFieldTitle>
                 <FieldStyled
                   name="name"
                   type="text"
                   placeholder="Type name pet"
                 />
               </LabelField>
-              {errors.name && <ErrorText>{errors.name}</ErrorText>}
+              <ErrorMessageStyled name='name' component='span'/>
             </div>
             <div>
               <LabelField>
@@ -32,7 +32,7 @@ export const AddMyPetFirstPart = ({values,errors}) => {
                   placeholder="Type date of birth XX.XX.XXXX"
                 />
               </LabelField>
-              {errors.birthday && <ErrorText>{errors.birthday}</ErrorText>}
+              <ErrorMessageStyled name='birthday' component='span'/>
             </div>
             <div>
               <LabelField>
@@ -43,7 +43,7 @@ export const AddMyPetFirstPart = ({values,errors}) => {
                   placeholder="Type breed"
                 />
               </LabelField>
-              {errors.breed && <ErrorText>{errors.breed}</ErrorText>}
+              <ErrorMessageStyled name='breed' component='span'/>
             </div>
           </Container>
           </>

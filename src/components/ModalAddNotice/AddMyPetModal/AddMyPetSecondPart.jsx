@@ -1,10 +1,9 @@
-import { ErrorMessage } from 'formik';
 import {ReactComponent as DefaultImg} from '../../../noticesImage/loadimg.svg'
-
 import {
   CommentField,
   Container,
   DefaultLoadImg,
+  ErrorMessageStyled,
   LabelField,
   LabelFieldTitle,
   LoadImg,
@@ -38,15 +37,15 @@ export const AddMyPetSecondPart = ({
               className="hidden"
               ref={filePicker}
               type="file"
-              name="petAvatar"
+              name="photo"
               onChange={event => {
-                setFieldValue('petAvatar', event.currentTarget.files[0]);
+                setFieldValue('photo', event.currentTarget.files[0]);
               }}
             />
 
             <div>
-              {values.petAvatar ? (
-                <UploadImage image={values.petAvatar} />
+              {values.photo ? (
+                <UploadImage image={values.photo} />
               ) : (
                 <LoadImg onClick={handlePick}>
                   <DefaultImg />
@@ -54,21 +53,22 @@ export const AddMyPetSecondPart = ({
               )}
             </div>
           </LabelField>
-          <ErrorMessage name="petAvatar" component="span" />
+          <ErrorMessageStyled name="photo" component="span" />
         </div>
 
         {/* Comment */}
         <div>
           <LabelField>
-            <LabelFieldTitle>Comments</LabelFieldTitle>
+            <LabelFieldTitle>Comments<span>*</span></LabelFieldTitle>
             <CommentField as='textarea'
               type="text"
               name="comments"
               placeholder="Type comment"
               onChange={handleChange}
+              value={values.comments}
             />
           </LabelField>
-          {/* <ErrorMessage name="comments" component="span"/> */}
+          <ErrorMessageStyled name='comments' component='span'/>
         </div>
       </Container>
     </>

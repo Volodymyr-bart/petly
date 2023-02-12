@@ -17,25 +17,23 @@ export const validationSchemaNotices = yup.object().shape({
     .min(2, 'Too short!')
     .max(16, 'Too long!')
     .matches(titleRegexp, 'Must contain only letters and spaces'),
-    // .required('Name is required'),
   breed: yup
     .string()
     .trim()
     .min(2, 'Too short!')
     .max(24, 'Too long!')
     .matches(titleRegexp, 'Must contain only letters and spaces'),
-    // .required('Breed is required'),
     location: yup
     .string()
     .trim()
     .matches(locationRegexp, 'For example, "Brovary, Kyiv" or "Dubno, Rivne"')
     .required('Location is required'),
-  comments: yup
+    comments: yup
     .string()
     .min(8, 'Too short!')
     .max(120, 'Too long!')
     .required('Comments is required'),
-  price: yup.number().min(1, 'Price has to be more than 0'),
+  price: yup.number().typeError('Price must be a number').min(1, 'Price must be more than 0').required('Price is required'),
   theSex: yup.string().required('Choose sex'),
   petAvatar: yup
     .mixed()
@@ -61,20 +59,17 @@ export const validationSchemaAddMyPet = yup.object().shape({
     .trim(true)
     .min(2, 'Too short!')
     .max(16, 'Too long!')
-    .matches(titleRegexp, 'Must contain only letters and spaces'),
-    // .required('Name is required'),
+    .matches(titleRegexp, 'Must contain only letters and spaces').required("Name is required"),
   breed: yup
     .string()
     .trim()
     .min(2, 'Too short!')
     .max(24, 'Too long!')
     .matches(titleRegexp, 'Must contain only letters and spaces'),
-    // .required('Breed is required'),
   comments: yup
     .string()
     .min(8, 'Too short!')
-    .max(120, 'Too long!')
-    .required('Comments is required'),
+    .max(120, 'Too long!').required("Comments is required"),
   petAvatar: yup
     .mixed()
     .test(
