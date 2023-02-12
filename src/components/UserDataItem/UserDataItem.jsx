@@ -17,7 +17,12 @@ const UserDataItem = ({
   handleChange,
   handleSubmit,
 }) => {
-  data = dataType === 'Birthday' ? new Date(data).toLocaleDateString() : data;
+  console.log(data);
+  data =
+    dataType === 'Birthday' && data
+      ? new Date(data).toLocaleDateString()
+      : data;
+  console.log(data);
   return (
     <Item>
       <Name>{dataType}:</Name>

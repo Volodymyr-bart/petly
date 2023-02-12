@@ -21,7 +21,7 @@ const noticesSlice = createSlice({
     notices: [],
     isLoadingNotices: false,
     errorNotices: null,
-    noticeAdd: []
+    noticeAdd: [],
   },
   extraReducers: builder => {
     builder

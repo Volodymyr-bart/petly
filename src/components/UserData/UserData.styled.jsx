@@ -37,8 +37,6 @@ export const EditImage = styled.button`
     width: 20px;
     height: 20px;
   }
-  @media (min-width: 768px) {
-  }
   @media (min-width: 1280px) {
     position: absolute;
     bottom: 0;
@@ -51,10 +49,6 @@ export const EditText = styled.p`
   font-size: 12px;
   line-height: 22px;
   letter-spacing: 0.04em;
-  @media (min-width: 768px) {
-  }
-  @media (min-width: 1280px) {
-  }
 `;
 
 export const List = styled.ul`
