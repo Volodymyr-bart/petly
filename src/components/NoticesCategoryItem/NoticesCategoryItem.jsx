@@ -3,6 +3,7 @@ import {
   addToFavorite,
   getAllFavoriteNoticesWithoutR,
   getAllOwnNoticesWithoutR,
+  getOneNoticeById,
   removeFromFavorite,
   removeFromOwn,
 } from 'redux/notices/operations';
@@ -29,7 +30,8 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
   const [own, setOwn] = useState(false);
   const { isOpen, open, close } = useToggle();
   const { isLoggedIn } = useAuth();
-  const { categoryName } = useParams()
+  const { categoryName } = useParams();
+  const [oneNotice, setOneNotice] = useState()
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -43,10 +45,15 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
         setOwn(res?.result.some(({ _id }) => _id === notice._id));     
       }
 
+      const getOneNotice = async () => {
+        const res = await getOneNoticeById(notice._id);
+        setOneNotice(res.result)
+      }
+      getOneNotice();
       getOwn();
       getFavorites();
     }
-        
+       
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -135,14 +142,15 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
         >
           Learn more
         </ButtonStyled>
-        <Modal isOpen={isOpen} onClose={close}>
+        {oneNotice !== [] && <Modal isOpen={isOpen} onClose={close}>
           <NoticeModal
             notice={notice}
+            oneNotice={oneNotice}
             category={notice.category}
             isFavorite={favorite}
             addFavorite={toggleFavoriteMethod}
           />
-        </Modal>
+        </Modal>}
         {own && <ButtonStyled type="button" onClick={removeFromOwnMethod}>
           <div>Delete</div>
         </ButtonStyled>}
