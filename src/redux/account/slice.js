@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUserData, changeUserData, addUserImage } from './operations';
+import {
+  getUserData,
+  // changeUserData,
+  // addUserImage
+} from './operations';
 
 const handlePending = state => {
   state.isLoadingUserData = true;
