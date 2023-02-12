@@ -10,6 +10,7 @@ import {
 } from './AddMyPet.styled';
 import { AddMyPetFirstPart } from './AddMyPetFirstPart';
 import { AddMyPetSecondPart } from './AddMyPetSecondPart';
+
 const initialValues = {
   name: '',
   birthday: '',
@@ -32,7 +33,7 @@ const addPet = async newNotice => {
   }
 };
 
-export const AddMyPetModal = ({ onClose }) => {
+export const AddMyPetModal = ({ onClose, setChangedData }) => {
   const [isLastStep, setisLastStep] = useState(false);
 
   const onhandleSubmit = (values, { resetForm }) => {
@@ -46,6 +47,12 @@ export const AddMyPetModal = ({ onClose }) => {
     resetForm();
     setisLastStep(false);
     onClose();
+
+    // Поміняю на useEffect завтра
+    // Пішов спати...
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   return (
