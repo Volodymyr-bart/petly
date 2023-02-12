@@ -26,10 +26,7 @@ import { useRef } from 'react';
 export const ModalAddNoticeSecondStep = ({
   values,
   setFieldValue,
-  errors,
-  dirty,
   handleChange,
-  touched,
 }) => {
   const filePicker = useRef(null);
 
@@ -99,7 +96,6 @@ export const ModalAddNoticeSecondStep = ({
                 setFieldValue('petAvatar', event.currentTarget.files[0]);
               }}
             />
-
             <div>
               {values.petAvatar ? (
                 <UploadImage image={values.petAvatar} />
@@ -112,8 +108,6 @@ export const ModalAddNoticeSecondStep = ({
           </LabelField>
           <ErrorMessageStyled name="petAvatar" component="span" />
         </div>
-
-        {/* Comment */}
         <div>
           <LabelField>
             <LabelFieldTitle>

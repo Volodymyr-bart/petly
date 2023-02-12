@@ -3,6 +3,7 @@ import { Modal } from 'components/Modal/Modal';
 import { ModalAddNotice } from 'components/ModalAddNotice/ModalAddNotice';
 import { useAuth, useToggle } from 'hooks';
 import { AiOutlinePlus } from "react-icons/ai";
+import toast from 'react-hot-toast';
 import { NavLinkContainerStyled, NoticesCategoryNavStyled, NavLinkStyled, AddPetStyled } from './NoticesCategoryNav.styled';
 
 const NotiesCategoryNav = () => {
@@ -36,10 +37,12 @@ const NotiesCategoryNav = () => {
           </>            
         }
       </ NoticesCategoryNavStyled>
-      <AddPetStyled type='button' onClick={open}><div><AiOutlinePlus size={32} /></div> <span>Add pet</span></AddPetStyled>
-      {isLoggedIn && <Modal isOpen={isOpen} onClose={close}>
+      {isLoggedIn ? <AddPetStyled type='button' onClick={open}><div><AiOutlinePlus size={32} /></div> <span>Add pet</span></AddPetStyled> :
+      <AddPetStyled type='button' onClick={() => toast.error('Please log in!')}><div><AiOutlinePlus size={32} /></div> <span>Add pet</span></AddPetStyled>}
+
+      <Modal isOpen={isOpen} onClose={close}>
         <ModalAddNotice onClose={close}/>
-      </Modal>}
+      </Modal>
     </ NavLinkContainerStyled>
     
     
