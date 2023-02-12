@@ -14,19 +14,25 @@ import {
   ModalTitle,
 } from './NoticeModal.styled';
 import { HiHeart } from 'react-icons/hi2';
+// import { useDispatch } from 'react-redux';
+// import { getOneNoticeById } from 'redux/notices/operations';
 
-const NoticeModal = ({ category }) => {
+const NoticeModal = ({ category, notice, isFavorite, addFavorite }) => {
+  // console.log(userData);
+
   return (
     <div>
       <ModalContainer>
         <BoxUpPart>
           <ImgContainer>
-            <ModalImg
-              src="https://oir.mobi/uploads/posts/2021-04/1619814925_21-oir_mobi-p-mordochka-kotenka-zhivotnie-krasivo-foto-25.jpg"
-              alt="pet"
-              width={288}
-              height={328}
-            />
+            {notice.petAvatar.url && (
+              <ModalImg
+                src={notice.petAvatar.url}
+                alt="pet"
+                width={288}
+                height={328}
+              />
+            )}
             <FilterBox>
               <FilterText>{category}</FilterText>
             </FilterBox>
@@ -36,29 +42,58 @@ const NoticeModal = ({ category }) => {
               Cute dog looking <br></br> for a home
             </ModalTitle>
             <ModalList>
-              <Item>Name:</Item>
-              <Item>Birthday:</Item>
-              <Item>Breed:</Item>
-              <Item>Place:</Item>
-              <Item>The sex:</Item>
-              <Item>Email:</Item>
-              <Item>Phone:</Item>
+              <Item>
+                <p style={{ width: '120px' }}>Name:</p>
+                <p>{notice.name}</p>
+              </Item>
+              <Item>
+                <p style={{ width: '120px' }}>Birthday:</p>
+                <p>{notice.birthday}</p>
+              </Item>
+              <Item>
+                <p style={{ width: '120px' }}>Breed:</p>
+                <p>{notice.breed}</p>
+              </Item>
+              <Item>
+                <p style={{ width: '120px' }}>Place:</p>
+                <p>{notice.location}</p>
+              </Item>
+              <Item>
+                <p style={{ width: '120px' }}>The sex:</p>
+                <p>{notice.theSex}</p>
+              </Item>
+              <Item>
+                <p style={{ width: '120px' }}>Price:</p>
+                <p>{notice.price}</p>
+              </Item>
+              <Item>
+                <p style={{ width: '120px' }}>Email:</p>
+                <p></p>
+              </Item>
+              <Item>
+                <p style={{ width: '120px' }}>Phone:</p>
+                <p></p>
+              </Item>
             </ModalList>
           </div>
         </BoxUpPart>
         <Comment>
-          <b>Comments:</b> Lorem ipsum dolor sit amet, consectetur Lorem ipsum
-          dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur
-          Lorem
+          <b>Comments:</b> {notice.comments}
         </Comment>
         <BtnBox>
-          <ButtonStyled type="button">
+          <ButtonStyled
+            type="button"
+            isFavorite={isFavorite}
+            onClick={addFavorite}
+          >
             Add to{' '}
             <Icon>
               <HiHeart width={16} height={16} />
             </Icon>
           </ButtonStyled>
-          <ButtonStyled type="button">Contact</ButtonStyled>
+          <ButtonStyled type="button">
+            <a href="#">Contact</a>
+          </ButtonStyled>
         </BtnBox>
       </ModalContainer>
     </div>

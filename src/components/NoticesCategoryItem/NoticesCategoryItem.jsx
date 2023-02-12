@@ -136,7 +136,12 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
           Learn more
         </ButtonStyled>
         <Modal isOpen={isOpen} onClose={close}>
-          <NoticeModal category={notice.category}/>
+          <NoticeModal
+            notice={notice}
+            category={notice.category}
+            isFavorite={favorite}
+            addFavorite={toggleFavoriteMethod}
+          />
         </Modal>
         {own && <ButtonStyled type="button" onClick={removeFromOwnMethod}>
           <div>Delete</div>

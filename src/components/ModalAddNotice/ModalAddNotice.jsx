@@ -8,6 +8,7 @@ import { FormContainer } from './ModalAddNotice.styled';
 import { ModalAddNoticeFistStep } from './ModalAddNoticeFirstStep';
 import { ModalAddNoticeSecondStep } from './ModalAddNoticeSecondStep';
 import { validationSchemaNotices } from './ModalAddNoticeValidation';
+
 const initialValues = {
   title: '',
   name: '',
@@ -19,8 +20,6 @@ const initialValues = {
   price: '1',
   petAvatar: null,
   comments: '',
-  // eslint-disable-next-line no-dupe-keys
-  //   category: ''
 };
 
 export const ModalAddNotice = ({ onClose }) => {
@@ -41,7 +40,6 @@ export const ModalAddNotice = ({ onClose }) => {
         price: values.price,
         petAvatar: values.petAvatar,
         comments: values.comments,
-        //   category: values.category,
       })
     );
     resetForm();
@@ -59,12 +57,10 @@ export const ModalAddNotice = ({ onClose }) => {
         values,
         errors,
         setFieldValue,
-        dirty,
-        touched,
         isValid,
         handleChange,
       }) => {
-        console.log(errors);
+        // console.log(errors);
 
         const isDisabled =
           values.category === '' ||
@@ -77,15 +73,12 @@ export const ModalAddNotice = ({ onClose }) => {
             {isLastStep ? (
               <ModalAddNoticeSecondStep
                 setisLastStep={setisLastStep}
-                onClose={onClose}
                 values={values}
-                // errors={errors}
-                dirty={dirty}
                 handleChange={handleChange}
                 setFieldValue={setFieldValue}
               />
             ) : (
-              <ModalAddNoticeFistStep values={values} errors={errors} />
+              <ModalAddNoticeFistStep values={values} />
             )}
 
             <ContainerButton>
@@ -122,10 +115,8 @@ export const ModalAddNotice = ({ onClose }) => {
                 </>
               )}
             </ContainerButton>
-            {/* </FormContainer>)
-      }} */}
 
-            <ContainerButton>
+            {/* <ContainerButton>
               {isLastStep ? (
                 <>
                   <CancelBack
@@ -152,7 +143,7 @@ export const ModalAddNotice = ({ onClose }) => {
                   </Button>
                 </>
               )}
-            </ContainerButton>
+            </ContainerButton> */}
           </FormContainer>
         );
       }}

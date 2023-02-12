@@ -1,3 +1,4 @@
+import ImgPlaceholder from '../../noticesImage/ph.png';
 import styled from 'styled-components';
 
 export const ModalContainer = styled.div`
@@ -12,12 +13,17 @@ export const BoxUpPart = styled.div`
 
 export const ImgContainer = styled.div`
   position: relative;
-`;
-
-export const ModalImg = styled.img`
   width: 288px;
   height: 328px;
 
+  background-color: #ffffff;
+  background-image: url(${ImgPlaceholder});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+
+export const ModalImg = styled.img`
   border-radius: 0px 0px 40px 40px;
 `;
 
@@ -70,6 +76,8 @@ export const ModalList = styled.ul`
 
 export const Item = styled.li`
   margin-top: 8px;
+  display: flex;
+  flex-direction: row;
   &:first-child {
     margin-top: 0;
   }
@@ -120,6 +128,18 @@ export const ButtonStyled = styled.button`
     /* border-color: #ff6101; */
     background-color: #f59256;
     color: #ffffff;
+  }
+
+  a {
+    text-decoration: none;
+    outline: none;
+    color: #f59256;
+    padding: 12px 51px;
+
+    &:hover,
+    &:focus {
+      color: #ffffff;
+    }
   }
 `;
 

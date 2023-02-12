@@ -14,14 +14,13 @@ import {
   TitleModal,
 } from './ModalAddNotice.styled';
 
-// Categories;
 const categories = [
   { name: 'lost/found', value: Categories.LOST_FOUND, id: '1' },
   { name: 'In good hands', value: Categories.IN_GOOD_HANDS, id: '2' },
   { name: 'sell', value: Categories.SELL, id: '3' },
 ];
 
-export const ModalAddNoticeFistStep = ({values,errors}) => {
+export const ModalAddNoticeFistStep = ({values}) => {
   return (<>
           <TitleModal>Add pet</TitleModal>
           <Container>
@@ -61,8 +60,6 @@ export const ModalAddNoticeFistStep = ({values,errors}) => {
                   name="title"
                   type="text"
                   placeholder="Type name"
-                  // value={values.title}
-                  // onChange={handleChange}
                 />
               </LabelField>
               <ErrorMessageStyled name='title' component="span"/>
@@ -74,8 +71,6 @@ export const ModalAddNoticeFistStep = ({values,errors}) => {
                   name="name"
                   type="text"
                   placeholder="Type name pet"
-                  // value={values.name}
-                  // onChange={handleChange}
                 />
               </LabelField>
               <ErrorMessageStyled name='name' component="span"/>
@@ -87,8 +82,6 @@ export const ModalAddNoticeFistStep = ({values,errors}) => {
                   name="birthday"
                   type="text"
                   placeholder="Type date of birth XX.XX.XXXX"
-                  // value={values.birthday}
-                  // onChange={handleChange}
                 />
               </LabelField>
               <ErrorMessageStyled name='birthday' component="span"/>
@@ -100,9 +93,6 @@ export const ModalAddNoticeFistStep = ({values,errors}) => {
                   name="breed"
                   type="text"
                   placeholder="Type breed"
-                  // value={values.breed}
-                  // onChange={handleChange}
-
                 />
               </LabelField>
               <ErrorMessageStyled name='breed' component="span"/>
