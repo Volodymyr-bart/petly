@@ -75,3 +75,11 @@ letter-spacing: 0.04em;
 }
 `;
 
+export const ErrorStyled = styled.p`
+font-size: 18px;
+color: #9d3158;
+margin-top: -10px;
+margin-bottom: 10px;
+text-align: center;
+`;
+

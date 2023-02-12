@@ -1,11 +1,12 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import { logIn } from 'redux/auth/operations';
 import { Formik } from 'formik';
-import { Button, FormStyled, FieldStyled,  ErrorMessageStyled, TextStyled, InputContainer, ShowPassword} from './LoginForm.styled';
+import { Button, FormStyled, FieldStyled,  ErrorMessageStyled, TextStyled, InputContainer, ShowPassword, ErrorStyled} from './LoginForm.styled';
 import * as yup from 'yup';
 import { RxEyeClosed, RxEyeOpen} from 'react-icons/rx'
+import { selectLoginError } from 'redux/auth/selectors';
 const passRegexp = /^\S+$/;
 
 const initialValues = {
@@ -27,7 +28,7 @@ export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
-
+  const errorCode = useSelector(selectLoginError); 
   const handleSubmit = (values, {resetForm}) => {
 
     dispatch(
@@ -35,14 +36,14 @@ export const LoginForm = () => {
         email: values.email,
         password: values.password,
       }));
+      if(errorCode) return;
     resetForm();   
   };
-  console.log(showPassword)
 
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={schema}>
-      {({handleChange, values, errors, touched, setFieldTouched}) => {
+      {({handleChange, values, errors, touched, setFieldTouched }) => {
           return <FormStyled  autoComplete='off'>
             <InputContainer>
               <FieldStyled type="email" name="email" placeholder='Email'/>
@@ -53,6 +54,7 @@ export const LoginForm = () => {
               </div>
               < ErrorMessageStyled name="password" component="span"/>
               </InputContainer>
+              {errorCode === 401 && <ErrorStyled>Email or Password is wrong. Please check your data.</ErrorStyled>}
             <Button type="submit">Log in</Button>
             <TextStyled>Don't have an account? <NavLink to="/register">Register</NavLink></TextStyled>
           </FormStyled>

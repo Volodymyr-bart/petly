@@ -57,7 +57,7 @@ export const PlacesAutocomplete = ({saveAddress}) => {
           disabled={!ready}
           placeholder="City"
           name="address"
-          type
+          type='text'
         />
         {/* We can use the "status" to decide whether we should display the dropdown or not */}
         {status === "OK" && <ListStyled>{renderSuggestions()}</ListStyled>}
