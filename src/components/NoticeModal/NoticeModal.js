@@ -92,7 +92,7 @@ const NoticeModal = ({ category, notice, isFavorite, addFavorite }) => {
             </Icon>
           </ButtonStyled>
           <ButtonStyled type="button">
-            <a href="#">Contact</a>
+            {/* <a href="#">Contact</a> */}
           </ButtonStyled>
         </BtnBox>
       </ModalContainer>
