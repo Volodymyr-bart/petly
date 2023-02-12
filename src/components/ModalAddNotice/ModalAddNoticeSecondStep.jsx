@@ -9,7 +9,6 @@ import {
   ContainerSexVariant,
   DefaultLoadImg,
   ErrorMessageStyled,
-  ErrorText,
   FieldStyled,
   Icon,
   LabelField,
@@ -61,7 +60,7 @@ export const ModalAddNoticeSecondStep = ({
             <Sex>Female</Sex>
           </SexLabel>
         </ContainerSexVariant>
-        <ErrorMessageStyled name='theSex' component="span"/>
+        <ErrorMessageStyled name="theSex" component="span" />
       </ContainerSex>
       <Container>
         <div>
@@ -75,7 +74,7 @@ export const ModalAddNoticeSecondStep = ({
               placeholder="City, Region"
             />
           </LabelField>
-          <ErrorMessageStyled name="location" component="span"/>
+          <ErrorMessageStyled name="location" component="span" />
         </div>
         {values.category === 'sell' && (
           <div>
@@ -85,7 +84,7 @@ export const ModalAddNoticeSecondStep = ({
               </LabelFieldTitle>
               <FieldStyled name="price" type="text" placeholder="Type price" />
             </LabelField>
-            <ErrorMessageStyled name="price" component="span"/>
+            <ErrorMessageStyled name="price" component="span" />
           </div>
         )}
         <div>
@@ -117,8 +116,11 @@ export const ModalAddNoticeSecondStep = ({
         {/* Comment */}
         <div>
           <LabelField>
-            <LabelFieldTitle>Comments<span>*</span></LabelFieldTitle>
-            <CommentField as='textarea'
+            <LabelFieldTitle>
+              Comments<span>*</span>
+            </LabelFieldTitle>
+            <CommentField
+              as="textarea"
               type="text"
               name="comments"
               placeholder="Type comment"
@@ -126,7 +128,7 @@ export const ModalAddNoticeSecondStep = ({
               value={values.comments}
             />
           </LabelField>
-          <ErrorMessageStyled name="comments" component="span"/>
+          <ErrorMessageStyled name="comments" component="span" />
         </div>
       </Container>
     </>
