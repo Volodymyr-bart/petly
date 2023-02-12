@@ -14,9 +14,19 @@ export const getUserData = createAsyncThunk(
   }
 );
 
-export const changeUserData = async data => {
+export const changeUserData = async newData => {
+  if (!newData.petAvatar) delete newData['userAvatar'];
+
+  newData['userAvatar'] = newData['imageData'];
+  delete newData['imageData'];
+
+  let resultData = new FormData();
+
+  for (const key in newData) {
+    resultData.append(key, newData[key]);
+  }
   try {
-    const result = await axios.patch('/users/update', data);
+    const result = await axios.patch('/users/update', resultData);
     return result.data;
   } catch (error) {
     console.log('Error');
@@ -32,7 +42,6 @@ export const deletePetData = async id => {
   }
 };
 
-
 export const getAllOwnNoticesWithoutR = async () => {
   try {
     const response = await axios.get(`/notices/ads/my`);
@@ -42,7 +51,27 @@ export const getAllOwnNoticesWithoutR = async () => {
   }
 };
 
+// export const addUserImage = createAsyncThunk(
+//   'userData/addUserImage',
+//   async (newPhoto, thunkAPI) => {
+//     console.log(11, newPhoto);
+//     // if (!newPhoto.petAvatar) delete newPhoto['petAvatar'];
+//     let formImageData = new FormData();
 
+//     for (const key in newPhoto) {
+//       formImageData.append(key, newPhoto[key]);
+//     }
+
+//     try {
+//       console.log(12, formImageData);
+//       // const res = await axios.post('/notices', formImageData);
+//       // return res.data;
+//       return 'res.data';
+//     } catch (error) {
+//       return 'thunkAPI.rejectWithValue(error.message)';
+//     }
+//   }
+// );
 
 // Послання нащадкам: "Тарілку після гречки мийте відразу"
 

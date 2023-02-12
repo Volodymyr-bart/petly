@@ -1,4 +1,4 @@
-import {ReactComponent as DefaultImg} from '../../../noticesImage/loadimg.svg'
+import { ReactComponent as DefaultImg } from '../../../noticesImage/loadimg.svg';
 import {
   CommentField,
   Container,
@@ -23,6 +23,7 @@ export const AddMyPetSecondPart = ({
   const filePicker = useRef(null);
 
   const handlePick = () => {
+    console.log(filePicker);
     filePicker.current.click();
   };
 
@@ -59,8 +60,11 @@ export const AddMyPetSecondPart = ({
         {/* Comment */}
         <div>
           <LabelField>
-            <LabelFieldTitle>Comments<span>*</span></LabelFieldTitle>
-            <CommentField as='textarea'
+            <LabelFieldTitle>
+              Comments<span>*</span>
+            </LabelFieldTitle>
+            <CommentField
+              as="textarea"
               type="text"
               name="comments"
               placeholder="Type comment"
@@ -68,7 +72,7 @@ export const AddMyPetSecondPart = ({
               value={values.comments}
             />
           </LabelField>
-          <ErrorMessageStyled name='comments' component='span'/>
+          <ErrorMessageStyled name="comments" component="span" />
         </div>
       </Container>
     </>

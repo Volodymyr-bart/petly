@@ -4,6 +4,7 @@ import { TiCamera } from 'react-icons/ti';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getUserData, changeUserData } from 'redux/account/operations';
+import { useRef } from 'react';
 
 // Тимчасові дані. Замінити на дані з ендпоінта
 import userImage from './avatar.jpg';
@@ -23,27 +24,46 @@ const UserData = ({ userData, setChangedData }) => {
     setInputData(data);
   };
 
-  const handleSubmit = dataType => {
-    console.log(1, userData);
-    let newData = { ...userData };
-    newData[dataType === 'City' ? 'address' : dataType.toLowerCase()] =
-      inputData;
+  const handleSubmit = (dataType, imageData) => {
+    const newData = {
+      ...userData,
+      birthday: new Date(userData.birthday).toLocaleDateString(),
+      imageData,
+    };
+
+    const currentDataType =
+      dataType === 'City'
+        ? 'address'
+        : dataType.charAt(0).toLowerCase() + dataType.slice(1);
+    newData[currentDataType] = inputData;
     delete newData.userPetsList;
-    console.log(2, newData);
+
     changeUserData(newData);
     setChangedData(dispatch(getUserData()));
     setItemInProcess(null);
   };
 
+  const onChooseFile = useRef(null);
   const handleChangeImage = () => {
-    console.log('image changed');
-    // Тут написати запит на сервер для зміни фото користувача
+    onChooseFile.current.click();
+  };
+
+  const onChooseUserImage = async e => {
+    const imageData = e.target.files[0];
+    handleSubmit('userAvatar', imageData);
   };
 
   return (
     <>
       <UserImage>
         <Image src={userImage} />
+        <input
+          style={{ display: 'none' }}
+          type="file"
+          name="photo"
+          ref={onChooseFile}
+          onChange={onChooseUserImage}
+        />
         <EditImage onClick={handleChangeImage}>
           <TiCamera color="#F59256" />
           <EditText>Edit photo</EditText>
