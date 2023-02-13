@@ -19,6 +19,7 @@ const UserPage = () => {
 
   const userData = useSelector(selectAllUserData);
   console.log(userData);
+
   return (
     <UserPageStyled>
       <Profile>
