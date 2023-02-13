@@ -13,7 +13,7 @@ import { checkEmail } from 'utils/checkEmail';
 const nameRegexp = /^[a-z ,.'-]+$/i;
 const emailRegexp =
   // eslint-disable-next-line no-useless-escape
-  /^([A-Za-z0-9_\-\.]{3,})+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+  /^([A-Za-z0-9_\-\.]{2,})+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 const passRegexp = /^\S+$/;
 const phoneRegexp = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
@@ -27,7 +27,7 @@ const initialValues = {
   phone: ''
 }
 const schema = yup.object({
-  email: yup.string().email("Invalid email addres").matches(emailRegexp, "Email must not contain special characters, must start with 3 characters before the @").required("Email is required").min(10, "Email must be at least 10 characters")
+  email: yup.string().email("Invalid email addres").matches(emailRegexp, "Email may only contain English letters, must start with 2 characters before the @").required("Email is required").min(10, "Email must be at least 10 characters")
   .max(63, "Email must be at most 63 characters"),
   password: yup.string()
     .matches(passRegexp, "Password cannot contain spaces")
