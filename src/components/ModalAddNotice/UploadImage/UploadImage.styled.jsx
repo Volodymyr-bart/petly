@@ -7,6 +7,7 @@ export const ImgBox = styled.div`
   @media screen and (min-width: 768px) {
     width: 140px;
     height: 140px;
+  }
 `;
 
 export const Img = styled.img`
@@ -21,3 +22,5 @@ export const Img = styled.img`
   height: 140px;
   }
 `;
+
+

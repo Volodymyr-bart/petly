@@ -22,7 +22,9 @@ const addPet = async (newNotice) => {
     let formImageData = new FormData();
     
     for (const key in newNotice) {     
-      formImageData.append(key, newNotice[key]);
+      if (newNotice[key]) {
+        formImageData.append(key, newNotice[key]);
+      }
     }
     try {
       const res = await axios.post('/users/add-pets', formImageData  );

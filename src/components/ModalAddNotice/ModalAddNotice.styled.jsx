@@ -165,7 +165,7 @@ export const LabelFieldMyPetPhoto = styled.label`
   align-items: center;
 
   @media screen and (min-width: 768px) {
-    gap: 28px;
+    gap: 12px;
   }
 `;
 export const LabelFieldMyPetComment = styled.label`
@@ -190,6 +190,20 @@ export const LabelFieldTitle = styled.p`
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 1.08;
+  }
+`;
+export const LabelFieldTitleMyPet = styled.p`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.37;
+  color: #000000;
+  span {
+    color: #f59256;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 1.35;
   }
 `;
 export const ContainerButton = styled.div`
@@ -350,6 +364,21 @@ export const LoadImg = styled.button`
   @media screen and (min-width: 768px) {
   width: 140px;
   height: 140px;
+  }
+`
+
+export const LoadImgMyPet = styled.button`
+  width: 208px;
+  height: 208px;
+
+  background: #FDF7F2;
+  border-radius: 20px;
+  border: transparent;
+
+  @media screen and (min-width: 768px) {
+  width: 182px;
+  height: 182px;
+  margin-bottom: 20px;
   }
 `
 
