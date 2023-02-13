@@ -15,10 +15,7 @@ import { useRef } from 'react';
 export const AddMyPetSecondPart = ({
   values,
   setFieldValue,
-  errors,
-  dirty,
   handleChange,
-  touched,
 }) => {
   const filePicker = useRef(null);
 

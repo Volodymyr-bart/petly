@@ -4,8 +4,13 @@ import { ErrorMessage, Field, Form } from 'formik';
 export const FormContainer = styled(Form)`
   display: flex;
   flex-direction: column;
-  padding: 40px 80px;
-  width: 608px;
+  padding: 40px 20px;
+  width: 280px;
+
+  @media (min-width: 768px) {
+    padding: 40px 80px;
+    width: 608px;
+  }
 `;
 
 export const Container = styled.div`
@@ -13,30 +18,39 @@ export const Container = styled.div`
   margin-bottom: 40px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
+  @media screen and (min-width: 768px) {
+    gap: 28px;
+  }
 `;
 
 export const TitleModal = styled.h1`
   margin: 0 auto;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.37;
+  color: #000000;
+
+  @media screen and (min-width: 768px) {
   font-weight: 600;
   font-size: 36px;
   line-height: 1.36;
-  color: #000000;
-  @media screen and (max-width: 767px) {
-  font-weight: 500;
-  }
-  @media screen and (max-width: 767px) {
-  font-weight: 500;
   }
 `;
 
 export const Description = styled.p`
   font-weight: 500;
-  font-size: 20px;
-  line-height: 27px;
+  font-size: 16px;
+  line-height: 1.37;
   text-align: center;
   letter-spacing: -0.01em;
   color: #000000;
+
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+    line-height: 1.35;
+  }
+
 `;
 
 export const RadioBtnBox = styled.ul`
@@ -44,9 +58,15 @@ export const RadioBtnBox = styled.ul`
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
   list-style: none;
+
+  @media screen and (max-width: 767px) {
+    gap: 10px;
+  }
+
 `;
 
 export const RadioItems = styled.li`
@@ -71,18 +91,20 @@ export const ContainerInputs = styled.div`
   flex-direction: column;
   margin-top: 28px;
   gap: 28px;
+  @media screen and (min-width: 768px) {
+    gap: 28px;
+  }
 `;
 
 export const RadioBtnCategory = styled.label`
   display: block;
   border: 2px solid #f59256;
   border-radius: 40px;
-  padding: 10px 28px;
-
-
+  padding: 8px 25px;
+  
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 14px;
   line-height: 1.35;
   letter-spacing: 0.04em;
 
@@ -92,14 +114,20 @@ export const RadioBtnCategory = styled.label`
     background-color: #f59256;
     color: #FFFFFF;
   }
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    padding: 10px 28px;
+
+  }
+
 `;
 
 export const FieldStyled = styled(Field)`
-  width: 448px;
-  height: 48px;
-  padding: 11px 16px;
-  font-size: 16px;
-  line-height: 1.6;
+  width: 100%;
+  height: 40px;
+  padding: 11px 14px;
+  font-size: 14px;
+  line-height: 1.35;
   letter-spacing: 0.04em;
   background: #fdf7f2;
   color: #000000;
@@ -110,73 +138,117 @@ export const FieldStyled = styled(Field)`
     cursor: pointer;
     outline: 2px solid #f59256;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 448px;
+    height: 48px;
+    padding: 11px 16px;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+
+  }
 `;
 export const LabelField = styled.label`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
+
+  @media screen and (min-width: 768px) {
+    gap: 12px;
+  }
 `;
 export const LabelFieldMyPetPhoto = styled.label`
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+    gap: 28px;
+  }
 `;
 export const LabelFieldMyPetComment = styled.label`
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+    gap: 28px;
+  }
 `;
 export const LabelFieldTitle = styled.p`
   font-weight: 500;
-  font-size: 24px;
-  line-height: 1.08;
+  font-size: 18px;
+  line-height: 1.44;
   color: #000000;
   span {
     color: #f59256;
   }
-`;
-export const ErrorText = styled(ErrorMessage)`
-  display: block;
-  margin-top: 10px;
-  color: red;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 1.08;
+  }
 `;
 export const ContainerButton = styled.div`
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
-  gap: 20px;
+  flex-direction: column-reverse;
+  gap: 12px;
+
+  @media screen and (min-width: 768px) {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+  }
 `;
 
 export const Button = styled.button`
-  width: 180px;
-  padding: 10px 28px;
+  width: 100%;
+  padding: 9px 101px;
   background: #f59256;
   border-radius: 40px;
   border: none;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 1.35;
+  font-size: 16px;
+  line-height: 1.37;
   letter-spacing: 0.04em;
   color: #ffffff;
 
   &.disabled{
     background-color: #dca481;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 180px;
+    padding: 10px 28px;
+    font-size: 20px;
+    line-height: 1.35;
+  }
 `;
 
 export const CancelBack = styled.button`
-  width: 180px;
-  padding: 10px 28px;
+  width: 100%;
+  padding: 9px 28px;
   background: #ffffff;
   border-radius: 40px;
   border: 2px solid #f59256;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 1.35;
+  font-size: 16px;
+  line-height: 1.37;
   letter-spacing: 0.04em;
   color: #000000;
+
+  @media screen and (min-width: 768px) {
+    width: 180px;
+    padding: 10px 28px;
+    font-size: 20px;
+    line-height: 1.35;
+  }
 `;
 
 // Step 2
@@ -184,19 +256,17 @@ export const CancelBack = styled.button`
 export const ContainerSex = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  gap: 28px;
-`;
-export const TitleInput = styled.div`
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 1.08;
-  color: #000000;
-  span {
-    color: #f59256;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  gap: 12px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    gap: 28px;
   }
 `;
+
 export const TitleInputMyPet = styled.div`
   text-align: center;
   font-weight: 500;
@@ -206,36 +276,53 @@ export const TitleInputMyPet = styled.div`
   span {
     color: #f59256;
   }
+
+  @media screen and (min-width: 768px) {
+    gap: 28px;
+  }
 `;
 export const ContainerSexVariant = styled.div`
   display: flex;
-  gap: 95px;
+  gap: 40px;
+
+  @media screen and (min-width: 768px) {
+    gap: 95px;
+  }
 `;
 export const Icon = styled.div`
   display: block;
-  width: 60px;
-  height: 60px;
+  width: 54px;
+  height: 54px;
 
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   
+  @media screen and (min-width: 768px) {
+    width: 60px;
+    height: 60px; 
+    margin-bottom: 20px; 
+  }
 `;
 export const SexLabel= styled.label`
   &.active{
-        color: #f59256;
-
+    color: #f59256;
   }
-`
 
+`
 export const SexRadioInput = styled(Field)`
   display: none;
 `
 
 export const Sex = styled.span`
   font-weight: 500;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 18px;
+  line-height: 1.47;
   :hover {
     color: #f59256;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 1.3;
   }
 `;
 
@@ -253,23 +340,28 @@ export const DefaultLoadImg = styled.input`
 `
 
 export const LoadImg = styled.button`
-  width: 140px;
-  height: 140px;
+  width: 116px;
+  height: 116px;
 
   background: #FDF7F2;
   border-radius: 20px;
   border: transparent;
+
+  @media screen and (min-width: 768px) {
+  width: 140px;
+  height: 140px;
+  }
 `
 
 export const CommentField = styled(Field)`
-  width: 448px;
-  min-height: 113px;
-  padding: 16px 18px;
+  width: 100%;
+  min-height: 40px;
+  padding: 11px 14px;
   resize: none;
   margin: 0;
 
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.35;
   letter-spacing: 0.04em;
   background: #fdf7f2;
   color: #000000;
@@ -279,10 +371,23 @@ export const CommentField = styled(Field)`
   :focus {
     cursor: pointer;
     outline: 2px solid #f59256;
-  }`
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 448px;
+    min-height: 113px;
+    padding: 16px 18px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+`
 
 export const ErrorMessageStyled = styled(ErrorMessage)`
-    font-size: 18px;
-    color: #9d3158;
-    margin-top: 10px;
+  font-size: 16px;
+  color: #9d3158;
+  margin-top: 10px;
+
+  @media screen and (min-width: 768px) {
+  font-size: 18px;
+  }
 `

@@ -10,7 +10,6 @@ import {
   RadioBtnBox,
   RadioBtnCategory,
   RadioInput,
-  TitleInput,
   TitleModal,
 } from './ModalAddNotice.styled';
 
@@ -29,8 +28,8 @@ export const ModalAddNoticeFistStep = ({values}) => {
               amet, consectetur
             </Description>
             <div>
-           <TitleInput>Choose category<span>*</span>:
-        </TitleInput>
+           <LabelFieldTitle>Choose category<span>*</span>:
+        </LabelFieldTitle>
             <RadioBtnBox> 
               {categories.map(category => (
                  <li key={category.id}>
