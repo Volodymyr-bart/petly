@@ -31,11 +31,14 @@ export const Name = styled.p`
 `;
 
 export const Info = styled.p`
+  width: 220px;
+  overflow-x: hidden;
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.04em;
   color: #111111;
   margin-left: 26px;
+  -webkit-mask-image: linear-gradient(90deg, #000 60%, transparent);
   @media (min-width: 768px) {
     margin-left: 36px;
     font-size: 18px;
