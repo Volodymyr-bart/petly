@@ -28,6 +28,7 @@ const initialValues = {
 }
 const schema = yup.object({
   email: yup.string().email("Invalid email addres").matches(emailRegexp, "Email must not contain special characters, must start with 2 characters before the @").required("Email is required").min(10, "Email must be at least 10 characters")
+
   .max(63, "Email must be at most 63 characters"),
   password: yup.string()
     .matches(passRegexp, "Password cannot contain spaces")
