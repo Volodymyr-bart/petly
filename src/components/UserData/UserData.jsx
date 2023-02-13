@@ -77,11 +77,7 @@ const UserData = ({ userData, setChangedData }) => {
     <>
       <UserImage>
         <Image
-          src={
-            userData.userAvatar !== undefined
-              ? userData.userAvatar.url
-              : placeholder
-          }
+          src={userData.userAvatar ? userData.userAvatar.url : placeholder}
         />
         <input
           style={{ display: 'none' }}
