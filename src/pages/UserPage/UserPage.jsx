@@ -18,7 +18,7 @@ const UserPage = () => {
   }, [dispatch, changedData]);
 
   const userData = useSelector(selectAllUserData);
-
+  console.log(userData);
   return (
     <UserPageStyled>
       <Profile>

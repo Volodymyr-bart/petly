@@ -26,7 +26,6 @@ const UserData = ({ userData, setChangedData }) => {
 
   const handleSubmit = (e, imageData) => {
     e.preventDefault();
-
     // console.log('inputData', inputData);
     // console.log('imageData', imageData);
     // console.log('inputDataType', inputDataType);
