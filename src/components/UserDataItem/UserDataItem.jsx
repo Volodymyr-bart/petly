@@ -15,7 +15,7 @@ const UserDataItem = ({
   handleEdit,
   itemInProcess,
   handleChange,
-  handleSubmit,
+  placeholder,
 }) => {
   data =
     dataType === 'Birthday' && data
@@ -38,7 +38,11 @@ const UserDataItem = ({
       )}
       {itemInProcess === dataType && (
         <>
-          <DataInput onChange={handleChange} data-type={dataType} />
+          <DataInput
+            onChange={handleChange}
+            data-type={dataType}
+            placeholder={placeholder}
+          />
           <SendInfo type="submit">
             <MdOutlineDone />
           </SendInfo>
