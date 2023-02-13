@@ -27,9 +27,6 @@ const UserData = ({ userData, setChangedData }) => {
 
   const handleSubmit = (e, imageData) => {
     e.preventDefault();
-    // console.log('inputData', inputData);
-    // console.log('imageData', imageData);
-    // console.log('inputDataType', inputDataType);
 
     const dataType = inputDataType === null ? 'userAvatar' : inputDataType;
 
@@ -55,6 +52,7 @@ const UserData = ({ userData, setChangedData }) => {
       return String(email)
         .toLowerCase()
         .match(
+          // eslint-disable-next-line no-useless-escape
           /^([A-Za-z0-9_\-\.]{2,})+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
         );
     };
