@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { searchNoticesSet } from 'redux/notices/searchSlice';
+import { Suspense } from 'react';
+import { Loader } from 'components/Loader/Loader';
 
 import Search from 'components/Search/Search';
 import NoticesCategoryNav from 'components/NoticesCategoryNav/NoticesCategoryNav';
@@ -38,7 +40,9 @@ const Notices = () => {
       
       <NoticesCategoryNav />
 
-      <Outlet />
+      <Suspense fallback={<Loader/>}>
+        <Outlet />
+      </Suspense>
     </NoticesStyled>
   );
 };
