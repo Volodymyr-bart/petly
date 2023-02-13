@@ -4,6 +4,8 @@ export const selectIsLoadingNotices = state => state.notices.isLoadingNotices;
 
 export const selectNotices = state => state.notices.notices;
 
+export const selectNoticeAdd = state => state.notices.noticeAdd;
+
 
 export const selectSearchNotices = state => state.searchNotices;
 
