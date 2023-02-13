@@ -1,5 +1,8 @@
 export function ageCount(date) {
-  const age = new Date(Date.now() - Date.parse(date)).getFullYear() - 1970 || 0
+  const age = new Date(Date.now() - Date.parse(date)).getFullYear() - 1970 || 0;  
+  if (age < 0) {
+    return 'not born yet';
+  }
   if (age === 0) {
     return 'less than a year';
   } else if (age === 1) {

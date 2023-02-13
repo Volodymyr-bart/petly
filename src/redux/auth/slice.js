@@ -5,7 +5,7 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
-  isRefreshing: false,
+  isRefreshing: true,
 };
 
 const handlePending = state => {
@@ -13,7 +13,7 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
-  state.error = action.payload;
+  state.errorCode = action.payload;
   state.isRefreshing = false;
 };
 

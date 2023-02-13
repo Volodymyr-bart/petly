@@ -45,7 +45,7 @@ const NoticeModal = ({
           </ImgContainer>
           <div>
             <ModalTitle>
-              Cute dog looking <br></br> for a home
+              {notice.title}
             </ModalTitle>
             <ModalList>
               <Item>
