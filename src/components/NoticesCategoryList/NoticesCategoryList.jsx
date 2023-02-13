@@ -7,8 +7,7 @@ import NoticesCategoryItem from 'components/NoticesCategoryItem/NoticesCategoryI
 import {
   getAllFavoriteNotices,
   getAllOwnNotices,
-  getNoticesByCategory,
-  // addNotice
+  getNoticesByCategory
 } from 'redux/notices/operations';
 import {
   selectIsLoadingNotices,
@@ -35,13 +34,6 @@ const NoticesCategoriesList = () => {
     } else {
       dispatch(getNoticesByCategory(categoryName));
     }
-
-    // const postNotice = async () => {
-    //   const res = await addNotice();
-    //     console.log(res);     
-    // }
-    
-    // postNotice();
 
     setFilterId([]);
     
