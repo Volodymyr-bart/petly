@@ -53,6 +53,10 @@ const UserData = ({ userData, setChangedData }) => {
 
     changeUserData(newData);
     setChangedData(dispatch(getUserData()));
+    if (dataType === 'userAvatar')
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     setItemInProcess(null);
     setInputData(null);
     setInputDataType(null);
@@ -69,12 +73,16 @@ const UserData = ({ userData, setChangedData }) => {
     handleSubmit(e, imageData);
   };
 
-  const a = null;
-
   return (
     <>
       <UserImage>
-        <Image src={a || placeholder} />
+        <Image
+          src={
+            userData.userAvatar !== undefined
+              ? userData.userAvatar.url
+              : placeholder
+          }
+        />
         <input
           style={{ display: 'none' }}
           type="file"
