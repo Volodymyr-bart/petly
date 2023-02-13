@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { getUserData, changeUserData } from 'redux/account/operations';
 import { useRef } from 'react';
 import placeholder from '../../img/placeholder.png';
+import { toast } from 'react-hot-toast';
 
 const UserData = ({ userData, setChangedData }) => {
   const [itemInProcess, setItemInProcess] = useState(null);
@@ -30,29 +31,52 @@ const UserData = ({ userData, setChangedData }) => {
     // console.log('imageData', imageData);
     // console.log('inputDataType', inputDataType);
 
-    let dataType;
-    if (inputDataType === null) {
-      dataType = 'userAvatar';
-    } else {
-      dataType = inputDataType;
-    }
-    // console.log(userData.birthday);
-    let newData = {
-      ...userData,
-      // birthday: new Date(userData.birthday).toLocaleDateString(),
-      imageData,
-    };
-    if (userData.birthday)
-      newData = {
-        ...newData,
-        birthday: new Date(userData.birthday).toLocaleDateString(),
-      };
+    const dataType = inputDataType === null ? 'userAvatar' : inputDataType;
+
+    const newData = userData.birthday
+      ? {
+          ...userData,
+          imageData,
+          birthday: new Date(userData.birthday).toLocaleDateString(),
+        }
+      : {
+          ...userData,
+          imageData,
+        };
+
     const currentDataType =
       dataType === 'City'
         ? 'address'
         : dataType.charAt(0).toLowerCase() + dataType.slice(1);
-    const newInputData = inputData === null ? inputData : inputData.trim();
+
+    // const newInputData = inputData === null ? inputData : inputData.trim();
+
+    const validateEmail = email => {
+      return String(email)
+        .toLowerCase()
+        .match(
+          /^([A-Za-z0-9_\-\.]{2,})+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+        );
+    };
+
+    let newInputData;
+    if (inputData === null) {
+      newInputData = inputData;
+    } else {
+      if (currentDataType === 'email') {
+        if (validateEmail(inputData) !== null) {
+          newInputData = validateEmail(inputData)[0].trim();
+        } else {
+          toast.error('Invalid email');
+          return;
+        }
+      } else {
+        newInputData = inputData.trim();
+      }
+    }
+
     newData[currentDataType] = newInputData;
+
     delete newData.userPetsList;
 
     changeUserData(newData);
@@ -122,6 +146,7 @@ const UserData = ({ userData, setChangedData }) => {
             handleEdit={handleEdit}
             itemInProcess={itemInProcess}
             handleChange={handleChange}
+            placeholder={'XX.XX.XXXX'}
           />
           <UserDataItem
             dataType="Phone"
@@ -129,6 +154,7 @@ const UserData = ({ userData, setChangedData }) => {
             handleEdit={handleEdit}
             itemInProcess={itemInProcess}
             handleChange={handleChange}
+            placeholder={'+380XXXXXXXXX'}
           />
           <UserDataItem
             dataType="City"
