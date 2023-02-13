@@ -13,6 +13,7 @@ import {
 import {
   selectIsLoadingNotices,
   selectFilteredNotices,
+  selectNoticeAdd,
 } from 'redux/notices/selectors';
 import { Categories } from 'utils/noticesCatList';
 import NoticesCategoryListStyled from './NoticesCategoryList.styled';
@@ -23,6 +24,7 @@ const NoticesCategoriesList = () => {
   const dispatch = useDispatch();
   const notices = useSelector(selectFilteredNotices);  
   const isloadingNotices = useSelector(selectIsLoadingNotices);
+  const noticeAdd = useSelector(selectNoticeAdd);
   
 
   useEffect(() => {
@@ -44,13 +46,13 @@ const NoticesCategoriesList = () => {
     setFilterId([]);
     
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoryName])
+  }, [categoryName, noticeAdd])
 
   const getFilterId = (id) => {
     setFilterId(prev => [...prev, id]);
   }
 
-  console.log(notices);
+  // console.log(notices);
 
   const isEmpty = notices.length === 0;
   return (
@@ -66,7 +68,6 @@ const NoticesCategoriesList = () => {
                   .map((item) =>
                   <NoticesCategoryItem
                     key={item._id}
-                    // category={categoryName}
                     notice={item}
                     getFilterId={getFilterId}
                   />)
