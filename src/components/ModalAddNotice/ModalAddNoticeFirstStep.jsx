@@ -44,6 +44,7 @@ export const ModalAddNoticeFistStep = ({values}) => {
                       type="radio"
                       name="category"
                       value={category.value}
+                      className='hidden'
                     />
                   </RadioBtnCategory>
                   </li>

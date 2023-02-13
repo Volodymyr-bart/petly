@@ -22,6 +22,12 @@ export const TitleModal = styled.h1`
   font-size: 36px;
   line-height: 1.36;
   color: #000000;
+  @media screen and (max-width: 767px) {
+  font-weight: 500;
+  }
+  @media screen and (max-width: 767px) {
+  font-weight: 500;
+  }
 `;
 
 export const Description = styled.p`
@@ -48,7 +54,7 @@ export const RadioItems = styled.li`
 `
 
 export const RadioInput = styled(Field)`
-  display: none;
+  /* display: none; */
   &.hidden {
     opacity: 0;
     height: 0;
@@ -91,12 +97,12 @@ export const RadioBtnCategory = styled.label`
 export const FieldStyled = styled(Field)`
   width: 448px;
   height: 48px;
-  padding: 11px 45px 11px 14px;
+  padding: 11px 16px;
   font-size: 16px;
   line-height: 1.6;
   letter-spacing: 0.04em;
   background: #fdf7f2;
-  color: rgba(17, 17, 17, 0.6);
+  color: #000000;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
   :hover,
@@ -266,7 +272,7 @@ export const CommentField = styled(Field)`
   line-height: 1.6;
   letter-spacing: 0.04em;
   background: #fdf7f2;
-  color: rgba(17, 17, 17, 0.6);
+  color: #000000;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 20px;
   :hover,

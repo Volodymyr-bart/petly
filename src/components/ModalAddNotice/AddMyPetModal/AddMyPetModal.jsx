@@ -7,7 +7,7 @@ import {
   CancelBack,
   ContainerButton,
   FormContainer,
-} from './AddMyPet.styled';
+} from '../ModalAddNotice.styled';
 import { AddMyPetFirstPart } from './AddMyPetFirstPart';
 import { AddMyPetSecondPart } from './AddMyPetSecondPart';
 const initialValues = {

@@ -4,14 +4,14 @@ export const ModalBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   opacity: 0;
   visibility: hidden;
@@ -25,12 +25,24 @@ export const ModalBackdrop = styled.div`
 `;
 
 export const ModalContent = styled.div`
+  margin: auto;
+  top: 10px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 40px;
   background-color: #FFFFFF;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   min-height: 540px;
-  width: auto;
+  max-width: 708px;
+
+  @media screen and (min-width: 768px) {
+    margin: auto;
+  }
+  @media screen and (min-width: 1280px) {
+    margin: auto;
+  }
 `;
 
 export const ModalBtn = styled.button`
