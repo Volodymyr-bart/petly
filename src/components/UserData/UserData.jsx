@@ -37,13 +37,16 @@ const UserData = ({ userData, setChangedData }) => {
       dataType = inputDataType;
     }
     // console.log(userData.birthday);
-    const newData = {
+    let newData = {
       ...userData,
       // birthday: new Date(userData.birthday).toLocaleDateString(),
       imageData,
     };
     if (userData.birthday)
-      newData.push(new Date(userData.birthday).toLocaleDateString());
+      newData = {
+        ...newData,
+        birthday: new Date(userData.birthday).toLocaleDateString(),
+      };
     const currentDataType =
       dataType === 'City'
         ? 'address'
