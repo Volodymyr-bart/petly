@@ -22,11 +22,13 @@ import {
 } from './ModalAddNotice.styled';
 import { UploadImage } from './UploadImage/UploadImage';
 import { useRef } from 'react';
+import { PlacesAutocomplete } from 'components/RegisterForm/Autocomplete';
 
 export const ModalAddNoticeSecondStep = ({
   values,
   setFieldValue,
   handleChange,
+  saveLocation
 }) => {
   const filePicker = useRef(null);
 
@@ -65,11 +67,12 @@ export const ModalAddNoticeSecondStep = ({
             <LabelFieldTitle>
               Location<span>*</span>:
             </LabelFieldTitle>
-            <FieldStyled
+            <PlacesAutocomplete saveAddress={saveLocation} />
+            {/* <FieldStyled
               name="location"
               type="text"
               placeholder="City, Region"
-            />
+            /> */}
           </LabelField>
           <ErrorMessageStyled name="location" component="span" />
         </div>
