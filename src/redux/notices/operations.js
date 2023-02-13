@@ -97,14 +97,15 @@ export const getAllOwnNoticesWithoutR = async () => {
 export const addNotice = createAsyncThunk(
   'notices/addNotice',
   async (newNotice, thunkAPI) => {
-    console.log('............................1', newNotice);
+
     if (!newNotice.petAvatar) delete newNotice['petAvatar'];
     let formImageData = new FormData();
 
     for (const key in newNotice) {
-      formImageData.append(key, newNotice[key]);
+      if (newNotice[key]) {
+        formImageData.append(key, newNotice[key]);
+      }
     }
-    console.log('............................2', formImageData);
 
     try {
       const res = await axios.post('/notices', formImageData);

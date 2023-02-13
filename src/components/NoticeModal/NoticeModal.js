@@ -50,15 +50,15 @@ const NoticeModal = ({
             <ModalList>
               <Item>
                 <p style={{ width: '120px' }}>Name:</p>
-                <p>{notice.name}</p>
+                <p>{notice.name || 'No name'}</p>
               </Item>
               <Item>
                 <p style={{ width: '120px' }}>Birthday:</p>
-                <p>{data}</p>
+                <p>{data || 'No data'}</p>
               </Item>
               <Item>
                 <p style={{ width: '120px' }}>Breed:</p>
-                <p>{notice.breed}</p>
+                <p>{notice.breed || 'without breed'}</p>
               </Item>
               <Item>
                 <p style={{ width: '120px' }}>Place:</p>
