@@ -103,6 +103,10 @@ export const ImageThumbStyled = styled.div`
     background-position: center;
     background-repeat: no-repeat;
 
+    img {
+        object-fit: cover;
+    }
+
     @media (min-width: 768px) {
         width: 336px;       
     }

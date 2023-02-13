@@ -8,6 +8,8 @@ import {
   Icon,
   ImgContainer,
   Item,
+  ItemNames,
+  ItemText,
   ModalContainer,
   ModalImg,
   ModalList,
@@ -49,41 +51,41 @@ const NoticeModal = ({
             </ModalTitle>
             <ModalList>
               <Item>
-                <p style={{ width: '120px' }}>Name:</p>
-                <p>{notice.name || 'No name'}</p>
+                <ItemNames>Name:</ItemNames>
+                <ItemText>{notice.name || 'No name'}</ItemText>
               </Item>
               <Item>
-                <p style={{ width: '120px' }}>Birthday:</p>
-                <p>{data || 'No data'}</p>
+                <ItemNames>Birthday:</ItemNames>
+                <ItemText>{data || 'No data'}</ItemText>
               </Item>
               <Item>
-                <p style={{ width: '120px' }}>Breed:</p>
-                <p>{notice.breed || 'without breed'}</p>
+                <ItemNames>Breed:</ItemNames>
+                <ItemText>{notice.breed || 'without breed'}</ItemText>
               </Item>
               <Item>
-                <p style={{ width: '120px' }}>Place:</p>
-                <p>{notice.location}</p>
+                <ItemNames>Place:</ItemNames>
+                <ItemText>{notice.location}</ItemText>
               </Item>
               <Item>
-                <p style={{ width: '120px' }}>The sex:</p>
-                <p>{notice.theSex}</p>
+                <ItemNames>The sex:</ItemNames>
+                <ItemText>{notice.theSex}</ItemText>
               </Item>
-              {category === 'sell' && (
-                <Item>
-                  <p style={{ width: '120px' }}>Price:</p>
-                  <p>{notice.price}</p>
-                </Item>
-              )}
               {oneNotice?.author.email && (
                 <Item>
-                  <p style={{ width: '120px' }}>Email:</p>
-                  <p>{oneNotice?.author.email}</p>
+                  <ItemNames>Email:</ItemNames>
+                  <ItemText>{oneNotice?.author.email}</ItemText>
                 </Item>
               )}
               {oneNotice?.author.phone && (
                 <Item>
-                  <p style={{ width: '120px' }}>Phone:</p>
-                  <p>{oneNotice?.author.phone}</p>
+                  <ItemNames>Phone:</ItemNames>
+                  <ItemText>{oneNotice?.author.phone}</ItemText>
+                </Item>
+              )}
+              {category === 'sell' && (
+                <Item>
+                  <ItemNames>Price:</ItemNames>
+                  <ItemText>{notice.price}$</ItemText>
                 </Item>
               )}
             </ModalList>
@@ -103,7 +105,7 @@ const NoticeModal = ({
               <HiHeart width={16} height={16} />
             </Icon>
           </ButtonStyled>
-          <ButtonStyled type="button">
+          <ButtonStyled type="button" className="active">
             <a href="tel:{oneNotice?.author.phone}">Contact</a>
           </ButtonStyled>
         </BtnBox>
