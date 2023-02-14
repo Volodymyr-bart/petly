@@ -54,3 +54,20 @@ export const AddPetText = styled.p`
   margin-right: 15px;
   margin-left: auto;
 `;
+
+export const Plug = styled.div`
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 1280px) {
+    height: 553px;
+  }
+`;
+
+export const PlugParagraph = styled.p`
+  font-size: 22px;
+  color: #111;
+  text-align: center;
+`;
