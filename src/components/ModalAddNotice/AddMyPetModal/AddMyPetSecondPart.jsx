@@ -5,20 +5,19 @@ import {
   DefaultLoadImg,
   ErrorMessageStyled,
   LabelField,
+  LabelFieldMyPetPhoto,
   LabelFieldTitle,
-  LoadImg,
+  LabelFieldTitleMyPet,
+  LoadImgMyPet,
   TitleModal,
 } from '../ModalAddNotice.styled';
-import { UploadImage } from '../UploadImage/UploadImage';
 import { useRef } from 'react';
+import { UploadImage } from './UploadMyPet/UploadMyPet';
 
 export const AddMyPetSecondPart = ({
   values,
   setFieldValue,
-  errors,
-  dirty,
   handleChange,
-  touched,
 }) => {
   const filePicker = useRef(null);
 
@@ -31,8 +30,8 @@ export const AddMyPetSecondPart = ({
       <TitleModal>Add pet</TitleModal>
       <Container>
         <div>
-          <LabelField>
-            <LabelFieldTitle>Load the pet’s image:</LabelFieldTitle>
+          <LabelFieldMyPetPhoto>
+            <LabelFieldTitleMyPet>Add photo and some comments</LabelFieldTitleMyPet>
             <DefaultLoadImg
               className="hidden"
               ref={filePicker}
@@ -47,12 +46,12 @@ export const AddMyPetSecondPart = ({
               {values.photo ? (
                 <UploadImage image={values.photo} />
               ) : (
-                <LoadImg onClick={handlePick}>
+                <LoadImgMyPet onClick={handlePick}>
                   <DefaultImg />
-                </LoadImg>
+                </LoadImgMyPet>
               )}
             </div>
-          </LabelField>
+          </LabelFieldMyPetPhoto>
           <ErrorMessageStyled name="photo" component="span" />
         </div>
 
