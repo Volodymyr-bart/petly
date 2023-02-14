@@ -11,7 +11,7 @@ import {
 import {
   selectIsLoadingNotices,
   selectFilteredNotices,
-  selectNoticeAdd,
+  // selectNoticeAdd,
 } from 'redux/notices/selectors';
 import { Categories } from 'utils/noticesCatList';
 import NoticesCategoryListStyled from './NoticesCategoryList.styled';
@@ -23,7 +23,8 @@ const NoticesCategoriesList = () => {
   const dispatch = useDispatch();
   const notices = useSelector(selectFilteredNotices);
   const isloadingNotices = useSelector(selectIsLoadingNotices);
-  const noticeAdd = useSelector(selectNoticeAdd);
+  // const noticeAdd = useSelector(selectNoticeAdd);
+  const [isEmpty, setIsEmpty] = useState(notices.length === 0);
 
   useEffect(() => {
     if (categoryName === Categories.FAVORITE_ADS) {
@@ -37,23 +38,26 @@ const NoticesCategoriesList = () => {
     setFilterId([]);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoryName, noticeAdd]);
+  }, [categoryName]);
+
+  useEffect(() => {
+    setIsEmpty(notices.filter(item => !filterId.includes(item._id)).length === 0);
+  }, [filterId, isEmpty, notices])
 
   const getFilterId = id => {
     setFilterId(prev => [...prev, id]);
   };
 
   // console.log(notices);
-
-  const isEmpty = notices.length === 0;
+  
   return (
     <>
-      {isEmpty ? (
-        <Loader />
+      {isloadingNotices ? (
+        <Loader />        
       ) : (
         <NoticesCategoryListStyled>
-          {isloadingNotices ? (
-            <Loader />
+          { isEmpty ? (
+            "There is no any notice here ... Add something and maybe this world will be a better place"
           ) : (
             notices
               .filter(item => !filterId.includes(item._id))

@@ -45,7 +45,7 @@ export const getOneNoticeById = async noticeId => {
     const response = await axios.get(`/notices/${noticeId}`);
     return response.data;
   } catch (e) {
-    return console.error(e.message);
+    return console.error('getOneNoticeById --- operations: ', e.message);
   }
 };
 
