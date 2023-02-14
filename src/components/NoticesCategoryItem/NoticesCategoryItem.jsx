@@ -126,7 +126,7 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
           <p>{ ageCount(notice.birthday) }</p>
         </li>
         {
-          notice.category === 'sell' && 
+          notice.category === Categories.SELL && 
           <li>
             <p style={{ width: '88px' }}>Price:</p>
             <p>{ notice?.price }</p>

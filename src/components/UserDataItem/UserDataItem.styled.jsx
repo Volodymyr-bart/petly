@@ -31,12 +31,16 @@ export const Name = styled.p`
 `;
 
 export const Info = styled.p`
+  width: 150px;
+  overflow-x: hidden;
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.04em;
   color: #111111;
   margin-left: 26px;
+  -webkit-mask-image: linear-gradient(90deg, #000 60%, transparent);
   @media (min-width: 768px) {
+    width: 220px;
     margin-left: 36px;
     font-size: 18px;
     line-height: 25px;
@@ -55,6 +59,9 @@ export const DataInput = styled.input`
   letter-spacing: 0.04em;
   color: #111111;
   padding-left: 18px;
+  &::placeholder {
+    opacity: calc(0.4);
+  }
   &:focus {
     outline: none;
   }

@@ -97,6 +97,7 @@ export const getAllOwnNoticesWithoutR = async () => {
 export const addNotice = createAsyncThunk(
   'notices/addNotice',
   async (newNotice, thunkAPI) => {
+
     if (!newNotice.petAvatar) delete newNotice['petAvatar'];
     let formImageData = new FormData();
 
