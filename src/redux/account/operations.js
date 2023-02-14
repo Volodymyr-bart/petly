@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 export const getUserData = createAsyncThunk(
   'userData/getUserData',
   async (_, thunkAPI) => {
     try {
       const result = await axios.get('/users/current');
-      console.log(123456, result.data);
       return result.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -26,10 +26,11 @@ export const changeUserData = async newData => {
     resultData.append(key, newData[key]);
   }
   try {
+    console.log('Result for request', newData, ...resultData);
     const result = await axios.patch('/users/update', resultData);
     return result.data;
   } catch (error) {
-    console.log('Error');
+    toast.error('Invalid format');
   }
 };
 
@@ -51,52 +52,4 @@ export const getAllOwnNoticesWithoutR = async () => {
   }
 };
 
-// export const addUserImage = createAsyncThunk(
-//   'userData/addUserImage',
-//   async (newPhoto, thunkAPI) => {
-//     console.log(11, newPhoto);
-//     // if (!newPhoto.petAvatar) delete newPhoto['petAvatar'];
-//     let formImageData = new FormData();
-
-//     for (const key in newPhoto) {
-//       formImageData.append(key, newPhoto[key]);
-//     }
-
-//     try {
-//       console.log(12, formImageData);
-//       // const res = await axios.post('/notices', formImageData);
-//       // return res.data;
-//       return 'res.data';
-//     } catch (error) {
-//       return 'thunkAPI.rejectWithValue(error.message)';
-//     }
-//   }
-// );
-
 // Послання нащадкам: "Тарілку після гречки мийте відразу"
-
-// export const changeUserData = createAsyncThunk(
-//   'userData/changeUserData',
-//   async (data, thunkAPI) => {
-//     try {
-//       const result = await axios.patch('/users/update', data);
-//       console.log('data to send', data);
-//       return result.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
-// export const deletePetData = createAsyncThunk(
-//   'petData/deletePetData',
-//   async (id, thunkAPI) => {
-//     try {
-//       const result = await axios.delete(`/users/delete/${id}`);
-//       console.log('result', result);
-//       return getUserData();
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );

@@ -1,10 +1,13 @@
 import { createPortal } from "react-dom";
-import { useEffect } from "react";
-import { Overlay, ModalWindow } from "./Modal.styled";
+import { useEffect, useState } from "react";
+import { Overlay, ModalWindow, StyledModalBurger } from "./Modal.styled";
+
 
 const modalRoot = document.getElementById('modal-root');
 
 export const Modal = ({ children, onClose }) => {
+
+  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
 
@@ -26,6 +29,18 @@ export const Modal = ({ children, onClose }) => {
   return createPortal(
     <Overlay onClick={closeModal} >
       <ModalWindow>{children}</ModalWindow>
+      <StyledModalBurger
+        aria-label="menu"
+        open={showModal}
+        onClick={() => {
+          setShowModal(current => !current);
+          setShowModal(!showModal);
+        }}
+      >
+        <div></div>
+        <div></div>
+        <div></div>
+      </StyledModalBurger>
     </Overlay>,
     modalRoot);
 }

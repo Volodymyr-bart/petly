@@ -73,7 +73,7 @@ background-image: url(${BGMob});
 @media (min-width: 768px) {
     background-image: url(${BGTablet1x});
     background-position: top;
-    background-size: 140%; 
+     
 }
 @media screen and (min-width: 768px),
      screen and (min-device-pixel-ratio: 2),
@@ -81,7 +81,7 @@ background-image: url(${BGMob});
      screen and (min-resolution: 2dppx) {
      background-image: url(${BGTablet2x});
      background-position: top;
-     background-size: 140%; 
+   
  }
 @media (min-width: 1280px) {
     background-image: url(${WomenWithDogDesktop1x}), url(${HeartDesktop1x}), url(${BGDesktop1x});

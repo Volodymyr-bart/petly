@@ -7,9 +7,10 @@ import {
   CancelBack,
   ContainerButton,
   FormContainer,
-} from './AddMyPet.styled';
+} from '../ModalAddNotice.styled';
 import { AddMyPetFirstPart } from './AddMyPetFirstPart';
 import { AddMyPetSecondPart } from './AddMyPetSecondPart';
+
 const initialValues = {
   name: '',
   birthday: '',
@@ -18,36 +19,43 @@ const initialValues = {
   comments: '',
 };
 
+
 const addPet = async (newNotice) => {   
     let formImageData = new FormData();
     
     for (const key in newNotice) {     
-      formImageData.append(key, newNotice[key]);
+      if (newNotice[key]) {
+        formImageData.append(key, newNotice[key]);
+      }
     }
-    try {
-      const res = await axios.post('/users/add-pets', formImageData  );
-      return res.data;
-    } catch (error) {
-      return console.error("adding error: ", error.message);
-    }
+  try {
+    const res = await axios.post('/users/add-pets', formImageData);
+    return res.data;
+  } catch (error) {
+    return console.error('adding error: ', error.message);
   }
+};
 
-
-export const AddMyPetModal = ({ onClose }) => {
+export const AddMyPetModal = ({ onClose, setChangedData }) => {
   const [isLastStep, setisLastStep] = useState(false);
 
   const onhandleSubmit = (values, { resetForm }) => {
-      
     addPet({
       name: values.name,
       birthday: values.birthday,
       breed: values.breed,
       photo: values.photo,
       comments: values.comments,
-    })
-    resetForm()
-    setisLastStep(false)
-    onClose()
+    });
+    resetForm();
+    setisLastStep(false);
+    onClose();
+
+    // Поміняю на useEffect завтра
+    // Пішов спати...
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   return (
@@ -65,8 +73,7 @@ export const AddMyPetModal = ({ onClose }) => {
         isValid,
         handleChange,
       }) => {
-        console.log(values);
-        const isDisabled = values.name === '' || errors.name
+        const isDisabled = values.name === '' || errors.name;
         return (
           <FormContainer autoComplete="off">
             {isLastStep ? (
@@ -105,9 +112,15 @@ export const AddMyPetModal = ({ onClose }) => {
                   <CancelBack type="button" onClick={onClose}>
                     Cancel
                   </CancelBack>
-                  {isDisabled ? (<Button disabled={isDisabled} className="disabled" >Next</Button>) : <Button type="button" onClick={() => setisLastStep(true)}>
-                  Next
-                </Button>}
+                  {isDisabled ? (
+                    <Button disabled={isDisabled} className="disabled">
+                      Next
+                    </Button>
+                  ) : (
+                    <Button type="button" onClick={() => setisLastStep(true)}>
+                      Next
+                    </Button>
+                  )}
                 </>
               )}
             </ContainerButton>
