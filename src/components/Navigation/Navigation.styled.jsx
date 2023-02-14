@@ -46,6 +46,11 @@ export const NavLink = styled(Link)`
     margin-left: 80px;
     font-size: 20px;
   }
+  &:hover,
+  &:focus{
+    color: #f59256;
+    text-decoration-line: underline;
+  }
   &.active {
     pointer-events: none;
     color: #f59256;

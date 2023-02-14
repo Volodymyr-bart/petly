@@ -28,6 +28,11 @@ font-size: 20px;
 @media (min-width: 1280px) {
 padding: 10px 28px;
 }
+&:hover,
+&:focus{
+    background-color: #F59256;
+    color: #ffffff;
+}
 &.active {
     background-color: #F59256;
     color: #ffffff;
