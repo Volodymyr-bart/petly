@@ -181,8 +181,16 @@ export const ButtonStyled = styled.button`
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover,
-  &:focus {
+  &:hover {
+    background-color: #f59256;
+    color: #ffffff;
+    -webkit-animation: none;
+    -webkit-transform: scale(1.05);
+    animation: none;
+    transform: scale(1.05);
+  }
+
+  &.favorite {
     background-color: #f59256;
     color: #ffffff;
   }
