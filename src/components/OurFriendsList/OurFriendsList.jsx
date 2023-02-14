@@ -1,25 +1,24 @@
 import { useSelector } from 'react-redux';
-import { selectAllServices } from 'redux/services/selectors';
+import { isLoadingServices, selectAllServices } from 'redux/services/selectors';
 import OurFriendsItem from 'components/OurFriendsItem/OurFriendsItem';
 import { OurFriendsListUl } from './OurFriendsList.styled';
-
+import { Loader } from 'components/Loader/Loader';
 
 const OurFriendsList = () => {
+  const friends = useSelector(selectAllServices);
+  const isLoad = useSelector(isLoadingServices);
 
-      
-
-    const friends = useSelector(selectAllServices);
-
-    // console.log(friends);
-
-    return (
-        <OurFriendsListUl>
-            {friends &&
-            friends.map(friend => {
-                return <OurFriendsItem key={friend._id} friend={friend}/>
-            })}
-        </OurFriendsListUl>
-    )
+  return (
+    <OurFriendsListUl>
+      {isLoad ? (
+        <Loader />
+      ) : (
+        friends.map(friend => {
+          return <OurFriendsItem key={friend._id} friend={friend} />;
+        })
+      )}
+    </OurFriendsListUl>
+  );
 };
 
 export default OurFriendsList;
