@@ -9,7 +9,7 @@ import {
 } from './PetsList.styled';
 import { nanoid } from 'nanoid';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-import { defaultImg } from '../../noticesImage/ph.png';
+import defaultImg from '../../noticesImage/ph.png';
 
 const PetsList = ({ handleDeletePet, petsData }) => {
   return (
