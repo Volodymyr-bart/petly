@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { FieldStyled,  ErrorMessageStyled, InputContainer,  ShowPassword } from './RegisterForm.styled';
+import { FieldStyled,  ErrorMessageStyled, InputContainer,  ShowPassword, InputBox } from './RegisterForm.styled';
 import { RxEyeClosed, RxEyeOpen} from 'react-icons/rx'
 
 
@@ -12,19 +12,21 @@ export const RegisterFirstStep = ({validateEmail}) => {
   return (
         
             <InputContainer>
+            <InputBox>
                <FieldStyled type="email" name="email" placeholder='Email' validate={validateEmail}/>
-               < ErrorMessageStyled name="email" component="span"/>
-               <div style={{position: 'relative'}}>
+               < ErrorMessageStyled name="email" component="p"/>
+            </InputBox>
+            <InputBox>
               <FieldStyled type={showPassword ? "text" : "password"}  name="password" placeholder='Password'  autoComplete='off'/>
               <ShowPassword onClick={() => setShowPassword(!showPassword)}>{showPassword ? <RxEyeOpen size={18} /> : <RxEyeClosed size={18}/> }</ShowPassword>
-              </div>
-              < ErrorMessageStyled name="password" component="span"/>
+              < ErrorMessageStyled name="password" component="p"/>
+              </InputBox>
 
-              <div style={{position: 'relative'}}>
+              <InputBox>
               <FieldStyled type={showConfirmPassword ? "text" : "password"}  name="confirmPassword" placeholder='Confirm password' autoComplete='off'/>
               <ShowPassword onClick={() => setShowConfirmPassword(!showConfirmPassword)}>{showConfirmPassword ? <RxEyeOpen size={18} /> : <RxEyeClosed size={18}/> }</ShowPassword>
-              </div>
-              < ErrorMessageStyled name="confirmPassword" component="span"/>
+              < ErrorMessageStyled name="confirmPassword" component="p"/>
+              </InputBox>
               </InputContainer>
 
   );
