@@ -9,7 +9,7 @@ import {
 } from './PetsList.styled';
 import { nanoid } from 'nanoid';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
-// import defaultImg from '../../noticesImage/ph.png';
+import placeholder from '../../img/placeholder.png';
 
 const PetsList = ({ handleDeletePet, petsData }) => {
   return (
@@ -19,9 +19,7 @@ const PetsList = ({ handleDeletePet, petsData }) => {
           const petBirthday = new Date(item.birthday).toLocaleDateString();
           return (
             <PetsItem key={nanoid(10)}>
-              {/* Pictures for default */}
-
-              <PetImage src={item.photo?.url} />
+              <PetImage src={item.photo?.url ? item.photo.url : placeholder} />
               <DataList>
                 <DataItem>
                   Pet Name: <RegularText>{item.name}</RegularText>
