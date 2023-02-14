@@ -16,12 +16,16 @@ export const FormStyled = styled(Form)`
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   margin-bottom: 28px;
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;  
   }
 
+`;
+
+export const InputBox = styled.div`
+position: relative
 `;
 
 export const FieldStyled = styled(Field)`
@@ -94,9 +98,12 @@ export const ShowPassword = styled.div`
 
 
 export const ErrorMessageStyled = styled(ErrorMessage)`
-    font-size: 18px;
+position: absolute;
+left: 16px;
+bottom: -20px;
+font-size: 16px;
     color: #9d3158;
-    margin-top: -10px;
+
 `;
 
 export const ButtonBox = styled.div`
@@ -115,8 +122,12 @@ border: none;
 font-weight: 500;
 font-size: 20px;
 line-height: 1.35;
-  letter-spacing: 0.04em;
-  color: #FFFFFF;
+letter-spacing: 0.04em;
+color: #FFFFFF;
+:hover {
+  background: #f7a878;
+    cursor: pointer;
+  }    
 `;
 
 export const ButtonBack = styled.button`
@@ -128,8 +139,12 @@ border: 2px solid #F59256;
 font-weight: 500;
 font-size: 20px;
 line-height: 1.35;
-  letter-spacing: 0.04em;
-  color: #000000;
+letter-spacing: 0.04em;
+color: #000000;
+:hover {
+  background: #fde9dd;
+    cursor: pointer;
+  }    
 `;
 
 
