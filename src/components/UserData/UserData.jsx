@@ -55,9 +55,9 @@ const UserData = ({ userData, setChangedData }) => {
 
   const handleSubmit = (e, imageData) => {
     e.preventDefault();
-    console.log('inputData', inputData);
-    console.log('inputDataType', inputDataType);
-    console.log('imageData', imageData);
+    // console.log('inputData', inputData);
+    // console.log('inputDataType', inputDataType);
+    // console.log('imageData', imageData);
 
     const dataType = inputDataType === null ? 'userAvatar' : inputDataType;
 
