@@ -6,6 +6,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: true,
+  errorCode: null,
 };
 
 const handlePending = state => {
