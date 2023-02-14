@@ -24,10 +24,10 @@ const PetsList = ({ handleDeletePet, petsData }) => {
                   Pet Name: <RegularText>{item.name}</RegularText>
                 </DataItem>
                 <DataItem>
-                  Date of birth: <RegularText>{petBirthday}</RegularText>
+                  Date of birth: <RegularText>{item.birthday ? petBirthday : "unspecified"}</RegularText>
                 </DataItem>
                 <DataItem>
-                  Breed: <RegularText>{item.breed}</RegularText>
+                  Breed: <RegularText>{item.breed || "unspecified"}</RegularText>
                 </DataItem>
                 <DataItem>
                   Comments: <RegularText>{item.comments}</RegularText>
