@@ -12,32 +12,75 @@ const UserData = ({ userData, setChangedData }) => {
   const [itemInProcess, setItemInProcess] = useState(null);
   const [inputData, setInputData] = useState(null);
   const [inputDataType, setInputDataType] = useState(null);
+  const [value, setValue] = useState(null);
 
   const dispatch = useDispatch();
 
+  const newValue = item => {
+    if (Object.keys(userData).length !== 0) {
+      let finalItem = userData[item];
+
+      if (item === 'city') {
+        finalItem = userData['address'];
+      } else if (item === 'birthday') {
+        finalItem = new Date(userData[item])
+          .toLocaleDateString('en-US')
+          .split('/')
+          .map(item => {
+            if (item.length === 1) {
+              return `0${item}`;
+            } else {
+              return item;
+            }
+          })
+          .join('.');
+      }
+      return finalItem;
+    }
+  };
+
   const handleEdit = dataType => {
     setItemInProcess(dataType);
+    setValue(newValue(dataType.toLowerCase()));
+    setInputData(newValue(dataType.toLowerCase()));
+    setInputDataType(dataType);
   };
 
   const handleChange = e => {
     const data = e.target.value;
+    setValue(data);
     setInputData(data);
     setInputDataType(e.target.dataset.type);
   };
 
   const handleSubmit = (e, imageData) => {
     e.preventDefault();
-    // console.log('inputData', inputData);
-    // console.log('imageData', imageData);
-    // console.log('inputDataType', inputDataType);
+    console.log('inputData', inputData);
+    console.log('inputDataType', inputDataType);
+    console.log('imageData', imageData);
 
     const dataType = inputDataType === null ? 'userAvatar' : inputDataType;
+
+    const getFinalBirthDay = () => {
+      if (dataType !== 'birthday') {
+        let temporaryBirthday = new Date(userData.birthday)
+          .toLocaleDateString()
+          .split('.');
+        let temp = temporaryBirthday[0];
+        temporaryBirthday[0] = temporaryBirthday[1];
+        temporaryBirthday[1] = temp;
+        temporaryBirthday.join('.');
+        return temporaryBirthday;
+      } else {
+        new Date(userData.birthday).toLocaleDateString();
+      }
+    };
 
     const newData = userData.birthday
       ? {
           ...userData,
           imageData,
-          birthday: new Date(userData.birthday).toLocaleDateString(),
+          birthday: getFinalBirthDay(),
         }
       : {
           ...userData,
@@ -132,6 +175,7 @@ const UserData = ({ userData, setChangedData }) => {
             handleEdit={handleEdit}
             itemInProcess={itemInProcess}
             handleChange={handleChange}
+            value={value}
           />
           <UserDataItem
             dataType="Email"
@@ -139,6 +183,7 @@ const UserData = ({ userData, setChangedData }) => {
             handleEdit={handleEdit}
             itemInProcess={itemInProcess}
             handleChange={handleChange}
+            value={value}
           />
           <UserDataItem
             dataType="Birthday"
@@ -146,6 +191,7 @@ const UserData = ({ userData, setChangedData }) => {
             handleEdit={handleEdit}
             itemInProcess={itemInProcess}
             handleChange={handleChange}
+            value={value}
             placeholder={'XX.XX.XXXX'}
           />
           <UserDataItem
@@ -154,6 +200,7 @@ const UserData = ({ userData, setChangedData }) => {
             handleEdit={handleEdit}
             itemInProcess={itemInProcess}
             handleChange={handleChange}
+            value={value}
             placeholder={'+380XXXXXXXXX'}
           />
           <UserDataItem
@@ -162,6 +209,7 @@ const UserData = ({ userData, setChangedData }) => {
             handleEdit={handleEdit}
             itemInProcess={itemInProcess}
             handleChange={handleChange}
+            value={value}
           />
         </List>
       </form>
