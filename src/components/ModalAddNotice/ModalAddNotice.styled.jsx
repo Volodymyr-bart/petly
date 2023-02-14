@@ -233,9 +233,34 @@ export const Button = styled.button`
   letter-spacing: 0.04em;
   color: #ffffff;
 
-  &.disabled{
-    background-color: #dca481;
+  &:hover {
+    background-color: #f59256;
+    color: #ffffff;
+    -webkit-animation: none;
+    -webkit-transform: scale(1.05);
+    animation: none;
+    transform: scale(1.05);
   }
+
+  @media screen and (min-width: 768px) {
+    width: 180px;
+    padding: 10px 28px;
+    font-size: 20px;
+    line-height: 1.35;
+  }
+`;
+
+export const DisableBtn = styled.button`
+  width: 100%;
+  padding: 9px 101px;
+  background-color: #dca481;
+  border-radius: 40px;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.37;
+  letter-spacing: 0.04em;
+  color: #ffffff;
 
   @media screen and (min-width: 768px) {
     width: 180px;
@@ -256,6 +281,15 @@ export const CancelBack = styled.button`
   line-height: 1.37;
   letter-spacing: 0.04em;
   color: #000000;
+
+  &:hover {
+    background-color: #f59256;
+    color: #ffffff;
+    -webkit-animation: none;
+    -webkit-transform: scale(1.05);
+    animation: none;
+    transform: scale(1.05);
+  }
 
   @media screen and (min-width: 768px) {
     width: 180px;

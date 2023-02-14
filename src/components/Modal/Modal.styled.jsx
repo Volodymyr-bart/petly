@@ -40,18 +40,18 @@ export const ModalContent = styled.div`
   @media screen and (min-width: 768px) {
     margin: auto;
   }
-  @media screen and (min-width: 1280px) {
-    margin: auto;
-  }
+  
 `;
 
 export const ModalBtn = styled.button`
   position: absolute;
-  right: 24px;
-  top: 24px;
+  right: 23px;
+  top: 23px;
   padding: 0;
   background-color: transparent;
   border: none;
+  width: 44px;
+  height: 44px;
 
   cursor: pointer;
   transition: transform 300ms ease;
@@ -59,5 +59,10 @@ export const ModalBtn = styled.button`
   &:focus {
     transform: scale(1.2);
     transition: transform 300ms ease;
+  }
+
+  @media screen and (min-width: 768px) {
+    right: 24px;
+    top: 24px;
   }
 `

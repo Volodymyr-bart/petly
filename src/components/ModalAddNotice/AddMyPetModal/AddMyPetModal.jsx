@@ -6,6 +6,7 @@ import {
   Button,
   CancelBack,
   ContainerButton,
+  DisableBtn,
   FormContainer,
 } from '../ModalAddNotice.styled';
 import { AddMyPetFirstPart } from './AddMyPetFirstPart';
@@ -69,7 +70,6 @@ export const AddMyPetModal = ({ onClose, setChangedData }) => {
         errors,
         setFieldValue,
         dirty,
-        touched,
         isValid,
         handleChange,
       }) => {
@@ -102,9 +102,9 @@ export const AddMyPetModal = ({ onClose, setChangedData }) => {
                   {isValid ? (
                     <Button type="submit">Done</Button>
                   ) : (
-                    <Button disabled={true} className="disabled">
+                    <DisableBtn disabled={true} className="disabled">
                       Done
-                    </Button>
+                    </DisableBtn>
                   )}
                 </>
               ) : (
@@ -113,9 +113,9 @@ export const AddMyPetModal = ({ onClose, setChangedData }) => {
                     Cancel
                   </CancelBack>
                   {isDisabled ? (
-                    <Button disabled={isDisabled} className="disabled">
+                    <DisableBtn disabled={isDisabled} className="disabled">
                       Next
-                    </Button>
+                    </DisableBtn>
                   ) : (
                     <Button type="button" onClick={() => setisLastStep(true)}>
                       Next
