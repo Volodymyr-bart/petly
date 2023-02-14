@@ -31,8 +31,6 @@ const UserPage = ({ setChangedData, petsData }) => {
       return petsData !== undefined;
     }
   };
-
-  console.log(petsData);
   return (
     <UserPageStyled>
       <PetsDataHeader>

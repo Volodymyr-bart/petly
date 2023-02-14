@@ -16,6 +16,7 @@ const UserDataItem = ({
   itemInProcess,
   handleChange,
   placeholder,
+  value,
 }) => {
   const newData = new Date(data)
     .toLocaleDateString('en-US')
@@ -56,7 +57,7 @@ const UserDataItem = ({
             onChange={handleChange}
             data-type={dataType}
             placeholder={placeholder}
-            value={data}
+            value={value}
           />
           <SendInfo type="submit">
             <MdOutlineDone />
