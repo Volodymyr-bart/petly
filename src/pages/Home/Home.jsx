@@ -6,7 +6,7 @@ export default function Home() {
     <Container>
       <Background>
         <HomeTitle>
-        Take good care of your small pets
+        Take good care of<br/> your small pets
         </HomeTitle>
       <HomeImage></HomeImage>
       </Background>
