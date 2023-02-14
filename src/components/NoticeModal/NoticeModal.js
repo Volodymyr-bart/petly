@@ -52,15 +52,15 @@ const NoticeModal = ({
             <ModalList>
               <Item>
                 <ItemNames>Name:</ItemNames>
-                <ItemText>{notice.name || 'No name'}</ItemText>
+                <ItemText>{notice.name || "unspecified"}</ItemText>
               </Item>
               <Item>
                 <ItemNames>Birthday:</ItemNames>
-                <ItemText>{data || 'No data'}</ItemText>
+                <ItemText>{data || "unspecified"}</ItemText>
               </Item>
               <Item>
                 <ItemNames>Breed:</ItemNames>
-                <ItemText>{notice.breed || 'without breed'}</ItemText>
+                <ItemText>{notice.breed || "unspecified"}</ItemText>
               </Item>
               <Item>
                 <ItemNames>Place:</ItemNames>

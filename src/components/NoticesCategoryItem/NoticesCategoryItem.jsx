@@ -115,15 +115,15 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
       <ul>
         <li>
           <p style={{ width: '88px' }}>Breed:</p>
-          <p>{ notice.breed }</p>
+          <p>{ notice.breed || "unspecified" }</p>
         </li>
         <li>
           <p style={{ width: '88px' }}>Place:</p>
-          <p>{ notice.location }</p>
+          <p>{ notice.location || "unspecified" }</p>
         </li>
         <li>
           <p style={{ width: '88px' }}>Age:</p>
-          <p>{ ageCount(notice.birthday) }</p>
+          <p>{ ageCount(notice.birthday || "unspecified") }</p>
         </li>
         {
           notice.category === Categories.SELL && 
