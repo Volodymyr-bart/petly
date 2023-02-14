@@ -1,11 +1,12 @@
-import { useDispatch } from 'react-redux';
-import {useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import { logIn } from 'redux/auth/operations';
 import { Formik } from 'formik';
-import { Button, FormStyled, FieldStyled,  ErrorMessageStyled, TextStyled, InputContainer, ShowPassword} from './LoginForm.styled';
+import { Button, FormStyled, FieldStyled,  ErrorMessageStyled, TextStyled, InputContainer, ShowPassword, ErrorStyled, InputBox} from './LoginForm.styled';
 import * as yup from 'yup';
 import { RxEyeClosed, RxEyeOpen} from 'react-icons/rx'
+import { selectLoginError } from 'redux/auth/selectors';
 const passRegexp = /^\S+$/;
 
 const initialValues = {
@@ -25,8 +26,12 @@ const schema = yup.object({
 
 export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const errorCode = useSelector(selectLoginError);
   const dispatch = useDispatch();
+  
+  useEffect(() => {
+    console.log(errorCode);
+  }, [errorCode])
 
   const handleSubmit = (values, {resetForm}) => {
 
@@ -35,23 +40,27 @@ export const LoginForm = () => {
         email: values.email,
         password: values.password,
       }));
-    resetForm();   
+      if(errorCode) return;
+      resetForm();   
   };
-  console.log(showPassword)
 
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={schema}>
-      {({handleChange, values, errors, touched, setFieldTouched}) => {
+      {({handleChange, values, errors, touched, setFieldTouched }) => {
           return <FormStyled  autoComplete='off'>
             <InputContainer>
+            <InputBox>
               <FieldStyled type="email" name="email" placeholder='Email'/>
-              <ErrorMessageStyled name="email" component="span"/>
-              <div style={{position: 'relative'}}>
+              <ErrorMessageStyled name="email" component="p"/>
+            </InputBox>  
+              <InputBox>
               <FieldStyled type={showPassword ? "text" : "password"} name="password" placeholder='Password'/>
               <ShowPassword onClick={() => setShowPassword(!showPassword)}>{showPassword ? <RxEyeOpen size={18} /> : <RxEyeClosed size={18}/> }</ShowPassword>
-              </div>
-              < ErrorMessageStyled name="password" component="span"/>
+              < ErrorMessageStyled name="password" component="p"/>
+              </InputBox>
+              
+              {errorCode === 401 && <ErrorStyled>Email or Password is wrong. Please check your data.</ErrorStyled>}
               </InputContainer>
             <Button type="submit">Log in</Button>
             <TextStyled>Don't have an account? <NavLink to="/register">Register</NavLink></TextStyled>

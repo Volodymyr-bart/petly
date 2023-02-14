@@ -6,6 +6,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: true,
+  errorCode: null,
 };
 
 const handlePending = state => {
@@ -13,7 +14,7 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
-  state.error = action.payload;
+  state.errorCode = action.payload;
   state.isRefreshing = false;
 };
 
@@ -28,6 +29,7 @@ const authSlice = createSlice({
         state.user.email = action.payload.email;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+       
       })
       .addCase(register.rejected, handleRejected)
       .addCase(logIn.pending, handlePending)
@@ -36,6 +38,7 @@ const authSlice = createSlice({
         state.user.email = action.payload.email;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.errorCode = null;
       })
       .addCase(logIn.rejected, handleRejected)
       .addCase(logOut.pending, handlePending)

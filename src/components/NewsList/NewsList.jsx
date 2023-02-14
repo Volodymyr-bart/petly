@@ -1,5 +1,6 @@
+import { Loader } from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
-import { selectFilteredNews } from 'redux/news/selectors';
+import { selectFilteredNews, selectIsLoadingNews } from 'redux/news/selectors';
 import {
   DescriptionStyled,
   Line,
@@ -13,17 +14,18 @@ import {
 // import React from 'react';
 // import EllipsisText from 'react-ellipsis-text';
 
-
-
 //allow react dev tools work
 // window.React = React;
 
 const NewsList = () => {
   const news = useSelector(selectFilteredNews);
+  const isLoad = useSelector(selectIsLoadingNews);
 
   return (
     <NewsListStyled>
-      {news &&
+      {isLoad ? (
+        <Loader />
+      ) : (
         news.map(({ url, title, description, date }) => (
           <NewsItem key={url}>
             <Line />
@@ -32,9 +34,9 @@ const NewsList = () => {
               text={description}
               maxLine={6}
               trimRight
-              basedOn='words'
+              basedOn="words"
             />
-            {/* <DescriptionStyled text={description} length={230} tailClassName={'myTail'}/> */}
+
             <NewsBottom>
               <p>{date}</p>
               <NewsLink
@@ -46,7 +48,8 @@ const NewsList = () => {
               </NewsLink>
             </NewsBottom>
           </NewsItem>
-        ))}
+        ))
+      )}
     </NewsListStyled>
   );
 };

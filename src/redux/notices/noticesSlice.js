@@ -21,7 +21,7 @@ const noticesSlice = createSlice({
     notices: [],
     isLoadingNotices: false,
     errorNotices: null,
-    noticeAdd: [],
+    noticeAdd: {}
   },
   extraReducers: builder => {
     builder
@@ -50,9 +50,9 @@ const noticesSlice = createSlice({
       })
       .addCase(getAllFavoriteNotices.rejected, handleRejected)
       // add notices
-      .addCase(addNotice.pending, handlePending)
+      // .addCase(addNotice.pending, handlePending)
       .addCase(addNotice.fulfilled, (state, action) => {
-        // state.notices.push(action.payload);
+        state.notices.push(action.payload.result);
         state.isLoadingNotices = false;
         state.errorNotices = null;
         state.noticeAdd = action.payload.result;

@@ -7,7 +7,7 @@ import {
   CancelBack,
   ContainerButton,
   FormContainer,
-} from './AddMyPet.styled';
+} from '../ModalAddNotice.styled';
 import { AddMyPetFirstPart } from './AddMyPetFirstPart';
 import { AddMyPetSecondPart } from './AddMyPetSecondPart';
 
@@ -19,12 +19,15 @@ const initialValues = {
   comments: '',
 };
 
-const addPet = async newNotice => {
-  let formImageData = new FormData();
 
-  for (const key in newNotice) {
-    formImageData.append(key, newNotice[key]);
-  }
+const addPet = async (newNotice) => {   
+    let formImageData = new FormData();
+    
+    for (const key in newNotice) {     
+      if (newNotice[key]) {
+        formImageData.append(key, newNotice[key]);
+      }
+    }
   try {
     const res = await axios.post('/users/add-pets', formImageData);
     return res.data;

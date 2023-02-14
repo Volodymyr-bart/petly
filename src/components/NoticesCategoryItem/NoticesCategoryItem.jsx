@@ -47,9 +47,10 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
 
       const getOneNotice = async () => {
         const res = await getOneNoticeById(notice._id);
-        setOneNotice(res.result)
+        setOneNotice(res?.result)
       }
       getOneNotice();
+      
       getOwn();
       getFavorites();
     }
@@ -115,18 +116,18 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
       <ul>
         <li>
           <p style={{ width: '88px' }}>Breed:</p>
-          <p>{ notice.breed }</p>
+          <p>{ notice.breed || "unspecified" }</p>
         </li>
         <li>
           <p style={{ width: '88px' }}>Place:</p>
-          <p>{ notice.location }</p>
+          <p>{ notice.location || "unspecified" }</p>
         </li>
         <li>
           <p style={{ width: '88px' }}>Age:</p>
-          <p>{ ageCount(notice.birthday) }</p>
+          <p>{ ageCount(notice.birthday || "unspecified") }</p>
         </li>
         {
-          notice.category === 'sell' && 
+          notice.category === Categories.SELL && 
           <li>
             <p style={{ width: '88px' }}>Price:</p>
             <p>{ notice?.price }</p>
@@ -142,7 +143,7 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
         >
           Learn more
         </ButtonStyled>
-        {oneNotice !== [] && <Modal isOpen={isOpen} onClose={close}>
+        {isOpen && <Modal isOpen={isOpen} onClose={close}>
           <NoticeModal
             notice={notice}
             oneNotice={oneNotice}

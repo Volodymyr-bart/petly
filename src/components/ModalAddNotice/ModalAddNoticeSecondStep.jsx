@@ -17,16 +17,17 @@ import {
   Sex,
   SexLabel,
   SexRadioInput,
-  TitleInput,
   TitleModal,
 } from './ModalAddNotice.styled';
 import { UploadImage } from './UploadImage/UploadImage';
 import { useRef } from 'react';
+import { PlacesAutocomplete } from 'components/RegisterForm/Autocomplete';
 
 export const ModalAddNoticeSecondStep = ({
   values,
   setFieldValue,
   handleChange,
+  saveLocation
 }) => {
   const filePicker = useRef(null);
 
@@ -38,21 +39,21 @@ export const ModalAddNoticeSecondStep = ({
     <>
       <TitleModal>Add pet</TitleModal>
       <ContainerSex>
-        <TitleInput>
+        <LabelFieldTitle>
           The sex<span>*</span>:
-        </TitleInput>
+        </LabelFieldTitle>
         <ContainerSexVariant>
           <SexLabel className={values.theSex === 'male' ? 'active' : ''}>
             <SexRadioInput type="radio" name="theSex" value="male" />
             <Icon>
-              <Male box-shadow="inset -1px 2px 3px rgba(255, 255, 255, 0.57), inset 0px -3px 4px rgba(0, 0, 0, 0.25)" />
+              <Male />
             </Icon>
             <Sex>Male</Sex>
           </SexLabel>
           <SexLabel className={values.theSex === 'female' ? 'active' : ''}>
             <SexRadioInput type="radio" name="theSex" value="female" />
             <Icon>
-              <Female box-shadow="inset -1px 2px 3px rgba(255, 255, 255, 0.57), inset 0px -3px 4px rgba(0, 0, 0, 0.25)" />
+              <Female />
             </Icon>
             <Sex>Female</Sex>
           </SexLabel>
@@ -65,11 +66,12 @@ export const ModalAddNoticeSecondStep = ({
             <LabelFieldTitle>
               Location<span>*</span>:
             </LabelFieldTitle>
-            <FieldStyled
+            <PlacesAutocomplete saveAddress={saveLocation} />
+            {/* <FieldStyled
               name="location"
               type="text"
               placeholder="City, Region"
-            />
+            /> */}
           </LabelField>
           <ErrorMessageStyled name="location" component="span" />
         </div>

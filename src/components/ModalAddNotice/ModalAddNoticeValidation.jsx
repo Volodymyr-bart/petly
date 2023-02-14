@@ -1,6 +1,5 @@
 import * as yup from 'yup';
 
-const locationRegexp = /[A-Z][a-z]*,\s[A-Z][a-z]*/;
 const titleRegexp = /^[a-zA-Z\s]*$/;
 
 export const validationSchemaNotices = yup.object().shape({
@@ -26,7 +25,6 @@ export const validationSchemaNotices = yup.object().shape({
     location: yup
     .string()
     .trim()
-    .matches(locationRegexp, 'For example, "Brovary, Kyiv" or "Dubno, Rivne"')
     .required('Location is required'),
     comments: yup
     .string()

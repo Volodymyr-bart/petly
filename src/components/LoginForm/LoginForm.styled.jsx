@@ -14,9 +14,10 @@ export const FormStyled = styled(Form)`
 `;
 
 export const InputContainer = styled.div`
-  display: flex;
+position: relative;  
+display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   margin-bottom: 40px;
  
 `;
@@ -46,10 +47,17 @@ export const ShowPassword = styled.div`
 
 `;
 
+export const InputBox = styled.div`
+position: relative
+`;
+
+
+
 export const ErrorMessageStyled = styled(ErrorMessage)`
-    font-size: 18px;
+position: absolute;
+left: 16px;
+font-size: 16px;
     color: #9d3158;
-    margin-top: -10px;
 `;
 
 export const Button = styled.button`
@@ -62,8 +70,13 @@ border: none;
 font-weight: 500;
 font-size: 20px;
 line-height: 1.35;
-  letter-spacing: 0.04em;
-  color: #FFFFFF;
+letter-spacing: 0.04em;
+color: #FFFFFF;
+
+  :hover {
+    background: #f7a878;
+      cursor: pointer;
+    } 
 `;
 
 export const TextStyled = styled.p`
@@ -73,5 +86,14 @@ letter-spacing: 0.04em;
   text-decoration-line: underline;
   color: #3091eb;
 }
+`;
+
+export const ErrorStyled = styled.p`
+position: absolute;
+bottom: -40px;
+left: 16px;
+font-size: 16px;
+color: #9d3158;
+text-align: center;
 `;
 

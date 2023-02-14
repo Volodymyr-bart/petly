@@ -29,14 +29,18 @@ export const NoticesCategoryItemStyled = styled.li`
 
 
     h2 {
+        height: 76px;
         text-align: left;
-        margin-bottom: 20px;
+        margin-bottom: 17px;
         padding-left: 20px;
         padding-right: 30px;
+
         font-size: 28px;
         line-height: 1.36;
         letter-spacing: -0.01em;
         color: #111111;
+
+        overflow: hidden;
     }
 
     span {
@@ -49,7 +53,7 @@ export const NoticesCategoryItemStyled = styled.li`
         padding: 0 20px 0 20px;
         list-style: none;
 
-        margin-bottom: 20px;
+        margin-bottom: 17px;
     }
 
     li {
@@ -103,6 +107,10 @@ export const ImageThumbStyled = styled.div`
     background-position: center;
     background-repeat: no-repeat;
 
+    img {
+        object-fit: cover;
+    }
+
     @media (min-width: 768px) {
         width: 336px;       
     }
@@ -116,7 +124,7 @@ export const ButtonThumbStyled = styled.div`
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         gap: 12px;
 

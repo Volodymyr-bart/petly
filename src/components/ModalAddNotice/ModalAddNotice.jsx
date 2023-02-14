@@ -62,6 +62,10 @@ export const ModalAddNotice = ({ onClose }) => {
       }) => {
         // console.log(errors);
 
+        const saveLocation = (value) => {
+          values.location = value;
+        }
+
         const isDisabled =
           values.category === '' ||
           values.title === '' ||
@@ -76,6 +80,7 @@ export const ModalAddNotice = ({ onClose }) => {
                 values={values}
                 handleChange={handleChange}
                 setFieldValue={setFieldValue}
+                saveLocation={saveLocation}
               />
             ) : (
               <ModalAddNoticeFistStep values={values} />

@@ -55,10 +55,7 @@ const UserData = ({ userData, setChangedData }) => {
 
   const handleSubmit = (e, imageData) => {
     e.preventDefault();
-    // console.log('inputData', inputData);
-    // console.log('inputDataType', inputDataType);
-    // console.log('imageData', imageData);
-
+    
     const dataType = inputDataType === null ? 'userAvatar' : inputDataType;
 
     const getFinalBirthDay = () => {
@@ -98,6 +95,7 @@ const UserData = ({ userData, setChangedData }) => {
       return String(email)
         .toLowerCase()
         .match(
+          // eslint-disable-next-line no-useless-escape
           /^([A-Za-z0-9_\-\.]{2,})+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
         );
     };
