@@ -34,8 +34,6 @@ const UserDataItem = ({
   const disabled =
     itemInProcess === dataType || itemInProcess === null ? false : true;
 
-  console.log('data', data);
-
   return (
     <Item>
       <Name>{dataType}:</Name>
