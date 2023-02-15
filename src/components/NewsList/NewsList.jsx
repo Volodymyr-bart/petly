@@ -27,11 +27,12 @@ const NewsList = () => {
   );
 
   return (
-    <NewsListStyled>
-      {isLoad ? (
+    <>
+    {isLoad ? (
         <Loader />
       ) : (
         sortNews.map(({ url, title, description, date }) => (
+
           <NewsItem key={url}>
             <Line />
             <TextStyled text={title} length={40} />
@@ -54,8 +55,9 @@ const NewsList = () => {
             </NewsBottom>
           </NewsItem>
         ))
-      )}
-    </NewsListStyled>
+      }
+    </NewsListStyled>)}
+    </>
   );
 };
 
