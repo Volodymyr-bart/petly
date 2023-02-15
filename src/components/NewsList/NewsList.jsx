@@ -55,6 +55,7 @@ const NewsList = () => {
               </NewsBottom>
             </NewsItem>
           ))}
+          {sortNews.length === 0 && <div>No news found at your request</div>}
         </NewsListStyled>
       )}
     </>
