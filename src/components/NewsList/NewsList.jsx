@@ -22,10 +22,12 @@ const NewsList = () => {
   const isLoad = useSelector(selectIsLoadingNews);
 
   return (
-    <NewsListStyled>
-      {isLoad ? (
+    <>
+    {isLoad ? (
         <Loader />
       ) : (
+    <NewsListStyled>
+      {
         news.map(({ url, title, description, date }) => (
           <NewsItem key={url}>
             <Line />
@@ -49,8 +51,9 @@ const NewsList = () => {
             </NewsBottom>
           </NewsItem>
         ))
-      )}
-    </NewsListStyled>
+      }
+    </NewsListStyled>)}
+    </>
   );
 };
 

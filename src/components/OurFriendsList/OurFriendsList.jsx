@@ -9,15 +9,18 @@ const OurFriendsList = () => {
   const isLoad = useSelector(isLoadingServices);
 
   return (
-    <OurFriendsListUl>
-      {isLoad ? (
+    <>
+    {isLoad ? (
         <Loader />
       ) : (
+    <OurFriendsListUl>
+      {
         friends.map(friend => {
           return <OurFriendsItem key={friend._id} friend={friend} />;
         })
-      )}
-    </OurFriendsListUl>
+      }
+    </OurFriendsListUl>)}
+    </>
   );
 };
 
