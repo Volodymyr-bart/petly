@@ -2,7 +2,7 @@
 import { Formik } from 'formik';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Button, CancelBack, ContainerButton } from './ModalAddNotice.styled';
+import { Button, CancelBack, ContainerButton, DisableBtn } from './ModalAddNotice.styled';
 import { addNotice } from 'redux/notices/operations';
 import { FormContainer } from './ModalAddNotice.styled';
 import { ModalAddNoticeFistStep } from './ModalAddNoticeFirstStep';
@@ -98,9 +98,9 @@ export const ModalAddNotice = ({ onClose }) => {
                   {isValid ? (
                     <Button type="submit">Done</Button>
                   ) : (
-                    <Button disabled={true} className="disabled">
+                    <DisableBtn disabled={true} className="disabled">
                       Done
-                    </Button>
+                    </DisableBtn>
                   )}
                 </>
               ) : (
@@ -109,9 +109,9 @@ export const ModalAddNotice = ({ onClose }) => {
                     Cancel
                   </CancelBack>
                   {isDisabled ? (
-                    <Button disabled={isDisabled} className="disabled">
+                    <DisableBtn disabled={isDisabled} className="disabled">
                       Next
-                    </Button>
+                    </DisableBtn>
                   ) : (
                     <Button type="button" onClick={() => setisLastStep(true)}>
                       Next

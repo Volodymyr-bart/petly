@@ -48,7 +48,7 @@ export const ModalAddNoticeFistStep = ({values}) => {
                   </RadioBtnCategory>
                   </li>
               ))}
-              {/* <ErrorMessageStyled name='category' component="span"/> */}
+              <ErrorMessageStyled name='category' component="span"/>
             </RadioBtnBox>
             </div>
             <div>

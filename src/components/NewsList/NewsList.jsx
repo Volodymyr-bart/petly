@@ -21,14 +21,18 @@ const NewsList = () => {
   const news = useSelector(selectFilteredNews);
   const isLoad = useSelector(selectIsLoadingNews);
 
+  const sortNews = news.sort(
+    (firstNews, secondNews) =>
+      new Date(secondNews.date).getTime() - new Date(firstNews.date).getTime()
+  );
+
   return (
     <>
     {isLoad ? (
         <Loader />
       ) : (
-    <NewsListStyled>
-      {
-        news.map(({ url, title, description, date }) => (
+        sortNews.map(({ url, title, description, date }) => (
+
           <NewsItem key={url}>
             <Line />
             <TextStyled text={title} length={40} />

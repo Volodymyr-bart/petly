@@ -47,9 +47,10 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
 
       const getOneNotice = async () => {
         const res = await getOneNoticeById(notice._id);
-        setOneNotice(res.result)
+        setOneNotice(res?.result)
       }
       getOneNotice();
+      
       getOwn();
       getFavorites();
     }
@@ -142,7 +143,7 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
         >
           Learn more
         </ButtonStyled>
-        {oneNotice !== [] && <Modal isOpen={isOpen} onClose={close}>
+        {isOpen && <Modal isOpen={isOpen} onClose={close}>
           <NoticeModal
             notice={notice}
             oneNotice={oneNotice}

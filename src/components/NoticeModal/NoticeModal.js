@@ -42,25 +42,27 @@ const NoticeModal = ({
               />
             )}
             <FilterBox>
-              <FilterText>{category}</FilterText>
+              <FilterText>
+                {category.includes('lost')
+                  ? 'lost/found'
+                  : category.split('-').join(' ')}
+              </FilterText>
             </FilterBox>
           </ImgContainer>
           <div>
-            <ModalTitle>
-              {notice.title}
-            </ModalTitle>
+            <ModalTitle>{notice.title}</ModalTitle>
             <ModalList>
               <Item>
                 <ItemNames>Name:</ItemNames>
-                <ItemText>{notice.name || "unspecified"}</ItemText>
+                <ItemText>{notice.name || 'unspecified'}</ItemText>
               </Item>
               <Item>
                 <ItemNames>Birthday:</ItemNames>
-                <ItemText>{data || "unspecified"}</ItemText>
+                <ItemText>{data || 'unspecified'}</ItemText>
               </Item>
               <Item>
                 <ItemNames>Breed:</ItemNames>
-                <ItemText>{notice.breed || "unspecified"}</ItemText>
+                <ItemText>{notice.breed || 'unspecified'}</ItemText>
               </Item>
               <Item>
                 <ItemNames>Place:</ItemNames>
@@ -97,6 +99,7 @@ const NoticeModal = ({
         <BtnBox>
           <ButtonStyled
             type="button"
+            className={isFavorite ? 'favorite' : ''}
             isFavorite={isFavorite}
             onClick={addFavorite}
           >

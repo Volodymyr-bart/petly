@@ -4,6 +4,8 @@ import {
   AddPet,
   AddPetText,
   UserPageStyled,
+  Plug,
+  PlugParagraph,
 } from './PetsData.styled';
 import PetsList from '../../components/PetsList/PetsList';
 import { BsPlusLg } from 'react-icons/bs';
@@ -22,6 +24,13 @@ const UserPage = ({ setChangedData, petsData }) => {
     setChangedData(dispatch(getUserData()));
   };
 
+  const condition = () => {
+    if (petsData) {
+      return petsData.length > 1;
+    } else {
+      return petsData !== undefined;
+    }
+  };
   return (
     <UserPageStyled>
       <PetsDataHeader>
@@ -31,8 +40,14 @@ const UserPage = ({ setChangedData, petsData }) => {
           <BsPlusLg color="#fff" fontSize="16px" />
         </AddPet>
       </PetsDataHeader>
-
-      <PetsList handleDeletePet={handleDeletePet} petsData={petsData} />
+      {/* <PetsList handleDeletePet={handleDeletePet} petsData={petsData} /> */}
+      {condition() ? (
+        <PetsList handleDeletePet={handleDeletePet} petsData={petsData} />
+      ) : (
+        <Plug>
+          <PlugParagraph>Тут нічого, додайте свою першу тварину</PlugParagraph>
+        </Plug>
+      )}
       <Modal isOpen={isOpen} onClose={close}>
         <AddMyPetModal onClose={close} setChangedData={setChangedData} />
       </Modal>
