@@ -28,35 +28,35 @@ const NewsList = () => {
 
   return (
     <>
-    {isLoad ? (
+      {isLoad ? (
         <Loader />
       ) : (
-        sortNews.map(({ url, title, description, date }) => (
+        <NewsListStyled>
+          {sortNews.map(({ url, title, description, date }) => (
+            <NewsItem key={url}>
+              <Line />
+              <TextStyled text={title} length={40} />
+              <DescriptionStyled
+                text={description}
+                maxLine={6}
+                trimRight
+                basedOn="words"
+              />
 
-          <NewsItem key={url}>
-            <Line />
-            <TextStyled text={title} length={40} />
-            <DescriptionStyled
-              text={description}
-              maxLine={6}
-              trimRight
-              basedOn="words"
-            />
-
-            <NewsBottom>
-              <p>{date}</p>
-              <NewsLink
-                href={`${url}`}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Read more
-              </NewsLink>
-            </NewsBottom>
-          </NewsItem>
-        ))
-      }
-    </NewsListStyled>)}
+              <NewsBottom>
+                <p>{date}</p>
+                <NewsLink
+                  href={`${url}`}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Read more
+                </NewsLink>
+              </NewsBottom>
+            </NewsItem>
+          ))}
+        </NewsListStyled>
+      )}
     </>
   );
 };
