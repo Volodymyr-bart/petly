@@ -1,5 +1,9 @@
 import {
+  BoxForInput,
+  Button,
+  CancelBack,
   Container,
+  ContainerButton,
   ErrorMessageStyled,
   FieldStyled,
   LabelField,
@@ -8,11 +12,11 @@ import {
 } from '../ModalAddNotice.styled';
 
 
-export const AddMyPetFirstPart = ({values,errors}) => {
+export const AddMyPetFirstPart = ({values,errors,setisLastStep, isDisabled, onClose}) => {
   return (<>
           <TitleModal>Add pet</TitleModal>
           <Container>
-            <div>
+            <BoxForInput>
               <LabelField>
                 <LabelFieldTitle>Name pet<span>*</span></LabelFieldTitle>
                 <FieldStyled
@@ -21,9 +25,9 @@ export const AddMyPetFirstPart = ({values,errors}) => {
                   placeholder="Type name pet"
                 />
               </LabelField>
-              <ErrorMessageStyled name='name' component='span'/>
-            </div>
-            <div>
+              <ErrorMessageStyled name='name' component='p'/>
+            </BoxForInput>
+            <BoxForInput>
               <LabelField>
                 <LabelFieldTitle>Date of birth</LabelFieldTitle>
                 <FieldStyled
@@ -33,8 +37,8 @@ export const AddMyPetFirstPart = ({values,errors}) => {
                 />
               </LabelField>
               <ErrorMessageStyled name='birthday' component='span'/>
-            </div>
-            <div>
+            </BoxForInput>
+            <BoxForInput>
               <LabelField>
                 <LabelFieldTitle>Breed</LabelFieldTitle>
                 <FieldStyled
@@ -44,8 +48,16 @@ export const AddMyPetFirstPart = ({values,errors}) => {
                 />
               </LabelField>
               <ErrorMessageStyled name='breed' component='span'/>
-            </div>
+            </BoxForInput>
           </Container>
-          </>
+          <ContainerButton>
+            <CancelBack type="button" onClick={onClose}>
+              Cancel
+            </CancelBack>
+            <Button type="button" disabled={isDisabled} className={isDisabled ? 'disabled' : ''} onClick={() => setisLastStep(true)}>
+              Next
+            </Button>
+          </ContainerButton>
+        </>
   );
 };
