@@ -44,6 +44,7 @@ export const FieldStyled = styled(Field)`
 `;
 
 export const ListStyled = styled.ul`
+  z-index: 3;
   position: absolute;
   left: 23px;
   background: #FDF7F2;
