@@ -1,7 +1,11 @@
 import { Categories } from 'utils/noticesCatList';
 
 import {
+  BoxForInput,
+  Button,
+  CancelBack,
   Container,
+  ContainerButton,
   Description,
   ErrorMessageStyled,
   FieldStyled,
@@ -19,7 +23,18 @@ const categories = [
   { name: 'sell', value: Categories.SELL, id: '3' },
 ];
 
-export const ModalAddNoticeFistStep = ({values}) => {
+export const ModalAddNoticeFistStep = ({
+  values,
+  errors,
+  onClose,
+  setisLastStep
+}) => {
+  const isDisabled =
+          values.category === '' ||
+          values.title === '' ||
+          errors.category ||
+          errors.title;
+          
   return (<>
           <TitleModal>Add pet</TitleModal>
           <Container>
@@ -27,31 +42,30 @@ export const ModalAddNoticeFistStep = ({values}) => {
               Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit
               amet, consectetur
             </Description>
-            <div>
-           <LabelFieldTitle>Choose category<span>*</span>:
-        </LabelFieldTitle>
-            <RadioBtnBox> 
-              {categories.map(category => (
-                 <li key={category.id}>
-                  <RadioBtnCategory
-                    className={
-                      values.category === category.value ? 'active' : ''
-                    }
-                  >
-                    {category.name}
-                    <RadioInput
-                      type="radio"
-                      name="category"
-                      value={category.value}
-                      className='hidden'
-                    />
-                  </RadioBtnCategory>
-                  </li>
-              ))}
-              <ErrorMessageStyled name='category' component="span"/>
-            </RadioBtnBox>
-            </div>
-            <div>
+            <BoxForInput>
+              <LabelFieldTitle>Choose category<span>*</span>:</LabelFieldTitle>
+              <RadioBtnBox> 
+                {categories.map(category => (
+                  <li key={category.id}>
+                    <RadioBtnCategory
+                      className={
+                        values.category === category.value ? 'active' : ''
+                      }
+                    >
+                      {category.name}
+                      <RadioInput
+                        type="radio"
+                        name="category"
+                        value={category.value}
+                        className='hidden'
+                      />
+                    </RadioBtnCategory>
+                    </li>
+                ))}
+                <ErrorMessageStyled name='category' component="span"/>
+              </RadioBtnBox>
+            </BoxForInput>
+            <BoxForInput>
               <LabelField>
                 <LabelFieldTitle>
                   Tittle of ad <span>*</span>
@@ -63,8 +77,8 @@ export const ModalAddNoticeFistStep = ({values}) => {
                 />
               </LabelField>
               <ErrorMessageStyled name='title' component="span"/>
-            </div>
-            <div>
+            </BoxForInput>
+            <BoxForInput>
               <LabelField>
                 <LabelFieldTitle>Name pet</LabelFieldTitle>
                 <FieldStyled
@@ -74,8 +88,8 @@ export const ModalAddNoticeFistStep = ({values}) => {
                 />
               </LabelField>
               <ErrorMessageStyled name='name' component="span"/>
-            </div>
-            <div>
+            </BoxForInput>
+            <BoxForInput>
               <LabelField>
                 <LabelFieldTitle>Date of birth</LabelFieldTitle>
                 <FieldStyled
@@ -85,8 +99,8 @@ export const ModalAddNoticeFistStep = ({values}) => {
                 />
               </LabelField>
               <ErrorMessageStyled name='birthday' component="span"/>
-            </div>
-            <div>
+            </BoxForInput>
+            <BoxForInput>
               <LabelField>
                 <LabelFieldTitle>Breed</LabelFieldTitle>
                 <FieldStyled
@@ -96,8 +110,16 @@ export const ModalAddNoticeFistStep = ({values}) => {
                 />
               </LabelField>
               <ErrorMessageStyled name='breed' component="span"/>
-            </div>
+            </BoxForInput>
           </Container>
-          </>
+          <ContainerButton>
+            <CancelBack type="button" onClick={onClose}>
+              Cancel
+            </CancelBack>
+            <Button type="button" disabled={isDisabled} className={isDisabled ? 'disabled' : ''} onClick={() => setisLastStep(true)}>
+              Next
+            </Button>
+          </ContainerButton>
+        </>
   );
 };

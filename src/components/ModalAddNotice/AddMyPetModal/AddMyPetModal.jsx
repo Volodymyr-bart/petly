@@ -2,15 +2,11 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 import axios from 'axios';
 import { validationSchemaAddMyPet } from '../ModalAddNoticeValidation';
-import {
-  Button,
-  CancelBack,
-  ContainerButton,
-  DisableBtn,
-  FormContainer,
-} from '../ModalAddNotice.styled';
+import {FormContainer} from '../ModalAddNotice.styled';
 import { AddMyPetFirstPart } from './AddMyPetFirstPart';
 import { AddMyPetSecondPart } from './AddMyPetSecondPart';
+import { useDispatch } from 'react-redux';
+import { getUserData } from 'redux/account/operations';
 
 const initialValues = {
   name: '',
@@ -39,9 +35,10 @@ const addPet = async (newNotice) => {
 
 export const AddMyPetModal = ({ onClose, setChangedData }) => {
   const [isLastStep, setisLastStep] = useState(false);
+  const dispatch = useDispatch();
 
-  const onhandleSubmit = (values, { resetForm }) => {
-    addPet({
+  const onhandleSubmit = async (values, { resetForm }) => {
+    await addPet({
       name: values.name,
       birthday: values.birthday,
       breed: values.breed,
@@ -51,12 +48,7 @@ export const AddMyPetModal = ({ onClose, setChangedData }) => {
     resetForm();
     setisLastStep(false);
     onClose();
-
-    // Поміняю на useEffect завтра
-    // Пішов спати...
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    setChangedData(dispatch(getUserData()))
   };
 
   return (
@@ -74,56 +66,53 @@ export const AddMyPetModal = ({ onClose, setChangedData }) => {
         handleChange,
       }) => {
         const isDisabled = values.name === '' || errors.name;
+               
+        const isDisabledLastStep =
+          values.comments === '' ||
+          errors.comments;
+
         return (
           <FormContainer autoComplete="off">
             {isLastStep ? (
               <AddMyPetSecondPart
                 setisLastStep={setisLastStep}
-                onClose={onClose}
                 values={values}
                 errors={errors}
-                dirty={dirty}
                 handleChange={handleChange}
                 setFieldValue={setFieldValue}
+                isDisabledLastStep={isDisabledLastStep}
               />
             ) : (
-              <AddMyPetFirstPart values={values} errors={errors} />
+                <AddMyPetFirstPart
+                  values={values}
+                  errors={errors}
+                  isDisabled={isDisabled}
+                  onClose={onClose}
+                  setisLastStep={setisLastStep} />
             )}
 
-            <ContainerButton>
+            {/* <ContainerButton>
               {isLastStep ? (
                 <>
-                  <CancelBack
-                    type="button"
-                    onClick={() => setisLastStep(false)}
-                  >
-                    Back
-                  </CancelBack>
-                  {isValid ? (
-                    <Button type="submit">Done</Button>
-                  ) : (
-                    <DisableBtn disabled={true} className="disabled">
-                      Done
-                    </DisableBtn>
-                  )}
+                <CancelBack
+                  type="button"
+                  onClick={() => setisLastStep(false)}
+                >
+                  Back
+                </CancelBack>
+                <Button type="submit" disabled={isDisabledLastStep} className={isDisabledLastStep ? 'disabled' : ''} >Done</Button>
                 </>
               ) : (
-                <>
+                  <>
                   <CancelBack type="button" onClick={onClose}>
                     Cancel
                   </CancelBack>
-                  {isDisabled ? (
-                    <DisableBtn disabled={isDisabled} className="disabled">
-                      Next
-                    </DisableBtn>
-                  ) : (
-                    <Button type="button" onClick={() => setisLastStep(true)}>
+                  <Button type="button" disabled={isDisabled} className={isDisabled ? 'disabled' : ''} onClick={() => setisLastStep(true)}>
                       Next
                     </Button>
-                  )}
-                </>
-              )}
-            </ContainerButton>
+                    </>
+                    )}
+            </ContainerButton> */}
           </FormContainer>
         );
       }}
