@@ -70,7 +70,8 @@ export const NoticesCategoryItemStyled = styled.li`
     }    
 
     p {
-        text-align: left;        
+        text-align: left;
+        width: 160px;
     }
 
     span {
