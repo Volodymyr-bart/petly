@@ -62,7 +62,7 @@ export const AddMyPetSecondPart = ({
               Comments<span>*</span>
             </LabelFieldTitle>
             <CommentField
-              as="textarea"
+              component="textarea"
               type="text"
               name="comments"
               placeholder="Type comment"

@@ -59,9 +59,9 @@ export const ModalAddNotice = ({ onClose }) => {
         setFieldValue,
         isValid,
         handleChange,
+        touched,
       }) => {
-        // console.log(errors);
-
+        console.log(touched.location);
         const saveLocation = (value) => {
           values.location = value;
         }

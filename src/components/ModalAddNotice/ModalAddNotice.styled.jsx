@@ -446,9 +446,9 @@ export const CommentField = styled(Field)`
 `
 
 export const ErrorMessageStyled = styled(ErrorMessage)`
+  position: absolute;
   font-size: 16px;
   color: #9d3158;
-  margin-top: 10px;
 
   @media screen and (min-width: 768px) {
   font-size: 18px;
