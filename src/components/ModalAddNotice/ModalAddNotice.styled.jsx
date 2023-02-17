@@ -109,6 +109,7 @@ export const RadioBtnCategory = styled.label`
   letter-spacing: 0.04em;
 
   color: #000000;
+  cursor: pointer;
 
   &.active {
     background-color: #f59256;
@@ -233,6 +234,7 @@ export const Button = styled.button`
   line-height: 1.37;
   letter-spacing: 0.04em;
   color: #ffffff;
+  cursor: pointer;
   &.disabled{
       background-color: #dca481;
       &:hover {
@@ -272,6 +274,7 @@ export const CancelBack = styled.button`
   line-height: 1.37;
   letter-spacing: 0.04em;
   color: #000000;
+  cursor: pointer;
 
   &:hover {
     background-color: #f59256;
@@ -336,6 +339,8 @@ export const Icon = styled.div`
   height: 54px;
 
   margin-bottom: 12px;
+
+  cursor: pointer;
   
   @media screen and (min-width: 768px) {
     width: 60px;
@@ -357,6 +362,8 @@ export const Sex = styled.span`
   font-weight: 500;
   font-size: 18px;
   line-height: 1.47;
+
+  cursor: pointer;
   :hover {
     color: #f59256;
   }
@@ -387,6 +394,8 @@ export const LoadImg = styled.button`
   background: #FDF7F2;
   border-radius: 20px;
   border: transparent;
+
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
   width: 140px;

@@ -83,11 +83,6 @@ export const ModalAddNoticeSecondStep = ({
               Location<span>*</span>:
             </LabelFieldTitle>
             <PlacesAutocomplete saveAddress={saveLocation} />
-            {/* <FieldStyled
-              name="location"
-              type="text"
-              placeholder="City, Region"
-            /> */}
           </LabelField>
           <ErrorMessageStyled name="location" component="span" />
         </BoxForInput>
@@ -132,12 +127,10 @@ export const ModalAddNoticeSecondStep = ({
               Comments<span>*</span>
             </LabelFieldTitle>
             <CommentField
-              as="textarea"
               type="text"
+              component="textarea"
               name="comments"
               placeholder="Type comment"
-              onChange={handleChange}
-              value={values.comments}
             />
           </LabelField>
           <ErrorMessageComments name="comments" component="span" />
