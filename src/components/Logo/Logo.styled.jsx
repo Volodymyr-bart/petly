@@ -3,6 +3,7 @@ import { NavLink as Link } from 'react-router-dom';
 
 export const LogoBlack = styled.span`
 display: inline-block;
+ font-family: 'Poppins';
 font-weight: 700;
 color: #111111;
 letter-spacing: 0.07em;

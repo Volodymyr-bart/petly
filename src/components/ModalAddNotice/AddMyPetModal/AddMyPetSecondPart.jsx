@@ -1,8 +1,13 @@
 import { ReactComponent as DefaultImg } from '../../../noticesImage/loadimg.svg';
 import {
+  BoxForInput,
+  Button,
+  CancelBack,
   CommentField,
   Container,
+  ContainerButton,
   DefaultLoadImg,
+  ErrorMessageComments,
   ErrorMessageStyled,
   LabelField,
   LabelFieldMyPetPhoto,
@@ -18,6 +23,8 @@ export const AddMyPetSecondPart = ({
   values,
   setFieldValue,
   handleChange,
+  setisLastStep,
+  isDisabledLastStep
 }) => {
   const filePicker = useRef(null);
 
@@ -29,7 +36,7 @@ export const AddMyPetSecondPart = ({
     <>
       <TitleModal>Add pet</TitleModal>
       <Container>
-        <div>
+        <BoxForInput>
           <LabelFieldMyPetPhoto>
             <LabelFieldTitleMyPet>Add photo and some comments</LabelFieldTitleMyPet>
             <DefaultLoadImg
@@ -53,10 +60,10 @@ export const AddMyPetSecondPart = ({
             </div>
           </LabelFieldMyPetPhoto>
           <ErrorMessageStyled name="photo" component="span" />
-        </div>
+        </BoxForInput>
 
         {/* Comment */}
-        <div>
+        <BoxForInput>
           <LabelField>
             <LabelFieldTitle>
               Comments<span>*</span>
@@ -70,9 +77,18 @@ export const AddMyPetSecondPart = ({
               value={values.comments}
             />
           </LabelField>
-          <ErrorMessageStyled name="comments" component="span" />
-        </div>
+          <ErrorMessageComments name="comments" component="span" />
+        </BoxForInput>
       </Container>
+      <ContainerButton>
+        <CancelBack
+          type="button"
+          onClick={() => setisLastStep(false)}
+        >
+           Back
+        </CancelBack>
+        <Button type="submit" disabled={isDisabledLastStep} className={isDisabledLastStep ? 'disabled' : ''} >Done</Button>
+      </ContainerButton>
     </>
   );
 };

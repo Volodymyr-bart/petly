@@ -150,6 +150,7 @@ export const FieldStyled = styled(Field)`
   }
 `;
 export const LabelField = styled.label`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -232,6 +233,16 @@ export const Button = styled.button`
   line-height: 1.37;
   letter-spacing: 0.04em;
   color: #ffffff;
+  &.disabled{
+      background-color: #dca481;
+      &:hover {
+        background-color: #dca481;
+        -webkit-animation: none;
+        -webkit-transform: none;
+        animation: none;
+        transform: none;
+      }
+  }
 
   &:hover {
     background-color: #f59256;
@@ -241,26 +252,6 @@ export const Button = styled.button`
     animation: none;
     transform: scale(1.05);
   }
-
-  @media screen and (min-width: 768px) {
-    width: 180px;
-    padding: 10px 28px;
-    font-size: 20px;
-    line-height: 1.35;
-  }
-`;
-
-export const DisableBtn = styled.button`
-  width: 100%;
-  padding: 9px 101px;
-  background-color: #dca481;
-  border-radius: 40px;
-  border: none;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.37;
-  letter-spacing: 0.04em;
-  color: #ffffff;
 
   @media screen and (min-width: 768px) {
     width: 180px;
@@ -302,6 +293,8 @@ export const CancelBack = styled.button`
 // Step 2
 
 export const ContainerSex = styled.div`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   margin-top: 20px;
@@ -444,9 +437,41 @@ export const CommentField = styled(Field)`
     line-height: 1.6;
   }
 `
+export const BoxForInput = styled.div`
+position: relative;
+`
 
 export const ErrorMessageStyled = styled(ErrorMessage)`
   position: absolute;
+  left: 200px;
+  bottom: 60px;
+
+  font-size: 16px;
+  color: #9d3158;
+
+  @media screen and (min-width: 768px) {
+  font-size: 18px;
+  }
+`
+
+export const ErrorMessageComments = styled(ErrorMessage)`
+  position: absolute;
+  left: 200px;
+  bottom: 125px;
+
+  font-size: 16px;
+  color: #9d3158;
+
+  @media screen and (min-width: 768px) {
+  font-size: 18px;
+  }
+`
+
+export const ErrorMessageSex = styled(ErrorMessage)`
+  position: absolute;
+  left: 200px;
+  bottom: 132px;
+
   font-size: 16px;
   color: #9d3158;
 

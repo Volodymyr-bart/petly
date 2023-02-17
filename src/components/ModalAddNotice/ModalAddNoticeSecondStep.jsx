@@ -3,11 +3,17 @@ import { ReactComponent as Female } from '../../noticesImage/female.svg';
 import { ReactComponent as DefaultImg } from '../../noticesImage/loadimg.svg';
 
 import {
+  BoxForInput,
+  Button,
+  CancelBack,
   CommentField,
   Container,
+  ContainerButton,
   ContainerSex,
   ContainerSexVariant,
   DefaultLoadImg,
+  ErrorMessageComments,
+  ErrorMessageSex,
   ErrorMessageStyled,
   FieldStyled,
   Icon,
@@ -25,15 +31,25 @@ import { PlacesAutocomplete } from 'components/RegisterForm/Autocomplete';
 
 export const ModalAddNoticeSecondStep = ({
   values,
+  errors,
   setFieldValue,
   handleChange,
   saveLocation,
+  setisLastStep
 }) => {
   const filePicker = useRef(null);
 
   const handlePick = () => {
     filePicker.current.click();
   };
+
+  const isDisabledLastStep =
+          values.theSex === '' ||
+          values.location === '' ||
+          values.comments === '' ||
+          errors.theSex ||
+          errors.location ||
+          errors.comments;
 
   return (
     <>
@@ -58,10 +74,10 @@ export const ModalAddNoticeSecondStep = ({
             <Sex>Female</Sex>
           </SexLabel>
         </ContainerSexVariant>
-        <ErrorMessageStyled name="theSex" component="span" />
+        <ErrorMessageSex name="theSex" component="span" />
       </ContainerSex>
       <Container>
-        <div>
+        <BoxForInput>
           <LabelField>
             <LabelFieldTitle>
               Location<span>*</span>:
@@ -69,9 +85,9 @@ export const ModalAddNoticeSecondStep = ({
             <PlacesAutocomplete saveAddress={saveLocation} />
           </LabelField>
           <ErrorMessageStyled name="location" component="span" />
-        </div>
+        </BoxForInput>
         {values.category === 'sell' && (
-          <div>
+          <BoxForInput>
             <LabelField>
               <LabelFieldTitle>
                 Price<span>*</span>:
@@ -79,7 +95,7 @@ export const ModalAddNoticeSecondStep = ({
               <FieldStyled name="price" type="text" placeholder="Type price" />
             </LabelField>
             <ErrorMessageStyled name="price" component="span" />
-          </div>
+          </BoxForInput>
         )}
         <div>
           <LabelField>
@@ -105,7 +121,7 @@ export const ModalAddNoticeSecondStep = ({
           </LabelField>
           <ErrorMessageStyled name="petAvatar" component="span" />
         </div>
-        <div>
+        <BoxForInput>
           <LabelField>
             <LabelFieldTitle>
               Comments<span>*</span>
@@ -117,9 +133,18 @@ export const ModalAddNoticeSecondStep = ({
               placeholder="Type comment"
             />
           </LabelField>
-         <ErrorMessageStyled name="comments" component="span" />
-        </div>
+          <ErrorMessageComments name="comments" component="span" />
+        </BoxForInput>
       </Container>
+      <ContainerButton>
+        <CancelBack
+          type="button"
+          onClick={() => setisLastStep(false)}
+        >
+          Back
+        </CancelBack>
+        <Button type="submit" disabled={isDisabledLastStep} className={isDisabledLastStep ? 'disabled' : ''} >Done</Button>
+      </ContainerButton>
     </>
   );
 };

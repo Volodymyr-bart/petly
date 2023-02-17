@@ -48,7 +48,7 @@ const UserPage = ({ setChangedData, petsData }) => {
           <PlugParagraph>Тут нічого, додайте свою першу тварину</PlugParagraph>
         </Plug>
       )}
-      <Modal isOpen={isOpen} onClose={close}>
+      <Modal isOpen={isOpen} onClose={close} >
         <AddMyPetModal onClose={close} setChangedData={setChangedData} />
       </Modal>
     </UserPageStyled>
