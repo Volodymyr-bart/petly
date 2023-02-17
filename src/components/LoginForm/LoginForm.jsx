@@ -7,7 +7,11 @@ import { Button, FormStyled, FieldStyled,  ErrorMessageStyled, TextStyled, Input
 import * as yup from 'yup';
 import { RxEyeClosed, RxEyeOpen} from 'react-icons/rx'
 import { selectLoginError } from 'redux/auth/selectors';
+
 const passRegexp = /^\S+$/;
+const emailRegexp =
+  // eslint-disable-next-line no-useless-escape
+  /^(^[A-Za-z0-9]+[A-Za-z0-9_\-\.]{2,})+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 const initialValues = {
   email: '',
@@ -15,7 +19,7 @@ const initialValues = {
 }
 
 const schema = yup.object({
-  email: yup.string().email("Invalid email addres").required("Email is required"),
+  email: yup.string().email("Invalid email addres").matches(emailRegexp, "Invalid email address").required("Email is required"),
   password: yup.string()
     .matches(passRegexp, "Password cannot contain spaces")
     .min(7, "Password must be at least 7 characters")

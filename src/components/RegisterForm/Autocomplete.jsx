@@ -56,7 +56,7 @@ export const PlacesAutocomplete = ({saveAddress}) => {
           onChange={handleInput}
           disabled={!ready}
           placeholder="City"
-          name="address"
+          name="location"
           type='text'
         />
         {/* We can use the "status" to decide whether we should display the dropdown or not */}
