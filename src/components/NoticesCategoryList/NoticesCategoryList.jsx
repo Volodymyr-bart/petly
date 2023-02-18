@@ -60,7 +60,7 @@ const NoticesCategoriesList = () => {
             "There is no any notice here ... Add something and maybe this world will be a better place"
           ) : (
             notices
-              .filter(item => !filterId.includes(item._id))
+              .filter(item => !filterId.includes(item._id) && categoryName === item.category)
               .map(item => (
                 <NoticesCategoryItem
                   key={item._id}
