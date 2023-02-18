@@ -19,6 +19,7 @@ const noticesSlice = createSlice({
   name: 'notices',
   initialState: {
     notices: [],
+    noticesFavorite: [],
     isLoadingNotices: false,
     errorNotices: null,
     noticeAdd: {}
@@ -46,7 +47,7 @@ const noticesSlice = createSlice({
       .addCase(getAllFavoriteNotices.fulfilled, (state, action) => {
         state.isLoadingNotices = false;
         state.errorNotices = null;
-        state.notices = action.payload.result;
+        state.noticesFavorite = action.payload.result;
       })
       .addCase(getAllFavoriteNotices.rejected, handleRejected)
       // add notices

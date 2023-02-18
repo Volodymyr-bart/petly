@@ -130,7 +130,7 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
           notice.category === Categories.SELL && 
           <li>
             <p style={{ width: '88px' }}>Price:</p>
-            <p>{ notice?.price }</p>
+            <p>{ notice?.price }$</p>
           </li>
         }
       </ul>

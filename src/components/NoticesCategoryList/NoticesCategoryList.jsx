@@ -11,6 +11,7 @@ import {
 import {
   selectIsLoadingNotices,
   selectFilteredNotices,
+  selectFilteredNoticesFavorite,
   // selectNoticeAdd,
 } from 'redux/notices/selectors';
 import { Categories } from 'utils/noticesCatList';
@@ -21,9 +22,12 @@ const NoticesCategoriesList = () => {
   const [filterId, setFilterId] = useState([]);
   const { categoryName } = useParams();
   const dispatch = useDispatch();
-  const notices = useSelector(selectFilteredNotices);
+  const selector = categoryName === Categories.FAVORITE_ADS ? selectFilteredNoticesFavorite : selectFilteredNotices;
+  const notices = useSelector(selector);
+  // const notices = useSelector(selectFilteredNotices);
+  // const noticesFavorite = useSelector(selectFilteredNoticesFavorite);
   const isloadingNotices = useSelector(selectIsLoadingNotices);
-  // const noticeAdd = useSelector(selectNoticeAdd);
+  
   const [isEmpty, setIsEmpty] = useState(notices.length === 0);
 
   useEffect(() => {
@@ -56,18 +60,21 @@ const NoticesCategoriesList = () => {
         <Loader />        
       ) : (
         <NoticesCategoryListStyled>
-          { isEmpty ? (
-            "There is no any notice here ... Add something and maybe this world will be a better place"
-          ) : (
-            notices
-              .filter(item => !filterId.includes(item._id) && categoryName === item.category)
-              .map(item => (
-                <NoticesCategoryItem
-                  key={item._id}
-                  notice={item}
-                  getFilterId={getFilterId}
-                />
-              ))
+            {isEmpty ?
+              ("There is no any notice here ... Add something and maybe this world will be a better place")
+              :
+              (
+                notices
+                  .filter(item =>
+                    !filterId.includes(item._id) &&
+                    (categoryName === Categories.FAVORITE_ADS || categoryName === Categories.MY_ADS || categoryName === item.category))
+                  .map(item => (
+                    <NoticesCategoryItem
+                      key={item._id}
+                      notice={item}
+                      getFilterId={getFilterId}
+                    />
+                ))
           )}
         </NoticesCategoryListStyled>
       )}
