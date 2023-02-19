@@ -27,11 +27,25 @@ export const ModalAddNotice = ({ onClose }) => {
   const dispatch = useDispatch();
 
   const onhandleSubmit = (values, { resetForm }) => {
+    let result
+    if(values.birthday === '') {
+      result = '';
+    } if(values.birthday !== '') {
+      const date = new Date(values.birthday);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    result = `${day < 10 ? '0' + day : day}.${month < 10 ? '0' + month : month}.${year}`;
+    }
+
+    console.log(values);
+    console.log(result);
+
     dispatch(
       addNotice({
         title: values.title,
         name: values.name,
-        birthday: values.birthday,
+        birthday: result,
         category: values.category,
         breed: values.breed,
         theSex: values.theSex,
@@ -80,6 +94,7 @@ export const ModalAddNotice = ({ onClose }) => {
                   values={values}
                   errors={errors}
                   setisLastStep={setisLastStep}
+                  setFieldValue={setFieldValue}
                   onClose={onClose}
                 />
             )}

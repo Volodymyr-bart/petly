@@ -10,9 +10,12 @@ import {
   LabelFieldTitle,
   TitleModal,
 } from '../ModalAddNotice.styled';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 
-export const AddMyPetFirstPart = ({values,errors,setisLastStep, isDisabled, onClose}) => {
+export const AddMyPetFirstPart = ({values, errors, setFieldValue, setisLastStep, isDisabled, onClose}) => {
+
   return (<>
           <TitleModal>Add pet</TitleModal>
           <Container>
@@ -30,11 +33,17 @@ export const AddMyPetFirstPart = ({values,errors,setisLastStep, isDisabled, onCl
             <BoxForInput>
               <LabelField>
                 <LabelFieldTitle>Date of birth</LabelFieldTitle>
-                <FieldStyled
+                <DatePicker
                   name="birthday"
-                  type="text"
-                  placeholder="Type date of birth XX.XX.XXXX"
-                />
+                  selected={values.birthday}
+                  onChange={date => setFieldValue('birthday', date)}
+                  dateFormat="dd.MM.yyyy"
+                  maxDate={new Date()}
+                  showYearDropdown={true}
+                  onClose={onClose}
+                  scrollableYearDropdown
+                  placeholderText="Type date of birth XX.XX.XXXX"
+                />              
               </LabelField>
               <ErrorMessageStyled name='birthday' component='span'/>
             </BoxForInput>

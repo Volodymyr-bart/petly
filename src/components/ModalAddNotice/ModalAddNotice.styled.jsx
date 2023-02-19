@@ -159,6 +159,41 @@ export const LabelField = styled.label`
   @media screen and (min-width: 768px) {
     gap: 12px;
   }
+
+  & .react-datepicker-popper{
+    .react-datepicker__day--selected{
+      background-color: #f59256;
+    }
+  }
+  & .react-datepicker__input-container {
+    
+    input {width: 100%;
+      height: 40px;
+      padding: 11px 14px;
+      font-size: 14px;
+      line-height: 1.35;
+      letter-spacing: 0.04em;
+      background: #fdf7f2;
+      color: #000000;
+      border: 1px solid rgba(245, 146, 86, 0.5);
+      border-radius: 40px;
+      :hover,
+      :focus {
+        cursor: pointer;
+        outline: 2px solid #f59256;
+      }
+    
+      @media screen and (min-width: 768px) {
+        width: 448px;
+        height: 48px;
+        padding: 11px 16px;
+        font-size: 16px;
+        line-height: 1.6;
+        letter-spacing: 0.04em;
+    
+      }
+    }
+  }
 `;
 export const LabelFieldMyPetPhoto = styled.label`
   display: flex;

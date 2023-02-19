@@ -58,7 +58,7 @@ const NoticeModal = ({
               </Item>
               <Item>
                 <ItemNames>Birthday:</ItemNames>
-                <ItemText>{data || 'unspecified'}</ItemText>
+                <ItemText>{data}</ItemText>
               </Item>
               <Item>
                 <ItemNames>Breed:</ItemNames>
