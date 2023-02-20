@@ -27,6 +27,7 @@ const NoticeModal = ({
   isFavorite,
   addFavorite,
 }) => {
+  console.log(oneNotice);
   const data = ageCount(notice.birthday);
   return (
     <div>
@@ -75,13 +76,21 @@ const NoticeModal = ({
               {oneNotice?.author.email && (
                 <Item>
                   <ItemNames>Email:</ItemNames>
-                  <ItemText>{oneNotice?.author.email}</ItemText>
+                  <ItemText>
+                    <a href="mailto:{oneNotice?.author.email}">
+                      {oneNotice?.author.email}
+                    </a>
+                  </ItemText>
                 </Item>
               )}
               {oneNotice?.author.phone && (
                 <Item>
                   <ItemNames>Phone:</ItemNames>
-                  <ItemText>{oneNotice?.author.phone}</ItemText>
+                  <ItemText>
+                    <a href="tel:+38{oneNotice?.author.phone}">
+                      {oneNotice?.author.phone}
+                    </a>
+                  </ItemText>
                 </Item>
               )}
               {category === 'sell' && (
@@ -109,7 +118,7 @@ const NoticeModal = ({
             </Icon>
           </ButtonStyled>
           <ButtonStyled type="button" className="active">
-            <a href="tel:{oneNotice?.author.phone}">Contact</a>
+            <a href="tel:+38{oneNotice?.author.phone}">Contact</a>
           </ButtonStyled>
         </BtnBox>
       </ModalContainer>
