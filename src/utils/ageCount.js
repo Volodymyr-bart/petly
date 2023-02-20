@@ -4,7 +4,7 @@ export function ageCount(date) {
     return 'not born yet';
   }
   if (age === 0) {
-    return 'less than a year';
+    return 'unspecified';
   } else if (age === 1) {
     return 'one year';
   } else if (age > 20) {

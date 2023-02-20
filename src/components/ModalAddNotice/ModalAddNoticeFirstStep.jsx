@@ -16,6 +16,9 @@ import {
   RadioInput,
   TitleModal,
 } from './ModalAddNotice.styled';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 const categories = [
   { name: 'lost/found', value: Categories.LOST_FOUND, id: '1' },
@@ -27,7 +30,8 @@ export const ModalAddNoticeFistStep = ({
   values,
   errors,
   onClose,
-  setisLastStep
+  setisLastStep,
+  setFieldValue
 }) => {
   const isDisabled =
           values.category === '' ||
@@ -92,11 +96,18 @@ export const ModalAddNoticeFistStep = ({
             <BoxForInput>
               <LabelField>
                 <LabelFieldTitle>Date of birth</LabelFieldTitle>
-                <FieldStyled
+                <DatePicker
                   name="birthday"
-                  type="text"
-                  placeholder="Type date of birth XX.XX.XXXX"
-                />
+                  className='calendar'
+                  selected={values.birthday}
+                  onChange={date => setFieldValue('birthday', date)}
+                  dateFormat="dd.MM.yyyy"
+                  maxDate={new Date()}
+                  showYearDropdown={true}
+                  onClose={onClose}
+                  scrollableYearDropdown
+                  placeholderText="Type date of birth XX.XX.XXXX"
+                />    
               </LabelField>
               <ErrorMessageStyled name='birthday' component="span"/>
             </BoxForInput>

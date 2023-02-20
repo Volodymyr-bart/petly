@@ -38,9 +38,23 @@ export const AddMyPetModal = ({ onClose, setChangedData }) => {
   const dispatch = useDispatch();
 
   const onhandleSubmit = async (values, { resetForm }) => {
+    let result
+    if(values.birthday === '') {
+      result = '';
+    } if(values.birthday !== '') {
+      const date = new Date(values.birthday);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    result = `${day < 10 ? '0' + day : day}.${month < 10 ? '0' + month : month}.${year}`;
+    }
+    
+    console.log(values);
+    console.log(result);
+
     await addPet({
       name: values.name,
-      birthday: values.birthday,
+      birthday: result,
       breed: values.breed,
       photo: values.photo,
       comments: values.comments,
@@ -88,31 +102,10 @@ export const AddMyPetModal = ({ onClose, setChangedData }) => {
                   errors={errors}
                   isDisabled={isDisabled}
                   onClose={onClose}
+                  setFieldValue={setFieldValue}
                   setisLastStep={setisLastStep} />
             )}
 
-            {/* <ContainerButton>
-              {isLastStep ? (
-                <>
-                <CancelBack
-                  type="button"
-                  onClick={() => setisLastStep(false)}
-                >
-                  Back
-                </CancelBack>
-                <Button type="submit" disabled={isDisabledLastStep} className={isDisabledLastStep ? 'disabled' : ''} >Done</Button>
-                </>
-              ) : (
-                  <>
-                  <CancelBack type="button" onClick={onClose}>
-                    Cancel
-                  </CancelBack>
-                  <Button type="button" disabled={isDisabled} className={isDisabled ? 'disabled' : ''} onClick={() => setisLastStep(true)}>
-                      Next
-                    </Button>
-                    </>
-                    )}
-            </ContainerButton> */}
           </FormContainer>
         );
       }}
