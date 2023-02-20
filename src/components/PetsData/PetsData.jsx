@@ -45,7 +45,7 @@ const UserPage = ({ setChangedData, petsData }) => {
         <PetsList handleDeletePet={handleDeletePet} petsData={petsData} />
       ) : (
         <Plug>
-          <PlugParagraph>Тут нічого, додайте свою першу тварину</PlugParagraph>
+          <PlugParagraph>No pets found at your request</PlugParagraph>
         </Plug>
       )}
       <Modal isOpen={isOpen} onClose={close}>
