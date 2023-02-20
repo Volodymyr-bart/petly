@@ -125,6 +125,15 @@ export const ItemNames = styled.p`
 
 export const ItemText = styled.p`
   font-weight: 500;
+  a {
+    text-decoration: none;
+    outline: none;
+    color: black;
+
+    &:hover {
+      color: #f59256;
+    }
+  }
 `;
 
 export const Comment = styled.p`

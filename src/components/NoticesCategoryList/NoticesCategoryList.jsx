@@ -15,7 +15,7 @@ import {
   // selectNoticeAdd,
 } from 'redux/notices/selectors';
 import { Categories } from 'utils/noticesCatList';
-import NoticesCategoryListStyled from './NoticesCategoryList.styled';
+import NoticesCategoryListStyled, { Text } from './NoticesCategoryList.styled';
 import { Loader } from 'components/Loader/Loader';
 
 const NoticesCategoriesList = () => {
@@ -61,7 +61,7 @@ const NoticesCategoriesList = () => {
       ) : (
         <NoticesCategoryListStyled>
             {isEmpty ?
-              ("There is no any notice here ... Add something and maybe this world will be a better place")
+              (<Text>There is no any notice here ... Add something and maybe this world will be a better place</Text>)
               :
               (
                 notices
