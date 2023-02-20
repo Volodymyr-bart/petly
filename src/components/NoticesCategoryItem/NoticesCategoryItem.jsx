@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import {
   addToFavorite,
-  getAllFavoriteNoticesWithoutR,
-  getAllOwnNoticesWithoutR,
+  // getAllFavoriteNoticesWithoutR,
+  // getAllOwnNoticesWithoutR,
   getOneNoticeById,
   removeFromFavorite,
   removeFromOwn,
@@ -25,9 +25,9 @@ import {
 import { Categories } from 'utils/noticesCatList';
 
 
-const NoticesCategoryItem = ({ notice, getFilterId }) => {
-  const [favorite, setFavorite] = useState(false);
-  const [own, setOwn] = useState(false);
+const NoticesCategoryItem = ({ notice, getFilterId, fav, ow }) => {
+  const [favorite, setFavorite] = useState(fav);
+  const [own, setOwn] = useState(ow);
   const { isOpen, open, close } = useToggle();
   const { isLoggedIn } = useAuth();
   const { categoryName } = useParams();
@@ -35,15 +35,15 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      const getFavorites = async () => {
-        const res = await getAllFavoriteNoticesWithoutR();
-        setFavorite(res?.result.some(({ _id }) => _id === notice._id));      
-      }
+      // const getFavorites = async () => {
+      //   const res = await getAllFavoriteNoticesWithoutR();
+      //   setFavorite(res?.result.some(({ _id }) => _id === notice._id));      
+      // }
 
-      const getOwn = async () => {
-        const res = await getAllOwnNoticesWithoutR();
-        setOwn(res?.result.some(({ _id }) => _id === notice._id));     
-      }
+      // const getOwn = async () => {
+      //   const res = await getAllOwnNoticesWithoutR();
+      //   setOwn(res?.result.some(({ _id }) => _id === notice._id));     
+      // }
 
       const getOneNotice = async () => {
         const res = await getOneNoticeById(notice._id);
@@ -51,8 +51,8 @@ const NoticesCategoryItem = ({ notice, getFilterId }) => {
       }
       getOneNotice();
       
-      getOwn();
-      getFavorites();
+      // getOwn();
+      // getFavorites();
     }
        
   // eslint-disable-next-line react-hooks/exhaustive-deps
