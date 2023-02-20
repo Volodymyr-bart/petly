@@ -13,5 +13,8 @@ const NoticesCategoryListStyled = styled.ul`
         gap: 32px;
     }
 `;
+export const Text = styled.p`
+    margin: 70px auto;
+`
 
 export default NoticesCategoryListStyled;
