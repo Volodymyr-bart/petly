@@ -24,16 +24,19 @@ const NoticesCategoriesList = () => {
   const [filterId, setFilterId] = useState([]);
   const { categoryName } = useParams();
   const dispatch = useDispatch();
-  const selector = categoryName === Categories.FAVORITE_ADS ? selectFilteredNoticesFavorite : selectFilteredNotices;
+  const selector =
+    categoryName === Categories.FAVORITE_ADS
+      ? selectFilteredNoticesFavorite
+      : selectFilteredNotices;
   const notices = useSelector(selector);
   const [favorites, setFavorites] = useState([]);
   const [owns, setOwns] = useState([]);
   const [isFavorites, setIsFavorites] = useState(false);
-  const [isOwns, setIsOwns] = useState(false); 
+  const [isOwns, setIsOwns] = useState(false);
   // const notices = useSelector(selectFilteredNotices);
   // const noticesFavorite = useSelector(selectFilteredNoticesFavorite);
   const isloadingNotices = useSelector(selectIsLoadingNotices);
-  
+
   const [isEmpty, setIsEmpty] = useState(notices.length === 0);
 
   useEffect(() => {
@@ -47,15 +50,15 @@ const NoticesCategoriesList = () => {
 
     const getFavorites = async () => {
       const res = await getAllFavoriteNoticesWithoutR();
-      if (res.result) setFavorites(res.result);
+      if (res?.result) setFavorites(res.result);
       setIsFavorites(true);
-    }
+    };
 
     const getOwn = async () => {
       const res = await getAllOwnNoticesWithoutR();
-      if (res.result) setOwns(res.result);      
+      if (res?.result) setOwns(res?.result);
       setIsOwns(true);
-    }
+    };
 
     getOwn();
     getFavorites();
@@ -66,40 +69,52 @@ const NoticesCategoriesList = () => {
   }, [categoryName]);
 
   useEffect(() => {
-    setIsEmpty(notices.filter(item => !filterId.includes(item._id)).length === 0);
-  }, [filterId, isEmpty, notices])
+    setIsEmpty(
+      notices.filter(item => !filterId.includes(item._id)).length === 0
+    );
+  }, [filterId, isEmpty, notices]);
 
   const getFilterId = id => {
     setFilterId(prev => [...prev, id]);
   };
 
   // console.log('notices: ', notices);
-  
+
   return (
     <>
       {isloadingNotices ? (
-        <Loader />        
+        <Loader />
       ) : (
         <NoticesCategoryListStyled>
-            {isEmpty ?
-              (<Text>There is no any notice here ... Add something and maybe this world will be a better place</Text>)
-              :
-              ( isFavorites && isOwns &&
-                notices
-                  .filter(item =>
-                    !filterId.includes(item._id) &&
-                    (categoryName === Categories.FAVORITE_ADS || categoryName === Categories.MY_ADS || categoryName === item.category))
-                  .map(item => {
-                    const favorite = favorites.find(fav => item._id === fav._id);
-                    const own = owns.find(o => item._id === o._id);
-                    return <NoticesCategoryItem
-                      key={item._id}
-                      notice={item}
-                      getFilterId={getFilterId}
-                      fav={favorite}
-                      ow={own}
-                    />
-                })
+          {isEmpty ? (
+            <Text>
+              There is no any notice here ... Add something and maybe this world
+              will be a better place
+            </Text>
+          ) : (
+            isFavorites &&
+            isOwns &&
+            notices
+              .filter(
+                item =>
+                  !filterId.includes(item._id) &&
+                  (categoryName === Categories.FAVORITE_ADS ||
+                    categoryName === Categories.MY_ADS ||
+                    categoryName === item.category)
+              )
+              .map(item => {
+                const favorite = favorites.find(fav => item._id === fav._id);
+                const own = owns.find(o => item._id === o._id);
+                return (
+                  <NoticesCategoryItem
+                    key={item._id}
+                    notice={item}
+                    getFilterId={getFilterId}
+                    fav={favorite}
+                    ow={own}
+                  />
+                );
+              })
           )}
         </NoticesCategoryListStyled>
       )}
