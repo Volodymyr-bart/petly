@@ -49,13 +49,13 @@ export const RegisterForm = () => {
 
   const dispatch = useDispatch();
   
-  const handleSubmit = (values, {resetForm}) => {
+  const handleSubmit = (values, { resetForm }) => {
     dispatch(
       register({
         email: values.email,
         password: values.password,
         name: values.name,
-        address: values.location,
+        address: values.address,
         phone: values.phone
       })
     );
