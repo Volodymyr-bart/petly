@@ -19,6 +19,7 @@ import {
 import { Categories } from 'utils/noticesCatList';
 import NoticesCategoryListStyled, { Text } from './NoticesCategoryList.styled';
 import { Loader } from 'components/Loader/Loader';
+import { useAuth } from 'hooks';
 
 const NoticesCategoriesList = () => {
   const [filterId, setFilterId] = useState([]);
@@ -33,6 +34,7 @@ const NoticesCategoriesList = () => {
   // const notices = useSelector(selectFilteredNotices);
   // const noticesFavorite = useSelector(selectFilteredNoticesFavorite);
   const isloadingNotices = useSelector(selectIsLoadingNotices);
+  const { isLoggedIn } = useAuth();
   
   const [isEmpty, setIsEmpty] = useState(notices.length === 0);
 
@@ -45,20 +47,28 @@ const NoticesCategoriesList = () => {
       dispatch(getNoticesByCategory(categoryName));
     }
 
-    const getFavorites = async () => {
-      const res = await getAllFavoriteNoticesWithoutR();
-      if (res.result) setFavorites(res.result);
-      setIsFavorites(true);
-    }
+    if (isLoggedIn) {
+        const getFavorites = async () => {
+        const res = await getAllFavoriteNoticesWithoutR();
+        if (res.result) setFavorites(res.result);
+        setIsFavorites(true);
+      }
 
-    const getOwn = async () => {
-      const res = await getAllOwnNoticesWithoutR();
-      if (res.result) setOwns(res.result);      
+      const getOwn = async () => {
+        const res = await getAllOwnNoticesWithoutR();
+        // console.log(res)
+        if (res.result) setOwns(res.result);      
+        setIsOwns(true);
+      }
+
+      getOwn();
+      getFavorites();
+    } else {
+      setIsFavorites(true);
       setIsOwns(true);
     }
 
-    getOwn();
-    getFavorites();
+    
 
     setFilterId([]);
 
