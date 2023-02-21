@@ -19,6 +19,8 @@ import {
 import { Categories } from 'utils/noticesCatList';
 import NoticesCategoryListStyled, { Text } from './NoticesCategoryList.styled';
 import { Loader } from 'components/Loader/Loader';
+import { useAuth } from 'hooks';
+
 
 const NoticesCategoriesList = () => {
   const [filterId, setFilterId] = useState([]);
@@ -38,6 +40,7 @@ const NoticesCategoriesList = () => {
   const isloadingNotices = useSelector(selectIsLoadingNotices);
 
   const [isEmpty, setIsEmpty] = useState(notices.length === 0);
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     if (categoryName === Categories.FAVORITE_ADS) {
@@ -48,7 +51,8 @@ const NoticesCategoriesList = () => {
       dispatch(getNoticesByCategory(categoryName));
     }
 
-    const getFavorites = async () => {
+    if (isLoggedIn) {
+      const getFavorites = async () => {
       const res = await getAllFavoriteNoticesWithoutR();
       if (res?.result) setFavorites(res.result);
       setIsFavorites(true);
@@ -62,6 +66,12 @@ const NoticesCategoriesList = () => {
 
     getOwn();
     getFavorites();
+    } else {
+      setIsFavorites(true);
+      setIsOwns(true);
+    }
+
+    
 
     setFilterId([]);
 
