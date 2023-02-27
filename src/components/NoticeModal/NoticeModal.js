@@ -112,7 +112,7 @@ const NoticeModal = ({
             isFavorite={isFavorite}
             onClick={addFavorite}
           >
-            Add to{' '}
+            {isFavorite ? 'Remove' : 'Add to' }
             <Icon>
               <HiHeart width={16} height={16} />
             </Icon>
